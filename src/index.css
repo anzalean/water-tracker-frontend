@@ -30,6 +30,10 @@
   font-style: normal;
 }
 
+/* Breakpoints */
+@custom-media --tablet-bp (min-width: 768px);
+@custom-media --desktop-bp (min-width: 1440px);
+
 .visually-hidden {
   position: absolute;
   white-space: nowrap;
