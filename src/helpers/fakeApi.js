@@ -11,7 +11,7 @@ export async function fetchUser(userId) {
   return {data};
 }
 
-export async function fetchUser(userId) {
+export async function fetchWater(userId) {
   await delay(50); //імітація затримки
   const data = waters.filter((water) => water.owner === userId);
   return {data};
@@ -20,7 +20,7 @@ export async function fetchUser(userId) {
 
 const users = [
   {
-    "id": ObjectId("23333"),
+    "_id": ObjectId('6761eb888fbae6e5a101547f'),
     "email": "john.doe@example.com",
     "password": "343432423324",
     "avatarURL": "https://example.com/avatar/default.png",  // заглушка
@@ -31,12 +31,12 @@ const users = [
     "desiredVolume": 10900,
     "accessToken": "cjdnvndnvdnivdinvnnvdf",
     "refreshToken": "cddinvivnidfnvndfnvjndf",
-    "verification": "cdcdcvdfvfdvffvfvdvdf",
+    "verification": true,
     "verificationToken": "cdsvcdvcvdffvfdvfvfd",
     "resetPasswordToken": "cdscdvcdfvfdddfvfdvfv"
   },
   {
-    "id": ObjectId("23334"),
+    "_id": ObjectId('6762735ad021d7ad491eb223'),
     "email": "jane.smith@example.com",
     "password": "1234567890",
     "avatarURL": "https://example.com/avatar/default.png",  // заглушка
@@ -47,12 +47,12 @@ const users = [
     "desiredVolume": 1500,
     "accessToken": "abcd1234efgh5678",
     "refreshToken": "ijkl91011mnop1213",
-    "verification": "qrst1415uvwx1617",
+    "verification": false,
     "verificationToken": "yzab1819cdef2021",
     "resetPasswordToken": "ghij2223klmn2425"
   },
   {
-    "id": ObjectId("23335"),
+    "_id": ObjectId('6762735ad021d7ad491eb546'),
     "email": "alex.jones@example.com",
     "password": "0987654321",
     "avatarURL": "https://example.com/avatar/default.png",  // заглушка
@@ -63,12 +63,12 @@ const users = [
     "desiredVolume": 25000,
     "accessToken": "zxcv2627asdf2829",
     "refreshToken": "qwer3031tyui3233",
-    "verification": "opas3435dfgh3637",
+    "verification": false,
     "verificationToken": "hjkl3839qazw4041",
     "resetPasswordToken": "xswc4243edcv4445"
   },
   {
-    "id": ObjectId("23336"),
+    "_id": ObjectId('6762735ad021d7ad491ebjf4'),
     "email": "emily.white@example.com",
     "password": "1122334455",
     "avatarURL": "https://example.com/avatar/default.png",  // заглушка
@@ -79,7 +79,7 @@ const users = [
     "desiredVolume": 8000,
     "accessToken": "rfvb4647tgyn4849",
     "refreshToken": "mhju5051kiol5253",
-    "verification": "plok5455wsxc5657",
+    "verification": true,
     "verificationToken": "qazx5859rfvt6061",
     "resetPasswordToken": "edcr6263tfvb6465"
   }
@@ -88,76 +88,44 @@ const users = [
 
 const waters = [
   {
-    "date": {
-      "validate": {
-        "message": "Date must be less than or equal to the current date."
-      }
-    },
+    "date": new Date(Date.now()+ (24 * 60 * 60 * 1000)),
     "amount": 30,
-    "owner": ObjectId("23333")
+    "owner": ObjectId('6761eb888fbae6e5a101547f')
   },
   {
-    "date": {
-      "validate": {
-        "message": "Date must be less than or equal to the current date."
-      }
-    },
+    "date": new Date(Date.now()+ (2 * 24 * 60 * 60 * 1000)),
     "amount": 15,
-    "owner": ObjectId("23333")
+    "owner": ObjectId('6761eb888fbae6e5a101547f')
   },
   {
-    "date": {
-      "validate": {
-        "message": "Date must be less than or equal to the current date."
-      }
-    },
+    "date": new Date(Date.now()+ (3 * 24 * 60 * 60 * 1000)),
     "amount": 75,
-    "owner": ObjectId("23334")
+    "owner": ObjectId('6762735ad021d7ad491eb223')
   },
   {
-    "date": {
-      "validate": {
-        "message": "Date must be less than or equal to the current date."
-      }
-    },
+    "date": new Date(Date.now()+ (4 * 24 * 60 * 60 * 1000)),
     "amount": 50,
-    "owner": ObjectId("23334")
+    "owner": ObjectId('6762735ad021d7ad491eb223')
   },
   {
-    "date": {
-      "validate": {
-        "message": "Date must be less than or equal to the current date."
-      }
-    },
+    "date": new Date(Date.now()+ (5 * 24 * 60 * 60 * 1000)),
     "amount": 30,
-    "owner": ObjectId("23333")
+    "owner": ObjectId('6761eb888fbae6e5a101547f')
   },
   {
-    "date": {
-      "validate": {
-        "message": "Date must be less than or equal to the current date."
-      }
-    },
+    "date": new Date(Date.now()+ (6 * 24 * 60 * 60 * 1000)),
     "amount": 15,
-    "owner": ObjectId("23333")
+    "owner": ObjectId('6761eb888fbae6e5a101547f')
   },
   {
-    "date": {
-      "validate": {
-        "message": "Date must be less than or equal to the current date."
-      }
-    },
+    "date": new Date(Date.now()+ (7 * 24 * 60 * 60 * 1000)),
     "amount": 75,
-    "owner": ObjectId("23334")
+    "owner": ObjectId('6762735ad021d7ad491eb223')
   },
   {
-    "date": {
-      "validate": {
-        "message": "Date must be less than or equal to the current date."
-      }
-    },
+    "date": new Date(Date.now()+ (8 *24 * 60 * 60 * 1000)),
     "amount": 50,
-    "owner": ObjectId("23334")
+    "owner": ObjectId('6762735ad021d7ad491eb223')
   }
 ]
 
