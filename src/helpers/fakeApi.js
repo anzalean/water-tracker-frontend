@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 
 export async function delay(ms) {
-  return  Promise((resolve) => setTimeout(resolve, ms));
+  return  new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 
