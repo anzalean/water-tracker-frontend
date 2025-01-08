@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { Container } from '../../components/Container/Container';
 import { Page } from '../../components/Page/Page';
-import css from './TrackerPage.module.css'; // Підключення стилів
+import WaterProgressBar from '../../components/WaterProgressBar/WaterProgressBar';
+import css from './TrackerPage.module.css';
 
 export default function TrackerPage() {
   return (
@@ -10,7 +11,10 @@ export default function TrackerPage() {
         <title>Tracker</title>
       </Helmet>
       <Page>
-        {<div className={css.TrackerPage}>Tracker</div>}
+        <div className={css.TrackerPage}>
+          <h1>Water Tracker</h1>
+          <WaterProgressBar progress={50} />
+        </div>
       </Page>
     </Container>
   );

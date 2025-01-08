@@ -1,4 +1,4 @@
-@import '../node_modules/modern-normalize/modern-normalize.css';
+@import "../node_modules/modern-normalize/modern-normalize.css";
 
 :root {
   /* Colors */
@@ -15,17 +15,16 @@
   --animation: 150ms ease-in;
 }
 
-
 @font-face {
-  font-family: 'Poppins';
-  src: url('/Poppins-Regular.ttf');
+  font-family: "Poppins";
+  src: url("/Poppins-Regular.ttf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/Poppins-Bold.ttf');
+  font-family: "Poppins";
+  src: url("/Poppins-Bold.ttf");
   font-weight: 700;
   font-style: normal;
 }
@@ -46,7 +45,7 @@
 
 body {
   background-color: var(--color-white);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--color-black);
   margin: 0;
 }
@@ -79,4 +78,3 @@ button {
   cursor: pointer;
   border: none;
 }
-
