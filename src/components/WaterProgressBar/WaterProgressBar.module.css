@@ -3,12 +3,23 @@
   height: 66px;
   background-color: #ffffff;
   border-radius: 9px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Обрамление */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 6px 12px;
+  position: relative;
+}
+
+.progressBarTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #323f47;
+  position: absolute; /* Абсолютное позиционирование */
+  top: 6px; /* Отступ сверху */
+  left: 12px; /* Отступ слева */
+  margin: 0; /* Убираем лишние отступы */
 }
 
 .progressBarTrack {
@@ -17,13 +28,14 @@
   background-color: #f0eff4;
   border-radius: 4px;
   position: relative;
+  margin-top: 25px; /* Отступ, чтобы текст не пересекался */
 }
 
 .progressBarFill {
   height: 100%;
   background-color: #9be1a0;
   border-radius: 4px;
-  transition: width 0.3s ease-in-out; /* Анимация */
+  transition: width 0.3s ease-in-out;
 }
 
 .progressBarThumb {
@@ -38,11 +50,10 @@
 }
 
 .progressBarLabels {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   font-family: "Poppins", sans-serif;
   font-size: 12px;
-  color: #323f47;
+  color: rgba(47, 47, 47, 0.6);
   margin-top: 8px;
 }
