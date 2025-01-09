@@ -1,0 +1,28 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-darkblue-translucent);
+}
+
+.modalContent {
+  position: relative;
+  background-color: var(--color-white);
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+}
+
