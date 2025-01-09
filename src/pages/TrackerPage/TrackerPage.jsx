@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Container } from '../../components/Container/Container';
 import { Page } from '../../components/Page/Page';
-import WaterProgressBar from '../../components/WaterProgressBar/WaterProgressBar';
+import WaterProgressBar from './WaterProgressBar/WaterProgressBar';
 import css from './TrackerPage.module.css';
 
 export default function TrackerPage() {
