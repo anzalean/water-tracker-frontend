@@ -4,17 +4,28 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import sprite from "../../assets/icons/sprite.svg";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Some error message")
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      "Email must be a valid address"
+    )
     .required("Password is required"),
   password: Yup.string()
     .min(6, "Some error password")
+    .matches(/[a-zA-Z]/, "Password must contain at least one letter")
+    .matches(/\d/, "Password must contain at least one number")
     .required("Email is required"),
 });
 
 export default function SigninForm() {
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePassword = () => setShowPassword((prev) => !prev);
+
   const {
     register,
     handleSubmit,
@@ -64,13 +75,27 @@ export default function SigninForm() {
         <label htmlFor="password" className={s.label}>
           Password
         </label>
-        <input
-          id="password"
-          type="password"
-          placeholder="Enter your password"
-          {...register("password")}
-          className={`${s.input} ${errors.password ? s.errorInput : ""}`}
-        />
+        <div className={s.passwordWrapper}>
+          <input
+            id="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter your password"
+            {...register("password")}
+            className={`${s.input} ${errors.password ? s.errorInput : ""}`}
+          />
+          <button
+            type="button"
+            className={s.togglePasswordButton}
+            onClick={togglePassword}
+            aria-label="Toggle password visibility"
+          >
+            <svg className={s.icon}>
+              <use
+                href={`${sprite}#${showPassword ? "icon-eye" : "icon-eye-off"}`}
+              />
+            </svg>
+          </button>
+        </div>
         {errors.password && (
           <p className={s.error}>{errors.password.message}</p>
         )}

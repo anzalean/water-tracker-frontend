@@ -32,7 +32,9 @@
   border: 1px solid rgba(47, 47, 47, 0.2);
   border-radius: 15px;
   transition: border-color 0.3s;
-  color: rgba(47, 47, 47, 0.6);
+  color: var(--color-black);
+  width: 100%;
+  padding-right: 40px;
 }
 
 .input:focus {
@@ -82,4 +84,28 @@
   font-weight: 700;
   line-height: 24px;
   letter-spacing: -0.01em;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.togglePasswordButton {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--color-darkblue);
+  stroke-width: 1px;
 }
