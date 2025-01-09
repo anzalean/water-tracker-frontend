@@ -22,9 +22,3 @@
     letter-spacing: -1px;
   }
 }
-
-@media (--desktop-bp) {
-  .logo {
-    font-size: 24px;
-  }
-}
