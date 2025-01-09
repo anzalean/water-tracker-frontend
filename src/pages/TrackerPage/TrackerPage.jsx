@@ -1,13 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import { Container } from '../../components/Container/Container';
 import { Page } from '../../components/Page/Page';
-import WaterProgressBar from './WaterProgressBar/WaterProgressBar';
-import AddWaterButton from './AddWaterButton/AddWaterButton';
+import WaterProgressBar from '../../components/WaterProgressBar/WaterProgressBar';
+import AddWaterButton from '../../components/AddWaterButton/AddWaterButton';
 import css from './TrackerPage.module.css';
 
 export default function TrackerPage() {
   const handleAddWater = () => {
-    console.log('Add Water button clicked'); // В дальнейшем здесь будет логика для открытия модального окна
+    console.log('Add Water button clicked'); 
   };
 
   return (
