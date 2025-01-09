@@ -1,7 +1,7 @@
 .progressBarContainer {
   width: 255px;
   height: 66px;
-  background-color: #ffffff;
+  background-color: var(--color-white); /* Используем переменную */
   border-radius: 9px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -12,37 +12,36 @@
 }
 
 .progressBarTitle {
-  font-family: "Poppins", sans-serif;
   font-size: 15px;
-  font-weight: 700;
-  color: #323f47;
-  position: absolute; /* Абсолютное позиционирование */
-  top: 6px; /* Отступ сверху */
-  left: 12px; /* Отступ слева */
-  margin: 0; /* Убираем лишние отступы */
+  font-weight: 700; /* Используем шрифт из глобальных стилей */
+  color: var(--color-darkblue); /* Используем переменную */
+  position: absolute;
+  top: 6px;
+  left: 12px;
+  margin: 0;
 }
 
 .progressBarTrack {
   width: 100%;
   height: 8px;
-  background-color: #f0eff4;
+  background-color: var(--color-lightgray); /* Используем переменную */
   border-radius: 4px;
   position: relative;
-  margin-top: 25px; /* Отступ, чтобы текст не пересекался */
+  margin-top: 25px;
 }
 
 .progressBarFill {
   height: 100%;
-  background-color: #9be1a0;
+  background-color: var(--color-lightgreen); /* Используем переменную */
   border-radius: 4px;
-  transition: width 0.3s ease-in-out;
+  transition: width var(--animation); /* Используем переменную для анимации */
 }
 
 .progressBarThumb {
   width: 12px;
   height: 12px;
-  background-color: #ffffff;
-  border: 1px solid #9be1a0;
+  background-color: var(--color-white); /* Используем переменную */
+  border: 1px solid var(--color-lightgreen); /* Используем переменную */
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -52,8 +51,7 @@
 .progressBarLabels {
   display: flex;
   justify-content: space-between;
-  font-family: "Poppins", sans-serif;
   font-size: 12px;
-  color: rgba(47, 47, 47, 0.6);
+  color: var(--color-blacksemi); /* Используем переменную */
   margin-top: 8px;
 }

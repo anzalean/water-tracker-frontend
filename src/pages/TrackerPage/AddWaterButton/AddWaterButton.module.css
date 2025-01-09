@@ -2,22 +2,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #323f47;
-  color: #ffffff;
-  font-family: "Poppins", sans-serif;
+  background-color: var(--color-darkblue); /* Используем переменную */
+  color: var(--color-white); /* Используем переменную */
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 700; /* Используем шрифт из глобальных стилей */
   line-height: 24px;
   border: none;
   border-radius: 30px;
   padding: 18px 30px;
   gap: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--animation); /* Используем переменную */
 }
 
 .button:hover {
-  background-color: #3a4752;
+  background-color: #3a4752; /* Можно добавить новую переменную, если требуется */
 }
 
 .icon {
