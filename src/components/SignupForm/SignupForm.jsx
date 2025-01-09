@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import s from "./SigninForm.module.css";
+import s from "./SignupForm.module.css";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
@@ -16,15 +16,18 @@ const validationSchema = Yup.object().shape({
     )
     .min(5, "Email is too short")
     .max(50, "Email is too long")
-    .required("Email is required"),
+    .required("Email  is required"),
   password: Yup.string()
     .min(6, "Some error password")
     .matches(/[a-zA-Z]/, "Password must contain at least one letter")
     .matches(/\d/, "Password must contain at least one number")
-    .required("Password is required"),
+    .required("Password  is required"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Please repeat your password"),
 });
 
-export default function SigninForm() {
+export default function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword((prev) => !prev);
   const {
@@ -56,10 +59,10 @@ export default function SigninForm() {
   };
 
   return (
-    <div className={s.SignInPage}>
+    <div className={s.SignUpPage}>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className={s.field}>
-          <h2 className={s.signInTitle}>Sign In</h2>
+          <h2 className={s.signUpTitle}>Sign Up</h2>
           <label htmlFor="email" className={s.label}>
             Email
           </label>
@@ -104,14 +107,47 @@ export default function SigninForm() {
             <p className={s.error}>{errors.password.message}</p>
           )}
         </div>
+        <div className={s.field}>
+          <label htmlFor="confirmPassword" className={s.label}>
+            Repeat password
+          </label>
+          <div className={s.passwordWrapper}>
+            <input
+              id="confirmPassword"
+              type={showPassword ? "text" : "password"}
+              placeholder="Repeat password"
+              {...register("confirmPassword")}
+              className={`${s.input} ${
+                errors.confirmPassword ? s.errorInput : ""
+              }`}
+            />
+            <button
+              type="button"
+              className={s.togglePasswordButton}
+              onClick={togglePassword}
+              aria-label="Toggle password visibility"
+            >
+              <svg className={s.icon}>
+                <use
+                  href={`${sprite}#${
+                    showPassword ? "icon-eye" : "icon-eye-off"
+                  }`}
+                />
+              </svg>
+            </button>
+          </div>
+          {errors.confirmPassword && (
+            <p className={s.error}>{errors.confirmPassword.message}</p>
+          )}
+        </div>
         <button type="submit" className={s.button}>
           Sign In
         </button>
 
         <p className={s.footer}>
           Don’t have an account?{" "}
-          <a href="/signup" className={s.link}>
-            Sign Up
+          <a href="/signin" className={s.link}>
+            Sign In
           </a>
         </p>
       </form>

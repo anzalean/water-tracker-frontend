@@ -1,12 +1,12 @@
-.SignInPage {
+.SignUpPage {
   background-color: var(--color-lightgray);
   width: 343px;
   height: 780px;
-  padding: 216px 16px;
+  padding: 170px 16px;
   border-radius: 30px;
 }
 
-.signInTitle {
+.signUpTitle {
   font-size: 32px;
   color: var(--color-darkblue);
 }
@@ -118,12 +118,12 @@
 }
 
 @media (min-width: 768px) {
-  .SignInPage {
+  .SignUpPage {
     width: 704px;
     height: 960px;
-    padding: 281px 134px;
+    padding: 227px 134px;
   }
-  .signInTitle {
+  .signUpTitle {
     font-size: 36px;
   }
   .label {
@@ -145,9 +145,9 @@
 }
 
 @media (min-width: 1440px) {
-  .SignInPage {
+  .SignUpPage {
     width: 672px;
     height: 736px;
-    padding: 169px 118px;
+    padding: 130px 118px 100px 118px;
   }
 }
