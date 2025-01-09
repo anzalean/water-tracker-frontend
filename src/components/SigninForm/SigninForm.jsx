@@ -25,7 +25,6 @@ const validationSchema = Yup.object().shape({
 export default function SigninForm() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword((prev) => !prev);
-
   const {
     register,
     handleSubmit,
@@ -96,11 +95,7 @@ export default function SigninForm() {
             </svg>
           </button>
         </div>
-        {errors.password && (
-          <p className={s.error}>{errors.password.message}</p>
-        )}
       </div>
-
       <button type="submit" className={s.button}>
         Sign In
       </button>
