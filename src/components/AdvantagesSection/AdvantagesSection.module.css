@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     padding: 32px 16px;
-    background-image: url("");
+    background-image: url("../../assets/images/hero_mob@2x.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -12,20 +12,24 @@
     position: relative;
 }
 
+.userCount {
+    position: absolute;
+    left: 16px;
+    bottom: 96px;
+}
 
 @media (-webkit-min-device-pixel-ratio: 2),
 (min-resolution: 192dpi) {
     .advantagesSection {
-        background-image: url("");
+        background-image: url("../../assets/images/hero_mob@2x.webp");
     }
 }
 
 .advantagesList {
     position: absolute;
-    right: 16px;
+    right: 8px;
     bottom: 32px;
     width: 200px;
-    list-style-type: none;
     padding: 0;
     display: flex;
     gap: 10px;
@@ -53,7 +57,7 @@
     content: "";
     position: absolute;
     left: 9px;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     width: 8px;
     height: 8px;
@@ -72,22 +76,24 @@
 @media screen and (min-width: 768px) {
     .advantagesSection {
         padding: 32px;
-        background-image: url("");
+        background-image: url("../../assets/images/hero_tab@1x.webp");
         width: 704px;
         height: 446px;
     }
 
-    
+    .userCount {
+            left: 32px;
+    }
 
     @media (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi) {
         .advantagesSection {
-            background-image: url("");
+            background-image: url("../../assets/images/hero_tab@2x.webp");
         }
     }
 
     .advantagesList {
-        width: 300px;
+        width: 245px;
         right: 32px;
     }
 
@@ -110,18 +116,20 @@
 @media screen and (min-width: 1440px) {
     .advantagesSection {
         padding: 64px 32px;
-        background-image: url("");
+        background-image: url("../../assets/images/hero_desk@1x.webp");
         height: 736px;
         width: 672px;
     }
 
-
+    .userCount {
+        bottom: 132px;
+    }
 
 
     @media (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi) {
         .advantagesSection {
-            background-image: url("");
+            background-image: url("../../assets/images/hero_desk@2x.webp");
         }
     }
 

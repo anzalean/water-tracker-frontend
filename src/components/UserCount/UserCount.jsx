@@ -1,6 +1,6 @@
-import photo1 from "/img/photo1.png";
-import photo2 from "/img/photo2.png";
-import photo3 from "/img/photo3.png";
+import photo1 from "../../assets/images/first_user.webp";
+import photo2 from "../../assets/images/second_user.webp";
+import photo3 from "../../assets/images/third_user.webp";
 import styles from "./UserCount.module.css";
 
 
