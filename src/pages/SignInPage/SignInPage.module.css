@@ -1,0 +1,8 @@
+.SignInPage {
+  background-color: var(--color-lightgray);
+  width: 672px;
+  height: 736px;
+  margin: 32px;
+  border-radius: 30px;
+  padding: 169px 118px;
+}

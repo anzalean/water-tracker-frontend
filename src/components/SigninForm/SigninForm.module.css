@@ -1,0 +1,85 @@
+.signInTitle {
+  font-size: 36px;
+  color: var(--color-darkblue);
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-top: 32px;
+  font-size: 16px;
+  color: var(--color-darkblue);
+  padding-bottom: 8px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+}
+
+.input {
+  padding: 16px;
+  font-size: 16px;
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  border-radius: 15px;
+  transition: border-color 0.3s;
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.input:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+  outline: none;
+}
+
+.errorInput {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.error {
+  color: var(--color-error);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.button {
+  padding: 18px 191px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: var(--color-darkblue);
+  background-color: var(--color-lightgreen);
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.button:hover {
+  background-color: var(--color-lightgreenhover);
+}
+
+.footer {
+  text-align: center;
+  font-size: 16px;
+  color: rgba(47, 47, 47, 0.5);
+}
+
+.link {
+  color: var(--color-black);
+  text-decoration: underline;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+}
