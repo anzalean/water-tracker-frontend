@@ -3,6 +3,7 @@ import { Container } from '../../components/Container/Container';
 import { Page } from '../../components/Page/Page';
 import WaterProgressBar from '../../components/WaterProgressBar/WaterProgressBar';
 import AddWaterButton from '../../components/AddWaterButton/AddWaterButton';
+import WaterDailyNorma from '../../components/WaterDailyNorma/WaterDailyNorma';
 import css from './TrackerPage.module.css';
 
 export default function TrackerPage() {
@@ -20,6 +21,7 @@ export default function TrackerPage() {
           <h1>Water Tracker</h1>
           <WaterProgressBar progress={50} />
           <AddWaterButton onClick={handleAddWater} />
+          <WaterDailyNorma dailyNorm={1.5} />
         </div>
       </Page>
     </Container>
