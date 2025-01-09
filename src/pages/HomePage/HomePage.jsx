@@ -11,9 +11,10 @@ export default function HomePage() {
         <title>Home</title>
       </Helmet>
       <Page>
-        {<div className={css.HomePage}>Home</div>}
+        {<div className={css.HomePage}>Home<AdvantagesSection /></div>}
+        
       </Page>
-      <AdvantagesSection />
+      
     </Container>
   );
 }
