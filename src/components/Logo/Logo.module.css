@@ -2,9 +2,9 @@
 
 .logo {
   font-family: "Poppins", sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 20px;
   letter-spacing: -1px;
   color: var(--color-darkblue);
   text-decoration: none;
@@ -14,4 +14,17 @@
 .logo:hover {
   color: var(--color-darkblue);
   text-decoration: none;
+}
+
+@media (--tablet-bp) {
+  .logo {
+    font-size: 24px;
+    letter-spacing: -1px;
+  }
+}
+
+@media (--desktop-bp) {
+  .logo {
+    font-size: 24px;
+  }
 }

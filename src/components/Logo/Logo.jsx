@@ -1,6 +1,5 @@
 // src/components/Logo/Logo.jsx
 
-import React from "react";
 import styles from "./Logo.module.css";
 
 const Logo = () => {
