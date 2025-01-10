@@ -1,33 +1,47 @@
-.button {
+.buttonContainer {
+  position: absolute;
+  top: 337px;
+  left: 187px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 140px;
+  height: 46px;
   background-color: var(--color-darkblue);
-  color: var(--color-white);
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  border: none;
   border-radius: 30px;
-  padding: 18px 30px;
-  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: color var(--animation), background-color var(--animation);
+  padding: 0;
+  gap: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 18px;
+  border: none;
+  transition: all 0.3s ease-in-out;
 }
 
-.button:hover {
-  color: var(--color-lightgreen);
+.buttonContainer:hover .buttonPath {
+  stroke: var(--color-lightgreen); /* Меняем цвет линии при ховере */
 }
 
-.icon {
-  font-size: 24px; /* Размер иконки */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.buttonIcon {
+  width: 24px;
+  height: 24px;
+  transition: stroke 0.3s ease-in-out;
 }
 
-.text {
-  display: flex;
-  align-items: center;
+.buttonText {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-white);
+  margin: 0;
+  transition: color 0.3s ease-in-out;
+}
+
+.buttonContainer:hover .buttonText {
+  color: var(--color-lightgreen); /* Меняем цвет текста при ховере */
 }
