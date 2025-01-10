@@ -1,7 +1,8 @@
-import { Helmet } from 'react-helmet-async';
-import { Container } from '../../components/Container/Container';
-import { Page } from '../../components/Page/Page';
-import css from'./SignInPage.module.css'; 
+import { Helmet } from "react-helmet-async";
+import { Container } from "../../components/Container/Container";
+import { Page } from "../../components/Page/Page";
+import SigninForm from "../../components/SigninForm/SigninForm";
+import css from "./SignInPage.module.css";
 
 export default function SignInPage() {
   return (
@@ -10,7 +11,11 @@ export default function SignInPage() {
         <title>Sign In</title>
       </Helmet>
       <Page>
-        {<div className={css.SignInPage}>Sign In</div>}
+        {
+          <div className={css.SignInPage}>
+            <SigninForm />
+          </div>
+        }
       </Page>
     </Container>
   );
