@@ -57,7 +57,7 @@ export default function SigninForm() {
   };
 
   return (
-    <div className={s.SignInPage}>
+    <div className={s.SignInContainer}>
       <div className={s.logoContainer}>
         <Logo />
       </div>

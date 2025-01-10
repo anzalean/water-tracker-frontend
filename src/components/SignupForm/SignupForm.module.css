@@ -1,4 +1,4 @@
-.SignUpPage {
+.SignUpContainer {
   position: relative;
   background-color: var(--color-lightgray);
   width: 343px;
@@ -126,7 +126,7 @@
 }
 
 @media (min-width: 768px) {
-  .SignUpPage {
+  .SignUpContainer {
     width: 704px;
     height: 960px;
     padding: 227px 134px;
@@ -157,7 +157,7 @@
 }
 
 @media (min-width: 1440px) {
-  .SignUpPage {
+  .SignUpContainer {
     width: 672px;
     height: 736px;
     padding: 130px 118px 100px 118px;

@@ -60,7 +60,7 @@ export default function SignupForm() {
   };
 
   return (
-    <div className={s.SignUpPage}>
+    <div className={s.SignUpContainer}>
       <div className={s.logoContainer}>
         <Logo />
       </div>

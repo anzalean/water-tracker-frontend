@@ -1,4 +1,4 @@
-.SignInPage {
+.SignInContainer {
   position: relative;
   background-color: var(--color-lightgray);
   width: 343px;
@@ -126,7 +126,7 @@
 }
 
 @media (min-width: 768px) {
-  .SignInPage {
+  .SignInContainer {
     width: 704px;
     height: 960px;
     padding: 281px 134px;
@@ -158,7 +158,7 @@
 }
 
 @media (min-width: 1440px) {
-  .SignInPage {
+  .SignInContainer {
     width: 672px;
     height: 736px;
     padding: 169px 118px;
