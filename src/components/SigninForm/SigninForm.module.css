@@ -1,0 +1,166 @@
+.SignInContainer {
+  position: relative;
+  background-color: var(--color-lightgray);
+  width: 343px;
+  height: 780px;
+  padding: 216px 16px;
+  border-radius: 30px;
+}
+
+.logoContainer {
+  position: absolute;
+  top: 24px;
+  left: 16px;
+  font-size: 18px;
+}
+
+.signInTitle {
+  font-size: 32px;
+  color: var(--color-darkblue);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-top: 32px;
+  font-size: 14px;
+  color: var(--color-darkblue);
+  padding-bottom: 8px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+}
+
+.input {
+  padding: 16px;
+  font-size: 14px;
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  border-radius: 15px;
+  transition: border-color 0.3s;
+  color: var(--color-black);
+  width: 100%;
+  padding-right: 40px;
+}
+
+.input:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+  outline: none;
+}
+
+.errorInput {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.error {
+  color: var(--color-error);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.button {
+  padding: 16px 131px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: var(--color-darkblue);
+  background-color: var(--color-lightgreen);
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.button:hover {
+  background-color: var(--color-lightgreenhover);
+}
+
+.footer {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(47, 47, 47, 0.5);
+}
+
+.link {
+  color: var(--color-black);
+  text-decoration: underline;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.togglePasswordButton {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--color-darkblue);
+  stroke-width: 1px;
+}
+
+@media (min-width: 768px) {
+  .SignInContainer {
+    width: 704px;
+    height: 960px;
+    padding: 281px 134px;
+  }
+  .signInTitle {
+    font-size: 36px;
+  }
+  .label {
+    font-size: 16px;
+  }
+  .input {
+    font-size: 16px;
+  }
+  .button {
+    padding: 18px 191px;
+    font-size: 16px;
+  }
+  .footer {
+    font-size: 16px;
+  }
+  .link {
+    font-size: 16px;
+  }
+
+  .logoContainer {
+    top: 32px;
+    left: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .SignInContainer {
+    width: 672px;
+    height: 736px;
+    padding: 169px 118px;
+  }
+}
