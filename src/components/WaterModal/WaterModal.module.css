@@ -4,18 +4,19 @@
   justify-content: flex-start;
   flex-direction: column;
   border-radius: 15px;
-  width: 518px;
-  height: 555px;
+  width: 343px;
+  height: 514px;
+  /* padding: 40px 20px; */
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   background: var(--color-white);
 }
 
 .waterModalTitles {
-    max-width: 347px;
-  margin-top: 40px;
+    width: 248px;
+  /* margin-top: 40px;
   margin-left: 40px;
   margin-right: 120px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
   gap: 24px;
   padding: 0;
   display: flex;
@@ -25,8 +26,8 @@
 .waterModalTitle {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 28px;
-  line-height: 1.14286;
+  font-size: 20px;
+  line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--color-darkblue);
 }
@@ -34,8 +35,8 @@
 .waterModalSubtitle {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 1.33333;
+  font-size: 16px;
+  line-height: 1.25;
   letter-spacing: -0.01em;
   color: var(--color-darkblue);
 }

@@ -3,7 +3,7 @@ import { Container } from "../../components/Container/Container";
 import { Page } from "../../components/Page/Page.jsx";
 import css from "./HomePage.module.css";
 import { useState } from "react";
-import { Modal } from "../../components/Modal/Modal.jsx";
+import  Modal  from "../../components/UI/Modal/Modal.jsx";
 import { WaterModal } from "../../components/WaterModal/WaterModal.jsx";
 
 export default function HomePage() {
@@ -11,8 +11,8 @@ export default function HomePage() {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  const title = "Add Water";
-  const subtitle = "Choose a value:";
+  const title = "Edit the entered amount of water";
+  const subtitle = "Correct entered data:";
 
   return (
     <Container>
