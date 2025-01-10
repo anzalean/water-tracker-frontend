@@ -1,14 +1,12 @@
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Container } from '../../components/Container/Container';
-import { Page } from '../../components/Page/Page';
-import WaterProgressBar from '../../components/WaterProgressBar/WaterProgressBar';
-import AddWaterButton from '../../components/AddWaterButton/AddWaterButton';
-import WaterDailyNorma from '../../components/WaterDailyNorma/WaterDailyNorma';
-import css from './TrackerPage.module.css';
+import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
+import styles from './TrackerPage.module.css';
 
 export default function TrackerPage() {
   const handleAddWater = () => {
-    console.log('Add Water button clicked'); 
+    console.log('Add Water button clicked'); // Логика для модального окна добавления воды
   };
 
   return (
@@ -16,14 +14,9 @@ export default function TrackerPage() {
       <Helmet>
         <title>Tracker</title>
       </Helmet>
-      <Page>
-        <div className={css.TrackerPage}>
-          <h1>Water Tracker</h1>
-          <WaterProgressBar progress={50} />
-          <AddWaterButton onClick={handleAddWater} />
-          <WaterDailyNorma dailyNorm={1.5} />
-        </div>
-      </Page>
+      <div className={styles.wrapper}>
+        <WaterMainInfo dailyNorm={1.5} progress={50} onAddWater={handleAddWater} />
+      </div>
     </Container>
   );
 }
