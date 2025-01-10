@@ -6,6 +6,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import sprite from "../../assets/icons/sprite.svg";
+import Logo from "../Logo/Logo";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -57,6 +58,9 @@ export default function SigninForm() {
 
   return (
     <div className={s.SignInPage}>
+      <div className={s.logoContainer}>
+        <Logo />
+      </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className={s.field}>
           <h2 className={s.signInTitle}>Sign In</h2>

@@ -1,9 +1,17 @@
 .SignInPage {
+  position: relative;
   background-color: var(--color-lightgray);
   width: 343px;
   height: 780px;
   padding: 216px 16px;
   border-radius: 30px;
+}
+
+.logoContainer {
+  position: absolute;
+  top: 24px;
+  left: 16px;
+  font-size: 18px;
 }
 
 .signInTitle {
@@ -141,6 +149,11 @@
   }
   .link {
     font-size: 16px;
+  }
+
+  .logoContainer {
+    top: 32px;
+    left: 32px;
   }
 }
 
