@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import css from "./Modal.module.css";
+import sprite from "../../assets/icons/sprite.svg";
 
 export const Modal = ({ children, onClose }) => {
   const handleBackdropClick = (e) => {
@@ -25,7 +26,11 @@ export const Modal = ({ children, onClose }) => {
     <div onClick={handleBackdropClick} className={css.wrapper}>
       <div className={css.modalContent}>
         <button onClick={onClose} className={css.closeBtn}>
-          ×
+          <svg className={css.iconClose}>
+            <use
+              href={`${sprite}#icon-close`}
+            ></use>
+          </svg>
         </button>
         {children}
       </div>
@@ -33,4 +38,3 @@ export const Modal = ({ children, onClose }) => {
   );
 };
 
-// export default Modal;

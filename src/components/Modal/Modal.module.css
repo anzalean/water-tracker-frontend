@@ -10,19 +10,29 @@
 .modalContent {
   position: relative;
   background-color: var(--color-white);
-  padding: 20px;
   overflow: hidden;
   border-radius: 15px;
 }
 
 .closeBtn {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 7px;
+  right: 7px;
+  width: 28px;
+  height: 28px;
   background-color: transparent;
   border: none;
-  font-size: 28px;
   cursor: pointer;
   padding: 0;
+ 
 }
+
+.iconClose {
+  width: 28px;
+  height: 28px;
+  fill: var(--color-black);
+  color: var(--color-black);
+  stroke: var(--color-black);
+}
+
 
