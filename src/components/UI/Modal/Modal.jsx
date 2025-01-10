@@ -1,11 +1,10 @@
 import { useRef, useEffect, useCallback } from "react";
 import clsx from "clsx";
 import ReactDOM from "react-dom";
-
-import css from "./ModalWrapper.module.css";
+import css from "./Modal.module.css";
 import iconsPath from "../../../assets/icons/sprite.svg";
 
-const ModalWrapper = ({
+const Modal = ({
   children,
   onClose,
   portalId = "portal-root",
@@ -63,4 +62,4 @@ const ModalWrapper = ({
   );
 };
 
-export default ModalWrapper;
+export default Modal;
