@@ -171,6 +171,24 @@
   letter-spacing: -0.01em;
   color: var(--color-black);
 }
+
+.btn {
+  width: 116px;
+  height: 46px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  transition: background-color 0.5s;
+}
+
 @media screen and (min-width: 375px) {
   .form {
     max-width: 343px;
@@ -277,6 +295,11 @@
     font-size: 18px;
     line-height: 133%;
   }
+
+  .btn {
+    width: 141px;
+    height: 56px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -293,5 +316,10 @@
   .firstCol,
   .secondCol {
     width: 400px;
+  }
+
+  .btn {
+    width: 141px;
+    height: 56px;
   }
 }

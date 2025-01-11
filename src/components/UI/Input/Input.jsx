@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import { useFormContext } from "react-hook-form";
 import iconsPath from "../../../assets/icons/sprite.svg";
-import css from "./AquaInput.module.css";
+import css from "./Input.module.css";
 
-function AquaInput(
+function Input(
   {
     name,
     onChange,
@@ -83,4 +83,4 @@ function AquaInput(
   );
 }
 
-export default React.forwardRef(AquaInput);
+export default React.forwardRef(Input);

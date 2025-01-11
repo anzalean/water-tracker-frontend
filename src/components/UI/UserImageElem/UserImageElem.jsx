@@ -1,7 +1,7 @@
-import clsx from 'clsx';
-import css from './AquaImageElem.module.css';
+import clsx from "clsx";
+import css from "./UserImageElem.module.css";
 
-const AquaImageElem = ({ imgUrl, altText = '', containerClass = null }) => {
+const UserImageElem = ({ imgUrl, altText = "", containerClass = null }) => {
   return (
     <div className={clsx(css.container, containerClass && containerClass)}>
       <img className={css.img} src={imgUrl} alt={`Photo of ${altText}`} />
@@ -9,4 +9,4 @@ const AquaImageElem = ({ imgUrl, altText = '', containerClass = null }) => {
   );
 };
 
-export default AquaImageElem;
+export default UserImageElem;

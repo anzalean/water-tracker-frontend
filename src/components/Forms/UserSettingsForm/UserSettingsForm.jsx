@@ -2,12 +2,11 @@ import { useForm, FormProvider, Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
-import AquaButton from "../../UI/AquaButton/AquaButton";
-import AquaImageElem from "../../UI/AquaImageElem/AquaImageElem";
-import AquaIconElem from "../../UI/AquaIconElem/AquaIconElem";
-import AquaInput from "../../UI/AquaInput/AquaInput";
-import AquaGenderGroup from "../../UI/AquaGenderGroup/AquaGenderGroup";
-import AquaUploadFileButton from "../../UI/AquaUploadFileButton/AquaUploadFileButton";
+import UserImageElem from "../../UI/UserImageElem/UserImageElem";
+import UserIconElem from "../../UI/UserIconElem/UserIconElem";
+import Input from "../../UI/Input/Input";
+import RadioButtonsGroup from "../../UI/RadioButtonsGroup/RadioButtonsGroup";
+import UploadFileButton from "../../UI/UploadFileButton/UploadFileButton";
 import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { selectUser } from "../../../redux/user/selectors";
@@ -78,11 +77,11 @@ const UserSettingsForm = ({ handleUserSave }) => {
 
         <div className={css.imgWrapper}>
           {avatar ? (
-            <AquaImageElem imgUrl={avatar} altText={name} />
+            <UserImageElem imgUrl={avatar} altText={name} />
           ) : (
-            <AquaIconElem />
+            <UserIconElem />
           )}
-          <AquaUploadFileButton
+          <UploadFileButton
             icon={
               <svg className={css.btnIconContainer} aria-label="Upload icon">
                 <use
@@ -95,10 +94,10 @@ const UserSettingsForm = ({ handleUserSave }) => {
             onFileSelect={handleEditAvatar}
           >
             Upload photo
-          </AquaUploadFileButton>
+          </UploadFileButton>
         </div>
 
-        <AquaGenderGroup
+        <RadioButtonsGroup
           name="gender"
           label="Your gender identity"
           className={css.genderContainer}
@@ -110,14 +109,14 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 name="name"
                 control={methods.control}
                 render={({ field }) => (
-                  <AquaInput {...field} label="Name" type="text" />
+                  <Input {...field} label="Name" type="text" />
                 )}
               />
               <Controller
                 name="email"
                 control={methods.control}
                 render={({ field }) => (
-                  <AquaInput {...field} label="Email" type="text" />
+                  <Input {...field} label="Email" type="text" />
                 )}
               />
             </div>
@@ -160,7 +159,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
               name="weight"
               control={methods.control}
               render={({ field }) => (
-                <AquaInput
+                <Input
                   {...field}
                   classLabel={css.thinkLabel}
                   label="Your weight in kilograms:"
@@ -172,7 +171,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
               name="sportTime"
               control={methods.control}
               render={({ field }) => (
-                <AquaInput
+                <Input
                   {...field}
                   classLabel={css.thinkLabel}
                   label="The time of active participation in sports:"
@@ -195,7 +194,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
               name="waterNorm"
               control={methods.control}
               render={({ field }) => (
-                <AquaInput
+                <Input
                   {...field}
                   label="Write down how much water you will drink:"
                   type="text"
@@ -204,9 +203,9 @@ const UserSettingsForm = ({ handleUserSave }) => {
             />
           </div>
         </div>
-        <AquaButton type="submit" width="141px">
+        <button type="submit" className={css.btn}>
           Save
-        </AquaButton>
+        </button>
       </form>
     </FormProvider>
   );

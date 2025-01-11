@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateUserInfo } from "../../../redux/user/userOps";
 import { errNotify, successNotify } from "../../../utils/notification";
 import { selectUserEmail } from "../../../redux/user/selectors";
-import css from "./AquaUploadFileButton.module.css";
+import css from "./UploadFileButton.module.css";
 
-const AquaUploadFileButton = ({
+const UploadFileButton = ({
   children,
   icon = null,
   onFileSelect,
@@ -54,4 +54,4 @@ const AquaUploadFileButton = ({
   );
 };
 
-export default AquaUploadFileButton;
+export default UploadFileButton;

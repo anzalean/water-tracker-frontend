@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import iconsPath from "../../../assets/icons/sprite.svg";
-import css from "./AquaIconElem.module.css";
+import css from "./UserIconElem.module.css";
 
-const AquaIconElem = ({
+const UserIconElem = ({
   iconId = "icon-user",
   altText = "default user",
   containerClass = null,
@@ -20,4 +20,4 @@ const AquaIconElem = ({
   );
 };
 
-export default AquaIconElem;
+export default UserIconElem;

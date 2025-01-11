@@ -1,13 +1,13 @@
-import clsx from 'clsx';
-import { useFormContext, Controller } from 'react-hook-form';
-import css from './AquaGenderGroup.module.css';
+import clsx from "clsx";
+import { useFormContext, Controller } from "react-hook-form";
+import css from "./RadioButtonsGroup.module.css";
 
 const AquaGenderGroup = ({ name, label, className }) => {
   const { control } = useFormContext();
 
   const options = [
-    { value: 'female', label: 'Female' },
-    { value: 'male', label: 'Male' },
+    { value: "female", label: "Female" },
+    { value: "male", label: "Male" },
   ];
 
   return (
@@ -27,7 +27,7 @@ const AquaGenderGroup = ({ name, label, className }) => {
                   checked={field.value === option.value}
                   onChange={() =>
                     field.onChange(
-                      field.value === option.value ? undefined : option.value,
+                      field.value === option.value ? undefined : option.value
                     )
                   }
                   className={css.radioInput}
