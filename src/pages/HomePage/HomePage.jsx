@@ -16,11 +16,6 @@ export default function HomePage() {
             <AdvantagesSection />
           </div>
         }
-        {
-          <div className={css.HomePage}>
-            <AdvantagesSection />
-          </div>
-        }
       </Page>
     </Container>
   );
