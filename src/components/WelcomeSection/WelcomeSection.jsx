@@ -2,7 +2,7 @@
 
 import { useNavigate } from "react-router-dom";
 import css from "./WelcomeSection.module.css";
-import { Container } from "../Container/Container";
+// import { Container } from "../Container/Container";
 import Logo from "../Logo/Logo";
 
 export const WelcomeSection = () => {
