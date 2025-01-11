@@ -25,6 +25,7 @@
 }
 
 .btn {
+  background-color: var(--color-white);
   border-radius: 20px;
   border: 1.5px solid var(--color-darkblue);
   width: 40px;
