@@ -1,5 +1,13 @@
+  @media screen and (max-width: 375px) {
+    .logOutContent {
+       width: 80vw;
+
+    }
+}
+  @media screen and (min-width: 375px){
 .logOutContent {
     min-width: 304px;
+}
 }
 .logOutTitle {
     margin-bottom: 16px;
