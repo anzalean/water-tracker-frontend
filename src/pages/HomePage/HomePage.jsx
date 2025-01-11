@@ -3,6 +3,7 @@ import { Container } from "../../components/Container/Container";
 import { Page } from "../../components/Page/Page.jsx";
 import { WelcomeSection } from "../../components/WelcomeSection/WelcomeSection.jsx";
 import css from "./HomePage.module.css";
+import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection.jsx";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,9 @@ export default function HomePage() {
       <Page>
         <div className={css.HomePage}>
           <WelcomeSection />
+        </div>
+        <div className={css.HomePage}>
+          <AdvantagesSection />
         </div>
       </Page>
     </Container>
