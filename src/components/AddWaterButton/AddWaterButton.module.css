@@ -22,14 +22,19 @@
   transition: all 0.3s ease-in-out;
 }
 
-.buttonContainer:hover .buttonPath {
-  stroke: var(--color-lightgreen); /* Меняем цвет линии при ховере */
+.buttonContainer:hover {
+  background-color: var(--color-darkblue);
 }
 
 .buttonIcon {
-  width: 24px;
-  height: 24px;
-  transition: stroke 0.3s ease-in-out;
+  width: 16px;
+  height: 16px;
+  color: var(--color-white);
+  transition: color 0.3s ease-in-out;
+}
+
+.buttonContainer:hover .buttonIcon {
+  color: var(--color-lightgreen);
 }
 
 .buttonText {
@@ -43,5 +48,5 @@
 }
 
 .buttonContainer:hover .buttonText {
-  color: var(--color-lightgreen); /* Меняем цвет текста при ховере */
+  color: var(--color-lightgreen);
 }

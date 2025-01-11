@@ -8,12 +8,16 @@ const WaterProgressBar = ({ progress }) => {
       <div className={styles.progressBarTrack}>
         <div
           className={styles.progressBarFill}
-          style={{ width: `${progress}%` }} // Динамическая ширина
+          style={{ width: `${progress}%` }} 
         ></div>
         <div
           className={styles.progressBarThumb}
-          style={{ left: `${progress}%` }} // Динамическая позиция
-        ></div>
+          style={{ left: `${progress}%` }} 
+        >
+          <svg className={styles.progressBarThumbIcon} width="12" height="12">
+            <use href="/src/assets/icons/sprite.svg#icon-ellipse-white" />
+          </svg>
+        </div>
       </div>
       <div className={styles.progressBarLabels}>
         <span>0%</span>

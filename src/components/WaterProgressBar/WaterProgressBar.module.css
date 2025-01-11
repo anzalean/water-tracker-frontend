@@ -1,8 +1,8 @@
 .progressBarContainer {
-  width: 255px;
-  height: 66px;
-  background-color: var(--color-white); /* Используем переменную */
-  border-radius: 9px;
+  width: 198px;
+  height: 70px;
+  background-color: var(--color-white);
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -13,8 +13,8 @@
 
 .progressBarTitle {
   font-size: 15px;
-  font-weight: 700; /* Используем шрифт из глобальных стилей */
-  color: var(--color-darkblue); /* Используем переменную */
+  font-weight: 700;
+  color: var(--color-darkblue);
   position: absolute;
   top: 6px;
   left: 12px;
@@ -24,7 +24,7 @@
 .progressBarTrack {
   width: 100%;
   height: 8px;
-  background-color: var(--color-lightgray); /* Используем переменную */
+  background-color: var(--color-lightgray);
   border-radius: 4px;
   position: relative;
   margin-top: 25px;
@@ -32,26 +32,25 @@
 
 .progressBarFill {
   height: 100%;
-  background-color: var(--color-lightgreen); /* Используем переменную */
+  background-color: var(--color-lightgreen);
   border-radius: 4px;
-  transition: width var(--animation); /* Используем переменную для анимации */
+  transition: width var(--animation);
 }
 
 .progressBarThumb {
-  width: 12px;
-  height: 12px;
-  background-color: var(--color-white); /* Используем переменную */
-  border: 1px solid var(--color-lightgreen); /* Используем переменную */
-  border-radius: 50%;
+  width: 16px;
+  height: 16px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: fill 0.3s ease-in-out;
 }
 
 .progressBarLabels {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: var(--color-blacksemi); /* Используем переменную */
+  color: var(--color-blacksemi);
   margin-top: 8px;
 }
