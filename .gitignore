@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 .codegpt
+
+pullrequest-list.txt

@@ -1,0 +1,177 @@
+/* src/components/WelcomeSection/WelcomeSection.module.css */
+
+.WelcomeSectionContainer {
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.section {
+  margin-top: 16px;
+  background-color: var(--color-lightgray);
+  border-radius: 30px;
+  padding-bottom: 67px;
+  text-align: left;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.logoWrapper {
+  padding-top: 24px;
+  padding-bottom: 74px;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-black);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--color-darkblue);
+  margin-bottom: 32px;
+  
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.tryTracker {
+  background-color: var(--color-lightgreen);
+  color: var(--color-darkblue);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 19px;
+  border-radius: 30px;
+  transition: background-color var(--animation), color var(--animation);
+}
+
+.tryTracker:hover {
+  background-color: var(--color-lightgreenhover);
+}
+
+.tryTracker:active {
+  opacity: 0.8;
+}
+
+.signIn {
+  background-color: transparent;
+  color: var(--color-darkblue);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border: 2px solid var(--color-darkblue);
+  border-radius: 30px;
+  transition: background-color var(--animation), color var(--animation),
+    border-color var(--animation);
+}
+
+.signIn:hover {
+  background-color: transparent;
+  color: var(--color-lightgreenhover);
+  border: 2px solid var(--color-lightgreenhover);
+}
+
+.signIn:active {
+  opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+  .WelcomeSectionContainer {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  .section {
+    margin-top: 32px;
+    padding-bottom: 66px;
+    text-align: left;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    align-items: left;
+    margin-left: 32px;
+  }
+
+  .logoWrapper {
+    padding-bottom: 50px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 64px;
+    margin-bottom: 32px;
+    line-height: 99%;
+    max-width: 547px;
+  }
+
+  .buttonsWrapper {
+    gap: 16px;
+  }
+
+  .tryTracker,
+  .signIn {
+    font-size: 16px;
+    padding: 18px 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .WelcomeSectionContainer {
+    max-width: 1440px;
+  }
+
+  .section {
+    width: 672px;
+    padding-bottom: 188px;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    align-items: left;
+  }
+
+  .logoWrapper {
+    padding-top: 32px;
+    padding-bottom: 132px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 80px;
+    margin-bottom: 32px;
+  }
+
+  .buttonsWrapper {
+    gap: 16px;
+  }
+
+  .tryTracker,
+  .signIn {
+    font-size: 16px;
+    padding: 18px 40px;
+  }
+}
+@media (max-width: 374px) {
+  .title {
+      font-size: 36px;
+    }
+}

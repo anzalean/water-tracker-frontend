@@ -3,6 +3,7 @@ import { Container } from "../../components/Container/Container";
 import { Page } from "../../components/Page/Page";
 import SigninForm from "../../components/SigninForm/SigninForm";
 import css from "./SignInPage.module.css";
+import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection.jsx";
 
 export default function SignInPage() {
   return (
@@ -14,6 +15,9 @@ export default function SignInPage() {
         {
           <div className={css.SignInPage}>
             <SigninForm />
+            <div className={css.advantagesDesktopOnly}>
+              <AdvantagesSection />
+            </div>
           </div>
         }
       </Page>
