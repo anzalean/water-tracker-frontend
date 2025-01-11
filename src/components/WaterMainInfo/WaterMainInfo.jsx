@@ -1,15 +1,11 @@
 import WaterProgressBar from "../WaterProgressBar/WaterProgressBar";
 import AddWaterButton from "../AddWaterButton/AddWaterButton";
 import WaterDailyNorma from "../WaterDailyNorma/WaterDailyNorma";
-import Logo from "../Logo/Logo"; 
+import Logo from "../Logo/Logo";
 import bottleImage from "../../assets/images/bottle_for_water@1x.webp";
 import styles from "./WaterMainInfo.module.css";
 
-const WaterMainInfo = () => {
-  const handleAddWater = () => {
-    console.log("Add Water button clicked");
-  };
-
+const WaterMainInfo = ({ onAddWater }) => {
   return (
     <div className={styles.mainContainer}>
       <Logo />
@@ -26,7 +22,7 @@ const WaterMainInfo = () => {
       <WaterProgressBar progress={50} />
 
       <div className={styles.buttonContainer}>
-        <AddWaterButton onClick={handleAddWater} />
+        <AddWaterButton onClick={onAddWater} />
       </div>
     </div>
   );
