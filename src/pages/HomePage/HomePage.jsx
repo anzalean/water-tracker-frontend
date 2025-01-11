@@ -2,18 +2,9 @@ import { Helmet } from "react-helmet-async";
 import { Container } from "../../components/Container/Container";
 import { Page } from "../../components/Page/Page.jsx";
 import css from "./HomePage.module.css";
-import { useState } from "react";
-import  Modal  from "../../components/UI/Modal/Modal.jsx";
-import { WaterModal } from "../../components/WaterModal/WaterModal.jsx";
+import { ConnectModal } from "../../helpers/connectModal.jsx";
 
 export default function HomePage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
-
-  const title = "Edit the entered amount of water";
-  const subtitle = "Correct entered data:";
-
   return (
     <Container>
       <Helmet>
@@ -23,16 +14,7 @@ export default function HomePage() {
         {
           <div className={css.HomePage}>
             Home
-            <button onClick={openModal}></button>
-            {isOpen && (
-              <Modal onClose={closeModal}>
-                <WaterModal
-                  title={title}
-                  subtitle={subtitle}
-                  onClose={closeModal}
-                />
-              </Modal>
-            )}
+            <ConnectModal />
           </div>
         }
       </Page>

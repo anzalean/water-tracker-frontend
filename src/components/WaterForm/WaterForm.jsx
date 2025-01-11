@@ -32,6 +32,7 @@ export const WaterForm = ({ onClose }) => {
     setValue,
     getValues,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       inputField: 50,
@@ -43,6 +44,7 @@ export const WaterForm = ({ onClose }) => {
 
   const onSubmit = (data) => {
     console.log("Form submitted with values:", data);
+    reset();
     onClose();
   };
 
@@ -95,10 +97,10 @@ export const WaterForm = ({ onClose }) => {
                   <use href={`${sprite}#icon-plus`}></use>
                 </svg>
               </button>
-              {errors.buttonField && (
-                <span className={css.error}>{errors.buttonField.message}</span>
-              )}
             </div>
+            {errors.buttonField && (
+              <span className={css.error}>{errors.buttonField.message}</span>
+            )}
           </div>
 
           <div className={css.time}>
