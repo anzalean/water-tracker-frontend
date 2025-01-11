@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import { useFormContext } from "react-hook-form";
-import iconsPath from "../../../assets/icons/sprite.svg";
+import iconsPath from "../../assets/icons/sprite.svg";
 import css from "./Input.module.css";
 
 function Input(

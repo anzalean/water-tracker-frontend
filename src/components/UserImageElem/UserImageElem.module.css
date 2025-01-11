@@ -7,6 +7,11 @@
   flex-shrink: 0;
 }
 
+.container.small {
+  width: 44px;
+  height: 44px;
+}
+
 .img {
   border-radius: 50%;
   width: 100%;
@@ -17,5 +22,10 @@
   .container {
     width: 100px;
     height: 100px;
+  }
+
+  .container.small {
+    width: 37px;
+    height: 37px;
   }
 }

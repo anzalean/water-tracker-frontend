@@ -2,13 +2,13 @@ import clsx from "clsx";
 import { useFormContext, Controller } from "react-hook-form";
 import css from "./RadioButtonsGroup.module.css";
 
-const AquaGenderGroup = ({ name, label, className }) => {
-  const { control } = useFormContext();
+const options = [
+  { value: "female", label: "Female" },
+  { value: "male", label: "Male" },
+];
 
-  const options = [
-    { value: "female", label: "Female" },
-    { value: "male", label: "Male" },
-  ];
+const RadioButtonsGroup = ({ name, label, className }) => {
+  const { control } = useFormContext();
 
   return (
     <div className={className}>
@@ -50,4 +50,4 @@ const AquaGenderGroup = ({ name, label, className }) => {
   );
 };
 
-export default AquaGenderGroup;
+export default RadioButtonsGroup;

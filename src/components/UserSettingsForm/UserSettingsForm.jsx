@@ -2,15 +2,15 @@ import { useForm, FormProvider, Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
-import UserImageElem from "../../UI/UserImageElem/UserImageElem";
-import UserIconElem from "../../UI/UserIconElem/UserIconElem";
-import Input from "../../UI/Input/Input";
-import RadioButtonsGroup from "../../UI/RadioButtonsGroup/RadioButtonsGroup";
-import UploadFileButton from "../../UI/UploadFileButton/UploadFileButton";
-import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { selectUser } from "../../../redux/user/selectors";
-import iconsPath from "../../../assets/icons/sprite.svg";
+import UserIconElem from "../UserIconElem/UserIconElem";
+import UserImageElem from "../UserImageElem/UserImageElem";
+import Input from "../../Input/Input";
+import RadioButtonsGroup from "../RadioButtonsGroup/RadioButtonsGroup";
+import UploadFileButton from "../UploadFileButton/UploadFileButton";
+import { feedbackSchema } from "../helpers/userSettingsFormSchema";
+import { selectUser } from "../../redux/user/selectors";
+import iconsPath from "../../assets/icons/sprite.svg";
 import css from "./UserSettingsForm.module.css";
 
 const UserSettingsForm = ({ handleUserSave }) => {
