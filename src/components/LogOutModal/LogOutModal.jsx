@@ -5,6 +5,7 @@ import Modal from "../Modal/Modal";
 import css from "./LogOutModal.module.css";
 
 const LogOutModal = ({ onClose }) => {
+    console.log('LogOutModal is rendering');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ const LogOutModal = ({ onClose }) => {
 
   return (
     <Modal onClose={onClose}>
-      <div>
+      <div className={css.logOutContent}>
         <h2 className={css.logOutTitle}>Log out</h2>
         <p className={css.logOutCaption}>Do you really want to leave?</p>
         <div className={css.logOutBtnCont}>
