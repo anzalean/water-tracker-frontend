@@ -54,22 +54,23 @@
   }
 }
 
+/* Десктопная версия */
 @media (min-width: 1025px) {
   .dailyNormaContainer {
-    top: 177px;
-    left: 40px;
-    width: 150px;
-    height: 90px;
-    padding: 16px 20px;
+    top: 157px;
+    left: 64px;
+    width: 129px;
+    height: 78px;
+    padding: 14px 18px;
   }
 
   .dailyNormaAmount {
-    font-size: 18px;
-    line-height: 160%;
+    font-size: 15px;
+    line-height: 149%;
   }
 
   .dailyNormaLabel {
-    font-size: 14px;
-    line-height: 200%;
+    font-size: 12px;
+    line-height: 187%;
   }
 }

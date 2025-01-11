@@ -29,7 +29,7 @@
 
 .progressBarTrack {
   width: 100%;
-  height: 8px;
+  height: 6px;
   background-color: var(--color-lightgray);
   border-radius: 4px;
   position: relative;
@@ -43,10 +43,10 @@
 }
 
 .progressBarThumb {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   position: absolute;
-  top: 50%;
+  top: 0%;
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: fill 0.3s ease-in-out;
@@ -61,7 +61,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-size: 12px;
+  font-size: 10px;
   color: var(--color-blacksemi);
   margin-top: 8px;
 }
@@ -75,18 +75,27 @@
     left: 205px;
     padding: 20px 20px;
   }
+
+  .progressBarTitle {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 149%;
+  }
+
   .progressBarTrack {
-    height: 10px;
+    height: 8px;
   }
   .progressBarFill {
-    height: 10px;
+    height: 8px;
   }
   .progressBarThumb {
-    width: 18px;
-    height: 18px;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 20%;
   }
   .progressBarLabels {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
@@ -96,7 +105,7 @@
     width: 295px;
     height: 106px;
     padding: 20px;
-    top: 322px;
-    left: 204px;
+    top: 450px;
+    left: 188px;
   }
 }
