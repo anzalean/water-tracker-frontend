@@ -3,7 +3,7 @@
 .WelcomeSectionContainer {
   max-width: 380px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
 .section {
@@ -37,6 +37,7 @@
   font-weight: 700;
   color: var(--color-darkblue);
   margin-bottom: 32px;
+  
 }
 
 .buttonsWrapper {
@@ -167,4 +168,9 @@
     font-size: 16px;
     padding: 18px 40px;
   }
+}
+@media (max-width: 374px) {
+  .title {
+      font-size: 36px;
+    }
 }

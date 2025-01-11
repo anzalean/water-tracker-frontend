@@ -31,7 +31,7 @@
   color: var(--color-darkblue);
 }
 
-.userCountTextColor {
+.userTextColor {
   color: var(--color-lightgreen);
 }
 
@@ -48,4 +48,6 @@
     font-size: 15px;
     line-height: 1.5;
   }
+
+
 }

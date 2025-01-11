@@ -5,6 +5,7 @@
   height: 780px;
   padding: 216px 16px;
   border-radius: 30px;
+  margin-top: 16px;
 }
 
 .logoContainer {
@@ -130,6 +131,7 @@
     width: 704px;
     height: 960px;
     padding: 281px 134px;
+    margin-top: 32px;
   }
   .signInTitle {
     font-size: 36px;
