@@ -186,7 +186,12 @@
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -0.01em;
+  background-color: var(--color-lightgreen);
   transition: background-color 0.5s;
+}
+
+.btn:hover {
+  background-color: var(--color-lightgreenhover);
 }
 
 @media screen and (min-width: 375px) {
