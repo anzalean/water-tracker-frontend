@@ -1,8 +1,8 @@
 import { useRef, useEffect, useCallback } from "react";
 import clsx from "clsx";
 import ReactDOM from "react-dom";
+import iconsPath from "../../assets/icons/sprite.svg";
 import css from "./Modal.module.css";
-import iconsPath from "../../../assets/icons/sprite.svg";
 
 const Modal = ({
   children,
