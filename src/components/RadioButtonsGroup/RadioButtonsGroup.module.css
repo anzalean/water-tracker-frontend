@@ -1,0 +1,83 @@
+.radioGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+}
+
+.radioInput {
+  display: none;
+}
+
+.customRadio {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.outerCircle {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--color-lightgreen);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.innerCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.optionLabel {
+  font-size: 14px;
+  color: var(--color-black);
+  user-select: none;
+}
+
+.radioInput:checked + .customRadio .outerCircle {
+  border-color: var(--color-lightgreen);
+}
+
+.radioInput:checked + .customRadio .innerCircle {
+  background-color: var(--color-lightgreen);
+}
+
+.groupLabel {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  color: var(--color-darkblue);
+  margin-bottom: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .outerCircle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .innerCircle {
+    width: 15px;
+    height: 15px;
+  }
+
+  .optionLabel {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .groupLabel {
+    font-size: 18px;
+    line-height: 133%;
+  }
+}

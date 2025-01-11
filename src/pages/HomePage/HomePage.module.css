@@ -1,0 +1,17 @@
+.HomePage {
+    margin: 0 auto;
+    max-width: 343px;
+}
+  
+@media only screen and (min-width: 768px) {
+    .HomePage  {
+      max-width: 704px;
+    }
+}
+  
+@media screen and (min-width: 1440px) {
+    .HomePage {
+      display: flex;
+      gap: 32px;
+    }
+}
