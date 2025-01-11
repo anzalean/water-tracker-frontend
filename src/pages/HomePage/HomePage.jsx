@@ -1,7 +1,8 @@
-import { Helmet } from 'react-helmet-async';
-import { Container } from '../../components/Container/Container';
-import { Page } from '../../components/Page/Page.jsx';
-import css from './HomePage.module.css'; 
+import { Helmet } from "react-helmet-async";
+import { Container } from "../../components/Container/Container";
+import { Page } from "../../components/Page/Page.jsx";
+import css from "./HomePage.module.css";
+import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection.jsx";
 
 export default function HomePage() {
   return (
@@ -10,7 +11,11 @@ export default function HomePage() {
         <title>Home</title>
       </Helmet>
       <Page>
-        {<div className={css.HomePage}>Home</div>}
+        {
+          <div className={css.HomePage}>
+            <AdvantagesSection />
+          </div>
+        }
       </Page>
     </Container>
   );

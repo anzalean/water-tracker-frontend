@@ -1,0 +1,51 @@
+.userCountList {
+  display: flex;
+}
+
+.userCountItem {
+  border: 2px solid var(--color-white);
+  border-radius: 50px;
+  width: 26px;
+  height: 28px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userCountItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.userCountItem:not(:first-child) {
+  margin-left: -10px;
+}
+
+.userCountText {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16667;
+  color: var(--color-darkblue);
+}
+
+.userCountTextColor {
+  color: var(--color-lightgreen);
+}
+
+@media only screen and (min-width: 768px) {
+  .userCountItem {
+    width: 47px;
+    height: 47px;
+  }
+  .userCountItem:not(:first-child) {
+    margin-left: -19px;
+  }
+
+  .userCountText {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
