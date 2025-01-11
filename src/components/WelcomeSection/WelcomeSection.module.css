@@ -7,6 +7,7 @@
 }
 
 .section {
+  margin-top: 16px;
   background-color: var(--color-lightgray);
   border-radius: 30px;
   padding-bottom: 67px;
@@ -90,6 +91,7 @@
   }
 
   .section {
+    margin-top: 32px;
     padding-bottom: 66px;
     text-align: left;
   }
@@ -111,6 +113,8 @@
   .title {
     font-size: 64px;
     margin-bottom: 32px;
+    line-height: 99%;
+    max-width: 547px;
   }
 
   .buttonsWrapper {
@@ -130,6 +134,7 @@
   }
 
   .section {
+    width: 672px;
     padding-bottom: 188px;
   }
 
