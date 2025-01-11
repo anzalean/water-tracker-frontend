@@ -1,8 +1,16 @@
-/* .SignInPage {
-  background-color: var(--color-lightgray);
-  width: 672px;
-  height: 736px;
-  margin: 32px;
-  border-radius: 30px;
-  padding: 169px 118px;
-} */
+.advantagesDesktopOnly {
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .advantagesDesktopOnly {
+    display: block;
+  }
+  .SignInPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+}
+
