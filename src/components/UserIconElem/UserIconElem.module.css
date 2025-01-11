@@ -1,0 +1,33 @@
+.container {
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-lightgreen);
+}
+
+.container.small {
+  width: 44px;
+  height: 44px;
+}
+
+.icon {
+  width: 50%;
+  height: 50%;
+  fill: var(--color-white);
+  stroke: var(--color-white);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .container.small {
+    width: 38px;
+    height: 38px;
+  }
+}

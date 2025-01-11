@@ -1,0 +1,110 @@
+.wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  border-radius: 15px;
+  padding: 12px;
+  height: 46px;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: var(--color-darkblue);
+  background-color: transparent;
+  transition: border-color 1000 ease-in-out;
+}
+
+input::placeholder {
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.input:focus,
+.input:hover {
+  border-color: rgba(47, 47, 47, 0.4);
+}
+
+.input.red {
+  border-color: var(--color-error);
+}
+
+.message {
+  position: absolute;
+  bottom: -12px;
+  left: 12px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  color: var(--color-darkblue);
+  margin-bottom: 8px;
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.eyeIconContainer {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  /* transform: translateY(-5%); */
+}
+
+.eyeIcon {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: var(--color-darkblue);
+}
+
+.icon.shift {
+  right: 10px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
+  box-shadow: 0 0 0 1000px transparent inset;
+  -webkit-text-fill-color: var(--color-white);
+  transition: background-color 500 ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .label {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    letter-spacing: -0.01em;
+  }
+
+  .input {
+    height: 56px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: var(--color-darkblue);
+  }
+
+  .message {
+    font-size: 12px;
+    line-height: 1.17;
+    left: 16px;
+    bottom: -16px;
+  }
+}
