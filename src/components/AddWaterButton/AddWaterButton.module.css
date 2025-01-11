@@ -29,12 +29,12 @@
 .buttonIcon {
   width: 16px;
   height: 16px;
-  color: var(--color-white);
-  transition: color 0.3s ease-in-out;
+  stroke: white;
+  transition: stroke 0.3s ease-in-out;
 }
 
 .buttonContainer:hover .buttonIcon {
-  color: var(--color-lightgreen);
+  stroke: var(--color-lightgreen);
 }
 
 .buttonText {
@@ -49,4 +49,54 @@
 
 .buttonContainer:hover .buttonText {
   color: var(--color-lightgreen);
+}
+
+/* Планшетная версия */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .buttonContainer {
+    width: 178px;
+    height: 60px;
+    top: 454px;
+    left: 494px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Корректируем выравнивание */
+    gap: 10px; /* Увеличиваем промежуток между текстом и иконкой */
+    padding-left: 30px; /* Отступ от иконки до левого края */
+    padding-right: 30px;
+  }
+
+  .buttonIcon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0; /* Иконка не сжимается */
+  }
+
+  .buttonText {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center; /* Центруем текст */
+    white-space: nowrap; /* Запрещаем перенос текста */
+  }
+}
+
+/* Десктопная версия */
+@media (min-width: 1025px) {
+  .buttonContainer {
+    width: 178px;
+    height: 60px;
+    top: 454px;
+    left: 494px;
+    padding: 18px 30px;
+  }
+
+  .buttonIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .buttonText {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }

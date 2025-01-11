@@ -1,4 +1,3 @@
-import React from "react";
 import WaterProgressBar from "../WaterProgressBar/WaterProgressBar";
 import AddWaterButton from "../AddWaterButton/AddWaterButton";
 import WaterDailyNorma from "../WaterDailyNorma/WaterDailyNorma";
@@ -13,10 +12,7 @@ const WaterMainInfo = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <div className={styles.logoContainer}>
-        <Logo />
-      </div>
-
+      <Logo />
       <WaterDailyNorma amount="1.5 L" label="My daily norma" />
 
       <div className={styles.bottleContainer}>
@@ -27,9 +23,7 @@ const WaterMainInfo = () => {
         />
       </div>
 
-      <div className={styles.progressBarContainer}>
-        <WaterProgressBar progress={50} />
-      </div>
+      <WaterProgressBar progress={50} />
 
       <div className={styles.buttonContainer}>
         <AddWaterButton onClick={handleAddWater} />

@@ -1,3 +1,4 @@
+/* Основной контейнер ежедневной нормы воды */
 .dailyNormaContainer {
   position: absolute;
   top: 122px;
@@ -31,4 +32,44 @@
   line-height: 100%;
   color: rgba(47, 47, 47, 0.6);
   margin: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .dailyNormaContainer {
+    top: 157px;
+    left: 32px;
+    width: 129px;
+    height: 78px;
+    padding: 14px 18px;
+  }
+
+  .dailyNormaAmount {
+    font-size: 15px;
+    line-height: 149%;
+  }
+
+  .dailyNormaLabel {
+    font-size: 12px;
+    line-height: 187%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .dailyNormaContainer {
+    top: 177px;
+    left: 40px;
+    width: 150px;
+    height: 90px;
+    padding: 16px 20px;
+  }
+
+  .dailyNormaAmount {
+    font-size: 18px;
+    line-height: 160%;
+  }
+
+  .dailyNormaLabel {
+    font-size: 14px;
+    line-height: 200%;
+  }
 }

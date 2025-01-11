@@ -6,19 +6,25 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 6px 12px;
-  position: relative;
+  position: absolute;
+  top: 225px;
+  left: 73px;
 }
 
 .progressBarTitle {
   font-size: 15px;
   font-weight: 700;
   color: var(--color-darkblue);
-  position: absolute;
-  top: 6px;
-  left: 12px;
   margin: 0;
+  margin-bottom: 8px;
+}
+
+.progressBarWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .progressBarTrack {
@@ -27,7 +33,6 @@
   background-color: var(--color-lightgray);
   border-radius: 4px;
   position: relative;
-  margin-top: 25px;
 }
 
 .progressBarFill {
@@ -47,10 +52,51 @@
   transition: fill 0.3s ease-in-out;
 }
 
+.progressBarThumbIcon {
+  width: 100%;
+  height: 100%;
+}
+
 .progressBarLabels {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   font-size: 12px;
   color: var(--color-blacksemi);
   margin-top: 8px;
+}
+
+/* Планшетная версия */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .progressBarContainer {
+    width: 295px;
+    height: 106px;
+    top: 322px;
+    left: 205px;
+    padding: 20px 20px;
+  }
+  .progressBarTrack {
+    height: 10px;
+  }
+  .progressBarFill {
+    height: 10px;
+  }
+  .progressBarThumb {
+    width: 18px;
+    height: 18px;
+  }
+  .progressBarLabels {
+    font-size: 14px;
+  }
+}
+
+/* Десктопная версия */
+@media (min-width: 1025px) {
+  .progressBarContainer {
+    width: 295px;
+    height: 106px;
+    padding: 20px;
+    top: 322px;
+    left: 204px;
+  }
 }

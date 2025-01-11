@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./WaterDailyNorma.module.css";
 
 const WaterDailyNorma = ({ amount, label }) => {

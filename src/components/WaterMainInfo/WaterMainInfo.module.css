@@ -1,3 +1,4 @@
+/* Основной контейнер */
 .mainContainer {
   display: flex;
   flex-direction: column;
@@ -13,14 +14,7 @@
   margin: 16px auto;
 }
 
-.logoContainer {
-  position: absolute;
-  top: 24px;
-  left: 16px;
-  width: 114px;
-  height: 20px;
-}
-
+/* Контейнер для изображения бутылки */
 .bottleContainer {
   display: flex;
   align-items: center;
@@ -37,28 +31,34 @@
   height: auto;
 }
 
-.progressBarContainer {
-  position: absolute;
-  top: 225px;
-  left: 73px;
-}
-
-@media (--tablet-bp) {
+/* Адаптивные стили для планшетов */
+@media (min-width: 768px) and (max-width: 1024px) {
   .mainContainer {
-    max-width: 500px;
-    height: auto;
-  }
-  .progressBarContainer {
-    width: 250px;
-  }
-}
-
-@media (--desktop-bp) {
-  .mainContainer {
-    max-width: 800px;
+    max-width: 704px;
+    height: 578px;
     padding: 32px;
   }
-  .progressBarContainer {
-    width: 300px;
+
+  .bottleContainer {
+    top: 69px;
+    left: 165px;
+    width: 374px;
+    height: 477px;
+  }
+}
+
+/* Адаптивные стили для десктопов */
+@media (min-width: 1025px) {
+  .mainContainer {
+    max-width: 800px;
+    height: 600px;
+    padding: 40px;
+  }
+
+  .bottleContainer {
+    top: 80px;
+    left: 200px;
+    width: 450px;
+    height: 550px;
   }
 }
