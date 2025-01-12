@@ -25,6 +25,7 @@
   flex-direction: column;
   justify-content: flex-start;
   overflow: hidden;
+  margin: 0 16px;
 }
 
 .modalContent {

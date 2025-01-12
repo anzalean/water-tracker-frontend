@@ -1,0 +1,217 @@
+.waterForm {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.formLabelBtn {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+}
+
+.formBtn {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  background-color: var(--color-white);
+  border-radius: 20px;
+  border: 1.5px solid var(--color-darkblue);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.btnIcon {
+  width: 34px;
+  height: 34px;
+  fill: var(--color-black);
+  color: var(--color-black);
+  stroke: var(--color-black);
+}
+
+.btnField {
+  display: flex;
+  text-align: center;
+  border-radius: 30px;
+  width: 89px;
+  height: 40px;
+  background: var(--color-darkblue);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: var(--color-white);
+}
+
+.time {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  width: 303px;
+  height: 72px;
+  margin-bottom: 24px;
+}
+
+.formLabelTime {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+}
+
+.timeField {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  padding: 14px 190px 14px 16px;
+  width: 303px;
+  height: 46px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  color: #2f2f2f;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  width: 303px;
+  height: 80px;
+  margin-bottom: 24px;
+}
+
+.formLabel {
+  display: flex;
+  align-items: flex-start;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--color-darkblue);
+}
+
+.keyboardField {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  padding-left: 16px;
+  width: 303px;
+  height: 50px;
+  margin-top: 8px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+}
+
+.btnSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  padding: 14px 40px;
+  width: 116px;
+  height: 46px;
+  background: var(--color-lightgreen);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--color-darkblue);
+}
+
+.error {
+  color: var(--color-error);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .formLabelBtn {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .btn {
+    width: 43px;
+    height: 43px;
+  }
+
+  .btnField {
+    width: 92px;
+    height: 43px;
+    font-size: 15px;
+    line-height: 1.49333;
+  }
+
+  .time {
+    width: 438px;
+    height: 88px;
+  }
+
+  .timeField {
+    padding: 16px 190px 16px 16px;
+    width: 438px;
+    height: 56px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .keyboard {
+    width: 438px;
+    height: 88px;
+  }
+
+  .formLabel {
+    font-size: 18px;
+    line-height: 1.33333;
+  }
+
+  .keyboardField {
+    width: 438px;
+    height: 56px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .btnSubmit {
+    padding: 18px 50px;
+    width: 141px;
+    height: 60px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,101 @@
+.buttonContainer {
+  position: absolute;
+  top: 337px;
+  left: 187px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 46px;
+  background-color: var(--color-darkblue);
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  padding: 0;
+  gap: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 18px;
+  border: none;
+}
+
+.buttonContainer:hover {
+  background-color: var(--color-darkblue);
+}
+
+.buttonIcon {
+  width: 16px;
+  height: 16px;
+  stroke: white;
+}
+
+.buttonContainer:hover .buttonIcon {
+  stroke: var(--color-lightgreen);
+}
+
+.buttonText {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.buttonContainer:hover .buttonText {
+  color: var(--color-lightgreen);
+}
+
+/* Планшетная версия */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .buttonContainer {
+    width: 178px;
+    height: 60px;
+    top: 454px;
+    left: 494px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .buttonIcon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .buttonText {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+/* Десктопная версия */
+@media (min-width: 1025px) {
+  .buttonContainer {
+    width: 178px;
+    height: 60px;
+    top: 612px;
+    left: 462px;
+    padding: 18px 30px;
+  }
+
+  .buttonIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .buttonText {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
