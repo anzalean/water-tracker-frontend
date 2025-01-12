@@ -1,0 +1,76 @@
+/* Основной контейнер ежедневной нормы воды */
+.dailyNormaContainer {
+  position: absolute;
+  top: 122px;
+  left: 16px;
+  width: 102px;
+  height: 54px;
+  background-color: var(--color-white);
+  border-radius: 15px;
+  padding: 12px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.dailyNormaAmount {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--color-darkblue);
+  margin: 0;
+}
+
+.dailyNormaLabel {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  color: rgba(47, 47, 47, 0.6);
+  margin: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .dailyNormaContainer {
+    top: 157px;
+    left: 32px;
+    width: 129px;
+    height: 78px;
+    padding: 14px 18px;
+  }
+
+  .dailyNormaAmount {
+    font-size: 15px;
+    line-height: 149%;
+  }
+
+  .dailyNormaLabel {
+    font-size: 12px;
+    line-height: 187%;
+  }
+}
+
+/* Десктопная версия */
+@media (min-width: 1025px) {
+  .dailyNormaContainer {
+    top: 157px;
+    left: 64px;
+    width: 129px;
+    height: 78px;
+    padding: 14px 18px;
+  }
+
+  .dailyNormaAmount {
+    font-size: 15px;
+    line-height: 149%;
+  }
+
+  .dailyNormaLabel {
+    font-size: 12px;
+    line-height: 187%;
+  }
+}

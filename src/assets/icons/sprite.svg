@@ -2,7 +2,7 @@
 <defs>
 
     <symbol id="icon-plus" viewBox="0 0 32 32">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6.667 16h18.667M16 6.667v18.667"/>
+        <path stroke-linecap="round" stroke-linejoin="round"  stroke-width="3" d="M6.667 16h18.667M16 6.667v18.667"/>
     </symbol>
     <symbol id="icon-minus" viewBox="0 0 32 32">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6.667 16h18.667"/>
