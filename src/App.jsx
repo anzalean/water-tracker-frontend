@@ -1,6 +1,12 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './components/SharedLayout/SharedLayout';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshing } from './redux/selectors';
+import { fetchCurrentUser } from './redux/user/userOps';
+import { RestrictedRoute } from './components/RestrictedRoute';
+import { PrivateRoute } from './components/PrivateRoute';
+import { Loading } from './components/Loading/Loading';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
@@ -15,20 +21,70 @@ const ResetPasswordPage = lazy(() =>
 );
 
 export function App() {
-  return (
+  const dispatch = useDispatch();
+
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <div className="loader">
+      <Loading />
+    </div>
+  ) : (
     <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/verify/:verifyToken" element={<EmailVerifyPage />} />
-          <Route path="/signin" element={<SignInPage />} />
-          <Route path="/tracker" element={<TrackerPage />} />
-          <Route path="/reset/:resetToken" element={<ResetPasswordPage />} />
+          <Route
+            path="/signup"
+            element={
+              <RestrictedRoute
+                redirectTo="/tracker"
+                component={<SignUpPage />}
+              />
+            }
+          />
+          <Route
+            path="/verify/:verifyToken"
+            element={
+              <RestrictedRoute
+                redirectTo="/signin"
+                component={<EmailVerifyPage />}
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute
+                redirectTo="/tracker"
+                component={<SignInPage />}
+              />
+            }
+          />
+          <Route
+            path="/tracker"
+            element={
+              <PrivateRoute redirectTo="/signin" component={<TrackerPage />} />
+            }
+          />
+          <Route
+            path="/reset/:resetToken"
+            element={
+              <RestrictedRoute
+                redirectTo="/tracker"
+                component={<ResetPasswordPage />}
+              />
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
 
+      
     </div>
   );
 }
