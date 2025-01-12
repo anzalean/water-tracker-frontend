@@ -1,7 +1,7 @@
 .buttonContainer {
   position: absolute;
   top: 337px;
-  left: 187px;
+  /* left: 187px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,11 +28,15 @@
 .buttonIcon {
   width: 16px;
   height: 16px;
-  stroke: white;
+  /* stroke: white; */
+  /* fill: currentColor; */
+  fill: var(--color-white);
 }
 
 .buttonContainer:hover .buttonIcon {
-  stroke: var(--color-lightgreen);
+  /* stroke: var(--color-lightgreen); */
+  fill: var(--color-lightgreen);
+
 }
 
 .buttonText {
