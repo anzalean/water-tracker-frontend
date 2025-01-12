@@ -21,6 +21,13 @@
   border: none;
 }
 
+@media (max-width: 364px) {
+  .buttonContainer {
+    left: auto;
+    right: 16px;
+  }
+}
+
 .buttonContainer:hover {
   background-color: var(--color-darkblue);
 }
