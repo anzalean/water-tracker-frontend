@@ -1,0 +1,160 @@
+.userBarContainer {
+  position: relative;
+  width: auto;
+}
+
+.userBarBtn {
+  width: auto;
+  height: 50px;
+  border-radius: 30px;
+  padding: 6px 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+  background: var(--color-darkblue);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.contentBtn {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.iconChevronContainer {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconChevron {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: var(--color-white);
+}
+
+.userName {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+}
+
+.userBarBtn .iconChevron {
+  transform: rotate(0deg);
+  transition: transform 0.5s ease;
+}
+
+.userBarBtn.open .iconChevron {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease;
+}
+
+.popover {
+  width: 137px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--color-white);
+  border-radius: 15px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  z-index: 100;
+}
+
+.popoverItem {
+  display: flex;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  color: rgba(50, 63, 71, 0.4);
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.popoverItem.active {
+  color: var(--color-darkblue);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: transparent;
+  stroke: rgba(50, 63, 71, 0.4);
+}
+
+.popoverItem.active .icon {
+  color: var(--color-darkblue);
+}
+
+.popoverItem:disabled {
+  color: rgba(50, 63, 71, 0.4);
+  cursor: not-allowed;
+}
+
+.popoverItem:disabled .icon {
+  stroke: rgba(50, 63, 71, 0.4);
+}
+
+.popoverItem:hover {
+  color: var(--color-darkblue);
+}
+
+.popoverItem:hover .icon {
+  stroke: var(--color-darkblue);
+}
+
+@media screen and (min-width: 768px) {
+  .userBarBtn {
+    height: 55px;
+    font-size: 16px;
+    line-height: 150%;
+    font-size: 15px;
+    line-height: 149%;
+  }
+
+  .iconChevronContainer {
+    width: 20px;
+    height: 20px;
+  }
+
+  .userName {
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .popover {
+    width: 157px;
+    position: absolute;
+    right: 0;
+    left: auto;
+    transform: translateX(-100px);
+  }
+
+  .popoverItem {
+    font-size: 15px;
+    line-height: 149%;
+  }
+}
