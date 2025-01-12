@@ -71,32 +71,6 @@
   text-align: center;
 }
 
-@media (max-width: 364px) {
-  .progressBarContainer {
-    width: 80%; /* встановлюємо ширину прогрес-бару в 80% */
-    max-width: 250px; /* максимальна ширина контейнера */
-    height: auto; /* висота контейнера адаптується до вмісту */
-    top: 170px; /* коригуємо позицію, щоб не перекривати інші елементи */
-    left: 50%; /* вирівнюємо по горизонталі */
-    transform: translateX(-50%); /* центрируем контейнер по горизонталі */
-    padding: 10px; /* зменшуємо внутрішні відступи */
-  }
-
-  .progressBarTrack {
-    height: 6px;
-  }
-
-  .progressBarThumb {
-    width: 10px;
-    height: 10px;
-    top: 0%;
-  }
-
-  .progressBarLabels {
-    font-size: 8px;
-  }
-}
-
 /* Планшетная версия */
 @media (min-width: 768px) and (max-width: 1024px) {
   .progressBarContainer {
