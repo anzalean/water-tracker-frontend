@@ -25,6 +25,7 @@ const validationSchema = Yup.object().shape({
     .matches(/\d/, "Password must contain at least one number")
     .required("Password is required"),
 });
+
 export default function SigninForm() {
   const {
     register,
@@ -36,7 +37,7 @@ export default function SigninForm() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("/api/login", data);
+      const response = await axios.post("/login", data);
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
         history.push("/tracker");
