@@ -18,7 +18,7 @@ export const feedbackSchema = Yup.object().shape({
     .typeError("Email must be a string")
     .required("Email is required."),
 
-  sportTime: Yup.number()
+  activityTime: Yup.number()
     .typeError("Sport time must be a number")
     .min(0, "Sport time cannot be negative.")
     .max(24, "Sport time cannot exceed 24 hours.")
@@ -30,7 +30,7 @@ export const feedbackSchema = Yup.object().shape({
     .max(350, "Weight cannot exceed 350 kg.")
     .notRequired(),
 
-  waterNorm: Yup.number()
+  desiredVolume: Yup.number()
     .typeError("Water intake must be a number")
     .min(50, "Water intake must be at least 50 ml.")
     .max(5000, "Water intake cannot exceed 5000 ml.")
