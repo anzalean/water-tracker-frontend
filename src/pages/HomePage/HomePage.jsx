@@ -14,7 +14,7 @@ export default function HomePage() {
       <Page>
         {
           <div className={css.HomePage}>
-             <WelcomeSection />
+            <WelcomeSection />
             <AdvantagesSection />
           </div>
         }

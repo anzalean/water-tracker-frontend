@@ -5,16 +5,17 @@ import clsx from "clsx";
 import { yupResolver } from "@hookform/resolvers/yup";
 import UserIconElem from "../UserIconElem/UserIconElem";
 import UserImageElem from "../UserImageElem/UserImageElem";
-import Input from "../../Input/Input";
+import Input from "../Input/Input";
 import RadioButtonsGroup from "../RadioButtonsGroup/RadioButtonsGroup";
 import UploadFileButton from "../UploadFileButton/UploadFileButton";
-import { feedbackSchema } from "../helpers/userSettingsFormSchema";
+import { feedbackSchema } from "../../helpers/userSettingsFormSchema";
+
 import { selectUser } from "../../redux/user/selectors";
 import iconsPath from "../../assets/icons/sprite.svg";
 import css from "./UserSettingsForm.module.css";
 
 const UserSettingsForm = ({ handleUserSave }) => {
-  const { name, email, weight, sportTime, waterNorm, avatar } =
+  const { name, email, weight, activityTime, desiredVolume, avatarURL } =
     useSelector(selectUser);
   const [avatarFile, setAvatarFile] = useState(null);
   const methods = useForm({
@@ -23,9 +24,9 @@ const UserSettingsForm = ({ handleUserSave }) => {
       name: name || email,
       email: email,
       weight: weight || 0,
-      waterNorm: waterNorm || 50,
-      sportTime: sportTime || 0,
-      avatar: avatar,
+      desiredVolume: desiredVolume || 50,
+      activityTime: activityTime || 0,
+      avatarURL: avatarURL,
       gender: "female",
     },
   });
@@ -34,7 +35,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
 
   const gender = watch("gender");
   const weightValue = watch("weight");
-  const activeTimeValue = watch("activeTime");
+  const activeTimeValue = watch("activityTime");
   const [calculatedWaterNorm, setCalculatedWaterNorm] = useState(0);
 
   useEffect(() => {
@@ -55,19 +56,16 @@ const UserSettingsForm = ({ handleUserSave }) => {
   }, [gender, weightValue, activeTimeValue]);
 
   const onSubmit = async (values) => {
-    console.log("values", values);
+    delete values.avatarURL;
     if (avatarFile) {
       values.avatar = avatarFile;
-    } else {
-      delete values.avatar;
     }
-    console.log(values);
     handleUserSave && handleUserSave(values);
   };
 
   const handleEditAvatar = (avatarUrl, avatarFile) => {
     setAvatarFile(avatarFile);
-    setValue("avatar", avatarUrl);
+    setValue("avatarURL", avatarUrl);
   };
 
   return (
@@ -76,8 +74,8 @@ const UserSettingsForm = ({ handleUserSave }) => {
         <p className={css.title}>Settings</p>
 
         <div className={css.imgWrapper}>
-          {avatar ? (
-            <UserImageElem imgUrl={avatar} altText={name} />
+          {avatarURL ? (
+            <UserImageElem imgUrl={avatarURL} altText={name} />
           ) : (
             <UserIconElem />
           )}
@@ -168,7 +166,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
               )}
             />
             <Controller
-              name="sportTime"
+              name="activityTime"
               control={methods.control}
               render={({ field }) => (
                 <Input
@@ -191,7 +189,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
             </div>
 
             <Controller
-              name="waterNorm"
+              name="desiredVolume"
               control={methods.control}
               render={({ field }) => (
                 <Input

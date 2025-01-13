@@ -1,0 +1,10 @@
+.WaterItemBox {
+    display: flex;
+    padding: 18px 14px;
+    align-items: center;
+    gap: 9px;
+
+    border-radius: 15px;
+    background: #FFF;
+    backdrop-filter: blur(16.799999237060547px);
+}
