@@ -16,12 +16,13 @@
 
 /* Контейнер для изображения бутылки */
 .bottleContainer {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   top: 50px;
-  left: 41px;
+  left: auto;
   width: 262px;
   height: 335px;
 }
