@@ -9,7 +9,7 @@
   padding: 6px 12px;
   position: absolute;
   top: 225px;
-  left: 73px;
+  left: auto;
 }
 
 .progressBarTitle {
@@ -72,7 +72,7 @@
 }
 
 /* Планшетная версия */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px)  {
   .progressBarContainer {
     width: 295px;
     height: 106px;
@@ -105,7 +105,7 @@
 }
 
 /* Десктопная версия */
-@media (min-width: 1025px) {
+@media (min-width: 1440px) {
   .progressBarContainer {
     width: 295px;
     height: 106px;

@@ -1,7 +1,7 @@
 .buttonContainer {
   position: absolute;
-  top: 337px;
-  left: 187px;
+  bottom: 20px;
+  right: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,8 +48,30 @@
   color: var(--color-lightgreen);
 }
 
+@media (max-width: 767px) {
+  .buttonContainer {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    width: 140px;
+    height: 46px;
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .buttonIcon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .buttonText {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
 /* Планшетная версия */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) {
   .buttonContainer {
     width: 178px;
     height: 60px;
@@ -78,7 +100,7 @@
 }
 
 /* Десктопная версия */
-@media (min-width: 1025px) {
+@media (min-width: 1440px) {
   .buttonContainer {
     width: 178px;
     height: 60px;
