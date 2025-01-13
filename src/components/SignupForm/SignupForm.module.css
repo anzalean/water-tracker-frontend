@@ -1,7 +1,7 @@
 .SignUpContainer {
   position: relative;
   background-color: var(--color-lightgray);
-  width: 100%;
+  width: 343px;
   height: 780px;
   padding: 170px 16px;
   border-radius: 30px;
@@ -22,7 +22,7 @@
 }
 
 .button {
-  padding: 16px;
+  padding: 16px 129px;
   border-radius: 30px;
   font-size: 14px;
   font-weight: 700;

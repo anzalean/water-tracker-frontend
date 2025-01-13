@@ -2,27 +2,18 @@
 
 .WelcomeSectionContainer {
   max-width: 380px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-.section {
   margin-top: 16px;
   background-color: var(--color-lightgray);
   border-radius: 30px;
-  padding-bottom: 67px;
+  padding: 118px 16px 67px 16px;
   text-align: left;
+  position: relative;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: left;
-}
-
-.logoWrapper {
-  padding-top: 24px;
-  padding-bottom: 74px;
 }
 
 .subtitle {
@@ -37,7 +28,6 @@
   font-weight: 700;
   color: var(--color-darkblue);
   margin-bottom: 32px;
-  
 }
 
 .buttonsWrapper {
@@ -88,23 +78,14 @@
 @media (min-width: 768px) {
   .WelcomeSectionContainer {
     max-width: 768px;
-    padding: 0 32px;
-  }
-
-  .section {
+    padding: 106px 93px 50px 64px;
     margin-top: 32px;
-    padding-bottom: 66px;
-    text-align: left;
   }
 
   .wrapper {
     flex-direction: column;
     align-items: left;
     margin-left: 32px;
-  }
-
-  .logoWrapper {
-    padding-bottom: 50px;
   }
 
   .subtitle {
@@ -133,21 +114,13 @@
 @media (min-width: 1440px) {
   .WelcomeSectionContainer {
     max-width: 1440px;
-  }
-
-  .section {
-    width: 672px;
-    padding-bottom: 188px;
+    padding: 188px 61px 188px 64px;
+    margin-top: 32px;
   }
 
   .wrapper {
     flex-direction: column;
     align-items: left;
-  }
-
-  .logoWrapper {
-    padding-top: 32px;
-    padding-bottom: 132px;
   }
 
   .subtitle {
@@ -172,6 +145,6 @@
 }
 @media (max-width: 374px) {
   .title {
-      font-size: 36px;
-    }
+    font-size: 36px;
+  }
 }
