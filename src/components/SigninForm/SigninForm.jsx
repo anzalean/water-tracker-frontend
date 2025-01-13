@@ -2,12 +2,12 @@ import { useForm } from "react-hook-form";
 import s from "./SigninForm.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import axios from "axios";
-import toast from "react-hot-toast";
 import Logo from "../Logo/Logo";
 import InputField from "../InputField/InputField";
 import PasswordField from "../PasswordField/PasswordField";
 import FormFooter from "../FormFooter/FormFooter";
+import { signIn } from "../../redux/user/userOps";
+import { useDispatch } from "react-redux";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -27,24 +27,19 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function SigninForm() {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios.post("/login", data);
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-        history.push("/tracker");
-      }
-    } catch (error) {
-      toast.error(error.response?.data?.message || "An error occurred.");
-    }
+  const onSubmit = (data) => {
+    dispatch(signIn(data));
+    reset();
   };
 
   return (

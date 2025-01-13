@@ -1,21 +1,21 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../redux/selectors";
 import Modal from "../Modal/Modal";
 import css from "./LogOutModal.module.css";
+import { signOut } from "../../redux/user/userOps";
 
 const LogOutModal = ({ onClose }) => {
-    console.log('LogOutModal is rendering');
+  console.log("LogOutModal is rendering");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
     try {
-      await dispatch(logout());
+      await dispatch(signOut());
       navigate("/");
       onClose();
     } catch (error) {
-      console.error("Error during logout:", error);
+      console.error("Error during sign out:", error);
     }
   };
 
