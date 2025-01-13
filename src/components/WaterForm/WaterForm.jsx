@@ -65,7 +65,7 @@ export const WaterForm = ({ onClose }) => {
                 }}
               >
                 <svg className={css.btnIcon}>
-                  <use href={`${sprite}#icon-minus`}></use>
+                  <use href={`${sprite}#icon-minus1`}></use>
                 </svg>
               </button>
               <Controller
@@ -94,7 +94,7 @@ export const WaterForm = ({ onClose }) => {
                 }}
               >
                 <svg className={css.btnIcon}>
-                  <use href={`${sprite}#icon-plus`}></use>
+                  <use href={`${sprite}#icon-plus1`}></use>
                 </svg>
               </button>
             </div>
