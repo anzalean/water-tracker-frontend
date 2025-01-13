@@ -1,6 +1,8 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './components/SharedLayout/SharedLayout';
+import OpenDeleteModalButton from './components/OpenDeleteWaterModal.jsx/OpenDeleteWaterModal';
+
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
@@ -28,7 +30,9 @@ export function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-
+  <div >
+        <OpenDeleteModalButton />
+    </div>
     </div>
   );
 }
