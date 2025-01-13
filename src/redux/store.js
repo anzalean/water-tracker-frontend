@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -8,22 +8,24 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { waterReducer } from './water/waterSlice';
-import { userReducer } from './user/userSlice';
-import { setupAxiosInterceptors } from './user/userOps';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { waterReducer } from "./water/waterSlice";
+import { userReducer } from "./user/userSlice";
+import { loaderReducer } from "./loader/loaderSlice";
+import { setupAxiosInterceptors } from "./user/userOps";
 
 const userPersistConfig = {
-  key: 'user',
+  key: "user",
   storage,
-  whitelist: ['accessToken', 'refreshToken'],
+  whitelist: ["accessToken", "refreshToken"],
 };
 
 export const store = configureStore({
   reducer: {
     water: waterReducer,
-    user: persistReducer(userPersistConfig, userReducer),
+    auth: persistReducer(userPersistConfig, userReducer),
+    loader: loaderReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

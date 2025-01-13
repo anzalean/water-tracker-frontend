@@ -1,16 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 import {
   signIn,
   signOut,
   signUp,
+  fetchCurrentUser,
   updateUser,
   sendResetEmail,
   validateResetToken,
   resetPassword,
   fetchOAuthUrl,
   googleLogin,
-} from './userOps';
-import toast from 'react-hot-toast';
+} from "./userOps";
+import toast from "react-hot-toast";
 
 const initialState = {
   user: {
@@ -31,10 +32,11 @@ const initialState = {
   isRefreshing: false,
   loading: false,
   isResendVerify: false,
+  error: null,
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "auth",
   initialState,
   reducers: {
     refreshTokens: (state, action) => {
@@ -46,47 +48,52 @@ const userSlice = createSlice({
     builder
       .addCase(signUp.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
-      .addCase(signUp.fulfilled, (state) => {
+      .addCase(signUp.fulfilled, (state, action) => {
         state.loading = false;
-        toast.success('Check your email. Verification link has been sent!', {
-          duration: 5000,
-          position: 'top-center',
-        });
+        state.error = false;
+        state.user.name = action.payload.user.name;
+        state.user.email = action.payload.user.email;
+        state.user.avatarURL = action.payload.user.avatarURL;
       })
       .addCase(signUp.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || 'Failed to sign up.', {
-          duration: 5000,
-          position: 'top-center',
-        });
+
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else if (action.payload && typeof action.payload === "object") {
+          state.error =
+            action.payload.errorMessage || "An error occurred during sign up.";
+        } else {
+          state.error = "An unknown error.";
+        }
       })
+
       .addCase(signIn.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(signIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
         state.loading = false;
-        toast.success('Logged in successfully!', {
-          duration: 5000,
-          position: 'top-center',
-        });
+        state.error = null;
+        state.user = { ...action.payload.user };
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
       })
       .addCase(signIn.rejected, (state, action) => {
         state.loading = false;
-        if (action.payload === 'Please verify your email') {
-          state.isResendVerify = true;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred during sign ip.";
         }
-        toast.error(action.payload || 'Failed to log in.', {
-          duration: 5000,
-          position: 'top-center',
-        });
       })
+
       .addCase(signOut.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(signOut.fulfilled, (state) => {
         state.user = initialState.user;
@@ -94,45 +101,73 @@ const userSlice = createSlice({
         state.refreshToken = null;
         state.isLoggedIn = false;
         state.loading = false;
-        toast.success('Logged out successfully!', {
-          duration: 5000,
-          position: 'top-center',
-        });
+        state.error = null;
       })
+      .addCase(signOut.rejected, (state, action) => {
+        state.loading = false;
+
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred during sign out.";
+        }
+      })
+      .addCase(fetchCurrentUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchCurrentUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.user = { ...action.payload };
+      })
+      .addCase(fetchCurrentUser.rejected, (state, action) => {
+        state.loading = false;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred during fetching user";
+        }
+      })
+
       .addCase(updateUser.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
         state.loading = false;
-        toast.success('Profile updated successfully!', {
-          duration: 5000,
-          position: 'top-center',
-        });
+        state.error = null;
+        state.user = { ...action.payload.user };
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || 'Failed to update profile.', {
-          duration: 5000,
-          position: 'top-center',
-        });
+
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred during update.";
+        }
       })
+
       .addCase(sendResetEmail.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(sendResetEmail.fulfilled, (state) => {
         state.loading = false;
-        toast.success('Reset email sent successfully!', {
+        state.error = null;
+        toast.success("Reset email sent successfully!", {
           duration: 5000,
-          position: 'top-center',
+          position: "top-center",
         });
       })
       .addCase(sendResetEmail.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || 'Failed to send reset email.', {
-          duration: 5000,
-          position: 'top-center',
-        });
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "Failed to send reset email.";
+        }
       })
       .addCase(validateResetToken.pending, (state) => {
         state.loading = true;
@@ -142,9 +177,9 @@ const userSlice = createSlice({
       })
       .addCase(validateResetToken.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || 'Invalid reset token.', {
+        toast.error(action.payload || "Invalid reset token.", {
           duration: 5000,
-          position: 'top-center',
+          position: "top-center",
         });
       })
       .addCase(resetPassword.pending, (state) => {
@@ -152,16 +187,16 @@ const userSlice = createSlice({
       })
       .addCase(resetPassword.fulfilled, (state) => {
         state.loading = false;
-        toast.success('Password reset successfully! You can log in now.', {
+        toast.success("Password reset successfully! You can log in now.", {
           duration: 5000,
-          position: 'top-center',
+          position: "top-center",
         });
       })
       .addCase(resetPassword.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || 'Failed to reset password.', {
+        toast.error(action.payload || "Failed to reset password.", {
           duration: 5000,
-          position: 'top-center',
+          position: "top-center",
         });
       })
       .addCase(fetchOAuthUrl.pending, (state) => {
@@ -173,9 +208,9 @@ const userSlice = createSlice({
       })
       .addCase(fetchOAuthUrl.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || 'Failed to fetch OAuth URL.', {
+        toast.error(action.payload || "Failed to fetch OAuth URL.", {
           duration: 5000,
-          position: 'top-center',
+          position: "top-center",
         });
       })
       .addCase(googleLogin.pending, (state) => {
@@ -187,16 +222,16 @@ const userSlice = createSlice({
         state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
         state.loading = false;
-        toast.success('Logged in successfully with Google!', {
+        toast.success("Logged in successfully with Google!", {
           duration: 5000,
-          position: 'top-center',
+          position: "top-center",
         });
       })
       .addCase(googleLogin.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || 'Failed to log in with Google.', {
+        toast.error(action.payload || "Failed to log in with Google.", {
           duration: 5000,
-          position: 'top-center',
+          position: "top-center",
         });
       });
   },
