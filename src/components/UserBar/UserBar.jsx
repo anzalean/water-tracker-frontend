@@ -44,11 +44,7 @@ export default function UserBar() {
   }, [showPopover]);
 
   const handleClickOutside = (event) => {
-    console.log("Клік за межами:", event.target);
-    console.log("Посилання на поповер:", popoverRef.current);
-
     if (popoverRef.current && !popoverRef.current.contains(event.target)) {
-      console.log("Закриваємо поповер");
       setShowPopover(false);
     }
   };
