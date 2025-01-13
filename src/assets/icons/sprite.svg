@@ -1,6 +1,12 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
 
+ <symbol id="icon-plus1" viewBox="0 0 40 40">
+    <path stroke="#323F47" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 12.857v14.286M12.857 20h14.286"/>
+    </symbol>
+    <symbol id="icon-minus1" viewBox="0 0 40 40">
+  <path stroke="#323F47" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12.857 20h14.286"/>
+    </symbol>
     <symbol id="icon-plus" viewBox="0 0 32 32">
         <path stroke-linecap="round" stroke-linejoin="round"  stroke-width="3" d="M6.667 16h18.667M16 6.667v18.667"/>
     </symbol>

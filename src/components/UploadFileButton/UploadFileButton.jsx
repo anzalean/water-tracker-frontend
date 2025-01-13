@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateUserInfo } from "../../redux/user/userOps";
-import { errNotify, successNotify } from "../../utils/notification";
+import { updateUser } from "../../redux/user/userOps";
+import { errNotify, successNotify } from "../../helpers/notification";
 import { selectUserEmail } from "../../redux/user/selectors";
 import css from "./UploadFileButton.module.css";
 
@@ -26,7 +26,7 @@ const UploadFileButton = ({
     if (file) {
       const userData = { avatar: file, email: userEmail };
 
-      dispatch(updateUserInfo(userData))
+      dispatch(updateUser(userData))
         .unwrap()
         .then((result) => {
           if (onFileSelect) onFileSelect(result, file);
