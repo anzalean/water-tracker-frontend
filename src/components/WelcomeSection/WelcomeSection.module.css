@@ -85,7 +85,6 @@
   .wrapper {
     flex-direction: column;
     align-items: left;
-    margin-left: 32px;
   }
 
   .subtitle {
