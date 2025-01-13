@@ -3,13 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import {
   selectIsLoggedIn,
-  selectIsLoading,
+  selectUserLoading,
   selectError,
   selectUserName,
   selectUserAvatar,
 } from "../../redux/user/selectors";
 import { errNotify, successNotify } from "../../helpers/notification";
-import { updateUserInfo, signOut, getUserInfo } from "../../redux/user/userOps";
+import {
+  updateUser,
+  signOut,
+  fetchCurrentUser,
+} from "../../redux/user/userOps";
 import iconsPath from "../../assets/icons/sprite.svg";
 import UserIconElem from "../UserIconElem/UserIconElem";
 import UserImageElem from "../UserImageElem/UserImageElem";
@@ -22,7 +26,7 @@ import css from "./UserBar.module.css";
 export default function UserBar() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectUserLoading);
   const error = useSelector(selectError);
   const userName = useSelector(selectUserName);
   const userAvatar = useSelector(selectUserAvatar);
@@ -58,7 +62,7 @@ export default function UserBar() {
 
   const handleSettingsButton = () => {
     if (isLoggedIn) {
-      dispatch(getUserInfo())
+      dispatch(fetchCurrentUser())
         .unwrap()
         .then(() => {
           successNotify("Ok");
@@ -71,7 +75,7 @@ export default function UserBar() {
   };
 
   const handleUserForm = (data) => {
-    dispatch(updateUserInfo(data))
+    dispatch(updateUser(data))
       .unwrap()
       .then(() => {
         successNotify("Profile updated");
