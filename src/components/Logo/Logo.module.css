@@ -18,7 +18,7 @@
 }
 
 /* Планшетная версия */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px)  {
   .logo {
     font-size: 24px;
     letter-spacing: -1px;
@@ -28,7 +28,7 @@
 }
 
 /* Десктопная версия */
-@media (min-width: 1025px) {
+@media (min-width: 1440px) {
   .logo {
     top: 32px;
     left: 32px;
