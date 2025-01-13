@@ -39,7 +39,7 @@ export default function SignupForm() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("/api/signup", {
+      const response = await axios.post("/signup", {
         email: data.email,
         password: data.password,
       });

@@ -7,13 +7,6 @@
   border-radius: 30px;
 }
 
-.logoContainer {
-  position: absolute;
-  top: 24px;
-  left: 16px;
-  font-size: 18px;
-}
-
 .signInTitle {
   font-size: 32px;
   color: var(--color-darkblue);
@@ -58,10 +51,6 @@
     padding: 18px;
     font-size: 16px;
     line-height: 24px;
-  }
-  .logoContainer {
-    top: 32px;
-    left: 32px;
   }
 }
 
