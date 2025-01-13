@@ -3,7 +3,7 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 20px;
-  letter-spacing: -1%;
+  letter-spacing: -1px;
   color: var(--color-darkblue);
   text-decoration: none;
   transition: color var(--animation);
@@ -18,9 +18,10 @@
 }
 
 /* Планшетная версия */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .logo {
     font-size: 24px;
+    letter-spacing: -1px;
     top: 32px;
     left: 32px;
   }
@@ -29,6 +30,8 @@
 /* Десктопная версия */
 @media (min-width: 1025px) {
   .logo {
+    top: 32px;
+    left: 32px;
     width: 155px;
     height: 24px;
   }

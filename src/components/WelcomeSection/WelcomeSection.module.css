@@ -1,7 +1,6 @@
 /* src/components/WelcomeSection/WelcomeSection.module.css */
 
 .WelcomeSectionContainer {
-  /* position: relative; */
   max-width: 380px;
   margin: 0 auto;
   padding: 0 16px;
@@ -22,7 +21,6 @@
 }
 
 .logoWrapper {
-  position: relative;
   padding-top: 24px;
   padding-bottom: 74px;
 }

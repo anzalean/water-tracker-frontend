@@ -8,13 +8,10 @@
   <path stroke="#323F47" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12.857 20h14.286"/>
     </symbol>
     <symbol id="icon-plus" viewBox="0 0 32 32">
-        <path stroke-linecap="round" stroke-linejoin="round"  stroke-width="1.8" d="M6.667 16h18.667M16 6.667v18.667"/>
-    </symbol>
-    <symbol id="icon-plus-light" viewBox="0 0 32 32">
-        <path stroke-linecap="round" stroke-linejoin="round"  stroke-width="1.8" d="M6.667 16h18.667M16 6.667v18.667"/>
+        <path stroke-linecap="round" stroke-linejoin="round"  stroke-width="3" d="M6.667 16h18.667M16 6.667v18.667"/>
     </symbol>
     <symbol id="icon-minus" viewBox="0 0 32 32">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6.667 16h18.667"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6.667 16h18.667"/>
     </symbol>
     <symbol id="icon-chevron-down" viewBox="0 0 32 32">
         <path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.2" d="M8 12l8 8 8-8"></path>
