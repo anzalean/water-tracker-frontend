@@ -1,0 +1,51 @@
+.btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  height: 120px;
+  width: auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--color-darkblue);
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.iconContainer {
+  height: 16px;
+  width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: var(--color-darkblue);
+}
+
+.btn:disabled {
+  color: rgba(50, 63, 71, 0.4);
+  cursor: not-allowed;
+}
+
+.btn:disabled .icon {
+  stroke: rgba(50, 63, 71, 0.4);
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-darkblue);
+}
