@@ -35,7 +35,7 @@
   margin: 0;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px)  {
   .dailyNormaContainer {
     top: 157px;
     left: 32px;
@@ -56,7 +56,7 @@
 }
 
 /* Десктопная версия */
-@media (min-width: 1025px) {
+@media (min-width: 1440px) {
   .dailyNormaContainer {
     top: 157px;
     left: 64px;
