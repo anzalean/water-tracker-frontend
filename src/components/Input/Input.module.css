@@ -33,6 +33,16 @@ input::placeholder {
   border-color: var(--color-error);
 }
 
+.input:-webkit-autofill {
+  color: var(--color-black) !important;
+  -webkit-text-fill-color: var(--color-black) !important;
+  box-shadow: 0 0 0px 1000px white inset;
+}
+
+.input:-webkit-autofill:focus {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
 .message {
   position: absolute;
   bottom: -12px;
@@ -75,13 +85,6 @@ input::placeholder {
 
 .icon.shift {
   right: 10px;
-}
-
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset;
-  box-shadow: 0 0 0 1000px transparent inset;
-  -webkit-text-fill-color: var(--color-white);
-  transition: background-color 500 ease-in-out;
 }
 
 @media screen and (min-width: 768px) {
