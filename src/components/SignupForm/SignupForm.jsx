@@ -8,6 +8,7 @@ import PasswordField from "../PasswordField/PasswordField";
 import FormFooter from "../FormFooter/FormFooter";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/user/userOps";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -30,6 +31,7 @@ const validationSchema = Yup.object().shape({
 
 export default function SignupForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -40,7 +42,12 @@ export default function SignupForm() {
   });
 
   const onSubmit = (data) => {
-    dispatch(signUp(data));
+    const { confirmPassword, ...userData } = data;
+    dispatch(signUp(userData)).then((response) => {
+      if (response?.payload?.status === 201) {
+        navigate("/signin");
+      }
+    });
     reset();
   };
 

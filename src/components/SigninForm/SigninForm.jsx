@@ -38,8 +38,13 @@ export default function SigninForm() {
   });
 
   const onSubmit = (data) => {
-    dispatch(signIn(data));
-    reset();
+    try {
+      dispatch(signIn(data));
+      reset();
+    } catch (error) {
+      console.error("Sign in error:", error);
+      // Здесь можно обработать ошибки, например, установить сообщение об ошибке
+    }
   };
 
   return (

@@ -53,9 +53,8 @@ const userSlice = createSlice({
       .addCase(signUp.fulfilled, (state, action) => {
         state.loading = false;
         state.error = false;
-        state.user.name = action.payload.user.name;
-        state.user.email = action.payload.user.email;
-        state.user.avatarURL = action.payload.user.avatarURL;
+        state.user = { ...action.payload.user };
+        state.accessToken = action.payload.accessToken;
       })
       .addCase(signUp.rejected, (state, action) => {
         state.loading = false;
