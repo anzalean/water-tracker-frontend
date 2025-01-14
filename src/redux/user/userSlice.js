@@ -118,6 +118,7 @@ const userSlice = createSlice({
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+        state.isLoggedIn = true;
         state.user = { ...action.payload };
       })
       .addCase(fetchCurrentUser.rejected, (state, action) => {
