@@ -5,7 +5,7 @@ import { refreshTokens } from "./userSlice";
 // Create an Axios instance with a base URL for API requests
 export const axiosInstance = axios.create({
   baseURL: "https://water-tracker-backend-guwj.onrender.com",
-//   baseURL: "http://localhost:3000",
+  // baseURL: "http://localhost:3000",
 });
 
 // Utility to set the Authorization header with the JWT token
@@ -30,8 +30,8 @@ export const setupAxiosInterceptors = (store) => {
             const { data } = await axiosInstance.post("/auth/refresh", {
               refreshToken,
             });
-            setAuthHeader(data.accessToken);
             store.dispatch(refreshTokens(data));
+            setAuthHeader(data.accessToken);
             error.config.headers.Authorization = `Bearer ${data.accessToken}`;
             return axiosInstance.request(error.config);
           }
@@ -50,7 +50,6 @@ export const signUp = createAsyncThunk(
   async (signUpData, thunkAPI) => {
     try {
       const response = await axiosInstance.post("/auth/register", signUpData);
-
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

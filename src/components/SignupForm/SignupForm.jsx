@@ -2,12 +2,13 @@ import { useForm } from "react-hook-form";
 import s from "./SignupForm.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import axios from "axios";
-import toast from "react-hot-toast";
 import Logo from "../Logo/Logo";
 import InputField from "../InputField/InputField";
 import PasswordField from "../PasswordField/PasswordField";
 import FormFooter from "../FormFooter/FormFooter";
+import { useDispatch } from "react-redux";
+import { signUp } from "../../redux/user/userOps";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -29,27 +30,25 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function SignupForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios.post("/signup", {
-        email: data.email,
-        password: data.password,
-      });
-      if (response.data.success) {
-        toast.success("Account created successfully! Please log in.");
-        history.push("/signin");
+  const onSubmit = (data) => {
+    const { confirmPassword, ...userData } = data;
+    dispatch(signUp(userData)).then((response) => {
+      if (response?.payload?.status === 201) {
+        navigate("/signin");
       }
-    } catch (error) {
-      toast.error(error.response?.data?.message || "An error occurred.");
-    }
+    });
+    reset();
   };
 
   return (
