@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./ChooseDate.module.css";
 
 const ChooseDate = ({ date, onChange }) => {
   const handleDateChange = (event) => {
@@ -7,14 +8,8 @@ const ChooseDate = ({ date, onChange }) => {
   };
 
   return (
-    <div>
-      <label htmlFor="date-picker">Choose Date:</label>
-      <input
-        id="date-picker"
-        type="date"
-        value={date.toISOString().split("T")[0]}
-        onChange={handleDateChange}
-      />
+    <div className={styles.container}>
+      <h3 className={styles.title}>Today</h3>
     </div>
   );
 };
