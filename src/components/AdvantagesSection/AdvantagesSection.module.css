@@ -17,8 +17,8 @@
 
 .userCount {
   display: flex;
-  gap: 4px;
-  max-width: 160px;
+  gap: 6px;
+  max-width: 180px;
   background-color: var(--color-white);
   margin-bottom: 8px;
   padding: 10px 14px;
@@ -100,9 +100,10 @@
   }
 
   .userCount {
-    max-width: 237px;
+    max-width: 265px;
     padding: 10px 20px;
     margin-bottom: -14px;
+    gap: 6px;
   }
 
   .advantagesGroupHabits {

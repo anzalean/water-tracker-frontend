@@ -1,5 +1,6 @@
 .userCountList {
   display: flex;
+ 
 }
 
 .userCountItem {
@@ -35,6 +36,22 @@
   color: var(--color-lightgreen);
 }
 
+.numberCustomers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-darkblue);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-white);
+  border-radius: 30px;
+  margin-left: -12px; 
+  margin-top: -3px;
+  padding: 12px;
+} 
+
 @media only screen and (min-width: 768px) {
   .userCountItem {
     width: 47px;
@@ -49,5 +66,13 @@
     line-height: 1.5;
   }
 
+  .numberCustomers {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    padding: 13px;
+    margin-left: -17px; 
+    margin-top: -3px;
+  } 
 
 }
