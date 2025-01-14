@@ -19,31 +19,28 @@ export default function SettingsBtn({ handleClick = null }) {
   const error = useSelector(selectError);
   const [showModal, setShowModal] = useState(false);
 
-  const handleButton = () => {
-    if (isLoggedIn) {
-      dispatch(fetchCurrentUser())
-        .unwrap()
-        .then((data) => {
-          console.log(data);
-          successNotify("Ok");
-          setShowModal(true);
-          handleClick && handleClick();
-        })
-        .catch(() => {
-          errNotify("error user info get");
-        });
+  const handleButton = async () => {
+    if (!isLoggedIn) return;
+    try {
+      const data = await dispatch(fetchCurrentUser()).unwrap();
+      console.log(data);
+      successNotify("User data fetched successfully");
+      setShowModal(true);
+      handleClick && handleClick();
+    } catch (error) {
+      const errorMessage = error?.message || "Error getting user info";
+      errNotify(errorMessage);
     }
   };
-  const handleUserUpdate = (data) => {
-    console.log(data);
-    dispatch(updateUser(data))
-      .unwrap()
-      .then(() => {
-        successNotify("Ok");
-      })
-      .catch(() => {
-        errNotify("error user info update");
-      });
+
+  const handleUserUpdate = async (data) => {
+    try {
+      await dispatch(updateUser(data)).unwrap();
+      successNotify("User info updated successfully");
+    } catch (error) {
+      const errorMessage = error?.message || "Error updating user info";
+      errNotify(errorMessage);
+    }
 
     if (!isLoading && !error) {
       setShowModal(false);

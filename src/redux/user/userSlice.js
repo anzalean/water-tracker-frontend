@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 
 const initialState = {
   user: {
-    _id: null,
+    userId: null,
     name: null,
     email: null,
     avatarURL: null,
@@ -40,6 +40,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     refreshTokens: (state, action) => {
+      console.log(action.payload);
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
     },
@@ -52,18 +53,14 @@ const userSlice = createSlice({
       })
       .addCase(signUp.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = false;
-        state.user = { ...action.payload.user };
-        state.accessToken = action.payload.accessToken;
+        state.error = null;
+        state.user.userId = action.payload.data.userId;
+        state.user.email = action.payload.data.email;
       })
       .addCase(signUp.rejected, (state, action) => {
         state.loading = false;
-
         if (typeof action.payload === "string") {
           state.error = action.payload;
-        } else if (action.payload && typeof action.payload === "object") {
-          state.error =
-            action.payload.errorMessage || "An error occurred during sign up.";
         } else {
           state.error = "An unknown error.";
         }
@@ -77,9 +74,8 @@ const userSlice = createSlice({
         state.isLoggedIn = true;
         state.loading = false;
         state.error = null;
-        state.user = { ...action.payload.user };
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
+        state.user = { ...action.payload.data.user };
+        state.accessToken = action.payload.data.accessToken;
       })
       .addCase(signIn.rejected, (state, action) => {
         state.loading = false;
@@ -111,6 +107,7 @@ const userSlice = createSlice({
           state.error = "An error occurred during sign out.";
         }
       })
+
       .addCase(fetchCurrentUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -118,8 +115,9 @@ const userSlice = createSlice({
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+        state.user = { ...action.payload.user };
         state.isLoggedIn = true;
-        state.user = { ...action.payload };
+       
       })
       .addCase(fetchCurrentUser.rejected, (state, action) => {
         state.loading = false;

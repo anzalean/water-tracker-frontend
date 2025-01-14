@@ -25,7 +25,7 @@ export const setupAxiosInterceptors = (store) => {
     async (error) => {
       if (error.response?.status === 401) {
         try {
-          const { refreshToken } = store.getState().user; // Retrieve the refresh token from the Redux store
+          const { refreshToken } = store.getState().user;
           if (refreshToken) {
             const { data } = await axiosInstance.post("/auth/refresh", {
               refreshToken,
@@ -66,7 +66,7 @@ export const signIn = createAsyncThunk(
     try {
       const response = await axiosInstance.post("/auth/login", signInData);
       setAuthHeader(response.data.data.accessToken);
-      return response.data.data;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response?.data?.message || error.message
@@ -95,20 +95,16 @@ export const fetchCurrentUser = createAsyncThunk(
       const reduxState = thunkAPI.getState();
       setAuthHeader(reduxState.auth.accessToken);
       const response = await axiosInstance.get("/auth/current");
-      return response.data.data;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   },
   {
-    condition: (_, { getState, rejectWithValue }) => {
+    condition: (_, { getState }) => {
       const state = getState();
       const savedToken = state.auth.accessToken;
-      if (!savedToken) {
-        rejectWithValue("Unauthorized");
-        return false;
-      }
-      return true;
+      return savedToken !== null;
     },
   }
 );

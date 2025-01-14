@@ -2,29 +2,30 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { errNotify, successNotify } from "../../helpers/notification";
 import { useNavigate } from "react-router-dom";
-import { signIn } from "../../redux/user/userOps";
+import { signUp, signIn } from "../../redux/user/userOps";
 import iconsPath from "../../assets/icons/sprite.svg";
 import { selectIsLoggedIn, selectError } from "../../redux/user/selectors";
-import css from "./TempLogInBtn.module.css";
+import css from "./TempRegisterBtn.module.css";
 
-export default function LogInBtn({ handleClick }) {
+const values = {
+  email: "testqqq@gmail.com",
+  password: "testqqq@gmail.com",
+};
+
+export default function TempRegisterBtn({ handleClick }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const savedError = useSelector(selectError);
 
-  const values = {
-    email: "testAndre@gmail.com",
-    password: "testAndre@gmail.com",
-  };
-
   const handleButton = async (values) => {
     if (isLoggedIn) return;
-
     try {
-      const signInData = await dispatch(signIn(values)).unwrap();
-      console.log(signInData);
-      successNotify("Ok");
+      await dispatch(signUp(values)).unwrap();
+      successNotify("Successfully registered!");
+      await dispatch(signIn(values)).unwrap();
+      successNotify("Successfully logged in!");
+
       navigate("/tracker");
     } catch (error) {
       errNotify(error.message || "An error occurred.");
@@ -33,6 +34,7 @@ export default function LogInBtn({ handleClick }) {
       handleClick();
     }
   };
+
   useEffect(() => {
     if (savedError) {
       errNotify(savedError);
@@ -47,26 +49,8 @@ export default function LogInBtn({ handleClick }) {
             <use href={`${iconsPath}#icon-log-out`} />
           </svg>
         </span>
-        <span className={css.text}>Log in</span>
+        <span className={css.text}>Register</span>
       </button>
     </React.Fragment>
   );
 }
-
-// {
-//     "status": 200,
-//     "message": "Successfully logged in an user!",
-//     "data": {
-//         "user": {
-//             "userId": "67863ff9e5607435d78d5555",
-//             "email": "testAndre@gmail.com",
-//             "name": "testAndre",
-//             "gender": "female",
-//             "avatarURL": "https://res.cloudinary.com/dhufqulj5/image/upload/v1736796700/pvtpcewd72z3ixrwjo7n.png",
-//             "desiredVolume": 1500,
-//             "weight": 0,
-//             "activityTime": 0
-//         },
-//         "accessToken": "xzhFDqlfTkGAgdIRfrcPwvp6lUzrN8z7vK9XDvyO"
-//     }
-// }
