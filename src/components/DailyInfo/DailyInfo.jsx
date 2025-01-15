@@ -6,23 +6,9 @@ import Modal from "../Modal/Modal";
 import { WaterModal } from "../WaterModal/WaterModal";
 import styles from "./DailyInfo.module.css";
 
-const useWindowWidth = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return windowWidth;
-};
-
 const DailyInfo = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const windowWidth = useWindowWidth();
 
   const waterData = [
     { id: 1, volume: 250, time: "7:00 AM" },
@@ -54,16 +40,10 @@ const DailyInfo = () => {
     <div className={styles.dailyInfo}>
       <div className={styles.header}>
         <ChooseDate date={selectedDate} onChange={handleDateChange} />
-        {windowWidth < 1440 && (
-          <AddWaterButton onClick={handleAddWater} variant="dailyInfo" />
-        )}
+        <AddWaterButton onClick={handleAddWater} variant="dailyInfo" />
       </div>
 
-      <div
-        className={`${styles.waterListContainer} ${
-          windowWidth >= 1440 ? styles.noScroll : ""
-        }`}
-      >
+      <div className={styles.waterListContainer}>
         <WaterList items={waterData} />
       </div>
 

@@ -89,30 +89,26 @@
 
   .iconWrapper {
     width: 44px;
-    height: 44px;
+    height: 45px;
   }
 
   .icon {
     width: 44px;
-    height: 44px;
-  }
-
-  .details {
-    gap: 8px;
+    height: 45px;
   }
 
   .volume {
-    font-size: 16px;
-    line-height: 120%;
+    font-size: 15px;
+    line-height: 149%;
   }
 
   .time {
-    font-size: 14px;
-    line-height: 120%;
+    font-size: 12px;
+    line-height: 187%;
   }
 
   .actions {
-    gap: 12px;
+    gap: 14px;
   }
 
   .editButton,
@@ -130,19 +126,19 @@
 /* Адаптация для десктопов */
 @media (min-width: 1440px) {
   .waterItem {
-    width: 190px;
+    width: 192px;
     height: 86px;
     gap: 20px;
   }
 
   .iconWrapper {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 45px;
   }
 
   .icon {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 45px;
   }
 
   .details {
@@ -150,13 +146,13 @@
   }
 
   .volume {
-    font-size: 18px;
-    line-height: 130%;
+    font-size: 15px;
+    line-height: 149%;
   }
 
   .time {
-    font-size: 16px;
-    line-height: 130%;
+    font-size: 12px;
+    line-height: 187%;
   }
 
   .actions {
@@ -165,8 +161,8 @@
 
   .editButton,
   .deleteButton {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 
   .actionIcon {
