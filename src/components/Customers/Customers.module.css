@@ -37,10 +37,9 @@
 }
 
 .numberCustomers {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
   height: 20px;
   background-color: var(--color-darkblue);
   font-size: 10px;
@@ -67,7 +66,8 @@
   }
 
   .numberCustomers {
-    width: 36px;
+  
+    display: inline-flex;
     height: 36px;
     font-size: 14px;
     padding: 13px;
