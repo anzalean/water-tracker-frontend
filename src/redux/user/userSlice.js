@@ -10,6 +10,7 @@ import {
   resetPassword,
   fetchOAuthUrl,
   googleLogin,
+  getUserCount,
 } from "./userOps";
 import toast from "react-hot-toast";
 
@@ -33,6 +34,7 @@ const initialState = {
   loading: false,
   isResendVerify: false,
   error: null,
+  userCount: null,
 };
 
 const userSlice = createSlice({
@@ -228,6 +230,20 @@ const userSlice = createSlice({
       .addCase(googleLogin.rejected, (state, action) => {
         state.loading = false;
         toast.error(action.payload || "Failed to log in with Google.", {
+          duration: 5000,
+          position: "top-center",
+        });
+      })
+      .addCase(getUserCount.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getUserCount.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userCount = action.payload.data.users;
+      })
+      .addCase(getUserCount.rejected, (state, action) => {
+        state.loading = false;
+        toast.error(action.payload || "Unable to retrieve user count.", {
           duration: 5000,
           position: "top-center",
         });

@@ -234,3 +234,17 @@ export const googleLogin = createAsyncThunk(
     }
   }
 );
+
+export const getUserCount = createAsyncThunk(
+  "user/getUserCount",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get("/auth/count");
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || error.message
+      );
+    }
+  }
+);
