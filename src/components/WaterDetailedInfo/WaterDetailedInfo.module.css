@@ -1,6 +1,6 @@
 .waterDetailedInfo {
   margin: 16px auto;
-  width: 343px;
+  /* width: 343px; */
   height: 770px;
   background-color: var(--color-lightgray);
   border-radius: 30px;
