@@ -14,12 +14,19 @@
 }
 
 /* Планшет */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1440px) {
   .chooseDate {
-    justify-content: flex-start; /* Для планшета смещаем текст */
+    justify-content: flex-start;
   }
 
   .dateText {
-    font-size: 22px; /* Увеличиваем текст */
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .dataText {
+    font-size: 28px;
+    line-height: 114%;
   }
 }

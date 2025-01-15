@@ -185,3 +185,15 @@
     font-size: 18px;
   }
 }
+
+@media (min-width: 1440px) {
+  .dailyInfoIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .dailyInfoText {
+    font-size: 16px;
+    line-height: 150%;
+  }
+}

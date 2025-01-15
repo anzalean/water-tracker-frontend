@@ -29,7 +29,7 @@
 
 .progressBar {
   width: 100%;
-  max-width: 303px;
+  width: 303px;
   height: 8px;
   border-radius: 9px;
   background-color: var(--color-white);
@@ -60,36 +60,34 @@
   }
 
   .progressBar {
-    max-width: 640px;
+    width: 640px;
   }
 }
 
 @media (min-width: 1440px) {
   .dailyInfo {
     width: 608px;
-    height: 142px;
-    gap: 32px;
+    height: 174px;
+    gap: 24px;
   }
 
-  .header :global(.AddWaterButton) {
+  .header {
+    width: 608px;
+    height: 32px;
+  }
+
+  .waterListContainer {
+    width: 608px;
+    height: 86px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .waterListContainer::-webkit-scrollbar {
     display: none;
   }
 
-  .header .ChooseDate {
-    font-size: 28px;
+  .progressBar {
+    width: 608px;
   }
-}
-
-.waterListContainer {
-  overflow-x: auto;
-  scrollbar-width: none; /* Скрываем скроллбар для Firefox */
-}
-
-.waterListContainer::-webkit-scrollbar {
-  display: none; /* Скрываем скроллбар для Chrome/Safari */
-}
-
-.waterListContainer.noScroll {
-  overflow-x: hidden !important; /* Принудительное отключение скролла */
-  scrollbar-width: none; /* Подстраховка для Firefox */
 }
