@@ -1,0 +1,36 @@
+.waterList {
+  display: flex;
+  gap: 8px;
+  scrollbar-width: none;
+  align-items: center;
+}
+
+.waterList::-webkit-scrollbar {
+  display: none;
+}
+
+.waterItem {
+  min-width: 150px;
+  background-color: var(--color-white);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .waterList {
+    gap: 32px;
+    overflow-x: hidden;
+    justify-content: center;
+  }
+}
+
+/* Адаптация для десктопов */
+@media (min-width: 1440px) {
+  .waterList {
+    gap: 16px;
+    overflow-x: hidden;
+    justify-content: center;
+  }
+}

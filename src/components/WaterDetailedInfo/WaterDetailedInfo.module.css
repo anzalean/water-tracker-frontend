@@ -1,0 +1,50 @@
+.waterDetailedInfo {
+  margin: 16px auto;
+  width: 343px;
+  height: 770px;
+  background-color: var(--color-lightgray);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-darkblue);
+}
+
+/* Адаптация для планшетов */
+@media (min-width: 768px) and (max-width: 1440px) {
+  .waterDetailedInfo {
+    width: 704px;
+    height: 738px;
+    border-radius: 30px;
+    margin-top: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .waterDetailedInfo {
+    width: 672px;
+    height: 736px;
+    margin-top: 32px;
+    border-radius: 30px;
+
+    gap: 28px;
+    position: absolute;
+    top: 32px;
+    right: 32px;
+
+    background-color: var(--color-lightgray);
+  }
+
+  .title {
+    font-size: 32px;
+    text-align: left;
+  }
+}
