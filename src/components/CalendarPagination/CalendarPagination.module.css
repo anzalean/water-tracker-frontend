@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 180px;
+    height: 20px;
+  }
+  
+  .buttonPrevious, .buttonNext {
+    border: none;
+    background-color: transparent;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .iconPrevious,
+  .iconNext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    stroke:  var(--color-black);
+    fill: none;
+    width: 18px;
+    height: 18px;
+  }
+  
+  @media only screen and (min-width: 768px) {
+      .container {
+          width: 205px;
+          height: 24px;
+      }
+      
+      .text {
+          font-size: 16px;
+          line-height: 1.5;
+      }
+      
+      .buttonPrevious, .buttonNext {
+          width: 24px;
+          height: 24px;
+      }
+  }
