@@ -6,8 +6,10 @@ import Logo from "../Logo/Logo";
 import InputField from "../InputField/InputField";
 import PasswordField from "../PasswordField/PasswordField";
 import FormFooter from "../FormFooter/FormFooter";
-import { signIn } from "../../redux/user/userOps";
+import { googleLogin, signIn } from "../../redux/user/userOps";
 import { useDispatch } from "react-redux";
+import { FcGoogle } from "react-icons/fc";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -43,9 +45,22 @@ export default function SigninForm() {
       reset();
     } catch (error) {
       console.error("Sign in error:", error);
-      // Здесь можно обработать ошибки, например, установить сообщение об ошибке
     }
   };
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: (response) => {
+      if (response?.credential) {
+        const token = response.credential;
+        dispatch(googleLogin({ token }));
+      } else {
+        console.error("Google login failed.");
+      }
+    },
+    onError: (error) => {
+      console.error("Google login error:", error);
+    },
+  });
 
   return (
     <div className={s.SignInContainer}>
@@ -71,6 +86,10 @@ export default function SigninForm() {
         />
         <button type="submit" className={s.button}>
           Sign In
+        </button>
+        <button type="button" onClick={googleLogin} className={s.googleButton}>
+          <FcGoogle className={s.googleIcon} />
+          <span className={s.googleText}>Sign in with Google</span>
         </button>
         <FormFooter
           text="Don’t have an account?"

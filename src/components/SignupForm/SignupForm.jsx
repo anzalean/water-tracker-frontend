@@ -9,6 +9,7 @@ import FormFooter from "../FormFooter/FormFooter";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/user/userOps";
 import { useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -82,6 +83,10 @@ export default function SignupForm() {
         />
         <button type="submit" className={s.button}>
           Sign Up
+        </button>
+        <button className={s.googleButton}>
+          Sign up with
+          <FcGoogle className={s.googleIcon} />
         </button>
         <FormFooter
           text="Already have account?"
