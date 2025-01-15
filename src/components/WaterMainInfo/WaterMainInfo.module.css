@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 343px;
+  width: 343px;
   height: 415px;
   padding: 16px;
   background-color: var(--color-lightgreen);
