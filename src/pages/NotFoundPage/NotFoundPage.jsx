@@ -14,7 +14,7 @@ export default function NotFoundPage() {
   return (
     <Container>
       <Helmet>
-        <title>Not Found</title>
+        <title>404 - Not Found</title>
       </Helmet>
       <Page>
         <div className={css.contentWrapper}>
