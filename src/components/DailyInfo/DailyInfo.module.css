@@ -1,5 +1,10 @@
 .dailyInfo {
-  max-width: 100%;
+  position: absolute;
+  top: 182px;
+  left: 20px;
+  width: 100%;
+  max-width: 465px;
+  height: 160px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -11,28 +16,80 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 303px;
+  height: 30px;
 }
 
 .waterListContainer {
-  width: 465px;
   height: 74px;
   overflow-x: auto;
-  left: 20px;
   background-color: var(--color-lightgray);
   overflow: hidden;
 }
 
 .progressBar {
-  border-radius: 9px;
-  width: 303px;
+  width: 100%;
+  max-width: 303px;
   height: 8px;
-  background-color: var(--color-white);
   border-radius: 9px;
-  position: relative;
+  background-color: var(--color-white);
 }
 
 .progressFill {
   height: 100%;
+  width: 0%;
   background-color: var(--color-darkblue);
   border-radius: 4px;
+}
+
+/* Планшет */
+@media (min-width: 768px) and (max-width: 1440px) {
+  .dailyInfo {
+    max-width: 640px;
+    height: 174px;
+    gap: 20px;
+  }
+
+  .header {
+    width: 640px;
+    height: 32px;
+  }
+
+  .waterListContainer {
+    height: 86px;
+  }
+
+  .progressBar {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .dailyInfo {
+    width: 608px;
+    height: 142px;
+    gap: 32px;
+  }
+
+  .header :global(.AddWaterButton) {
+    display: none;
+  }
+
+  .header .ChooseDate {
+    font-size: 28px;
+  }
+}
+
+.waterListContainer {
+  overflow-x: auto;
+  scrollbar-width: none; /* Скрываем скроллбар для Firefox */
+}
+
+.waterListContainer::-webkit-scrollbar {
+  display: none; /* Скрываем скроллбар для Chrome/Safari */
+}
+
+.waterListContainer.noScroll {
+  overflow-x: hidden !important; /* Принудительное отключение скролла */
+  scrollbar-width: none; /* Подстраховка для Firefox */
 }

@@ -8,6 +8,7 @@
   background-color: var(--color-white);
   border-radius: 15px;
   backdrop-filter: blur(33.6px);
+  flex-shrink: 0;
 }
 
 .iconWrapper {
@@ -75,4 +76,106 @@
   stroke-width: 1.3px;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* Адаптация для планшетов */
+@media (min-width: 768px) {
+  .waterItem {
+    width: 192px;
+    height: 86px;
+    border-radius: 15px;
+    gap: 20px;
+  }
+
+  .iconWrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  .icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .details {
+    gap: 8px;
+  }
+
+  .volume {
+    font-size: 16px;
+    line-height: 120%;
+  }
+
+  .time {
+    font-size: 14px;
+    line-height: 120%;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+
+  .editButton,
+  .deleteButton {
+    width: 16px;
+    height: 16px;
+  }
+
+  .actionIcon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Адаптация для десктопов */
+@media (min-width: 1440px) {
+  .waterItem {
+    width: 190px;
+    height: 86px;
+    gap: 20px;
+  }
+
+  .iconWrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .details {
+    gap: 10px;
+  }
+
+  .volume {
+    font-size: 18px;
+    line-height: 130%;
+  }
+
+  .time {
+    font-size: 16px;
+    line-height: 130%;
+  }
+
+  .actions {
+    gap: 14px;
+  }
+
+  .editButton,
+  .deleteButton {
+    width: 18px;
+    height: 18px;
+  }
+
+  .actionIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .waterList {
+    gap: 40px;
+    justify-content: flex-start;
+  }
 }

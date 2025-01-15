@@ -1,17 +1,16 @@
-import React from "react";
 import styles from "./ChooseDate.module.css";
 
-const ChooseDate = ({ date, onChange }) => {
-  const handleDateChange = (event) => {
-    const newDate = new Date(event.target.value);
-    onChange(newDate);
-  };
+const ChooseDate = ({ date }) => {
+  const isToday = new Date().toDateString() === date.toDateString();
 
   return (
-    <div className={styles.container}>
-      <h3 className={styles.title}>Today</h3>
+    <div className={styles.chooseDate}>
+      <span className={styles.dateText}>
+        {isToday ? "Today" : date.toLocaleDateString("en-US", { day: "numeric", month: "short" })}
+      </span>
     </div>
   );
 };
 
 export default ChooseDate;
+

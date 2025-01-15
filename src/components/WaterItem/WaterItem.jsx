@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./WaterItem.module.css";
 
 const WaterItem = ({ volume, time, onEdit, onDelete }) => {

@@ -174,3 +174,14 @@
 .dailyInfoVariant:hover .dailyInfoText {
   color: var(--color-black);
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .dailyInfoIcon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .dailyInfoText {
+    font-size: 18px;
+  }
+}

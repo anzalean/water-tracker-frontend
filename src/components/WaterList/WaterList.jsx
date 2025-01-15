@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./WaterList.module.css";
 import WaterItem from "../WaterItem/WaterItem";
 

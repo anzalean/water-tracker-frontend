@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ChooseDate from "../ChooseDate/ChooseDate";
 import AddWaterButton from "../AddWaterButton/AddWaterButton";
 import WaterList from "../WaterList/WaterList";
 import Modal from "../Modal/Modal";
 import { WaterModal } from "../WaterModal/WaterModal";
-import SimpleBar from "simplebar-react";
-import "simplebar-react/dist/simplebar.min.css";
 import styles from "./DailyInfo.module.css";
+
+const useWindowWidth = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowWidth;
+};
 
 const DailyInfo = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const windowWidth = useWindowWidth();
 
   const waterData = [
     { id: 1, volume: 250, time: "7:00 AM" },
@@ -42,13 +54,17 @@ const DailyInfo = () => {
     <div className={styles.dailyInfo}>
       <div className={styles.header}>
         <ChooseDate date={selectedDate} onChange={handleDateChange} />
-        <AddWaterButton onClick={handleAddWater} variant="dailyInfo" />
+        {windowWidth < 1440 && (
+          <AddWaterButton onClick={handleAddWater} variant="dailyInfo" />
+        )}
       </div>
 
-      <div className={styles.waterListContainer}>
-        <SimpleBar style={{ maxHeight: 74 }}>
-          <WaterList items={waterData} />
-        </SimpleBar>
+      <div
+        className={`${styles.waterListContainer} ${
+          windowWidth >= 1440 ? styles.noScroll : ""
+        }`}
+      >
+        <WaterList items={waterData} />
       </div>
 
       <div className={styles.progressBar}>
