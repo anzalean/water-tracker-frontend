@@ -7,7 +7,6 @@ import { fetchCurrentUser } from "./redux/user/userOps";
 import { RestrictedRoute } from "./components/RestrictedRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Loading } from "./components/Loading/Loading";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
@@ -35,60 +34,55 @@ export function App() {
       <Loading />
     </div>
   ) : (
-    <GoogleOAuthProvider clientId="416780880266-5n7irv3l8fmjbbi7v56vafihee55k2eo.apps.googleusercontent.com">
-      <div>
-        <Routes>
-          <Route path="/" element={<SharedLayout />}>
-            <Route index element={<HomePage />} />
-            <Route
-              path="/signup"
-              element={
-                <RestrictedRoute
-                  redirectTo="/tracker"
-                  component={<SignUpPage />}
-                />
-              }
-            />
-            <Route
-              path="/verify/:verifyToken"
-              element={
-                <RestrictedRoute
-                  redirectTo="/signin"
-                  component={<EmailVerifyPage />}
-                />
-              }
-            />
-            <Route
-              path="/signin"
-              element={
-                <RestrictedRoute
-                  redirectTo="/tracker"
-                  component={<SignInPage />}
-                />
-              }
-            />
-            <Route
-              path="/tracker"
-              element={
-                <PrivateRoute
-                  redirectTo="/signin"
-                  component={<TrackerPage />}
-                />
-              }
-            />
-            <Route
-              path="/reset/:resetToken"
-              element={
-                <RestrictedRoute
-                  redirectTo="/tracker"
-                  component={<ResetPasswordPage />}
-                />
-              }
-            />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </div>
-    </GoogleOAuthProvider>
+    <div>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="/signup"
+            element={
+              <RestrictedRoute
+                redirectTo="/tracker"
+                component={<SignUpPage />}
+              />
+            }
+          />
+          <Route
+            path="/verify/:verifyToken"
+            element={
+              <RestrictedRoute
+                redirectTo="/signin"
+                component={<EmailVerifyPage />}
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute
+                redirectTo="/tracker"
+                component={<SignInPage />}
+              />
+            }
+          />
+          <Route
+            path="/tracker"
+            element={
+              <PrivateRoute redirectTo="/signin" component={<TrackerPage />} />
+            }
+          />
+          <Route
+            path="/reset/:resetToken"
+            element={
+              <RestrictedRoute
+                redirectTo="/tracker"
+                component={<ResetPasswordPage />}
+              />
+            }
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
