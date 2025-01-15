@@ -1,6 +1,6 @@
 .advantagesSection {
   border-radius: 30px;
-  margin-top: 16px;
+  /* margin-top: 16px; */
   padding: 209px 16px 32px;
   background-image: url("../../assets/images/hero_mob@1x.webp");
   background-size: cover;
@@ -124,7 +124,7 @@
 
 @media only screen and (min-width: 1440px) {
   .advantagesSection {
-    margin-top: 32px;
+    /* margin-top: 32px; */
     padding: 537px 32px 64px;
     background-image: url("../../assets/images/hero_desk@1x.webp");
     max-width: 672px;

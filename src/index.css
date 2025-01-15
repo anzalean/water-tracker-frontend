@@ -49,6 +49,10 @@ body {
   font-family: "Poppins", sans-serif;
   color: var(--color-black);
   margin: 0;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 h1,
