@@ -1,12 +1,12 @@
 // import { useSelector } from "react-redux";
 // import { selectCurrentDay } from "../../redux/water/selectors";
-import WaterList from "../../components/WarterList/WaterList.jsx";
+import WaterCardList from "../WarterCardList/WaterCardList.jsx";
 import AddWaterBtn from "../AddWaterbtn/AddWaterbtn.jsx";
-import css from "./DailyInfo.module.css";
+import css from "./DailyInfoNew.module.css";
 
 const currentDay = "ToDay";
 
-const DailyInfo = () => {
+const DailyInfoNew = () => {
   // const currentDay = useSelector(selectCurrentDay);
   return (
     <div className={css.container}>
@@ -14,9 +14,9 @@ const DailyInfo = () => {
         <p className={css.day}>{currentDay}</p>
         <AddWaterBtn />
       </div>
-      <WaterList />
+      <WaterCardList />
     </div>
   );
 };
 
-export default DailyInfo;
+export default DailyInfoNew;

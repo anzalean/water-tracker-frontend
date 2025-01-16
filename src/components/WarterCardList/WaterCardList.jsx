@@ -1,5 +1,5 @@
 import WaterCard from "../WaterCard/WaterCard";
-import waterList from "../../data/warterCards.json";
+import waterList from "../../data/warterCards.json"; // use useselector
 import css from "./WaterCardList.module.css";
 
 console.log("Water List", waterList);
