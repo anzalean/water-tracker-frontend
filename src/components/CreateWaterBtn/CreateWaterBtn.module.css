@@ -1,0 +1,44 @@
+.btn {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: auto;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.iconContainer {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: var(--color-lightgreen);
+  transition: background-color 0.5s;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-white);
+  transition: stroke 0.5s;
+}
+
+.text {
+  font-family: "Poppins", sans-serif;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--color-darkblue);
+  white-space: nowrap;
+}

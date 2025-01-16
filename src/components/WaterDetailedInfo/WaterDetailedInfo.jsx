@@ -1,16 +1,17 @@
-import DailyInfo from "../DailyInfo/DailyInfo";
-import MonthInfo from "../MonthInfo/MonthInfo"; 
+import DailyInfoNew from "../DailyInfoNew/DailyInfoNew";
+import MonthInfo from "../MonthInfo/MonthInfo";
 import UserPanel from "../UserPanel/UserPanel";
-import styles from "./WaterDetailedInfo.module.css";
+import css from "./WaterDetailedInfo.module.css";
 
 const WaterDetailedInfo = () => {
   return (
-    <section className={styles.waterDetailedInfo}>
-      <UserPanel/>
-     <DailyInfo /> 
-      <MonthInfo/>
-    </section>
+    <div className={css.section}>
+      <div className={css.container}>
+        <UserPanel />
+        <DailyInfoNew />
+        <MonthInfo />
+      </div>
+    </div>
   );
 };
-
 export default WaterDetailedInfo;
