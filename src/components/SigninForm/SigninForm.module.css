@@ -42,7 +42,6 @@
     width: 704px;
     height: 100%;
     padding: 281px 134px;
-    margin-top: 32px;
   }
   .signInTitle {
     font-size: 36px;
@@ -57,7 +56,7 @@
 @media (min-width: 1440px) {
   .SignInContainer {
     width: 672px;
-    height: 770px;
+    height: 735px;
     padding: 169px 118px;
   }
 }

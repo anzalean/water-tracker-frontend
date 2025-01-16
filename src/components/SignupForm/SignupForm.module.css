@@ -43,7 +43,6 @@
     width: 704px;
     height: 100%;
     padding: 227px 134px;
-    margin-top: 32px;
   }
   .signupTitle {
     font-size: 36px;
@@ -58,7 +57,7 @@
 @media (min-width: 1440px) {
   .SignUpContainer {
     width: 672px;
-    height: 770px;
+    height: 735px;
     padding: 130px 118px 100px 118px;
   }
 }
