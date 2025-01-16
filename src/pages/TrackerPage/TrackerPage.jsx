@@ -21,27 +21,27 @@ export default function TrackerPage() {
   };
 
   return (
-    <Container>
-      <Helmet>
-        <title>Tracker</title>
-      </Helmet>
-      <div className={styles.wrapper}>
-        <WaterMainInfo onAddWater={handleAddWater} />
-      </div>
+    // <Container>
+    //   <Helmet>
+    //     <title>Tracker</title>
+    //   </Helmet>
+    //   <div className={styles.wrapper}>
+    //     <WaterMainInfo onAddWater={handleAddWater} />
+    //   </div>
 
-      <div className={styles.detailedInfo}>
-        <WaterDetailedInfo />
-      </div>
+    //   <div className={styles.detailedInfo}>
+    //     <WaterDetailedInfo />
+    //   </div>
 
-      {isModalOpen && (
-        <Modal onClose={handleCloseModal}>
-          <WaterModal
-            title="Add Water"
-            subtitle="Track your daily water intake"
-            onClose={handleCloseModal}
-          />
-        </Modal>
-      )}
-    </Container>
+    //   {isModalOpen && (
+    //     <Modal onClose={handleCloseModal}>
+    //       <WaterModal
+    //         title="Add Water"
+    //         subtitle="Track your daily water intake"
+    //         onClose={handleCloseModal}
+    //       />
+    //     </Modal>
+    //   )}
+    // </Container>
   );
 }
