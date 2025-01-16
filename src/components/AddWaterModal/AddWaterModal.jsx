@@ -27,7 +27,7 @@ export default function AddWaterModal({ onClose }) {
         <WaterModal
           title="Add water"
           subtitle="Choose a value:"
-          handleSubmit={onSubmitForm}
+          onSave={onSubmitForm}
         />
       </Modal>
     </div>
