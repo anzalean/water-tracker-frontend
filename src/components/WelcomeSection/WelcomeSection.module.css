@@ -79,7 +79,7 @@
   .WelcomeSectionContainer {
     max-width: 768px;
     padding: 106px 93px 50px 64px;
-    /* margin-top: 32px; */
+    margin-top: 182px;
   }
 
   .wrapper {
@@ -114,7 +114,7 @@
   .WelcomeSectionContainer {
     max-width: 1440px;
     padding: 188px 61px 188px 64px;
-    /* margin-top: 32px; */
+    margin-top: 32px;
   }
 
   .wrapper {
