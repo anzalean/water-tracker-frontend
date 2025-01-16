@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import iconsPath from "../../assets/icons/sprite.svg";
 import AddWaterModal from "../AddWaterModal/AddWaterModal";
-import css from "./AddWaterBtn.module.css";
+import css from "./CreateWaterBtn.module.css";
 
-const AddWaterBtn = () => {
+const CreateWaterBtn = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -38,4 +38,4 @@ const AddWaterBtn = () => {
   );
 };
 
-export default AddWaterBtn;
+export default CreateWaterBtn;
