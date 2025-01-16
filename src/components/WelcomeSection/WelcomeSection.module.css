@@ -79,7 +79,7 @@
   .WelcomeSectionContainer {
     max-width: 768px;
     padding: 106px 93px 50px 64px;
-    margin-top: 182px;
+    
   }
 
   .subtitle {
@@ -109,7 +109,7 @@
 @media (min-width: 1440px) {
   .WelcomeSectionContainer {
     max-width: 1440px;
-    margin-top: 32px;
+    /* margin-top: 32px; */
     padding: 188px 61px 188px 64px;
     
   }

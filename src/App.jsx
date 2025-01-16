@@ -8,8 +8,6 @@ import { RestrictedRoute } from "./components/RestrictedRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Loading } from "./components/Loading/Loading";
 
-import './App.css';
-
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
 const EmailVerifyPage = lazy(() =>
@@ -36,7 +34,7 @@ export function App() {
       <Loading />
     </div>
   ) : (
-    <div className="page">
+    <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />

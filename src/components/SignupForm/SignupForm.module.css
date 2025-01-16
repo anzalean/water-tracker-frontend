@@ -41,7 +41,7 @@
 @media (min-width: 768px) {
   .SignUpContainer {
     width: 704px;
-    height: 960px;
+    height: 100%;
     padding: 227px 134px;
     margin-top: 32px;
   }
@@ -58,7 +58,7 @@
 @media (min-width: 1440px) {
   .SignUpContainer {
     width: 672px;
-    height: 736px;
+    height: 770px;
     padding: 130px 118px 100px 118px;
   }
 }

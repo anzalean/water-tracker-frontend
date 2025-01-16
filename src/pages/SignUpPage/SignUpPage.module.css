@@ -2,6 +2,15 @@
   display: none;
 }
 
+ .SignUpPage {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 32px;
+  height: 100vh;
+ }
+ 
+
 @media screen and (min-width: 1440px) {
   .advantagesDesktopOnly {
     display: block;

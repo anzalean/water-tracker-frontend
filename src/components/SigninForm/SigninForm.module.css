@@ -3,7 +3,7 @@
   background-color: var(--color-lightgray);
   width: 100%;
   height: 780px;
-  padding: 216px 16px;
+  padding: 200px 16px;
   border-radius: 30px;
 }
 
@@ -40,7 +40,7 @@
 @media (min-width: 768px) {
   .SignInContainer {
     width: 704px;
-    height: 960px;
+    height: 100%;
     padding: 281px 134px;
     margin-top: 32px;
   }
@@ -57,7 +57,7 @@
 @media (min-width: 1440px) {
   .SignInContainer {
     width: 672px;
-    height: 736px;
+    height: 770px;
     padding: 169px 118px;
   }
 }
