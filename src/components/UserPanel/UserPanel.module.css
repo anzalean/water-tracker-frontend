@@ -1,3 +1,7 @@
+.panelContainer {
+    margin-bottom: 40px;
+}
+
 .panelTitle {
   position: relative;
   padding-top: 40px;
@@ -24,7 +28,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    /* align-items: baseline; */
   }
   .panelTitle {
     padding-top: 41px;
@@ -36,4 +40,6 @@
   /* .panelBar {
     margin-right: 32px;
   } */
+    margin-top: 32px;
+  }
 }
