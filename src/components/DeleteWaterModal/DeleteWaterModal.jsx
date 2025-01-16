@@ -1,28 +1,20 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import css from "./DeleteWaterModal.module.css";
+import Modal from "../Modal/Modal.jsx";
+// import { useDispatch } from "react-redux";
+// import { deleteWater } from "../../redux/water/waterOps.js";
+import { DeleteWaterApprove } from "../DeleteWaterApprove/DeleteWaterApprove";
 
-export const DeleteWaterModal = ({ onCancel, onApprove }) => {
-const { handleSubmit } = useForm();
-
+export default function DeleteWaterModal({ onClose, waterId }) {
+  // const dispatch = useDispatch()
+  const onApprove = () => {
+    console.log("Delete", waterId);
+    // dispatch(deleteWater({ warterId: waterId }));
+    onClose();
+  };
   return (
-    <React.Fragment>
-      <form onSubmit={handleSubmit(onApprove)}>
-      <div className={css.deleteWaterContent}>
-        <div className={css.deleteTitleGroup}>
-        <h2 className={css.deleteWaterTitle}>Delete Entry</h2>
-        <p className={css.deleteWaterCaption}>Are you sure you want to delete this entry?</p>
-        </div>
-              <div className={css.deleteBtnCont}>
-          <button className={css.deleteButton} onClick={onApprove}>
-            Delete
-          </button>
-          <button className={css.cancelButton} onClick={onCancel}>
-            Cancel
-          </button>
-        </div>
-      </div>
-     </form>
-        </React.Fragment>
+    <div>
+      <Modal onClose={onClose}>
+        <DeleteWaterApprove onCancel={onClose} onApprove={onApprove} />
+      </Modal>
+    </div>
   );
-};
+}

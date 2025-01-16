@@ -1,47 +1,68 @@
-import React, { useState } from "react";
-import { Helmet } from "react-helmet-async";
-import { Container } from "../../components/Container/Container";
-import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
-import Modal from "../../components/Modal/Modal";
-import { WaterModal } from "../../components/WaterModal/WaterModal";
-import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo";
-import styles from "./TrackerPage.module.css";
+// import React, { useState } from "react";
+// import { Helmet } from "react-helmet-async";
+// import { Page } from "../../components/Page/Page";
+// import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
+// import Modal from "../../components/Modal/Modal";
+// import { WaterModal } from "../../components/WaterModal/WaterModal";
+// import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo";
+// import style from "./TrackerPage.module.css";
 
+// export default function TrackerPage() {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+
+//   const handleAddWater = () => {
+//     console.log("Add Water button clicked");
+//     setIsModalOpen(true);
+//   };
+
+//   const handleCloseModal = () => {
+//     setIsModalOpen(false);
+//   };
+
+//   return (
+//     <React.Fragment>
+//       <Helmet>
+//         <title>Tracker</title>
+//       </Helmet>
+//       <Page>
+//         <div className={style.trackerPage}>
+//           <WaterMainInfo onAddWater={handleAddWater} />
+//           <WaterDetailedInfo />
+
+//           {isModalOpen && (
+//             <Modal onClose={handleCloseModal}>
+//               <WaterModal
+//                 title="Add Water"
+//                 subtitle="Track your daily water intake"
+//                 onSave={handleAddWater}
+//               />
+//             </Modal>
+//           )}
+//         </div>
+//       </Page>
+//     </React.Fragment>
+//   );
+// }
+
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import { Page } from "../../components/Page/Page";
+import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
+import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo";
+import css from "./TrackerPage.module.css";
 
 export default function TrackerPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleAddWater = () => {
-    console.log("Add Water button clicked");
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
-    <Container>
+    <React.Fragment>
       <Helmet>
         <title>Tracker</title>
       </Helmet>
-      <div className={styles.wrapper}>
-        <WaterMainInfo onAddWater={handleAddWater} />
-      </div>
-
-      <div className={styles.detailedInfo}>
-        <WaterDetailedInfo />
-      </div>
-
-      {isModalOpen && (
-        <Modal onClose={handleCloseModal}>
-          <WaterModal
-            title="Add Water"
-            subtitle="Track your daily water intake"
-            onClose={handleCloseModal}
-          />
-        </Modal>
-      )}
-    </Container>
+      <Page>
+        <div className={css.trackerPage}>
+          <WaterMainInfo />
+          <WaterDetailedInfo />
+        </div>
+      </Page>
+    </React.Fragment>
   );
 }
