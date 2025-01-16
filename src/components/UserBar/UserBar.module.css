@@ -152,7 +152,7 @@
     position: absolute;
     right: 0;
     left: auto;
-    transform: translateX(-100px);
+    /* transform: translateX(-100px); */
   }
 
   .popoverItem {
