@@ -102,7 +102,7 @@
   .buttonsWrapper {
     gap: 16px;
   }
-  
+
 
   .tryTracker,
   .signIn {
@@ -114,8 +114,9 @@
 @media (min-width: 1440px) {
   .WelcomeSectionContainer {
     max-width: 1440px;
-    padding: 188px 61px 188px 64px;
     margin-top: 32px;
+    padding: 188px 61px 188px 64px;
+    
   }
 
   .wrapper {
