@@ -17,11 +17,12 @@ const monthNames = [
   "December",
 ];
 
-const CalendarPagination = () => {
+const CalendarPagination = ({ onMonthChange }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const updateDateAndFetchData = (newDate) => {
     setCurrentMonth(newDate);
+    onMonthChange(newDate);
   };
 
   const navigateToPreviousMonth = () => {
@@ -52,8 +53,7 @@ const CalendarPagination = () => {
         </svg>
       </button>
       <span className={styles.text}>
-        {monthNames[new Date(currentMonth).getMonth()]},{" "}
-        {new Date(currentMonth).getFullYear()}
+        {monthNames[currentMonth.getMonth()]}, {currentMonth.getFullYear()}
       </span>
       <button
         className={styles.buttonNext}
@@ -61,7 +61,11 @@ const CalendarPagination = () => {
         onClick={navigateToNextMonth}
       >
         <svg className={styles.iconNext}>
-          <use width={18} height={18} xlinkHref={`${sprite}#icon-chevron-right`} />
+          <use
+            width={18}
+            height={18}
+            xlinkHref={`${sprite}#icon-chevron-right`}
+          />
         </svg>
       </button>
     </div>
