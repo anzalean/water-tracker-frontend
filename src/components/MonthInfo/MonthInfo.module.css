@@ -1,7 +1,6 @@
 /* .monthInfoSection {
-    width: 100%;
-    background-color: var(--color-lightgray);
-} */
+    height: 348px;
+}  */
 
 .monthPaginationBox{
     display: flex;
@@ -10,7 +9,7 @@
     align-items: center;
     margin-bottom: 24px;
     width: 100%;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .monthTitle{
@@ -36,7 +35,7 @@
 
 @media only screen and (min-width: 768px) {  
     .monthPaginationBox{ 
-        padding: 0 32px;
+        padding: 0;
     }
 
     .monthTitle{
