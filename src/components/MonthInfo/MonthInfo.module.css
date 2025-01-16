@@ -1,14 +1,16 @@
-.monthInfoSection {
+/* .monthInfoSection {
     width: 100%;
     background-color: var(--color-lightgray);
-}
+} */
 
 .monthPaginationBox{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 24px;
     width: 100%;
-    height: 24px;
+    padding: 0 20px;
 }
 
 .monthTitle{
@@ -20,7 +22,23 @@
     color: var(--color-darkblue);
 }
 
+.paginationWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.iconStatistics {
+    padding: 0;
+}
+
 @media only screen and (min-width: 768px) {  
+    .monthPaginationBox{ 
+        padding: 0 32px;
+    }
+
     .monthTitle{
         font-size: 28px;
         line-height: 1.14;
