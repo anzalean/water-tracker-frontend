@@ -1,0 +1,64 @@
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  color: var(--color-darkblue);
+}
+
+.astroImage img {
+  max-width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+}
+
+.textContent {
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 120px;
+  margin: 15px 0px;
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+p {
+  font-size: 16px;
+}
+
+.btn404 {
+  background-color: var(--color-lightgreen);
+  color: var(--color-darkblue);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 19px;
+  border-radius: 30px;
+  transition: background-color var(--animation), color var(--animation);
+}
+
+.btn404:hover {
+  background-color: var(--color-lightgreenhover);
+}
+
+.btn404:active {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btn404 {
+    margin-bottom: 60px;
+  }
+}

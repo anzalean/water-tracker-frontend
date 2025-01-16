@@ -4,7 +4,7 @@ import sprite from "../../assets/icons/sprite.svg";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-export const WaterForm = ({ onClose }) => {
+export const WaterForm = ({ onSave }) => {
   const getCurrentTime = () => {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, "0");
@@ -44,8 +44,8 @@ export const WaterForm = ({ onClose }) => {
 
   const onSubmit = (data) => {
     console.log("Form submitted with values:", data);
+    onSave(data);
     reset();
-    onClose();
   };
 
   return (
