@@ -1,0 +1,93 @@
+.dailyInfo {
+  position: absolute;
+  top: 182px;
+  left: 20px;
+  width: 100%;
+  max-width: 465px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--color-lightgray);
+  border-radius: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 303px;
+  height: 30px;
+}
+
+.waterListContainer {
+  height: 74px;
+  overflow-x: auto;
+  background-color: var(--color-lightgray);
+  overflow: hidden;
+}
+
+.progressBar {
+  width: 100%;
+  width: 303px;
+  height: 8px;
+  border-radius: 9px;
+  background-color: var(--color-white);
+}
+
+.progressFill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-darkblue);
+  border-radius: 4px;
+}
+
+/* Планшет */
+@media (min-width: 768px) and (max-width: 1440px) {
+  .dailyInfo {
+    max-width: 640px;
+    height: 174px;
+    gap: 20px;
+  }
+
+  .header {
+    width: 640px;
+    height: 32px;
+  }
+
+  .waterListContainer {
+    height: 86px;
+  }
+
+  .progressBar {
+    width: 640px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .dailyInfo {
+    width: 608px;
+    height: 174px;
+    gap: 24px;
+  }
+
+  .header {
+    width: 608px;
+    height: 32px;
+  }
+
+  .waterListContainer {
+    width: 608px;
+    height: 86px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .waterListContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .progressBar {
+    width: 608px;
+  }
+}

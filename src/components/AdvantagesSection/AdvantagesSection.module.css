@@ -16,9 +16,9 @@
 }
 
 .userCount {
-  display: flex;
+  display: inline-flex;
   gap: 6px;
-  max-width: 180px;
+  
   background-color: var(--color-white);
   margin-bottom: 8px;
   padding: 10px 14px;
@@ -100,7 +100,7 @@
   }
 
   .userCount {
-    max-width: 265px;
+    display: inline-flex;
     padding: 10px 20px;
     margin-bottom: -14px;
     gap: 6px;

@@ -1,0 +1,28 @@
+.monthInfoSection {
+    width: 100%;
+    background-color: var(--color-lightgray);
+}
+
+.monthPaginationBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 24px;
+}
+
+.monthTitle{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--color-darkblue);
+}
+
+@media only screen and (min-width: 768px) {  
+    .monthTitle{
+        font-size: 28px;
+        line-height: 1.14;
+    }
+}

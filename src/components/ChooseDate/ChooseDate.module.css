@@ -1,0 +1,32 @@
+.chooseDate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dateText {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: var(--color-main);
+}
+
+/* Планшет */
+@media (min-width: 768px) and (max-width: 1440px) {
+  .chooseDate {
+    justify-content: flex-start;
+  }
+
+  .dateText {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .dataText {
+    font-size: 28px;
+    line-height: 114%;
+  }
+}
