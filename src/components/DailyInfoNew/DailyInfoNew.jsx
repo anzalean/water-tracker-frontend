@@ -4,7 +4,7 @@ import WaterCardList from "../WarterCardList/WaterCardList.jsx";
 import CreateWaterBtn from "../CreateWaterBtn/CreateWarterBtn.jsx";
 import css from "./DailyInfoNew.module.css";
 
-const currentDay = "ToDay";
+const currentDay = "Today";
 
 const DailyInfoNew = () => {
   // const currentDay = useSelector(selectCurrentDay);
