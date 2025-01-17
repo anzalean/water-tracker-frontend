@@ -1,0 +1,52 @@
+.panelContainer {
+  width: 100%;
+}
+
+.panelTitle {
+  position: relative;
+  font-family: "Gilroy", sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--color-darkblue);
+}
+
+.titleSpan {
+  font-weight: 700;
+}
+
+.panelBar {
+  margin-top: 20px;
+  /* height: 50px; */
+}
+
+@media (min-width: 768px) {
+  .panelContainer {
+    width: 100%;
+    /* height: 56px; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .panelTitle {
+    padding-top: 25px;
+    font-size: 36px;
+    line-height: 1.05556;
+  }
+  .panelBar {
+    margin-top: 16px;
+  }
+  /* .panelBar { */
+  /* margin-top: 16px; */
+  /* } */
+}
+
+@media (min-width: 1440px) {
+  .panelTitle {
+    padding-top: 9px;
+  }
+
+  .panelBar {
+    margin-top: 0;
+  }
+}

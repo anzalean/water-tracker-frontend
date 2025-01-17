@@ -1,6 +1,7 @@
 .userBarContainer {
   position: relative;
   width: auto;
+  height: 50px;
 }
 
 .userBarBtn {
@@ -67,6 +68,7 @@
 
 .popover {
   width: 137px;
+  height: 72px;
   position: absolute;
   top: 100%;
   left: 0;
@@ -79,6 +81,7 @@
   justify-content: center;
   gap: 8px;
   z-index: 100;
+  margin-top: 4px;
 }
 
 .popoverItem {
@@ -149,10 +152,12 @@
 
   .popover {
     width: 157px;
+    height: 78px;
     position: absolute;
     right: 0;
     left: auto;
-    transform: translateX(-100px);
+
+    margin-top: 8px;
   }
 
   .popoverItem {

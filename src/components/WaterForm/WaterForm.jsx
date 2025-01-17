@@ -1,10 +1,11 @@
 import css from "./WaterForm.module.css";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import sprite from "../../assets/icons/sprite.svg";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-export const WaterForm = ({ onClose }) => {
+export const WaterForm = ({ onSave, initialData }) => {
   const getCurrentTime = () => {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, "0");
@@ -43,10 +44,18 @@ export const WaterForm = ({ onClose }) => {
   });
 
   const onSubmit = (data) => {
-    console.log("Form submitted with values:", data);
-    reset();
-    onClose();
+    onSave(data);
+    // reset();
   };
+  useEffect(() => {
+    if (initialData) {
+      reset({
+        inputField: initialData.amount || 50,
+        buttonField: initialData.amount || 50,
+        time: initialData.time || getCurrentTime(),
+      });
+    }
+  }, [initialData, reset]);
 
   return (
     <div>

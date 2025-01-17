@@ -1,0 +1,49 @@
+.monthInfoSection {
+    height: 348px;
+} 
+
+.monthPaginationBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    width: 100%;
+    padding: 0;
+}
+
+.monthTitle{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--color-darkblue);
+}
+
+.paginationWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.iconStatistics {
+    padding: 0;
+}
+
+@media only screen and (min-width: 768px) {  
+    .monthInfoSection {
+        height: 361px;
+    } 
+
+    .monthPaginationBox{ 
+        padding: 0;
+    }
+
+    .monthTitle{
+        font-size: 28px;
+        line-height: 1.14;
+    }
+}

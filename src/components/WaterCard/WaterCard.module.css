@@ -1,0 +1,120 @@
+.waterCard {
+  width: 150px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-white);
+  color: var(--color-darkblue);
+  border-radius: 15px;
+  flex-shrink: 0;
+}
+
+.iconGlassContainer {
+  width: 38px;
+  margin-left: 14px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconGlass {
+  width: 100%;
+  height: 100%;
+}
+
+.cardInfo {
+  width: 50px;
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.volume {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--color-darkblue);
+}
+
+.time {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.actions {
+  width: 14px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconContainer {
+  width: 14px;
+  height: 14px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: var(--color-darkblue);
+  transition: stroke 0.5s;
+}
+
+.iconContainer:hover .icon {
+  stroke: var(--color-black);
+}
+
+@media (min-width: 768px) {
+  .waterCard {
+    width: 190px;
+    height: 86px;
+    padding: 20px;
+    gap: 20px;
+    padding-left: 0;
+  }
+
+  .iconGlassContainer {
+    width: 44px;
+    height: 45px;
+    margin-left: 14px;
+  }
+
+  .cardInfo {
+    width: 62px;
+    height: 46px;
+  }
+
+  .volume {
+    font-size: 15px;
+    line-height: 149%;
+  }
+
+  .time {
+    line-height: 187%;
+  }
+
+  .cardActions {
+    width: 16px;
+    height: 46px;
+  }
+
+  .iconContainer {
+    width: 16px;
+    height: 16px;
+  }
+}
