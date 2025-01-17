@@ -30,11 +30,11 @@
   .calendarList {
     justify-content: flex-start;
     width: 100%;
-    gap: 20px;
+    gap: 20px 18px;
   }
 
   .calendarItem {
-    width: calc((100% - 5 * 21px) / 6);
+    width: calc((100% - 5 * 22px) / 7);
   }
 }
 
