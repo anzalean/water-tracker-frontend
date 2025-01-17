@@ -17,7 +17,10 @@ import css from "./UserSettingsForm.module.css";
 const UserSettingsForm = ({ handleUserSave }) => {
   const { name, email, weight, activityTime, desiredVolume, avatarURL } =
     useSelector(selectUser);
+
   const [avatarFile, setAvatarFile] = useState(null);
+  const [avatar, setAvatar] = useState(avatarURL);
+
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
     defaultValues: {
@@ -26,12 +29,11 @@ const UserSettingsForm = ({ handleUserSave }) => {
       weight: weight || 0,
       desiredVolume: desiredVolume || 50,
       activityTime: activityTime || 0,
-      avatarURL: avatarURL,
       gender: "female",
     },
   });
 
-  const { handleSubmit, setValue, watch } = methods;
+  const { handleSubmit, watch } = methods;
 
   const gender = watch("gender");
   const weightValue = watch("weight");
@@ -56,16 +58,15 @@ const UserSettingsForm = ({ handleUserSave }) => {
   }, [gender, weightValue, activeTimeValue]);
 
   const onSubmit = async (values) => {
-    delete values.avatarURL;
     if (avatarFile) {
       values.avatar = avatarFile;
     }
     handleUserSave && handleUserSave(values);
   };
 
-  const handleEditAvatar = (avatarUrl, avatarFile) => {
+  const handleEditAvatar = (newAvatarUrl, avatarFile) => {
     setAvatarFile(avatarFile);
-    setValue("avatarURL", avatarUrl);
+    setAvatar(newAvatarUrl);
   };
 
   return (
@@ -75,7 +76,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
 
         <div className={css.imgWrapper}>
           {avatarURL ? (
-            <UserImageElem imgUrl={avatarURL} altText={name} />
+            <UserImageElem imgUrl={avatar} altText={name} />
           ) : (
             <UserIconElem />
           )}
