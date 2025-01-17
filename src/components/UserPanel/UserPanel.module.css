@@ -1,11 +1,11 @@
-.panelContainer {
+/* .panelContainer {
     margin-bottom: 40px;
-}
+} */
 
 .panelTitle {
   position: relative;
   padding-top: 40px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   font-family: "Gilroy", sans-serif;
   font-weight: 400;
   font-size: 32px;
@@ -25,18 +25,22 @@
 
 @media (min-width: 768px) {
   .panelContainer {
+    width: 100%;
+    /* height: 56px; */
     display: flex;
     justify-content: space-between;
     /* align-items: baseline; */
   }
   .panelTitle {
     padding-top: 41px;
-    margin-left: 32px;
+    /* margin-left: 32px; */
     font-size: 36px;
     line-height: 1.05556;
   }
-  .panelBar {
+
+  /* .panelBar {
     margin-right: 32px;
-    margin-top: 32px;
+  } */
+    
   }
-}
+
