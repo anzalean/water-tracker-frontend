@@ -9,14 +9,25 @@ import Input from "../Input/Input";
 import RadioButtonsGroup from "../RadioButtonsGroup/RadioButtonsGroup";
 import UploadFileButton from "../UploadFileButton/UploadFileButton";
 import { feedbackSchema } from "../../helpers/userSettingsFormSchema";
-
 import { selectUser } from "../../redux/user/selectors";
 import iconsPath from "../../assets/icons/sprite.svg";
 import css from "./UserSettingsForm.module.css";
 
+const options = [
+  { value: "female", label: "Female" },
+  { value: "male", label: "Male" },
+];
+
 const UserSettingsForm = ({ handleUserSave }) => {
-  const { name, email, weight, activityTime, desiredVolume, avatarURL } =
-    useSelector(selectUser);
+  const {
+    gender,
+    name,
+    email,
+    weight,
+    activityTime,
+    desiredVolume,
+    avatarURL,
+  } = useSelector(selectUser);
 
   const [avatarFile, setAvatarFile] = useState(null);
   const [avatar, setAvatar] = useState(avatarURL);
@@ -29,13 +40,13 @@ const UserSettingsForm = ({ handleUserSave }) => {
       weight: weight || 0,
       desiredVolume: desiredVolume || 50,
       activityTime: activityTime || 0,
-      gender: "female",
+      gender: gender || "female",
     },
   });
 
   const { handleSubmit, watch } = methods;
 
-  const gender = watch("gender");
+  const genderValue = watch("gender");
   const weightValue = watch("weight");
   const activeTimeValue = watch("activityTime");
   const [calculatedWaterNorm, setCalculatedWaterNorm] = useState(0);
@@ -47,7 +58,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
 
       if (!isNaN(weight) && !isNaN(activeTime)) {
         const waterNorm =
-          gender === "female"
+          genderValue === "female"
             ? weight * 0.03 + activeTime * 0.4
             : weight * 0.04 + activeTime * 0.6;
         setCalculatedWaterNorm(waterNorm.toFixed(2));
@@ -55,7 +66,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
     } else {
       setCalculatedWaterNorm(0);
     }
-  }, [gender, weightValue, activeTimeValue]);
+  }, [genderValue, weightValue, activeTimeValue]);
 
   const onSubmit = async (values) => {
     if (avatarFile) {
@@ -99,6 +110,8 @@ const UserSettingsForm = ({ handleUserSave }) => {
         <RadioButtonsGroup
           name="gender"
           label="Your gender identity"
+          defaultValue={gender || "female"}
+          options={options}
           className={css.genderContainer}
         />
         <div className={css.content}>
