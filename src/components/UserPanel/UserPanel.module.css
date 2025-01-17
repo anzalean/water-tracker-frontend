@@ -23,6 +23,7 @@
 @media (min-width: 768px) {
   .panelContainer {
     width: 100%;
+    /* height: 56px; */
     display: flex;
     justify-content: space-between;
   }
