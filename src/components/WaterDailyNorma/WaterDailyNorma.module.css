@@ -1,4 +1,3 @@
-/* Основной контейнер ежедневной нормы воды */
 .dailyNormaContainer {
   position: absolute;
   top: 122px;
@@ -35,7 +34,7 @@
   margin: 0;
 }
 
-@media (min-width: 768px)  {
+@media (min-width: 768px) {
   .dailyNormaContainer {
     top: 157px;
     left: 32px;
