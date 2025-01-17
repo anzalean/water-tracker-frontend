@@ -6,8 +6,6 @@ import {
   getMonthWater,
   updateWater,
 } from "./waterOps";
-
-import { isSameDay } from "date-fns";
 import { signOut } from "../user/userOps";
 
 const initialState = {
@@ -31,7 +29,6 @@ const waterSlice = createSlice({
       .addCase(addWater.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        console.log(action.payload.data);
 
         const newItem = action.payload.data;
         state.items.push(newItem);
@@ -67,7 +64,7 @@ const waterSlice = createSlice({
         state.loading = false;
         state.error = null;
 
-        const id = action.payload._id;
+        const id = action.payload;
 
         const deletedWaterIndex = state.items.findIndex(
           (item) => item._id === id
@@ -152,7 +149,6 @@ const waterSlice = createSlice({
         state.error = null;
       })
       .addCase(getDayWater.fulfilled, (state, action) => {
-        console.log("get Water Day");
         state.error = null;
         state.loading = false;
         state.date = action.payload.data.date;
@@ -168,25 +164,22 @@ const waterSlice = createSlice({
         }
       })
 
-      // .addCase(getTodaySummaryWater.pending, (state) => {
-      //   state.error = false;
-      // })
-      // .addCase(getTodaySummaryWater.fulfilled, (state, action) => {
-      //   state.todaySumamryWater = action.payload;
-      // })
-      // .addCase(getTodaySummaryWater.rejected, (state) => {
-      //   state.error = true;
-      // })
-
       .addCase(getMonthWater.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(getMonthWater.fulfilled, (state, action) => {
-        state.monthItems = action.payload;
+        state.loading = false;
+        state.error = null;
+        state.monthItems = action.payload.data;
       })
-      .addCase(getMonthWater.rejected, (state) => {
+      .addCase(getMonthWater.rejected, (state, action) => {
         state.error = true;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "Failed to fetch water month.";
+        }
       })
 
       .addCase(signOut.fulfilled, () => {

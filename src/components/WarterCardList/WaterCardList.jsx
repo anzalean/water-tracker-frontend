@@ -16,8 +16,6 @@ const WaterCardList = () => {
   const waterList = useSelector(selectWaterItems);
   const isLoading = useSelector(selectWaterLoading);
 
-  console.log();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +25,7 @@ const WaterCardList = () => {
         successNotify("Success to fetch water data.");
       })
       .catch((error) => {
-        errNotify("Failed to fetch wataer data.");
+        errNotify("Failed to fetch water data.");
         console.error(error.message);
       });
   }, [dispatch, waterDate]);
