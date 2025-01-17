@@ -1,204 +1,194 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 import {
   addWater,
   deleteWater,
   getDayWater,
   getMonthWater,
-  getTodaySummaryWater,
   updateWater,
-} from './waterOps';
-
-import toast from 'react-hot-toast';
-import { isSameDay } from 'date-fns';
-import { signOut } from '../user/userOps';
+} from "./waterOps";
+import { signOut } from "../user/userOps";
 
 const initialState = {
-  date: null,
+  date: new Date().toISOString(),
   totalDayWater: 0,
   items: [],
   monthItems: [],
   loading: false,
-  error: false,
+  error: null,
 };
 
 const waterSlice = createSlice({
-  name: 'water',
+  name: "water",
   initialState,
   extraReducers: (builer) =>
     builer
       .addCase(addWater.pending, (state) => {
         state.loading = true;
-        state.error = false;
+        state.error = null;
       })
       .addCase(addWater.fulfilled, (state, action) => {
         state.loading = false;
-        state.items.push(action.payload);
-        state.totalDayWater += action.payload.amount;
+        state.error = null;
 
-        const addedDate = new Date(action.payload.date);
-        const existingMonthItem = state.monthItems.find((item) =>
-          isSameDay(new Date(item.date), addedDate)
+        const newItem = action.payload.data;
+        state.items.push(newItem);
+        state.totalDayWater += newItem.amount;
+        const addedDate = new Date(newItem.date);
+        addedDate.setHours(0, 0, 0, 0);
+        const addedDateString = addedDate.toISOString();
+
+        const existingMonthItem = state.monthItems.find(
+          (item) => item.date === addedDateString
         );
 
         if (existingMonthItem) {
-          existingMonthItem.totalDayWater += action.payload.amount;
+          existingMonthItem.totalDayWater += newItem.amount;
         } else {
           state.monthItems.push({
-            date: action.payload.date,
-            totalDayWater: action.payload.amount,
+            date: addedDateString,
+            totalDayWater: newItem.amount,
           });
         }
-
-        toast.success('Added water successfully!', {
-          duration: 5000,
-          position: 'top-center',
-          style: {
-            textAlign: 'center',
-            boxShadow: '8px 11px 27px -8px rgba(66, 68, 90, 1)',
-          },
-        });
       })
-      .addCase(addWater.rejected, (state) => {
+      .addCase(addWater.rejected, (state, action) => {
         state.loading = false;
-        state.error = true;
-
-        toast.error('Failed to add water.'),
-          {
-            duration: 5000,
-            position: 'top-center',
-            style: {
-              textAlign: 'center',
-              boxShadow: '8px 11px 27px -8px rgba(66, 68, 90, 1)',
-            },
-          };
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "Failed to add water.";
+        }
       })
+
       .addCase(deleteWater.pending, (state) => {
         state.loading = true;
-        state.error = false;
+        state.error = null;
       })
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.loading = false;
-        const id = action.payload._id;
+        state.error = null;
+
+        const id = action.payload;
+
         const deletedWaterIndex = state.items.findIndex(
           (item) => item._id === id
         );
-        if (deletedWaterIndex !== -1) {
-          const deletedWater = state.items[deletedWaterIndex];
-          state.totalDayWater -= deletedWater.amount;
-          state.items.splice(deletedWaterIndex, 1);
 
-          const deletedDate = new Date(deletedWater.date);
-          const existingMonthItem = state.monthItems.find((item) =>
-            isSameDay(new Date(item.date), deletedDate)
-          );
+        if (deletedWaterIndex === -1) return;
+        const deletedWater = state.items[deletedWaterIndex];
+        state.totalDayWater -= deletedWater.amount;
+        state.items.splice(deletedWaterIndex, 1);
 
-          if (existingMonthItem) {
-            existingMonthItem.totalDayWater -= deletedWater.amount;
+        const deletedDate = new Date(deletedWater.date);
+        deletedDate.setHours(0, 0, 0, 0);
+        const deletedDateString = deletedDate.toISOString();
+
+        const existingMonthItem = state.monthItems.find(
+          (item) => item.date === deletedDateString
+        );
+
+        if (existingMonthItem) {
+          existingMonthItem.totalDayWater -= deletedWater.amount;
+
+          if (existingMonthItem.totalDayWater <= 0) {
+            state.monthItems = state.monthItems.filter(
+              (item) => item.date !== deletedDateString
+            );
           }
-
-          toast.success('Deleted water successfully!', {
-            duration: 5000,
-            position: 'top-center',
-            style: {
-              textAlign: 'center',
-              boxShadow: '8px 11px 27px -8px rgba(66, 68, 90, 1)',
-            },
-          });
         }
       })
       .addCase(deleteWater.rejected, (state) => {
         state.loading = false;
-        state.error = true;
-        toast.error('Failed to delete water.', {
-          duration: 5000,
-          position: 'top-center',
-          style: {
-            textAlign: 'center',
-            boxShadow: '8px 11px 27px -8px rgba(66, 68, 90, 1)',
-          },
-        });
+        state.error = "Failed to delete water.";
       })
+
       .addCase(updateWater.pending, (state) => {
         state.loading = true;
-        state.error = false;
+        state.error = null;
       })
       .addCase(updateWater.fulfilled, (state, action) => {
         state.loading = false;
+        state.error = null;
+        const newItem = action.payload.data;
 
         const updatedWaterIndex = state.items.findIndex(
-          (item) => item._id === action.payload._id
+          (item) => item._id === newItem._id
+        );
+        if (updatedWaterIndex === -1) return;
+
+        const prevAmount = state.items[updatedWaterIndex].amount;
+        const newAmount = newItem.amount;
+        state.items[updatedWaterIndex] = newItem;
+        state.totalDayWater = Math.max(
+          0,
+          state.totalDayWater + newAmount - prevAmount
         );
 
-        if (updatedWaterIndex !== -1) {
-          const prevWater = state.items[updatedWaterIndex];
-          const prevAmount = prevWater.amount;
-          const newAmount = action.payload.amount;
+        const updatedDate = new Date(newItem.date);
+        updatedDate.setHours(0, 0, 0, 0);
+        const updatedDateString = updatedDate.toISOString();
+        const existingMonthItem = state.monthItems.find(
+          (item) => item.date === updatedDateString
+        );
 
-          state.items[updatedWaterIndex] = action.payload;
-          state.totalDayWater += newAmount - prevAmount;
-
-          const updatedDate = new Date(action.payload.date);
-          const existingMonthItem = state.monthItems.find((item) =>
-            isSameDay(new Date(item.date), updatedDate)
+        if (existingMonthItem) {
+          existingMonthItem.totalDayWater = Math.max(
+            0,
+            existingMonthItem.totalDayWater + newAmount - prevAmount
           );
-
-          if (existingMonthItem) {
-            existingMonthItem.totalDayWater += newAmount - prevAmount;
-          } else {
-            state.monthItems.push({
-              date: action.payload.date,
-              totalDayWater: newAmount,
-            });
-          }
+        } else {
+          state.monthItems.push({
+            date: updatedDateString,
+            totalDayWater: newAmount,
+          });
         }
-
-        toast.success('Updated water successfully!', {
-          duration: 5000,
-          position: 'top-center',
-          style: {
-            textAlign: 'center',
-            boxShadow: '8px 11px 27px -8px rgba(66, 68, 90, 1)',
-          },
-        });
       })
-      .addCase(updateWater.rejected, (state) => {
+      .addCase(updateWater.rejected, (state, action) => {
         state.loading = false;
-        state.error = true;
-        toast.error('Failed to update water.', {
-          duration: 5000,
-          position: 'top-center',
-          style: {
-            textAlign: 'center',
-            boxShadow: '8px 11px 27px -8px rgba(66, 68, 90, 1)',
-          },
-        });
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "Failed to update water.";
+        }
       })
+
       .addCase(getDayWater.pending, (state) => {
-        state.error = false;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getDayWater.fulfilled, (state, action) => {
-        state.date = action.payload.date;
-        state.totalDayWater = action.payload.totalDayWater;
-        state.items = action.payload.consumedWaterData;
+        state.error = null;
+        state.loading = false;
+        state.date = action.payload.data.date;
+        state.totalDayWater = action.payload.data.totalDayWater;
+        state.items = action.payload.data.consumedWaterData;
       })
-      .addCase(getDayWater.rejected, (state) => {
-        state.error = true;
+      .addCase(getDayWater.rejected, (state, action) => {
+        state.loading = false;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "Failed to fetch water data.";
+        }
       })
-      .addCase(getTodaySummaryWater.pending, (state) => {
-        state.error = false;
-      })
-      .addCase(getTodaySummaryWater.fulfilled, (state, action) => {
-        state.todaySumamryWater = action.payload; 
-      })
-      .addCase(getTodaySummaryWater.rejected, (state) => {
-        state.error = true;
+
+      .addCase(getMonthWater.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getMonthWater.fulfilled, (state, action) => {
-        state.monthItems = action.payload;
+        state.loading = false;
+        state.error = null;
+        state.monthItems = action.payload.data;
       })
-      .addCase(getMonthWater.rejected, (state) => {
+      .addCase(getMonthWater.rejected, (state, action) => {
         state.error = true;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "Failed to fetch water month.";
+        }
       })
+
       .addCase(signOut.fulfilled, () => {
         return initialState;
       }),

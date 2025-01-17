@@ -1,25 +1,27 @@
 import Modal from "../Modal/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { selectWaterDate } from "../../redux/water/selectors";
 import { WaterModal } from "../WaterModal/WaterModal";
-// import { addWater } from "../../redux/water/waterOps";
-// import { useDispatch } from "react-redux";
-// import { errNotify, successNotify } from "../../helpers/notification";
+import { replaceTimeInDate } from "../../helpers/replaceTimeInDate";
+import { addWater } from "../../redux/water/waterOps";
+import { errNotify, successNotify } from "../../helpers/notification";
 
 export default function AddWaterModal({ onClose }) {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const currentDate = useSelector(selectWaterDate);
 
   const onSubmitForm = (values) => {
-    console.log(values);
-    // dispatch(addWater(values))
-    //   .unwrap()
-    //   .then((result) => {
-    //     console.log(result);
-    //     successNotify("Successfully added water!");
-    //   })
-    //   .catch((error) => {
-    //     errNotify(`Error: ${error.message}`);
-    //   });
-
-    onClose();
+    const date = replaceTimeInDate(currentDate, values.time);
+    console.log({ date, amount: values.inputField });
+    dispatch(addWater({ date, amount: values.inputField }))
+      .unwrap()
+      .then(() => {
+        successNotify("Added water successfully!");
+        onClose();
+      })
+      .catch((error) => {
+        errNotify(`Error: ${error.message}`);
+      });
   };
 
   return (
