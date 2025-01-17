@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import iconsPath from "../../assets/icons/sprite.svg"; 
 import styles from "./AddWaterButton.module.css";
 import AddWaterModal from "../AddWaterModal/AddWaterModal";
 
@@ -33,7 +34,7 @@ const AddWaterButton = ({ variant = "default" }) => {
           height="30"
         >
           <use
-            href={`/src/assets/icons/sprite.svg#${
+            href={`${iconsPath}#${
               variant === "dailyInfo" ? "icon-plus1" : "icon-plus"
             }`}
           />
