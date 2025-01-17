@@ -2,8 +2,8 @@
   position: relative;
   background-color: var(--color-lightgray);
   width: 100%;
-  height: 780px;
-  padding: 200px 16px;
+  height: 790px;
+  padding: 220px 16px;
   border-radius: 30px;
 }
 
@@ -18,7 +18,7 @@
   flex-direction: column;
   margin: 0 auto;
   border-radius: 30px;
-  gap: 16px;
+  gap: 12px;
 }
 
 .button {
@@ -40,7 +40,7 @@
 @media (min-width: 768px) {
   .SignInContainer {
     width: 704px;
-    height: 100%;
+    height: 750px;
     padding: 281px 134px;
   }
   .signInTitle {
