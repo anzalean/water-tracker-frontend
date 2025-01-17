@@ -1,16 +1,32 @@
 import Modal from "../Modal/Modal.jsx";
 import { WaterModal } from "../WaterModal/WaterModal.jsx";
-// import { useDispatch } from "react-redux";
-// import { updateWater } from "../../redux/water/waterOps.js";
+import { useDispatch, useSelector } from "react-redux";
+import { selectWaterDate } from "../../redux/water/selectors";
+import { updateWater } from "../../redux/water/waterOps.js";
+import { replaceTimeInDate } from "../../helpers/replaceTimeInDate.js";
+import { successNotify, errNotify } from "../../helpers/notification.js";
 import { extractTimeFromDateString } from "../../helpers/extractTimeFromDateString.js";
 
 export default function EditWaterModal({ onClose, waterCard }) {
-  // const dispatch = useDispatch();
+  const currentDate = useSelector(selectWaterDate);
+  const dispatch = useDispatch();
 
   const onSubmitForm = (values) => {
-    console.log("Added:", values);
-    // dispatch(updateWater({ warterId: waterCard._id, values }));
-    onClose();
+    const date = replaceTimeInDate(currentDate, values.time);
+    dispatch(
+      updateWater({
+        cardId: waterCard._id,
+        waterData: { date, amount: values.inputField },
+      })
+    )
+      .unwrap()
+      .then(() => {
+        successNotify("Added water successfully!");
+        onClose();
+      })
+      .catch((error) => {
+        errNotify(`Error: ${error.message}`);
+      });
   };
 
   return (
