@@ -14,7 +14,6 @@ export default function EmailVerifyPage() {
       <Page>
         {
           <div className={css.EmailVerifyPage}>
-            Email Verification
             <EmailVerifyForm />
           </div>
         }
