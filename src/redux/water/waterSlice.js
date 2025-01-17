@@ -103,20 +103,23 @@ const waterSlice = createSlice({
       .addCase(updateWater.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+        const newItem = action.payload.data;
 
         const updatedWaterIndex = state.items.findIndex(
-          (item) => item._id === action.payload._id
+          (item) => item._id === newItem._id
         );
-
         if (updatedWaterIndex === -1) return;
 
-        const prevWater = state.items[updatedWaterIndex];
-        const prevAmount = prevWater.amount;
-        const newAmount = action.payload.amount;
-        state.items[updatedWaterIndex] = action.payload;
-        state.totalDayWater += newAmount - prevAmount;
+        const prevAmount = state.items[updatedWaterIndex].amount;
+        const newAmount = newItem.amount;
+        state.items[updatedWaterIndex] = newItem;
 
-        const updatedDate = new Date(action.payload.date);
+        state.totalDayWater = Math.max(
+          0,
+          state.totalDayWater + newAmount - prevAmount
+        );
+
+        const updatedDate = new Date(newItem.date);
         const updatedDateString = updatedDate.toISOString().split("T")[0];
 
         const existingMonthItem = state.monthItems.find(
@@ -124,7 +127,10 @@ const waterSlice = createSlice({
         );
 
         if (existingMonthItem) {
-          existingMonthItem.totalDayWater += newAmount - prevAmount;
+          existingMonthItem.totalDayWater = Math.max(
+            0,
+            existingMonthItem.totalDayWater + newAmount - prevAmount
+          );
         } else {
           state.monthItems.push({
             date: updatedDateString,
