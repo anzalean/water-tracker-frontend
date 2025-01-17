@@ -5,12 +5,12 @@ import styles from "./Customers.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserCount } from "../../redux/user/userOps.js";
-import { selectUserCount, selectIsLoggedIn } from "../../redux/user/selectors";
-import { Loading } from "../Loading/Loading"; 
+import { selectUserCount } from "../../redux/user/selectors";
+//import { Loading } from "../Loading/Loading"; 
 
 const Customers = () => {
   const usersCounter = useSelector(selectUserCount);
-  const usersLoading = useSelector(selectIsLoggedIn);
+  //const usersLoading = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,9 +20,7 @@ const Customers = () => {
   }, [dispatch, usersCounter]);
   return (
     <>
-      {usersLoading ? (
-        <Loading />
-      ) : (
+  
         <>
           <ul className={styles.userCountList}>
             <li className={styles.userCountItem}>
@@ -37,7 +35,7 @@ const Customers = () => {
           </ul>
           <div className={styles.numberCustomers}>+{usersCounter}</div>
         </>
-      )}
+      
       <p className={styles.userCountText}>
         Our <span className={styles.userTextColor}> happy</span> customers
       </p>
