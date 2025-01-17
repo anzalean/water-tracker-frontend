@@ -10,6 +10,7 @@ import { googleLogin, signIn } from "../../redux/user/userOps";
 import { useDispatch } from "react-redux";
 import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from "@react-oauth/google";
+import { useState } from "react";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,13 +24,12 @@ const validationSchema = Yup.object().shape({
     .required("Email is required"),
   password: Yup.string()
     .min(6, "Some error password")
-    .matches(/[a-zA-Z]/, "Password must contain at least one letter")
-    .matches(/\d/, "Password must contain at least one number")
     .required("Password is required"),
 });
 
 export default function SigninForm() {
   const dispatch = useDispatch();
+  const [serverError, setServerError] = useState("");
   const {
     register,
     handleSubmit,
@@ -39,12 +39,17 @@ export default function SigninForm() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
-      dispatch(signIn(data));
+      await dispatch(signIn(data)).unwrap();
       reset();
+      setServerError("");
     } catch (error) {
       console.error("Sign in error:", error);
+      setServerError(
+        error.message ||
+          "Please check your password and account name and try again."
+      );
     }
   };
 
@@ -79,6 +84,7 @@ export default function SigninForm() {
           error={errors.password?.message}
           register={register("password")}
         />
+        {serverError && <p className={s.error}>{serverError}</p>}
         <button type="submit" className={s.button}>
           Sign In
         </button>

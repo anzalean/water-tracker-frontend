@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/user/userOps";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -33,6 +34,7 @@ const validationSchema = Yup.object().shape({
 export default function SignupForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [serverError, setServerError] = useState("");
   const {
     register,
     handleSubmit,
@@ -42,14 +44,18 @@ export default function SignupForm() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    setServerError("");
     const { confirmPassword, ...userData } = data;
-    dispatch(signUp(userData)).then((response) => {
-      if (response?.payload?.status === 201) {
+    try {
+      const response = await dispatch(signUp(userData)).unwrap();
+      if (response.status === 201) {
         navigate("/signin");
+        reset();
       }
-    });
-    reset();
+    } catch (error) {
+      setServerError(error.message || "Registration failed. Please try again.");
+    }
   };
 
   return (
@@ -81,6 +87,7 @@ export default function SignupForm() {
           error={errors.confirmPassword?.message}
           register={register("confirmPassword")}
         />
+        {serverError && <p className={s.error}>{serverError}</p>}
         <button type="submit" className={s.button}>
           Sign Up
         </button>
