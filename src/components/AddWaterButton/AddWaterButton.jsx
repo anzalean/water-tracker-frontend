@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import iconsPath from "../../assets/icons/sprite.svg"; 
+import iconsPath from "../../assets/icons/sprite.svg";
 import styles from "./AddWaterButton.module.css";
 import AddWaterModal from "../AddWaterModal/AddWaterModal";
 
@@ -14,9 +14,16 @@ const AddWaterButton = () => {
     setIsModalOpen(false);
   };
 
+  const handleCreate = () => {
+    openModal();
+  };
+
   return (
     <React.Fragment>
-      <button className={styles.buttonContainer} onClick={openModal}>
+      <button
+        className={styles.buttonContainer}
+        onClick={handleCreate}
+      >
         <svg className={styles.buttonIcon} width="30" height="30">
           <use href={`${iconsPath}#icon-plus`} />
         </svg>
@@ -29,3 +36,4 @@ const AddWaterButton = () => {
 };
 
 export default AddWaterButton;
+
