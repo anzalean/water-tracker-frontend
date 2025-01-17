@@ -32,7 +32,7 @@ export const feedbackSchema = Yup.object().shape({
 
   desiredVolume: Yup.number()
     .typeError("Water intake must be a number")
-    .min(50, "Water intake must be at least 50 ml.")
-    .max(5000, "Water intake cannot exceed 5000 ml.")
+    .min(0.05, "Water intake must be at least 0.05 L.")
+    .max(5, "Water intake cannot exceed 5 mL.")
     .required("Water intake is required."),
 });
