@@ -111,8 +111,7 @@
   .WelcomeSectionContainer {
     max-width: 1440px;
     padding: 188px 61px 188px 64px;
-    margin-top: 5px;
-    
+    margin-top: 32px;
   }
 
   .subtitle {
@@ -122,18 +121,9 @@
 
   .title {
     font-size: 80px;
-    margin-bottom: 32px;
   }
 
-  .buttonsWrapper {
-    gap: 16px;
-  }
 
-  .tryTracker,
-  .signIn {
-    font-size: 16px;
-    padding: 18px 40px;
-  }
 }
 @media (max-width: 374px) {
   .title {

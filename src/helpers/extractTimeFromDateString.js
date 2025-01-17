@@ -1,6 +1,4 @@
 export function extractTimeFromDateString(dataString) {
-  console.log("dataString", dataString);
-
   if (!dataString || typeof dataString !== "string") {
     throw new Error("Invalid date string");
   }

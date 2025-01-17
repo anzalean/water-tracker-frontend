@@ -5,7 +5,7 @@
   align-items: center;
   gap: 4px;
   background-color: var(--color-white);
-  color: var(--color-blackblue);
+  color: var(--color-darkblue);
   border-radius: 15px;
   flex-shrink: 0;
 }
@@ -99,7 +99,6 @@
   }
 
   .time {
-    font-size: 12px;
     line-height: 187%;
   }
 
