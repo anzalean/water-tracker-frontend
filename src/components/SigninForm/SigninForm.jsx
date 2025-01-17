@@ -6,8 +6,11 @@ import Logo from "../Logo/Logo";
 import InputField from "../InputField/InputField";
 import PasswordField from "../PasswordField/PasswordField";
 import FormFooter from "../FormFooter/FormFooter";
-import { signIn } from "../../redux/user/userOps";
+import { googleLogin, signIn } from "../../redux/user/userOps";
 import { useDispatch } from "react-redux";
+import { FcGoogle } from "react-icons/fc";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useState } from "react";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -21,13 +24,12 @@ const validationSchema = Yup.object().shape({
     .required("Email is required"),
   password: Yup.string()
     .min(6, "Some error password")
-    .matches(/[a-zA-Z]/, "Password must contain at least one letter")
-    .matches(/\d/, "Password must contain at least one number")
     .required("Password is required"),
 });
 
 export default function SigninForm() {
   const dispatch = useDispatch();
+  const [serverError, setServerError] = useState("");
   const {
     register,
     handleSubmit,
@@ -37,15 +39,28 @@ export default function SigninForm() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
-      dispatch(signIn(data));
+      await dispatch(signIn(data)).unwrap();
       reset();
+      setServerError("");
     } catch (error) {
       console.error("Sign in error:", error);
-      // Здесь можно обработать ошибки, например, установить сообщение об ошибке
+      setServerError(
+        error.message ||
+          "Please check your password and account name and try again."
+      );
     }
   };
+
+  const googleLoginClick = useGoogleLogin({
+    onSuccess: (response) => {
+      if (response?.credential) {
+        const token = response.credential;
+        dispatch(googleLogin({ token }));
+      }
+    },
+  });
 
   return (
     <div className={s.SignInContainer}>
@@ -69,8 +84,17 @@ export default function SigninForm() {
           error={errors.password?.message}
           register={register("password")}
         />
+        {serverError && <p className={s.error}>{serverError}</p>}
         <button type="submit" className={s.button}>
           Sign In
+        </button>
+        <button
+          type="button"
+          onClick={googleLoginClick}
+          className={s.googleButton}
+        >
+          <FcGoogle className={s.googleIcon} />
+          <span className={s.googleText}>Sign in with Google</span>
         </button>
         <FormFooter
           text="Don’t have an account?"
