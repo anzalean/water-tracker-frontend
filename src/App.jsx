@@ -64,7 +64,7 @@ export function App() {
                 component={<SignInPage />}
               />
             }
-          />
+            />
           <Route
             path="/tracker"
             element={
