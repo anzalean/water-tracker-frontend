@@ -34,10 +34,13 @@ const waterSlice = createSlice({
         state.items.push(newItem);
         state.totalDayWater += newItem.amount;
         const addedDate = new Date(newItem.date);
-        const addedDateString = addedDate.toISOString().split("T")[0];
+        addedDate.setHours(0, 0, 0, 0);
+        const addedDateString = addedDate.toISOString();
+
         const existingMonthItem = state.monthItems.find(
           (item) => item.date === addedDateString
         );
+
         if (existingMonthItem) {
           existingMonthItem.totalDayWater += newItem.amount;
         } else {
@@ -74,13 +77,18 @@ const waterSlice = createSlice({
         const deletedWater = state.items[deletedWaterIndex];
         state.totalDayWater -= deletedWater.amount;
         state.items.splice(deletedWaterIndex, 1);
+
         const deletedDate = new Date(deletedWater.date);
-        const deletedDateString = deletedDate.toISOString().split("T")[0];
+        deletedDate.setHours(0, 0, 0, 0);
+        const deletedDateString = deletedDate.toISOString();
+
         const existingMonthItem = state.monthItems.find(
           (item) => item.date === deletedDateString
         );
+
         if (existingMonthItem) {
           existingMonthItem.totalDayWater -= deletedWater.amount;
+
           if (existingMonthItem.totalDayWater <= 0) {
             state.monthItems = state.monthItems.filter(
               (item) => item.date !== deletedDateString
@@ -110,15 +118,14 @@ const waterSlice = createSlice({
         const prevAmount = state.items[updatedWaterIndex].amount;
         const newAmount = newItem.amount;
         state.items[updatedWaterIndex] = newItem;
-
         state.totalDayWater = Math.max(
           0,
           state.totalDayWater + newAmount - prevAmount
         );
 
         const updatedDate = new Date(newItem.date);
-        const updatedDateString = updatedDate.toISOString().split("T")[0];
-
+        updatedDate.setHours(0, 0, 0, 0);
+        const updatedDateString = updatedDate.toISOString();
         const existingMonthItem = state.monthItems.find(
           (item) => item.date === updatedDateString
         );
