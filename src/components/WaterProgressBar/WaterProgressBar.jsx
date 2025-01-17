@@ -1,3 +1,4 @@
+import iconsPath from "../../assets/icons/sprite.svg"; 
 import styles from "./WaterProgressBar.module.css";
 
 const WaterProgressBar = ({ progress }) => {
@@ -15,7 +16,7 @@ const WaterProgressBar = ({ progress }) => {
             style={{ left: `${progress}%` }}
           >
             <svg className={styles.progressBarThumbIcon} width="12" height="12">
-              <use href="/src/assets/icons/sprite.svg#icon-ellipse-white" />
+              <use href={`${iconsPath}#icon-ellipse-white`} />
             </svg>
           </div>
         </div>

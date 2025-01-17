@@ -145,15 +145,12 @@
   justify-content: center;
   outline: none;
   box-shadow: none;
-  stroke: var(--color-darkblue) !important;
-  stroke-width: 1.5 !important;
-  fill: none;
 }
 
-.dailyInfoIcon use {
-  fill: var(--color-black);
-  color: var(--color-black);
-  stroke: var(--color-black);
+.dailyInfoIcon svg {
+  stroke: var(--color-darkblue);
+  stroke-width: 1.5;
+  fill: none;
 }
 
 .dailyInfoVariant:hover .dailyInfoIcon {

@@ -1,6 +1,6 @@
-/* .monthInfoSection {
+.monthInfoSection {
     height: 348px;
-}  */
+} 
 
 .monthPaginationBox{
     display: flex;
@@ -34,6 +34,10 @@
 }
 
 @media only screen and (min-width: 768px) {  
+    .monthInfoSection {
+        height: 361px;
+    } 
+
     .monthPaginationBox{ 
         padding: 0;
     }

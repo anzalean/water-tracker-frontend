@@ -29,7 +29,8 @@ export default function WaterCard({ waterCard }) {
   };
 
   const timeString = date ? extractTimeFromDateString(date) : "--:--";
-
+  // console.log(timeString);
+  // console.log(date);
   return (
     <div className={css.waterCard}>
       <div className={css.iconGlassContainer}>
