@@ -1,12 +1,12 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { axiosInstance } from '../user/userOps';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { axiosInstance } from "../user/userOps";
 
 // Add Water
 export const addWater = createAsyncThunk(
-  'water/addWater',
+  "water/addWater",
   async (water, thunkAPI) => {
     try {
-      const response = await axiosInstance.post('/water', water);
+      const response = await axiosInstance.post("/water", water);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -16,7 +16,7 @@ export const addWater = createAsyncThunk(
 
 // Update Water
 export const updateWater = createAsyncThunk(
-  'water/updateWater',
+  "water/updateWater",
   async ({ cardId, waterData }, thunkAPI) => {
     try {
       const response = await axiosInstance.patch(`/water/${cardId}`, waterData);
@@ -29,11 +29,11 @@ export const updateWater = createAsyncThunk(
 
 // Delete Water
 export const deleteWater = createAsyncThunk(
-  'water/deleteWater',
+  "water/deleteWater",
   async (cardId, thunkAPI) => {
     try {
-      const response = await axiosInstance.delete(`/water/${cardId}`);
-      return response.data;
+      await axiosInstance.delete(`/water/${cardId}`);
+      return cardId;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -42,10 +42,12 @@ export const deleteWater = createAsyncThunk(
 
 // Get Day Water
 export const getDayWater = createAsyncThunk(
-  'water/getDayWater',
-  async (_, thunkAPI) => {
+  "water/getDayWater",
+  async (date, thunkAPI) => {
     try {
-      const response = await axiosInstance.get('/water/day');
+      const response = await axiosInstance.get("/water/day", {
+        params: { date },
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -55,23 +57,12 @@ export const getDayWater = createAsyncThunk(
 
 // Get Month Water
 export const getMonthWater = createAsyncThunk(
-  'water/getMonthWater',
-  async (_, thunkAPI) => {
+  "water/getMonthWater",
+  async (date, thunkAPI) => {
     try {
-      const response = await axiosInstance.get('/water/month');
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-// Get Today Summary Water
-export const getTodaySummaryWater = createAsyncThunk(
-  'water/getTodaySummaryWater',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axiosInstance.get('/water/today');
+      const response = await axiosInstance.get("/water/month", {
+        params: { date },
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
