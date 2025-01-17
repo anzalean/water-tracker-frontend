@@ -101,6 +101,11 @@ export default function SigninForm() {
           linkText="Sign Up"
           linkHref="/signup"
         />
+        <FormFooter
+          text="Forgot your password? "
+          linkText="Click here"
+          linkHref="/verify/:verifyToken"
+        />
       </form>
     </div>
   );
