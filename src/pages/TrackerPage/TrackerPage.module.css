@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 16px;
   margin: 0 auto;
 }
 
@@ -17,7 +16,7 @@
 @media only screen and (min-width: 768px) {
   .trackerPage {
     max-width: 768px;
-    padding: 32px;
+
   }
 }
 
