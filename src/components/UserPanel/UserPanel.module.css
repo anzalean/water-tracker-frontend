@@ -1,11 +1,9 @@
 .panelContainer {
-    margin-bottom: 40px;
+  width: 100%;
 }
 
 .panelTitle {
   position: relative;
-  padding-top: 40px;
-  /* margin-left: 20px; */
   font-family: "Gilroy", sans-serif;
   font-weight: 400;
   font-size: 32px;
@@ -20,7 +18,6 @@
 
 .panelBar {
   margin-top: 20px;
-  margin-left: 20px;
 }
 
 @media (min-width: 768px) {
@@ -28,18 +25,16 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* align-items: baseline; */
   }
   .panelTitle {
-    padding-top: 41px;
-    /* margin-left: 32px; */
+    padding-top: 25px;
     font-size: 36px;
     line-height: 1.05556;
   }
+}
 
-  /* .panelBar {
-    margin-right: 32px;
-  } */
-    
+@media (min-width: 1440px) {
+  .panelTitle {
+    padding-top: 9px;
   }
-
+}
