@@ -20,8 +20,6 @@ const Customers = () => {
   }, [dispatch, usersCounter]);
   return (
     <>
-  
-        <>
           <ul className={styles.userCountList}>
             <li className={styles.userCountItem}>
               <img src={photo1} alt="user" />
@@ -34,7 +32,7 @@ const Customers = () => {
             </li>
           </ul>
           <div className={styles.numberCustomers}>+{usersCounter}</div>
-        </>
+
       
       <p className={styles.userCountText}>
         Our <span className={styles.userTextColor}> happy</span> customers
