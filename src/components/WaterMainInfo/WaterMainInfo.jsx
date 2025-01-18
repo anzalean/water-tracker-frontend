@@ -12,7 +12,7 @@ const WaterMainInfo = ({ onAddWater }) => {
   const desiredVolume = useSelector(selectDesiredVolume);
   const totalDayWater = useSelector(selectTotalDayWater);
   const progress = desiredVolume
-    ? (totalDayWater / (desiredVolume * 1000)) * 100
+    ? Math.min((totalDayWater / (desiredVolume * 1000)) * 100, 100)
     : 0;
 
   return (

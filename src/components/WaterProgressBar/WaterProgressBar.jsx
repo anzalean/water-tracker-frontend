@@ -18,8 +18,12 @@ const WaterProgressBar = ({ progress }) => {
             <svg className={styles.progressBarThumbIcon} width="12" height="12">
               <use href={`${iconsPath}#icon-ellipse-white`} />
             </svg>
+            {progress !== 0 && progress !== 50 && progress !== 100 && (
+              <div className={styles.currentProgress}>{progress}%</div>
+            )}
           </div>
         </div>
+
         <div className={styles.progressBarLabels}>
           <span>0%</span>
           <span>50%</span>
