@@ -50,6 +50,7 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: fill 0.3s ease-in-out;
+  pointer-events: none;
 }
 
 .progressBarThumbIcon {
