@@ -33,8 +33,14 @@ const Modal = ({
 
   useEffect(() => {
     document.addEventListener("keydown", handleDocumentKeyDown);
+
+    document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("keydown", handleDocumentKeyDown);
+
+       document.body.style.overflow = "";
+
     };
   }, [handleDocumentKeyDown]);
 
