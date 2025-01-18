@@ -24,7 +24,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
       name: name || email,
       email: email,
       weight: weight || 0,
-      desiredVolume: desiredVolume || 50,
+      desiredVolume: desiredVolume || 0.1,
       activityTime: activityTime || 0,
       avatarURL: avatarURL,
       gender: "female",
@@ -54,6 +54,19 @@ const UserSettingsForm = ({ handleUserSave }) => {
       setCalculatedWaterNorm(0);
     }
   }, [gender, weightValue, activeTimeValue]);
+
+  useEffect(() => {
+    // Проверяем, если поле очищено, восстанавливаем дефолтное значение
+    if (weightValue === "") {
+      setValue("weight", 0);
+    }
+    if (activeTimeValue === "") {
+      setValue("activityTime", 0);
+    }
+    if (desiredVolume === "") {
+      setValue("desiredVolume", 0.01);
+    }
+  }, [weightValue, activeTimeValue, desiredVolume, setValue]);
 
   const onSubmit = async (values) => {
     delete values.avatarURL;
@@ -161,7 +174,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
                   {...field}
                   classLabel={css.thinkLabel}
                   label="Your weight in kilograms:"
-                  type="text"
+                  type="number"
                 />
               )}
             />
@@ -173,7 +186,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
                   {...field}
                   classLabel={css.thinkLabel}
                   label="The time of active participation in sports:"
-                  type="text"
+                  type="number"
                 />
               )}
             />
@@ -195,7 +208,8 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 <Input
                   {...field}
                   label="Write down how much water you will drink:"
-                  type="text"
+                  type="number"
+                  step="0.01"
                 />
               )}
             />
