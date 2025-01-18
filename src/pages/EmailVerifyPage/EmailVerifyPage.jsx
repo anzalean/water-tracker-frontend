@@ -3,6 +3,7 @@ import { Container } from '../../components/Container/Container';
 import { Page } from '../../components/Page/Page';
 import css from './EmailVerifyPage.module.css'; 
 import EmailVerifyForm from "../../components/EmailVerifyForm/EmailVerifyForm";
+import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
 
 
 export default function EmailVerifyPage() {
@@ -15,6 +16,9 @@ export default function EmailVerifyPage() {
         {
           <div className={css.EmailVerifyPage}>
             <EmailVerifyForm />
+            <div className={css.advantagesDesktopOnly}>
+              <AdvantagesSection />
+            </div>
           </div>
         }
       </Page>
