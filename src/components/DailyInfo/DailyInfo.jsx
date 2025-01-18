@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 import ChooseDate from "../ChooseDate/ChooseDate";
 import AddWaterButton from "../AddWaterButton/AddWaterButton";
 import WaterList from "../WaterList/WaterList";
 import Modal from "../Modal/Modal";
 import { WaterModal } from "../WaterModal/WaterModal";
 import styles from "./DailyInfo.module.css";
+import { useState } from "react";
 
 const DailyInfo = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());

@@ -8,7 +8,7 @@ const WaterDailyNorma = () => {
   return (
     <div className={styles.dailyNormaContainer}>
       <span className={styles.dailyNormaAmount}>
-        {desiredVolume ? `${(desiredVolume / 1000).toFixed(1)} L` : "—"}
+        {desiredVolume ? `${desiredVolume.toFixed(2)} L` : "—"}
       </span>
       <span className={styles.dailyNormaLabel}>My daily norma</span>
     </div>
