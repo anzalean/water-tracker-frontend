@@ -191,7 +191,10 @@ export const resetPassword = createAsyncThunk(
   "user/resetPassword",
   async (resetData, thunkAPI) => {
     try {
-      const response = await axiosInstance.post("/auth/reset-pwd", resetData);
+      const response = await axiosInstance.post("/auth/reset-pwd", {
+        token: resetData.resetToken, 
+        password: resetData.password,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

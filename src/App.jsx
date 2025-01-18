@@ -72,7 +72,7 @@ export function App() {
             }
           />
           <Route
-            path="/reset/:resetToken"
+            path="/auth/reset-password"
             element={
               <RestrictedRoute
                 redirectTo="/tracker"
