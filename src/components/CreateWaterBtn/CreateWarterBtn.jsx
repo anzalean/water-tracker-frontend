@@ -28,19 +28,19 @@ const CreateWaterBtn = () => {
 
   return (
     <React.Fragment>
-      <button
-        type="button"
-        className={css.btn}
-        onClick={handleCreate}
-        aria-label="Add water"
-      >
-        <span className={css.iconContainer}>
-          <svg className={css.icon}>
-            <use href={`${iconsPath}#icon-plus`} />
-          </svg>
-        </span>
-        <span className={css.text}>Add water</span>
-      </button>
+        <button
+          type="button"
+          className={css.btn}
+          onClick={handleCreate}
+          aria-label="Add water"
+        >
+          <span className={css.iconContainer}>
+            <svg className={css.icon}>
+              <use href={`${iconsPath}#icon-plus`} />
+            </svg>
+          </span>
+          <span className={css.text}>Add water</span>
+        </button>
       {isModalOpen && (
         <AddWaterModal onClose={closeModal} onAdd={handleAddWater} />
       )}

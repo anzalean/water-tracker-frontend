@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  /* gap: 6px; */
   margin-left: 10px;
   margin-right: 10px;
   width: auto;
@@ -43,6 +43,7 @@
   font-size: 14px;
   line-height: 100%;
   color: var(--color-darkblue);
+  margin-bottom: 4px;
 }
 
 .time {
@@ -102,15 +103,16 @@
 
   .cardInfo {
     min-width: 52px;
-    height: 46px;
+    height: 40px;
     margin-left: 20px;
     margin-right: 20px;
-    gap: 4px;
+    /* gap: 0; */
   }
 
   .volume {
     font-size: 15px;
     line-height: 149%;
+    margin-bottom: 0;
   }
 
   .time {
