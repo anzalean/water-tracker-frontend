@@ -82,7 +82,6 @@ const UserSettingsForm = ({ handleUserSave }) => {
   };
 
   return (
-    <d></d>
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <p className={css.title}>Settings</p>
