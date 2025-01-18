@@ -1,4 +1,4 @@
-import iconsPath from "../../assets/icons/sprite.svg"; 
+import iconsPath from "../../assets/icons/sprite.svg";
 import styles from "./WaterProgressBar.module.css";
 
 const WaterProgressBar = ({ progress }) => {

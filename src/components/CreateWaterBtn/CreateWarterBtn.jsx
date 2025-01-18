@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import iconsPath from "../../assets/icons/sprite.svg";
 import AddWaterModal from "../AddWaterModal/AddWaterModal";
 import css from "./CreateWaterBtn.module.css";
+import { useDispatch } from "react-redux";
+import { addWater } from "../../redux/water/waterOps";
 
 const CreateWaterBtn = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -16,6 +19,11 @@ const CreateWaterBtn = () => {
 
   const handleCreate = () => {
     openModal();
+  };
+
+  const handleAddWater = (amount) => {
+    dispatch(addWater({ amount }));
+    closeModal();
   };
 
   return (
@@ -33,7 +41,9 @@ const CreateWaterBtn = () => {
         </span>
         <span className={css.text}>Add water</span>
       </button>
-      {isModalOpen && <AddWaterModal onClose={closeModal} />}
+      {isModalOpen && (
+        <AddWaterModal onClose={closeModal} onAdd={handleAddWater} />
+      )}
     </React.Fragment>
   );
 };
