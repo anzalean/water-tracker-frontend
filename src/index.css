@@ -45,6 +45,10 @@
 }
 
 body {
+  justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
   background-color: var(--color-white);
   font-family: "Poppins", sans-serif;
   color: var(--color-black);
