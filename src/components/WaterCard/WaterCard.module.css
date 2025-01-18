@@ -1,5 +1,6 @@
 .waterCard {
-  width: 150px;
+  width: auto;
+  min-width: 149px;
   height: 74px;
   display: flex;
   align-items: center;
@@ -25,7 +26,7 @@
 }
 
 .cardInfo {
-  width: 50px;
+  width: auto;
   height: 32px;
   display: flex;
   flex-direction: column;
@@ -33,6 +34,8 @@
   gap: 6px;
   margin-left: 10px;
   margin-right: 10px;
+  width: auto;
+  white-space: nowrap;
 }
 
 .volume {
@@ -51,12 +54,13 @@
 
 .actions {
   width: 14px;
-  height: 36px;
+  height: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  margin-right: 14px;
 }
 
 .iconContainer {
@@ -83,9 +87,9 @@
 
 @media (min-width: 768px) {
   .waterCard {
-    width: 190px;
+    min-width: 192px;
     height: 86px;
-    padding: 20px;
+    /* padding: 20px; */
     /* gap: 20px; */
     padding-left: 0;
   }
@@ -93,14 +97,15 @@
   .iconGlassContainer {
     width: 44px;
     height: 45px;
-    margin-left: 14px;
+    margin-left: 20px;
   }
 
   .cardInfo {
-    width: 62px;
+    min-width: 52px;
     height: 46px;
     margin-left: 20px;
     margin-right: 20px;
+    gap: 4px;
   }
 
   .volume {
@@ -112,11 +117,12 @@
     line-height: 187%;
   }
 
-  .cardActions {
+  .actions {
     width: 16px;
-    height: 46px;
+    height: 50px;
+    margin-right: 20px;
+    gap: 18px;
   }
-
   .iconContainer {
     width: 16px;
     height: 16px;
