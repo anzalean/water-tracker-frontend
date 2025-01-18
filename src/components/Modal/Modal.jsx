@@ -8,7 +8,7 @@ const Modal = ({
   children,
   onClose,
   portalId = "portal-root",
-  isUserForm = false,
+  isUserForm = null,
 }) => {
   const wrapperRef = useRef(null);
 
@@ -41,14 +41,14 @@ const Modal = ({
   return ReactDOM.createPortal(
     <div className={css.modalWrapper} onClick={handleClickOutside}>
       <div
-        className={css.modal}
+        className={clsx(css.modal, isUserForm && css.userModal)}
         ref={wrapperRef}
         onClick={(event) => {
           event.stopPropagation();
         }}
       >
         <button
-          className={clsx(css.closeBtn, isUserForm & css.closeBtnUserForm)}
+          className={clsx(css.closeBtn, isUserForm && css.closeBtnUserForm)}
           onClick={onClose}
         >
           <svg className={css.icon} aria-label="close button icon">

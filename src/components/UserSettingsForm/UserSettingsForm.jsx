@@ -62,7 +62,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
           genderValue === "female"
             ? weight * 0.03 + activeTime * 0.4
             : weight * 0.04 + activeTime * 0.6;
-        setCalculatedWaterNorm(waterNorm.toFixed(2));
+        setCalculatedWaterNorm(parseFloat(waterNorm.toFixed(2)));
       }
     } else {
       setCalculatedWaterNorm(0);
@@ -82,6 +82,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
   };
 
   return (
+    <d></d>
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <p className={css.title}>Settings</p>
@@ -134,17 +135,15 @@ const UserSettingsForm = ({ handleUserSave }) => {
               />
             </div>
             <div className={css.calcContainer}>
-              <p className={clsx(css.boldLabel, css.calcNormaLabel)}>
-                My daily norma
-              </p>
+              <p className={clsx(css.boldLabel)}>My daily norma</p>
               <div className={css.calcGenderContainer}>
-                <div className={css.calcWomanContainer}>
+                <div className={css.calcFormulaContainer}>
                   <span className={css.calcGenderLabel}>For woman: </span>
                   <span className={css.calcGenderFormula}>
                     V=(M*0,03) + (T*0,4)
                   </span>
                 </div>
-                <div className={css.calcManContainer}>
+                <div className={css.calcFormulaContainer}>
                   <span className={css.calcGenderLabel}>For man: </span>
                   <span className={css.calcGenderFormula}>
                     V=(M*0,04) + (T*0,6)
@@ -171,52 +170,54 @@ const UserSettingsForm = ({ handleUserSave }) => {
           </div>
 
           <div className={css.secondCol}>
-            <Controller
-              name="weight"
-              control={methods.control}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  classLabel={css.thinkLabel}
-                  label="Your weight in kilograms:"
-                  type="text"
-                />
-              )}
-            />
-            <Controller
-              name="activityTime"
-              control={methods.control}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  classLabel={css.thinkLabel}
-                  label="The time of active participation in sports:"
-                  type="text"
-                />
-              )}
-            />
-            <div>
+            <div className={css.userInfoContainer}>
+              <Controller
+                name="weight"
+                control={methods.control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    classLabel={css.thinkLabel}
+                    label="Your weight in kilograms:"
+                    type="text"
+                  />
+                )}
+              />
+              <Controller
+                name="activityTime"
+                control={methods.control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    classLabel={css.thinkLabel}
+                    label="The time of active participation in sports:"
+                    type="text"
+                  />
+                )}
+              />
+            </div>
+            <div className={css.requiredContainer}>
               <span>
                 <span className={css.textNorma}>
-                  The required amount of water in liters per day:
+                  The required amount of water in liters per day:&nbsp;
                 </span>
-                <span className={css.calculatedNorm}>
-                  <span>{calculatedWaterNorm} L</span>
+                <span className={css.calculatedNorma}>
+                  <span>{calculatedWaterNorm}&nbsp;L</span>
                 </span>
               </span>
-            </div>
 
-            <Controller
-              name="desiredVolume"
-              control={methods.control}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  label="Write down how much water you will drink:"
-                  type="text"
-                />
-              )}
-            />
+              <Controller
+                name="desiredVolume"
+                control={methods.control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label="Write down how much water you will drink:"
+                    type="text"
+                  />
+                )}
+              />
+            </div>
           </div>
         </div>
         <button type="submit" className={css.btn}>
