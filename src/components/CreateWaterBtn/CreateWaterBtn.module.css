@@ -28,7 +28,7 @@
 .icon {
   width: 16px;
   height: 16px;
-  stroke: var(--color-white);
+  stroke: var(--color-darkblue);
   transition: stroke 0.5s;
 }
 
@@ -41,4 +41,8 @@
   letter-spacing: -0.01em;
   color: var(--color-darkblue);
   white-space: nowrap;
+}
+
+.btn:hover .icon {
+  stroke: var(--color-white);
 }
