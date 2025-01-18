@@ -4,13 +4,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-right: 7px;
 }
 
 .title {
   font-family: inherit;
   font-weight: 700;
   font-size: 20px;
-  line-height: 1;
+  line-height: 120%;
+  letter-spacing: -0.01em;
   color: var(--color-darkblue);
   margin-bottom: 20px;
 }
@@ -25,13 +27,13 @@
 }
 
 .uploadBtn {
-  width: 100%;
-  height: 42px;
+  width: 133px;
+  height: 18px;
+  font-family: "Poppins", sans-serif;
   border: none;
   outline: none;
   background-color: transparent;
   color: var(--color-black);
-  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
@@ -55,15 +57,17 @@
   height: 100%;
   stroke: var(--color-black);
   fill: transparent;
+  transition: stroke 0.5s;
 }
 
-.uploadBtn:hover {
+.uploadBtn:hover .btnIcon {
   stroke: var(--color-darkblue);
 }
 
 .content {
   display: flex;
   flex-direction: column;
+  gap: 24px;
   margin-bottom: 40px;
 }
 
@@ -71,7 +75,7 @@
 .secondCol {
   display: flex;
   flex-direction: column;
-  row-gap: 14px;
+  gap: 24px;
   width: 100%;
 }
 
@@ -98,38 +102,42 @@
 .userInfoContainer {
   display: flex;
   flex-direction: column;
-  row-gap: 14px;
-  margin-bottom: 24px;
+  gap: 14px;
 }
 
-.calculateContainer {
-  margin-bottom: 24px;
+.calcContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .calcGenderContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
-  margin-bottom: 14px;
+}
+
+.calcFormulaContainer {
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calcGenderLabel {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
 }
 
 .calcGenderFormula {
+  font-weight: 700;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.01em;
   color: var(--color-lightgreen);
-}
-
-.calcWomanContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.calcManContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
 }
 
 .calcNote {
@@ -148,6 +156,38 @@
   color: var(--color-lightgreen);
 }
 
+.activeTimeContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.ExclamationContainer {
+  width: 18px;
+  height: 18px;
+}
+
+.ExclamationIcon {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: var(--color-lightgreen);
+}
+
+.textActiveTime {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+}
+
+.requiredContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .textNorma {
   font-weight: 400;
   font-size: 14px;
@@ -156,20 +196,11 @@
   color: var(--color-black);
 }
 
-.calcNormaLabel {
-  margin-bottom: 14px;
-}
-
-.calculatedNorm {
-  color: var(--color-lightgreen);
-}
-
-.activeTimeContainer {
-  font-weight: 400;
+.calculatedNorma {
+  font-weight: 700;
   font-size: 14px;
   line-height: 129%;
-  letter-spacing: -0.01em;
-  color: var(--color-black);
+  color: var(--color-lightgreen);
 }
 
 .btn {
@@ -196,13 +227,14 @@
 
 @media screen and (min-width: 375px) {
   .form {
-    max-width: 343px;
+    max-width: 310px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .form {
-    max-width: 648px;
+    max-width: 584px;
+    padding-right: 16px;
   }
 
   .title {
@@ -211,32 +243,19 @@
   }
 
   .uploadBtn {
-    width: 100%;
-    height: 42px;
-    font-weight: 400;
+    width: 151px;
+    height: 24px;
     font-size: 16px;
-    line-height: 150%;
     letter-spacing: -0.01em;
-    gap: 8px;
   }
-
   .btnIconContainer {
     width: 20px;
     height: 20px;
   }
 
-  .firstCol,
-  .secondCol {
-    row-gap: 14px;
-  }
-
-  .genderContainer {
-    margin-bottom: 24px;
-  }
-
   .boldLabel {
-    font-size: 18px;
-    line-height: 133%;
+    font-size: 16px;
+    line-height: 125%;
   }
 
   .thinkLabel {
@@ -244,16 +263,14 @@
     line-height: 150%;
   }
 
-  .userInfoContainer {
-    margin-bottom: 24px;
-  }
-
-  .calculateContainer {
-    margin-bottom: 24px;
-  }
-
   .calcGenderContainer {
+    flex-direction: row;
     gap: 28px;
+  }
+
+  .calcGenderLabel {
+    font-size: 16px;
+    line-height: 150%;
   }
 
   .calcGenderFormula {
@@ -261,13 +278,6 @@
     line-height: 150%;
   }
 
-  .calcWomanContainer {
-    width: 170px;
-  }
-
-  .calcManContainer {
-    width: 170px;
-  }
   .calcNote {
     padding: 16px;
     font-size: 16px;
@@ -279,10 +289,9 @@
     line-height: 150%;
   }
 
-  .activeTimeContainer {
+  .calculatedNorma {
     font-size: 16px;
     line-height: 150%;
-    letter-spacing: -0.01em;
   }
 
   .title {
@@ -290,15 +299,20 @@
     line-height: 1.33;
   }
 
-  .textNorma {
-    font-size: 16px;
-    line-height: 1.25;
-  }
-
   .calcAsterix,
   .sign {
     font-size: 18px;
     line-height: 133%;
+  }
+
+  .ExclamationContainer {
+    width: 22px;
+    height: 22px;
+  }
+
+  .textActiveTime {
+    font-size: 16px;
+    line-height: 150%;
   }
 
   .btn {
@@ -309,22 +323,18 @@
 
 @media screen and (min-width: 1440px) {
   .form {
-    max-width: 920px;
+    max-width: 856px;
+    padding-right: 16px;
   }
 
   .content {
     display: flex;
     flex-direction: row;
-    column-gap: 40px;
+    gap: 40px;
   }
 
   .firstCol,
   .secondCol {
     width: 400px;
-  }
-
-  .btn {
-    width: 141px;
-    height: 56px;
   }
 }

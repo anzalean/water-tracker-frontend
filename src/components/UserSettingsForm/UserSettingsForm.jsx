@@ -9,31 +9,45 @@ import Input from "../Input/Input";
 import RadioButtonsGroup from "../RadioButtonsGroup/RadioButtonsGroup";
 import UploadFileButton from "../UploadFileButton/UploadFileButton";
 import { feedbackSchema } from "../../helpers/userSettingsFormSchema";
-
 import { selectUser } from "../../redux/user/selectors";
 import iconsPath from "../../assets/icons/sprite.svg";
 import css from "./UserSettingsForm.module.css";
 
+const options = [
+  { value: "female", label: "Female" },
+  { value: "male", label: "Male" },
+];
+
 const UserSettingsForm = ({ handleUserSave }) => {
-  const { name, email, weight, activityTime, desiredVolume, avatarURL } =
-    useSelector(selectUser);
+  const {
+    gender,
+    name,
+    email,
+    weight,
+    activityTime,
+    desiredVolume,
+    avatarURL,
+  } = useSelector(selectUser);
+
   const [avatarFile, setAvatarFile] = useState(null);
+  const [avatar, setAvatar] = useState(avatarURL);
+
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
-    defaultValues: {
-      name: name || email,
-      email: email,
+    defaultValues: feedbackSchema.cast({
+      name: name || email || "",
+      email: email || "",
       weight: weight || 0,
-      desiredVolume: desiredVolume || 0.1,
+      desiredVolume: desiredVolume || 50,
       activityTime: activityTime || 0,
-      avatarURL: avatarURL,
-      gender: "female",
-    },
+      gender: gender || "female",
+    }),
+    shouldUnregister: true,
   });
 
-  const { handleSubmit, setValue, watch } = methods;
+  const { handleSubmit, watch } = methods;
 
-  const gender = watch("gender");
+  const genderValue = watch("gender");
   const weightValue = watch("weight");
   const activeTimeValue = watch("activityTime");
   const [calculatedWaterNorm, setCalculatedWaterNorm] = useState(0);
@@ -45,40 +59,26 @@ const UserSettingsForm = ({ handleUserSave }) => {
 
       if (!isNaN(weight) && !isNaN(activeTime)) {
         const waterNorm =
-          gender === "female"
+          genderValue === "female"
             ? weight * 0.03 + activeTime * 0.4
             : weight * 0.04 + activeTime * 0.6;
-        setCalculatedWaterNorm(waterNorm.toFixed(2));
+        setCalculatedWaterNorm(parseFloat(waterNorm.toFixed(2)));
       }
     } else {
       setCalculatedWaterNorm(0);
     }
-  }, [gender, weightValue, activeTimeValue]);
-
-  useEffect(() => {
-    // Проверяем, если поле очищено, восстанавливаем дефолтное значение
-    if (weightValue === "") {
-      setValue("weight", 0);
-    }
-    if (activeTimeValue === "") {
-      setValue("activityTime", 0);
-    }
-    if (desiredVolume === "") {
-      setValue("desiredVolume", 0.01);
-    }
-  }, [weightValue, activeTimeValue, desiredVolume, setValue]);
+  }, [genderValue, weightValue, activeTimeValue]);
 
   const onSubmit = async (values) => {
-    delete values.avatarURL;
     if (avatarFile) {
       values.avatar = avatarFile;
     }
     handleUserSave && handleUserSave(values);
   };
 
-  const handleEditAvatar = (avatarUrl, avatarFile) => {
+  const handleEditAvatar = (newAvatarUrl, avatarFile) => {
     setAvatarFile(avatarFile);
-    setValue("avatarURL", avatarUrl);
+    setAvatar(newAvatarUrl);
   };
 
   return (
@@ -88,7 +88,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
 
         <div className={css.imgWrapper}>
           {avatarURL ? (
-            <UserImageElem imgUrl={avatarURL} altText={name} />
+            <UserImageElem imgUrl={avatar} altText={`Photo of ${name}`} />
           ) : (
             <UserIconElem />
           )}
@@ -111,6 +111,8 @@ const UserSettingsForm = ({ handleUserSave }) => {
         <RadioButtonsGroup
           name="gender"
           label="Your gender identity"
+          defaultValue={gender || "female"}
+          options={options}
           className={css.genderContainer}
         />
         <div className={css.content}>
@@ -131,25 +133,23 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 )}
               />
             </div>
-            <div className={css.calculateContainer}>
-              <p className={clsx(css.boldLabel, css.calcNormaLabel)}>
-                My daily norma
-              </p>
+            <div className={css.calcContainer}>
+              <p className={clsx(css.boldLabel)}>My daily norma</p>
               <div className={css.calcGenderContainer}>
-                <div className={css.calcWomanContainer}>
+                <div className={css.calcFormulaContainer}>
                   <span className={css.calcGenderLabel}>For woman: </span>
                   <span className={css.calcGenderFormula}>
                     V=(M*0,03) + (T*0,4)
                   </span>
                 </div>
-                <div className={css.calcManContainer}>
+                <div className={css.calcFormulaContainer}>
                   <span className={css.calcGenderLabel}>For man: </span>
                   <span className={css.calcGenderFormula}>
                     V=(M*0,04) + (T*0,6)
                   </span>
                 </div>
               </div>
-              <div className={css.calcNote}>
+              <div className={clsx(css.calcNote, css.text)}>
                 <span className={css.calcAsterix}>*</span> V is the volume of
                 the water norm in liters per day, M is your body weight, T is
                 the time of active sports, or another type of activity
@@ -158,61 +158,65 @@ const UserSettingsForm = ({ handleUserSave }) => {
               </div>
             </div>
             <div className={css.activeTimeContainer}>
-              <span>
-                <span className={css.sign}>!</span>&nbsp;
-                <span className={css.textActiveTime}>Active time in hours</span>
+              <span className={css.ExclamationContainer}>
+                <svg className={css.ExclamationIcon}>
+                  <use href={`${iconsPath}#icon-exclamation-mark`} />
+                </svg>
               </span>
+              &nbsp;
+              <span className={css.textActiveTime}>Active time in hours</span>
             </div>
           </div>
 
           <div className={css.secondCol}>
-            <Controller
-              name="weight"
-              control={methods.control}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  classLabel={css.thinkLabel}
-                  label="Your weight in kilograms:"
-                  type="number"
-                />
-              )}
-            />
-            <Controller
-              name="activityTime"
-              control={methods.control}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  classLabel={css.thinkLabel}
-                  label="The time of active participation in sports:"
-                  type="number"
-                />
-              )}
-            />
-            <div>
+            <div className={css.userInfoContainer}>
+              <Controller
+                name="weight"
+                control={methods.control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    classLabel={css.thinkLabel}
+                    label="Your weight in kilograms:"
+                    type="text"
+                  />
+                )}
+              />
+              <Controller
+                name="activityTime"
+                control={methods.control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    classLabel={css.thinkLabel}
+                    label="The time of active participation in sports:"
+                    type="text"
+                  />
+                )}
+              />
+            </div>
+            <div className={css.requiredContainer}>
               <span>
                 <span className={css.textNorma}>
-                  The required amount of water in liters per day:
+                  The required amount of water in liters per day:&nbsp;
                 </span>
-                <span className={css.calculatedNorm}>
-                  <span>{calculatedWaterNorm} L</span>
+                <span className={css.calculatedNorma}>
+                  <span>{calculatedWaterNorm}&nbsp;L</span>
                 </span>
               </span>
-            </div>
 
-            <Controller
-              name="desiredVolume"
-              control={methods.control}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  label="Write down how much water you will drink:"
-                  type="number"
-                  step="0.01"
-                />
-              )}
-            />
+              <Controller
+                name="desiredVolume"
+                control={methods.control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label="Write down how much water you will drink:"
+                    type="text"
+                  />
+                )}
+              />
+            </div>
           </div>
         </div>
         <button type="submit" className={css.btn}>
