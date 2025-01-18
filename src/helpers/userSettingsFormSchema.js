@@ -14,7 +14,6 @@ export const feedbackSchema = Yup.object().shape({
     .transform((value, originalValue) => {
       return originalValue === "" ? undefined : value;
     })
-
     .notRequired(),
 
   email: Yup.string()
@@ -30,7 +29,6 @@ export const feedbackSchema = Yup.object().shape({
     .transform((value, originalValue) =>
       originalValue === "" || originalValue == null ? 0 : value
     )
-
     .notRequired(),
 
   weight: Yup.number()
@@ -41,7 +39,6 @@ export const feedbackSchema = Yup.object().shape({
     .transform((value, originalValue) =>
       originalValue === "" || originalValue == null ? 0 : value
     )
-
     .notRequired(),
 
   desiredVolume: Yup.number()

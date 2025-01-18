@@ -38,7 +38,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
       name: name || email || "",
       email: email || "",
       weight: weight || 0,
-      desiredVolume: desiredVolume || 0.1,
+      desiredVolume: desiredVolume || 50,
       activityTime: activityTime || 0,
       gender: gender || "female",
     }),
@@ -68,19 +68,6 @@ const UserSettingsForm = ({ handleUserSave }) => {
       setCalculatedWaterNorm(0);
     }
   }, [genderValue, weightValue, activeTimeValue]);
-
-  useEffect(() => {
-    // Проверяем, если поле очищено, восстанавливаем дефолтное значение
-    if (weightValue === "") {
-      setValue("weight", 0);
-    }
-    if (activeTimeValue === "") {
-      setValue("activityTime", 0);
-    }
-    if (desiredVolume === "") {
-      setValue("desiredVolume", 0.01);
-    }
-  }, [weightValue, activeTimeValue, desiredVolume, setValue]);
 
   const onSubmit = async (values) => {
     if (avatarFile) {
@@ -217,6 +204,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
                   <span>{calculatedWaterNorm}&nbsp;L</span>
                 </span>
               </span>
+
               <Controller
                 name="desiredVolume"
                 control={methods.control}
@@ -229,7 +217,6 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 )}
               />
             </div>
-
           </div>
         </div>
         <button type="submit" className={css.btn}>
