@@ -17,7 +17,7 @@
   font-weight: 700;
   color: var(--color-darkblue);
   margin: 0;
-  margin-bottom: 8px;
+  margin-bottom: 18px;
 }
 
 .progressBarWrapper {
@@ -79,6 +79,8 @@
   line-height: 18px;
   color: var(--color-lightgreen);
   pointer-events: none;
+  position: absolute;
+  top: -15px;
 }
 
 /* Планшетная версия */
