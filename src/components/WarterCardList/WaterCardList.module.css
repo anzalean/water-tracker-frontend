@@ -25,7 +25,7 @@
   }
 }
 
-.listContainer::-webkit-scrollbar {
+/* .listContainer::-webkit-scrollbar {
   width: 8px;
 }
 
@@ -48,4 +48,15 @@
 
 .listContainer::-webkit-scrollbar-corner {
   background-color: #f1f1f1;
+} */
+
+.listContainer::-webkit-scrollbar {
+  height: 8px;
+}
+.listContainer::-webkit-scrollbar-thumb {
+  background-color: var(--color-darkblue);
+  border-radius: 9px;
+}
+.listContainer::-webkit-scrollbar-track {
+  background-color: var(--color-white);
 }
