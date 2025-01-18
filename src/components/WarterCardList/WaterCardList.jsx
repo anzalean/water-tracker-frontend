@@ -31,8 +31,8 @@ const WaterCardList = () => {
   }, [dispatch, waterDate]);
 
   return isLoading ? (
-    <div className="loader">
-      <Loading />
+    <div>
+      <Loading customHeight="124"/>
     </div>
   ) : waterList && waterList.length > 0 ? (
     <div className={css.listContainer}>
