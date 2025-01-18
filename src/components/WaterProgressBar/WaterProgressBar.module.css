@@ -50,6 +50,7 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: fill 0.3s ease-in-out;
+  pointer-events: none;
 }
 
 .progressBarThumbIcon {
@@ -64,6 +65,7 @@
   font-size: 10px;
   color: var(--color-blacksemi);
   margin-top: 8px;
+  pointer-events: none;
 }
 
 .progressBarLabels span {
@@ -71,8 +73,16 @@
   text-align: center;
 }
 
+.currentProgress {
+  font-family: Poppins;
+  font-size: 10px;
+  line-height: 18px;
+  color: var(--color-lightgreen);
+  pointer-events: none;
+}
+
 /* Планшетная версия */
-@media (min-width: 768px)  {
+@media (min-width: 768px) {
   .progressBarContainer {
     width: 295px;
     height: 106px;
