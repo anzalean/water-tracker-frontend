@@ -19,7 +19,9 @@ const WaterProgressBar = ({ progress }) => {
               <use href={`${iconsPath}#icon-ellipse-white`} />
             </svg>
             {progress !== 0 && progress !== 50 && progress !== 100 && (
-              <div className={styles.currentProgress}>{progress}%</div>
+              <div className={styles.currentProgress}>
+                {Math.round(progress)}%
+              </div>
             )}
           </div>
         </div>
