@@ -11,6 +11,9 @@ export const feedbackSchema = Yup.object().shape({
     .min(2, "Name must be at least 2 characters long.")
     .max(50, "Name cannot exceed 50 characters.")
     .typeError("Name must be a string")
+    .transform((value, originalValue) => {
+      return originalValue === "" ? undefined : value;
+    })
     .notRequired(),
 
   email: Yup.string()
@@ -22,12 +25,20 @@ export const feedbackSchema = Yup.object().shape({
     .typeError("Sport time must be a number")
     .min(0, "Sport time cannot be negative.")
     .max(24, "Sport time cannot exceed 24 hours.")
+    .default(0)
+    .transform((value, originalValue) =>
+      originalValue === "" || originalValue == null ? 0 : value
+    )
     .notRequired(),
 
   weight: Yup.number()
     .typeError("Weight must be a number")
     .min(0, "Weight cannot be negative.")
     .max(350, "Weight cannot exceed 350 kg.")
+    .default(0)
+    .transform((value, originalValue) =>
+      originalValue === "" || originalValue == null ? 0 : value
+    )
     .notRequired(),
 
   desiredVolume: Yup.number()

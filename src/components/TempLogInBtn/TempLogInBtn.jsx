@@ -4,13 +4,13 @@ import { errNotify, successNotify } from "../../helpers/notification";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../../redux/user/userOps";
 import iconsPath from "../../assets/icons/sprite.svg";
-import { selectIsLoggedIn, selectError } from "../../redux/user/selectors";
+import { selectError } from "../../redux/user/selectors";
 import css from "./TempLogInBtn.module.css";
 
 export default function LogInBtn({ handleClick }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   const savedError = useSelector(selectError);
 
   const values = {
@@ -19,8 +19,6 @@ export default function LogInBtn({ handleClick }) {
   };
 
   const handleButton = async (values) => {
-    if (isLoggedIn) return;
-
     try {
       const signInData = await dispatch(signIn(values)).unwrap();
       console.log(signInData);

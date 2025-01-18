@@ -34,14 +34,15 @@ const UserSettingsForm = ({ handleUserSave }) => {
 
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
-    defaultValues: {
-      name: name || email,
-      email: email,
+    defaultValues: feedbackSchema.cast({
+      name: name || email || "",
+      email: email || "",
       weight: weight || 0,
       desiredVolume: desiredVolume || 50,
       activityTime: activityTime || 0,
       gender: gender || "female",
-    },
+    }),
+    shouldUnregister: true,
   });
 
   const { handleSubmit, watch } = methods;
@@ -87,7 +88,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
 
         <div className={css.imgWrapper}>
           {avatarURL ? (
-            <UserImageElem imgUrl={avatar} altText={name} />
+            <UserImageElem imgUrl={avatar} altText={`Photo of ${name}`} />
           ) : (
             <UserIconElem />
           )}
@@ -132,7 +133,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 )}
               />
             </div>
-            <div className={css.calculateContainer}>
+            <div className={css.calcContainer}>
               <p className={clsx(css.boldLabel, css.calcNormaLabel)}>
                 My daily norma
               </p>
@@ -150,7 +151,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
                   </span>
                 </div>
               </div>
-              <div className={css.calcNote}>
+              <div className={clsx(css.calcNote, css.text)}>
                 <span className={css.calcAsterix}>*</span> V is the volume of
                 the water norm in liters per day, M is your body weight, T is
                 the time of active sports, or another type of activity
@@ -159,10 +160,13 @@ const UserSettingsForm = ({ handleUserSave }) => {
               </div>
             </div>
             <div className={css.activeTimeContainer}>
-              <span>
-                <span className={css.sign}>!</span>&nbsp;
-                <span className={css.textActiveTime}>Active time in hours</span>
+              <span className={css.ExclamationContainer}>
+                <svg className={css.ExclamationIcon}>
+                  <use href={`${iconsPath}#icon-exclamation-mark`} />
+                </svg>
               </span>
+              &nbsp;
+              <span className={css.textActiveTime}>Active time in hours</span>
             </div>
           </div>
 

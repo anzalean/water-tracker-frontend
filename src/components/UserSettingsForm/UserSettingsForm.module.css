@@ -10,7 +10,8 @@
   font-family: inherit;
   font-weight: 700;
   font-size: 20px;
-  line-height: 1;
+  line-height: 120%;
+  letter-spacing: -0.01em;
   color: var(--color-darkblue);
   margin-bottom: 20px;
 }
@@ -25,13 +26,13 @@
 }
 
 .uploadBtn {
-  width: 100%;
-  height: 42px;
+  width: 133px;
+  height: 18px;
+  font-family: "Poppins", sans-serif;
   border: none;
   outline: none;
   background-color: transparent;
   color: var(--color-black);
-  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
@@ -55,9 +56,10 @@
   height: 100%;
   stroke: var(--color-black);
   fill: transparent;
+  transition: stroke 0.5s;
 }
 
-.uploadBtn:hover {
+.uploadBtn:hover .btnIcon {
   stroke: var(--color-darkblue);
 }
 
@@ -71,7 +73,7 @@
 .secondCol {
   display: flex;
   flex-direction: column;
-  row-gap: 14px;
+  gap: 24px;
   width: 100%;
 }
 
@@ -98,7 +100,7 @@
 .userInfoContainer {
   display: flex;
   flex-direction: column;
-  row-gap: 14px;
+  gap: 14px;
   margin-bottom: 24px;
 }
 
@@ -108,12 +110,13 @@
 
 .calcGenderContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
   margin-bottom: 14px;
 }
 
 .calcGenderFormula {
+  font-weight: 700;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.01em;
@@ -165,6 +168,25 @@
 }
 
 .activeTimeContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.ExclamationContainer {
+  width: 18px;
+  height: 18px;
+}
+
+.ExclamationIcon {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: var(--color-lightgreen);
+}
+
+.textActiveTime {
   font-weight: 400;
   font-size: 14px;
   line-height: 129%;
@@ -211,13 +233,10 @@
   }
 
   .uploadBtn {
-    width: 100%;
-    height: 42px;
-    font-weight: 400;
+    width: 151px;
+    height: 24px;
     font-size: 16px;
-    line-height: 150%;
     letter-spacing: -0.01em;
-    gap: 8px;
   }
 
   .btnIconContainer {
@@ -235,8 +254,11 @@
   }
 
   .boldLabel {
-    font-size: 18px;
-    line-height: 133%;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: var(--color-darkblue);
   }
 
   .thinkLabel {
@@ -268,6 +290,7 @@
   .calcManContainer {
     width: 170px;
   }
+
   .calcNote {
     padding: 16px;
     font-size: 16px;
@@ -277,12 +300,6 @@
   .textNorma {
     font-size: 16px;
     line-height: 150%;
-  }
-
-  .activeTimeContainer {
-    font-size: 16px;
-    line-height: 150%;
-    letter-spacing: -0.01em;
   }
 
   .title {
@@ -301,6 +318,16 @@
     line-height: 133%;
   }
 
+  .ExclamationContainer {
+    width: 22px;
+    height: 22px;
+  }
+
+  .textActiveTime {
+    font-size: 16px;
+    line-height: 150%;
+  }
+
   .btn {
     width: 141px;
     height: 56px;
@@ -309,7 +336,7 @@
 
 @media screen and (min-width: 1440px) {
   .form {
-    max-width: 920px;
+    max-width: 840px;
   }
 
   .content {
