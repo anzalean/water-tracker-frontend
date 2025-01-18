@@ -12,7 +12,9 @@ const DailyInfoNew = () => {
     <div className={css.container}>
       <div className={css.dayContainer}>
         <p className={css.day}>{currentDay}</p>
-        <CreateWaterBtn />
+        <div>
+          <CreateWaterBtn />
+        </div>
       </div>
       <WaterCardList />
     </div>

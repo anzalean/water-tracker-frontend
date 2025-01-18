@@ -1,0 +1,65 @@
+.EmailVerifyContainer {
+    position: relative;
+    background-color: var(--color-lightgray);
+    width: 100%;
+    height: 780px;
+    padding: 216px 16px;
+    border-radius: 30px;
+}
+
+.EmailVerifyTitle {
+    font-size: 32px;
+    color: var(--color-darkblue);
+    margin-bottom: 16px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border-radius: 30px;
+    gap: 16px;
+}
+
+.button {
+    padding: 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: var(--color-darkblue);
+    background-color: var(--color-lightgreen);
+    margin-top: 16px;
+}
+
+.button:hover {
+    background-color: var(--color-lightgreenhover);
+}
+
+@media (min-width: 768px) {
+    .EmailVerifyContainer {
+        width: 704px;
+        height: 960px;
+        padding: 281px 134px;
+        margin-top: 32px;
+    }
+
+    .EmailVerifyTitle {
+        font-size: 36px;
+    }
+
+    .button {
+        padding: 18px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .EmailVerifyContainer {
+        width: 672px;
+        height: 736px;
+        padding: 169px 118px;
+    }
+}

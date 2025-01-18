@@ -6,14 +6,14 @@
 }
 
 .list {
-  width: 100px;
+  width: 100%;
   display: flex;
   gap: 8px;
 }
 
 @media (min-width: 768px) {
   .list {
-    width: 100px;
+    width: 100%;
     display: flex;
     gap: 32px;
   }
