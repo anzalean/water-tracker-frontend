@@ -65,7 +65,7 @@
 @media (min-width: 768px) {
   .SignInContainer {
     width: 704px;
-    height: 750px;
+    
     padding: 281px 134px;
   }
   .signInTitle {

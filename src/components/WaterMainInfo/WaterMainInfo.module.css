@@ -7,7 +7,6 @@
   width: 100%;
   width: 343px;
   height: 415px;
-  padding: 16px;
   background-color: var(--color-lightgreen);
   border-radius: 30px;
   position: relative;
@@ -53,7 +52,6 @@
     width: 672px;
     height: 736px;
     padding: 32px;
-    margin: 32px;
     background-color: var(--color-lightgreen);
     display: flex;
     flex-direction: column;
