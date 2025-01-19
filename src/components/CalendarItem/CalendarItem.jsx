@@ -11,7 +11,7 @@ const CalendarItem = ({
 }) => {
   const dispatch = useDispatch();
 
-  const normalizedAvailability = Math.min(availability, 100);
+  const normalizedAvailability = Math.min(Math.round(availability), 100);
 
   const handleClick = () => {
     console.log("CurrentDate", currentDate);
