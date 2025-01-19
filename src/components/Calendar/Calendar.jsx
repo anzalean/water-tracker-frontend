@@ -56,6 +56,7 @@ const Calendar = () => {
               availability={availability}
               day={day}
               isActive={isActive}
+              currentDate={formattedDate}
             />
           </li>
         );

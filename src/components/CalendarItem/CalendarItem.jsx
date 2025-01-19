@@ -1,8 +1,18 @@
+import { useDispatch } from "react-redux";
+import { setWaterDate, setCalendarMonth } from "../../redux/water/waterSlice";
 import styles from "./CalendarItem.module.css";
 
-const CalendarItem = ({ availability = 0, day, isActive }) => {
-  console.log(availability);
-  console.log(isActive);
+const CalendarItem = ({ availability = 0, day, isActive, currentDate }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    console.log("CurrentDate", currentDate);
+    const date = new Date(currentDate);
+    const dateISO = date.toISOString();
+    dispatch(setWaterDate(dateISO));
+    dispatch(setCalendarMonth(dateISO));
+  };
+
   const buttonStyle = {
     backgroundColor: isActive
       ? "var(--color-darkblue)"
@@ -14,7 +24,11 @@ const CalendarItem = ({ availability = 0, day, isActive }) => {
 
   return (
     <div className={styles.itemBox}>
-      <button className={styles.buttonDay} style={buttonStyle}>
+      <button
+        onClick={handleClick}
+        className={styles.buttonDay}
+        style={buttonStyle}
+      >
         {day}
       </button>
       <span className={styles.infoText}>{availability}%</span>

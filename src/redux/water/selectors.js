@@ -18,3 +18,27 @@ export const selectWaterProgress = createSelector(
       : 0;
   }
 );
+
+export const selectCurrentDay = createSelector(
+  [selectCalendarMonth, selectWaterDate],
+  (calendarMonth, waterDate) => {
+    if (!calendarMonth) return "Today";
+
+    const date = new Date(waterDate);
+    const today = new Date();
+
+    const isToday =
+      date.getFullYear() === today.getFullYear() &&
+      date.getMonth() === today.getMonth() &&
+      date.getDate() === today.getDate();
+
+    if (isToday) {
+      return "Today";
+    }
+
+    const day = date.getDate();
+    const month = date.toLocaleString("en-US", { month: "long" });
+
+    return `${day}, ${month}`;
+  }
+);
