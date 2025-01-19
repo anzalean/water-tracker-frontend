@@ -1,25 +1,23 @@
 import { useDispatch } from "react-redux";
 import { setWaterDate, setCalendarMonth } from "../../redux/water/waterSlice";
+import { useSelector } from "react-redux";
+import { selectCalendarMonth } from "../../redux/water/selectors";
 import styles from "./CalendarItem.module.css";
+import { isToday } from "../../helpers/isToday";
+import { isActiveDate } from "../../helpers/isActiveDate";
 
-const CalendarItem = ({
-  availability = 0,
-  day,
-  isActive,
-  currentDate,
-  onSelect,
-}) => {
+const CalendarItem = ({ availability = 0, day, currentDate }) => {
   const dispatch = useDispatch();
+  const calrndarDate = useSelector(selectCalendarMonth);
+  const isActive = isActiveDate(currentDate, calrndarDate);
 
   const normalizedAvailability = Math.min(Math.round(availability), 100);
 
   const handleClick = () => {
-    console.log("CurrentDate", currentDate);
     const date = new Date(currentDate);
     const dateISO = date.toISOString();
     dispatch(setWaterDate(dateISO));
     dispatch(setCalendarMonth(dateISO));
-    onSelect(day);
   };
 
   const buttonStyle = {
@@ -34,6 +32,10 @@ const CalendarItem = ({
       : normalizedAvailability === 100
       ? "var(--color-black)"
       : "var(--color-black)",
+
+    border: isToday(currentDate)
+      ? "2px solid var(--color-border-today)"
+      : "none",
   };
 
   return (
