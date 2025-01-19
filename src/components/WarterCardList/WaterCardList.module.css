@@ -13,6 +13,16 @@
   gap: 8px;
 }
 
+.noRecord {
+  height: 128px;
+  display: flex;
+  align-items: center;
+}
+
+.noRecordMessage {
+  font-size: 20px;
+}
+
 @media (min-width: 768px) {
   .list {
     width: 100%;
