@@ -53,17 +53,15 @@ const UserSettingsForm = ({ handleUserSave }) => {
   const [calculatedWaterNorm, setCalculatedWaterNorm] = useState(0);
 
   useEffect(() => {
-    if (weightValue && activeTimeValue) {
-      const weight = parseFloat(weightValue);
-      const activeTime = parseFloat(activeTimeValue);
+    const weight = parseFloat(weightValue) || 0;
+    const activeTime = parseFloat(activeTimeValue) || 0;
 
-      if (!isNaN(weight) && !isNaN(activeTime)) {
-        const waterNorm =
-          genderValue === "female"
-            ? weight * 0.03 + activeTime * 0.4
-            : weight * 0.04 + activeTime * 0.6;
-        setCalculatedWaterNorm(parseFloat(waterNorm.toFixed(2)));
-      }
+    if (!isNaN(weight) && !isNaN(activeTime)) {
+      const waterNorm =
+        genderValue === "female"
+          ? weight * 0.03 + activeTime * 0.4
+          : weight * 0.04 + activeTime * 0.6;
+      setCalculatedWaterNorm(parseFloat(waterNorm.toFixed(4)));
     } else {
       setCalculatedWaterNorm(0);
     }
