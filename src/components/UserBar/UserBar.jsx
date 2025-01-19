@@ -62,6 +62,7 @@ export default function UserBar() {
         .unwrap()
         .then(() => {
           successNotify("Successfully fetched user information.");
+          setShowPopover(false);
           setShowUserForm(true);
         })
         .catch(() => {
@@ -83,6 +84,7 @@ export default function UserBar() {
   };
 
   const handleLogoutButton = () => {
+    setShowPopover(false);
     setShowLogoutModal(true);
   };
 
