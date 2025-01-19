@@ -87,6 +87,7 @@ export const WaterForm = ({ onSave, initialData }) => {
                     type="text"
                     disabled
                     value={`${field.value} ml`}
+                    style={{ backgroundColor: "#323f47" }}
                   />
                 )}
               />
@@ -118,7 +119,18 @@ export const WaterForm = ({ onSave, initialData }) => {
               name="time"
               control={control}
               render={({ field }) => (
-                <input {...field} className={css.timeField} type="time" />
+                <input
+                  {...field}
+                  className={css.timeField}
+                  type="time"
+                  style={{
+                    padding: "16px 16px",
+                    width: "100%",
+                    height: "56px",
+                    boxSizing: "border-box",
+                    WebkitAppearance: "none",
+                  }}
+                />
               )}
             />
             {errors.time && (
