@@ -1,5 +1,5 @@
 .monthInfoSection {
-    height: 348px;
+    height: 100%;
 } 
 
 .monthPaginationBox{
@@ -9,6 +9,7 @@
     align-items: center;
     margin-bottom: 24px;
     width: 100%;
+    gap: 58px;
     padding: 0;
 }
 
@@ -19,6 +20,7 @@
     letter-spacing: -0.01em;
     line-height: 1.2;
     color: var(--color-darkblue);
+    position: relative;
 }
 
 .paginationWrapper {
@@ -40,10 +42,17 @@
 
     .monthPaginationBox{ 
         padding: 0;
+        width: 640px;
     }
 
     .monthTitle{
         font-size: 28px;
         line-height: 1.14;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .monthPaginationBox{ 
+        width: 608px;
     }
 }

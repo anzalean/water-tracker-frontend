@@ -25,7 +25,7 @@ const Calendar = () => {
 
   if (isLoading)
     return (
-      <div>
+      <div className={styles.loading}>
         <Loading customHeight="124" />
       </div>
     );
