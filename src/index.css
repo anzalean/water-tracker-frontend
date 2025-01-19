@@ -11,6 +11,7 @@
   --color-black: #2f2f2f;
   --color-blacksemi: #2f2f2f80;
   --color-error: #ef5050;
+  --color-border-today: #d2650c;
   /* Animation */
   --animation: 150ms ease-in;
 }
@@ -29,7 +30,6 @@
   font-style: normal;
 }
 
-
 .visually-hidden {
   position: absolute;
   white-space: nowrap;
@@ -46,10 +46,10 @@
 
 body {
   justify-content: center;
-    align-items: center;
-    display: flex;
-    min-height: 100vh;
-    height: 100%;
+  align-items: center;
+  display: flex;
+  min-height: 100vh;
+  height: 100%;
   background-color: var(--color-white);
   font-family: "Poppins", sans-serif;
   color: var(--color-black);
