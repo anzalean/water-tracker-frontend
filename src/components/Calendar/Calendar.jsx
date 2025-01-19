@@ -14,8 +14,6 @@ import { selectDesiredVolume } from "../../redux/user/selectors";
 const Calendar = () => {
   const monthWater = useSelector(selectMonthWater);
   const currentMonth = useSelector(selectCalendarMonth);
-  const currentMonthDate = new Date(currentMonth);
-  currentMonthDate.setHours(0, 0, 0, 0);
   const isLoading = useSelector(selectWaterLoading);
 
   const desiredVolume = useSelector(selectDesiredVolume);
@@ -35,8 +33,10 @@ const Calendar = () => {
   return (
     <ul className={styles.calendarList}>
       {daysInMonth.map((day) => {
-        currentMonthDate.setDate(day);
-        const formattedDate = currentMonthDate.toISOString().slice(0, 10);
+        const currentDayDate = new Date(currentMonth);
+        currentDayDate.setDate(day);
+        currentDayDate.setHours(0, 0, 0, 0);
+        const formattedDate = currentDayDate.toISOString().slice(0, 10);
         const dayData =
           monthWater.find((entry) => {
             return entry.date.slice(0, 10) === formattedDate;
@@ -56,7 +56,7 @@ const Calendar = () => {
               availability={availability}
               day={day}
               isActive={isActive}
-              currentDate={formattedDate}
+              currentDate={currentDayDate}
             />
           </li>
         );
