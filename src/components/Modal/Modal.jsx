@@ -38,11 +38,11 @@ const Modal = ({
       window.innerWidth - document.documentElement.clientWidth;
     document.body.style.position = "fixed";
 
-    document.body.style.top = `-${scrollY}px`;
+    
     document.body.style.width = `calc(100% - ${scrollBarWidth}px)`;
 
     document.body.style.overflow = "hidden";
-
+    // document.body.style.top = `-${scrollY}px`;
     return () => {
       document.removeEventListener("keydown", handleDocumentKeyDown);
 
