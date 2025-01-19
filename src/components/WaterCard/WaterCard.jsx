@@ -13,9 +13,11 @@ export default function WaterCard({ waterCard }) {
 
   const openModal = () => {
     setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
   };
   const closeModal = () => {
     setIsModalOpen(false);
+    document.body.style.overflow = "auto";
   };
 
   const handleDelete = () => {

@@ -12,7 +12,7 @@ export default function AddWaterModal({ onClose }) {
 
   const onSubmitForm = (values) => {
     const date = replaceTimeInDate(currentDate, values.time);
-    console.log({ date, amount: values.inputField });
+    // console.log({ date, amount: values.inputField });
     dispatch(addWater({ date, amount: values.inputField }))
       .unwrap()
       .then(() => {
