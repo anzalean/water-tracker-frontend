@@ -34,8 +34,8 @@ const Calendar = () => {
     <ul className={styles.calendarList}>
       {daysInMonth.map((day) => {
         const currentDayDate = new Date(currentMonth);
-        currentDayDate.setDate(day);
-        currentDayDate.setHours(0, 0, 0, 0);
+        currentDayDate.setUTCDate(day);
+        currentDayDate.setUTCHours(0, 0, 0, 0);
         const formattedDate = currentDayDate.toISOString().slice(0, 10);
         const dayData =
           monthWater.find((entry) => {

@@ -43,7 +43,7 @@ const waterSlice = createSlice({
         state.items.push(newItem);
         state.totalDayWater += newItem.amount;
         const addedDate = new Date(newItem.date);
-        addedDate.setHours(0, 0, 0, 0);
+        addedDate.setUTCHours(0, 0, 0, 0);
         const addedDateString = addedDate.toISOString();
 
         const existingMonthItem = state.monthItems.find(
@@ -88,7 +88,7 @@ const waterSlice = createSlice({
         state.items.splice(deletedWaterIndex, 1);
 
         const deletedDate = new Date(deletedWater.date);
-        deletedDate.setHours(0, 0, 0, 0);
+        deletedDate.setUTCHours(0, 0, 0, 0);
         const deletedDateString = deletedDate.toISOString();
 
         const existingMonthItem = state.monthItems.find(
@@ -133,7 +133,7 @@ const waterSlice = createSlice({
         );
 
         const updatedDate = new Date(newItem.date);
-        updatedDate.setHours(0, 0, 0, 0);
+        updatedDate.setUTCHours(0, 0, 0, 0);
         const updatedDateString = updatedDate.toISOString();
         const existingMonthItem = state.monthItems.find(
           (item) => item.date === updatedDateString
