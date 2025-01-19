@@ -1,4 +1,7 @@
-
+.loader {
+  display: flex;
+  justify-content: center;
+}
 
 .listContainer {
   width: 100%;
