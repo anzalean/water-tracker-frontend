@@ -45,6 +45,11 @@
 }
 
 body {
+  justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 100vh;
+    height: 100%;
   background-color: var(--color-white);
   font-family: "Poppins", sans-serif;
   color: var(--color-black);
@@ -78,4 +83,8 @@ img {
 button {
   cursor: pointer;
   border: none;
+}
+
+#root {
+  width: 100%;
 }

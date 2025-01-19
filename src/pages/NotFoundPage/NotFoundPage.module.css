@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 20px;
+  padding: 16px;
   font-family: "Poppins", sans-serif;
   color: var(--color-darkblue);
 }

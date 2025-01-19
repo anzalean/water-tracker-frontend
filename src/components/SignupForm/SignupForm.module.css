@@ -2,7 +2,8 @@
   position: relative;
   background-color: var(--color-lightgray);
   width: 100%;
-  height: 780px;
+  height: 100%;
+  /* height: 790px; */
   padding: 170px 16px;
   border-radius: 30px;
 }
@@ -18,7 +19,7 @@
   flex-direction: column;
   margin: 0 auto;
   border-radius: 30px;
-  gap: 16px;
+  gap: 12px;
 }
 
 .error {
@@ -46,9 +47,8 @@
 @media (min-width: 768px) {
   .SignUpContainer {
     width: 704px;
-    height: 960px;
-    padding: 227px 134px;
-    margin-top: 32px;
+    
+    padding: 219px 134px;
   }
   .signupTitle {
     font-size: 36px;
@@ -63,7 +63,7 @@
 @media (min-width: 1440px) {
   .SignUpContainer {
     width: 672px;
-    height: 736px;
-    padding: 130px 118px 100px 118px;
+    height: 735px;
+    padding: 149px 118px 100px 118px;
   }
 }
