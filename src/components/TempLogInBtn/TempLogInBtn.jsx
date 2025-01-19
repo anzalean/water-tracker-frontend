@@ -39,14 +39,14 @@ export default function LogInBtn({ handleClick }) {
 
   return (
     <React.Fragment>
-      <button onClick={() => handleButton(values)} className={css.button}>
-        <span className={css.iconContainer} aria-label="Log in icon">
-          <svg className={css.icon}>
-            <use href={`${iconsPath}#icon-log-out`} />
-          </svg>
-        </span>
-        <span className={css.text}>Log in</span>
-      </button>
+      {/* <button onClick={() => handleButton(values)} className={css.button}>
+  <span className={css.iconContainer} aria-label="Log in icon">
+    <svg className={css.icon}>
+      <use href={`${iconsPath}#icon-log-out`} />
+    </svg>
+  </span>
+  <span className={css.text}>Log in</span>
+</button> */}
     </React.Fragment>
   );
 }
