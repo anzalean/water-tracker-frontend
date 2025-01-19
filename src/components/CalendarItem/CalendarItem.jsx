@@ -1,6 +1,8 @@
 import styles from "./CalendarItem.module.css";
 
 const CalendarItem = ({ availability = 0, day, isActive }) => {
+  console.log(availability);
+  console.log(isActive);
   const buttonStyle = {
     backgroundColor: isActive
       ? "var(--color-darkblue)"

@@ -8,6 +8,7 @@ export const selectWaterDate = (state) => state.water.date;
 export const selectWaterLoading = (state) => state.water.loading;
 export const selectError = (state) => state.water.error;
 export const selectMonthWater = (state) => state.water.monthItems;
+export const selectCalendarMonth = (state) => state.water.calendarMonth;
 
 export const selectWaterProgress = createSelector(
   [selectDesiredVolume, selectTotalDayWater],

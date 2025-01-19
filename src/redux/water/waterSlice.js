@@ -10,6 +10,7 @@ import { signOut } from "../user/userOps";
 
 const initialState = {
   date: new Date().toISOString(),
+  calendarMonth: new Date().toISOString(),
   totalDayWater: 0,
   items: [],
   monthItems: [],
@@ -20,6 +21,14 @@ const initialState = {
 const waterSlice = createSlice({
   name: "water",
   initialState,
+  reducers: {
+    setCalendarMonth: (state, action) => {
+      state.calendarMonth = action.payload;
+    },
+    setWaterDate: (state, action) => {
+      state.date = action.payload;
+    },
+  },
   extraReducers: (builer) =>
     builer
       .addCase(addWater.pending, (state) => {
@@ -195,3 +204,4 @@ const waterSlice = createSlice({
 });
 
 export const waterReducer = waterSlice.reducer;
+export const { setCalendarMonth, setWaterDate } = waterSlice.actions;
