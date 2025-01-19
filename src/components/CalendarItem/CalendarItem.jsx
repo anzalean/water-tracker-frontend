@@ -23,20 +23,17 @@ const CalendarItem = ({
   };
 
   const buttonStyle = {
-    backgroundColor:
-      normalizedAvailability === 100
-        ? "var(--color-white)"
-        : isActive
-        ? "var(--color-darkblue)"
-        : normalizedAvailability > 0
-        ? "var(--color-darkblue-translucent)"
-        : "var(--color-white)",
-    color:
-      normalizedAvailability === 100
-        ? "var(--color-black)"
-        : isActive
-        ? "var(--color-lightgreen)"
-        : "var(--color-black)",
+    backgroundColor: isActive
+      ? "var(--color-darkblue)"
+      : availability === 100
+      ? "var(--color-white)"
+      : "var(--color-darkblue-translucent)",
+
+    color: isActive
+      ? "var(--color-lightgreen)"
+      : availability === 100
+      ? "var(--color-black)"
+      : "var(--color-black)",
   };
 
   return (
