@@ -7,6 +7,7 @@
   background-position: center;
   background-repeat: no-repeat;
   min-height: 353px;
+  margin-top: 16px;
 }
 
 @media only screen and (min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -129,6 +130,7 @@
     background-image: url("../../assets/images/hero_desk@1x.webp");
     max-width: 672px;
     height: 736px;
+    margin-top: 0;
   }
 
   @media (-webkit-min-device-pixel-ratio: 2),
