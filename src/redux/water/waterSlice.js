@@ -10,6 +10,7 @@ import { signOut } from "../user/userOps";
 
 const initialState = {
   date: new Date().toISOString(),
+  calendarMonth: new Date().toISOString(),
   totalDayWater: 0,
   items: [],
   monthItems: [],
@@ -20,6 +21,14 @@ const initialState = {
 const waterSlice = createSlice({
   name: "water",
   initialState,
+  reducers: {
+    setCalendarMonth: (state, action) => {
+      state.calendarMonth = action.payload;
+    },
+    setWaterDate: (state, action) => {
+      state.date = action.payload;
+    },
+  },
   extraReducers: (builer) =>
     builer
       .addCase(addWater.pending, (state) => {
@@ -34,7 +43,7 @@ const waterSlice = createSlice({
         state.items.push(newItem);
         state.totalDayWater += newItem.amount;
         const addedDate = new Date(newItem.date);
-        addedDate.setHours(0, 0, 0, 0);
+        addedDate.setUTCHours(0, 0, 0, 0);
         const addedDateString = addedDate.toISOString();
 
         const existingMonthItem = state.monthItems.find(
@@ -79,7 +88,7 @@ const waterSlice = createSlice({
         state.items.splice(deletedWaterIndex, 1);
 
         const deletedDate = new Date(deletedWater.date);
-        deletedDate.setHours(0, 0, 0, 0);
+        deletedDate.setUTCHours(0, 0, 0, 0);
         const deletedDateString = deletedDate.toISOString();
 
         const existingMonthItem = state.monthItems.find(
@@ -124,7 +133,7 @@ const waterSlice = createSlice({
         );
 
         const updatedDate = new Date(newItem.date);
-        updatedDate.setHours(0, 0, 0, 0);
+        updatedDate.setUTCHours(0, 0, 0, 0);
         const updatedDateString = updatedDate.toISOString();
         const existingMonthItem = state.monthItems.find(
           (item) => item.date === updatedDateString
@@ -195,3 +204,4 @@ const waterSlice = createSlice({
 });
 
 export const waterReducer = waterSlice.reducer;
+export const { setCalendarMonth, setWaterDate } = waterSlice.actions;
