@@ -11,7 +11,7 @@ const CalendarItem = ({ availability = 0, day, currentDate }) => {
   const calrndarDate = useSelector(selectCalendarMonth);
   const isActive = isActiveDate(currentDate, calrndarDate);
 
-  const normalizedAvailability = Math.min(availability, 100);
+  const normalizedAvailability = Math.min(Math.round(availability), 100);
 
   const handleClick = () => {
     const date = new Date(currentDate);
