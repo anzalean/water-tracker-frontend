@@ -8,7 +8,7 @@ const Modal = ({
   children,
   onClose,
   portalId = "portal-root",
-  isUserForm = false,
+  isUserForm = null,
 }) => {
   const wrapperRef = useRef(null);
 
@@ -33,22 +33,39 @@ const Modal = ({
 
   useEffect(() => {
     document.addEventListener("keydown", handleDocumentKeyDown);
+    const scrollY = window.scrollY;
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.position = "fixed";
+
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = `calc(100% - ${scrollBarWidth}px)`;
+
+    document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("keydown", handleDocumentKeyDown);
+
+      document.body.style.overflow = "";
+
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollY);
     };
   }, [handleDocumentKeyDown]);
 
   return ReactDOM.createPortal(
     <div className={css.modalWrapper} onClick={handleClickOutside}>
       <div
-        className={css.modal}
+        className={clsx(css.modal, isUserForm && css.userModal)}
         ref={wrapperRef}
         onClick={(event) => {
           event.stopPropagation();
         }}
       >
         <button
-          className={clsx(css.closeBtn, isUserForm & css.closeBtnUserForm)}
+          className={clsx(css.closeBtn, isUserForm && css.closeBtnUserForm)}
           onClick={onClose}
         >
           <svg className={css.icon} aria-label="close button icon">

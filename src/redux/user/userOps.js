@@ -27,9 +27,7 @@ export const setupAxiosInterceptors = (store) => {
         try {
           const { refreshToken } = store.getState().user;
           if (refreshToken) {
-            const { data } = await axiosInstance.post("/auth/refresh", {
-              refreshToken,
-            });
+            const { data } = await axiosInstance.post("/auth/refresh");
             store.dispatch(refreshTokens(data));
             setAuthHeader(data.accessToken);
             error.config.headers.Authorization = `Bearer ${data.accessToken}`;
@@ -191,7 +189,10 @@ export const resetPassword = createAsyncThunk(
   "user/resetPassword",
   async (resetData, thunkAPI) => {
     try {
-      const response = await axiosInstance.post("/auth/reset-pwd", resetData);
+      const response = await axiosInstance.post("/auth/reset-pwd", {
+        token: resetData.resetToken, 
+        password: resetData.password,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import {
   selectIsLoggedIn,
-  selectUserLoading,
-  selectError,
   selectUserName,
   selectUserAvatar,
 } from "../../redux/user/selectors";
@@ -26,8 +24,6 @@ import css from "./UserBar.module.css";
 export default function UserBar() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoading = useSelector(selectUserLoading);
-  const error = useSelector(selectError);
   const userName = useSelector(selectUserName);
   const userAvatar = useSelector(selectUserAvatar);
 
@@ -65,11 +61,11 @@ export default function UserBar() {
       dispatch(fetchCurrentUser())
         .unwrap()
         .then(() => {
-          successNotify("Ok");
+          successNotify("Successfully fetched user information.");
           setShowUserForm(true);
         })
         .catch(() => {
-          errNotify("Error fetching user info");
+          errNotify("Failed to fetch user information.");
         });
     }
   };
@@ -78,15 +74,12 @@ export default function UserBar() {
     dispatch(updateUser(data))
       .unwrap()
       .then(() => {
-        successNotify("Profile updated");
+        successNotify("Settings updated successfully.");
+        setShowUserForm(false);
       })
       .catch(() => {
-        errNotify("Error updating profile");
+        errNotify("Failed to update settings.");
       });
-
-    if (!isLoading && !error) {
-      setShowUserForm(false);
-    }
   };
 
   const handleLogoutButton = () => {
@@ -97,10 +90,10 @@ export default function UserBar() {
     dispatch(signOut())
       .unwrap()
       .then(() => {
-        successNotify("Logged out");
+        successNotify("You have successfully logged out.");
       })
       .catch(() => {
-        errNotify("Error during logout");
+        errNotify("An error occurred during logout. Please try again.");
       })
       .finally(() => {
         setShowLogoutModal(false);
@@ -158,7 +151,7 @@ export default function UserBar() {
       )}
 
       {showUserForm && (
-        <Modal onClose={() => setShowUserForm(false)}>
+        <Modal onClose={() => setShowUserForm(false)} isUserForm={true}>
           <UserSettingsForm handleUserSave={handleUserForm} />
         </Modal>
       )}

@@ -28,6 +28,10 @@
   margin: 0 16px;
 }
 
+.userModal {
+  padding-right: 7px;
+}
+
 .modalContent {
   flex-grow: 1;
   overflow-y: auto;
@@ -48,6 +52,11 @@
   z-index: 102;
 }
 
+.closeBtnUserForm {
+  position: absolute;
+  right: 16px;
+}
+
 .icon {
   width: 24px;
   height: 24px;
@@ -60,7 +69,12 @@
     padding-right: 40px;
   }
 
+  .userModal {
+    padding-right: 16px;
+  }
+
   .closeBtnUserForm {
+    position: absolute;
     top: 40px;
     right: 40px;
   }

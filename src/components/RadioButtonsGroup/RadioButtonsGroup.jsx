@@ -2,12 +2,13 @@ import clsx from "clsx";
 import { useFormContext, Controller } from "react-hook-form";
 import css from "./RadioButtonsGroup.module.css";
 
-const options = [
-  { value: "female", label: "Female" },
-  { value: "male", label: "Male" },
-];
-
-const RadioButtonsGroup = ({ name, label, className }) => {
+const RadioButtonsGroup = ({
+  name,
+  label,
+  options = [],
+  defaultValue,
+  className,
+}) => {
   const { control } = useFormContext();
 
   return (
@@ -16,6 +17,7 @@ const RadioButtonsGroup = ({ name, label, className }) => {
       <Controller
         name={name}
         control={control}
+        defaultValue={defaultValue}
         render={({ field }) => (
           <div className={css.radioGroup}>
             {options.map((option, index) => (

@@ -31,8 +31,8 @@ const WaterCardList = () => {
   }, [dispatch, waterDate]);
 
   return isLoading ? (
-    <div className="loader">
-      <Loading />
+    <div>
+      <Loading customHeight="124" />
     </div>
   ) : waterList && waterList.length > 0 ? (
     <div className={css.listContainer}>
@@ -44,7 +44,11 @@ const WaterCardList = () => {
         ))}
       </ul>
     </div>
-  ) : null;
+  ) : (
+    <div className={css.noRecord}>
+      <p className={css.noRecordMessage}>No entries yet</p>
+    </div>
+  );
 };
 
 export default WaterCardList;

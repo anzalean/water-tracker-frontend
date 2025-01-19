@@ -1,8 +1,4 @@
 import React, { useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { updateUser } from "../../redux/user/userOps";
-import { errNotify, successNotify } from "../../helpers/notification";
-import { selectUserEmail } from "../../redux/user/selectors";
 import css from "./UploadFileButton.module.css";
 
 const UploadFileButton = ({
@@ -11,9 +7,7 @@ const UploadFileButton = ({
   onFileSelect,
   className,
 }) => {
-  const userEmail = useSelector(selectUserEmail);
   const fileInputRef = useRef(null);
-  const dispatch = useDispatch();
 
   const handleButtonClick = () => {
     if (fileInputRef.current) {
@@ -24,17 +18,8 @@ const UploadFileButton = ({
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const userData = { avatar: file, email: userEmail };
-
-      dispatch(updateUser(userData))
-        .unwrap()
-        .then((result) => {
-          if (onFileSelect) onFileSelect(result, file);
-          successNotify("Ok");
-        })
-        .catch(() => {
-          errNotify("Error uploading avatar");
-        });
+      const fileUrl = URL.createObjectURL(file);
+      if (onFileSelect) onFileSelect(fileUrl, file);
     }
   };
 
