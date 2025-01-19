@@ -54,6 +54,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: var(--color-black);
   margin: 0;
+  overscroll-behavior: none;
 }
 
 h1,
