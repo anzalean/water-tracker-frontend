@@ -131,7 +131,7 @@ export default function UserBar() {
             onClick={handleSettingsButton}
             className={clsx(css.popoverItem, showUserForm && css.active)}
           >
-            <svg className={css.icon}>
+            <svg className={css.icon} width="16" height="16">
               <use href={`${iconsPath}#icon-settings`} />
             </svg>
             <span>Settings</span>
