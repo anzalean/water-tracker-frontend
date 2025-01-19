@@ -1,11 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Loading } from "../Loading/Loading";
-import {
-  selectWaterItems,
-  selectWaterDate,
-  selectWaterLoading,
-} from "../../redux/water/selectors";
+import { selectWaterItems, selectWaterDate } from "../../redux/water/selectors";
 import { getDayWater } from "../../redux/water/waterOps";
 import WaterCard from "../WaterCard/WaterCard";
 import { successNotify, errNotify } from "../../helpers/notification";
@@ -14,8 +9,6 @@ import css from "./WaterCardList.module.css";
 const WaterCardList = () => {
   const waterDate = useSelector(selectWaterDate);
   const waterList = useSelector(selectWaterItems);
-  const isLoading = useSelector(selectWaterLoading);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,11 +23,7 @@ const WaterCardList = () => {
       });
   }, [dispatch, waterDate]);
 
-  return isLoading ? (
-    <div className={css.loader}>
-      <Loading customHeight="124" />
-    </div>
-  ) : waterList && waterList.length > 0 ? (
+  return waterList && waterList.length > 0 ? (
     <div className={css.listContainer}>
       <ul className={css.list}>
         {waterList.map((waterItem) => (
@@ -52,5 +41,3 @@ const WaterCardList = () => {
 };
 
 export default WaterCardList;
-
-// import waterList from "../../data/warterCards.json";
