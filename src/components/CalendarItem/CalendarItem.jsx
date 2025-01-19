@@ -25,13 +25,13 @@ const CalendarItem = ({
   const buttonStyle = {
     backgroundColor: isActive
       ? "var(--color-darkblue)"
-      : availability === 100
+      : normalizedAvailability === 100
       ? "var(--color-white)"
       : "var(--color-darkblue-translucent)",
 
     color: isActive
       ? "var(--color-lightgreen)"
-      : availability === 100
+      : normalizedAvailability === 100
       ? "var(--color-black)"
       : "var(--color-black)",
   };
