@@ -208,7 +208,7 @@ export const fetchOAuthUrl = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInstance.get("/auth/get-oauth-url");
-      return response.data.url;
+      return response.data; 
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response?.data?.message || error.message
@@ -220,11 +220,10 @@ export const fetchOAuthUrl = createAsyncThunk(
 // Thunk for handling Google login
 export const googleLogin = createAsyncThunk(
   "user/googleLogin",
-  async (googleData, thunkAPI) => {
+  async (code, thunkAPI) => {
     try {
       const response = await axiosInstance.post(
-        "/auth/google-login",
-        googleData
+        "/auth/google-login", code 
       );
       setAuthHeader(response.data.accessToken);
       return response.data;

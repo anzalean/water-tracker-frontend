@@ -6,10 +6,9 @@ import Logo from "../Logo/Logo";
 import InputField from "../InputField/InputField";
 import PasswordField from "../PasswordField/PasswordField";
 import FormFooter from "../FormFooter/FormFooter";
-import { googleLogin, signIn } from "../../redux/user/userOps";
+import { fetchOAuthUrl, signIn } from "../../redux/user/userOps";
 import { useDispatch } from "react-redux";
 import { FcGoogle } from "react-icons/fc";
-import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 
 const validationSchema = Yup.object().shape({
@@ -53,14 +52,15 @@ export default function SigninForm() {
     }
   };
 
-  const googleLoginClick = useGoogleLogin({
-    onSuccess: (response) => {
-      if (response?.credential) {
-        const token = response.credential;
-        dispatch(googleLogin({ token }));
-      }
-    },
-  });
+  const handleGoogleSignIn = async () => {
+    try {
+      const response = await dispatch(fetchOAuthUrl()).unwrap();
+      window.location.href = response.url;
+    } catch (error) {
+      console.error("Google login failed", error);
+      setServerError("Failed to initiate Google login");
+    }
+  };
 
   return (
     <div className={s.SignInContainer}>
@@ -90,7 +90,7 @@ export default function SigninForm() {
         </button>
         <button
           type="button"
-          onClick={googleLoginClick}
+          onClick={handleGoogleSignIn}
           className={s.googleButton}
         >
           <FcGoogle className={s.googleIcon} />

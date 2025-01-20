@@ -5,6 +5,7 @@ import { SharedLayout } from "./components/SharedLayout/SharedLayout";
 import { fetchCurrentUser } from "./redux/user/userOps";
 import { RestrictedRoute } from "./components/RestrictedRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
+import ConfirmGoogleAuth from "./pages/ConfirmGoogleAuth/ConfirmGoogleAuth";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
@@ -54,6 +55,15 @@ export function App() {
               <RestrictedRoute
                 redirectTo="/tracker"
                 component={<SignInPage />}
+              />
+            }
+          />
+          <Route
+            path="/confirm-google-auth"
+            element={
+              <RestrictedRoute
+                redirectTo="/tracker"
+                component={<ConfirmGoogleAuth />}
               />
             }
           />
