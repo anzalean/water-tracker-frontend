@@ -80,7 +80,7 @@
 
 .timeField {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   justify-content: flex-start;
   flex-direction: row;
   border: 1px solid rgba(47, 47, 47, 0.15);
@@ -94,8 +94,14 @@
   line-height: 1.28571;
   letter-spacing: -0.01em;
   color: var(--color-black);
+  min-height: 46px;
 }
-
+.timeField:focus {
+  outline: 1px solid rgba(47, 47, 47, 0.40);
+}
+.timeField:focus-visible {
+  outline: 1px solid rgba(47, 47, 47, 0.40);
+}
 .keyboard {
   display: flex;
   flex-direction: column;
@@ -121,7 +127,7 @@
   border-radius: 15px;
   padding-left: 16px;
   width: 303px;
-  height: 50px;
+  height: 46px;
   margin-top: 8px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -130,7 +136,12 @@
   letter-spacing: -0.01em;
   color: var(--color-black);
 }
-
+.keyboardField:focus {
+  outline: 1px solid rgba(47, 47, 47, 0.40);
+}
+.keyboardField:focus-visible {
+  outline: 1px solid rgba(47, 47, 47, 0.40);
+}
 .btnSubmit {
   display: flex;
   align-items: center;
@@ -175,6 +186,7 @@
     height: 43px;
     font-size: 15px;
     line-height: 1.49333;
+    border: none;
   }
 
   .time {
