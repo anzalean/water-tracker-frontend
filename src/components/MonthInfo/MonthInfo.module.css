@@ -1,5 +1,6 @@
 .monthInfoSection {
     height: 100%;
+    width: 100%;
 } 
 
 .monthPaginationBox{
@@ -9,7 +10,7 @@
     align-items: center;
     margin-bottom: 24px;
     width: 100%;
-    gap: 58px;
+    /* gap: 58px; */
     padding: 0;
 }
 
@@ -56,3 +57,13 @@
         width: 608px;
     }
 }
+
+@media only screen and (max-width: 374px) {
+    .monthPaginationBox{ 
+        gap: 20px;
+    }
+    .paginationWrapper {
+        gap: 20px;
+    }
+}
+
