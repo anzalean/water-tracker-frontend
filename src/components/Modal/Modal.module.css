@@ -30,6 +30,8 @@ body {
   justify-content: flex-start;
   overflow: hidden;
   margin: 0 16px;
+  /* width: 100%;
+  max-width: 343px; */
 }
 
 .userModal {
@@ -71,6 +73,7 @@ body {
   .modal {
     padding-left: 40px;
     padding-right: 40px;
+    /* max-width: 518px; */
   }
 
   .userModal {

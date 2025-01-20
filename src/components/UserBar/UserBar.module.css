@@ -24,7 +24,9 @@
   align-items: center;
   justify-content: center;
 }
-
+.modal {
+  max-width: 100%;
+}
 .contentBtn {
   display: flex;
   flex-wrap: nowrap;

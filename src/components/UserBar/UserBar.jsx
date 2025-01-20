@@ -157,7 +157,9 @@ export default function UserBar() {
       )}
 
       {showUserForm && (
-        <Modal onClose={() => { setShowUserForm(false); document.body.style.overflow = "auto"; }}  isUserForm={true}>
+
+        <Modal onClose={() => { setShowUserForm(false); document.body.style.overflow = "auto"; }}  isUserForm={true} className={css.modal}>
+
           <UserSettingsForm handleUserSave={handleUserForm} />
         </Modal>
       )}
