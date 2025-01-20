@@ -4,12 +4,14 @@
   justify-content: flex-start;
   flex-direction: column;
   border-radius: 15px;
-  width: 303px;
-  height: 440px;
+  /* width: 303px; */
+  /* height: 440px; */
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   background: var(--color-white);
 }
-
+.waterForm {
+  width: 100%;
+}
 .waterModalTitles {
   width: 248px;
   gap: 24px;

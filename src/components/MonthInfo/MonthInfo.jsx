@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../Calendar/Calendar";
 import CalendarPagination from "../CalendarPagination/CalendarPagination";
@@ -8,6 +9,7 @@ import { errNotify, successNotify } from "../../helpers/notification";
 import styles from "./MonthInfo.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { setCalendarMonth } from "../../redux/water/waterSlice";
+import { Chart } from '../Chart/Chart';
 
 const MonthInfo = () => {
   const currentMonth = useSelector(selectCalendarMonth);
@@ -29,20 +31,24 @@ const MonthInfo = () => {
       });
   }, [dispatch, currentMonth]);
 
+  const [isActive, setIsActive] = useState(true); 
+  const handleToggle = () => {
+    setIsActive(!isActive);
+  }
   return (
     <div className={styles.monthInfoSection}>
       <div className={styles.monthPaginationBox}>
-        <h3 className={styles.monthTitle}>Month</h3>
+        {isActive ? <h3 className={styles.monthTitle}>Month</h3> : <h3 className={styles.monthTitle}>Statistics</h3>}
         <div className={styles.paginationWrapper}>
           <CalendarPagination onMonthChange={handleMonthChange} />
-          <button className={styles.iconStatistics}>
+          <button className={styles.iconStatistics} onClick={handleToggle}>
             <svg width={20} height={20}>
               <use xlinkHref={`${sprite}#icon-pie-chart-statistics`} />
             </svg>
           </button>
         </div>
       </div>
-      <Calendar currentMonth={currentMonth} />
+      {isActive ? <Calendar currentMonth={currentMonth} /> : <Chart />}
     </div>
   );
 };

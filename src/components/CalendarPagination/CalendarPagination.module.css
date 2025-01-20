@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 143px;
+  /* width: 143px; */
   text-wrap: nowrap;
 }
 
@@ -39,10 +39,10 @@
   color: var(--color-darkblue);
 }
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 350px) {
   .container {
-    max-width: 100px;
-    text-wrap: auto;
+    /* max-width: 100px; */
+    /* text-wrap: auto; */
   }
 }
 
@@ -61,5 +61,10 @@
   .buttonNext {
     width: 24px;
     height: 24px;
+  }
+}
+@media only screen and (max-width: 374px) {
+  .container {
+    gap: 0;
   }
 }
