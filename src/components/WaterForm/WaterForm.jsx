@@ -58,9 +58,9 @@ export const WaterForm = ({ onSave, initialData }) => {
   }, [initialData, reset]);
 
   return (
-    <div>
+    <div className={css.waterFormDiv}>
       <div className={css.waterForm}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
           <div>
             <label className={css.formLabelBtn}>Amount of water:</label>
             <div className={css.formBtn}>

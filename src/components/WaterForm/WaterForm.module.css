@@ -5,7 +5,12 @@
   flex-direction: column;
   margin-top: 20px;
 }
-
+.waterFormDiv {
+  width: 100%;
+}
+.form {
+  width: 100%;
+}
 .formLabelBtn {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -64,7 +69,7 @@
   justify-content: flex-start;
   flex-direction: column;
   gap: 8px;
-  width: 303px;
+  /* width: 303px; */
   height: 72px;
   margin-bottom: 24px;
 }
@@ -86,7 +91,7 @@
   border: 1px solid rgba(47, 47, 47, 0.15);
   border-radius: 15px;
   padding: 14px 190px 14px 16px;
-  width: 303px;
+  /* width: 303px; */
   height: 46px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -95,6 +100,8 @@
   letter-spacing: -0.01em;
   color: var(--color-black);
   min-height: 46px;
+  width: 99%!important;
+  margin: 1px;
 }
 .timeField:focus {
   outline: 1px solid rgba(47, 47, 47, 0.40);
@@ -105,8 +112,8 @@
 .keyboard {
   display: flex;
   flex-direction: column;
-  width: 303px;
-  height: 80px;
+  /* width: 303px; */
+  /* height: 80px; */
   margin-bottom: 24px;
 }
 
@@ -118,7 +125,7 @@
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  text-align: center;
+  /* text-align: center; */
   color: var(--color-darkblue);
 }
 
@@ -126,7 +133,7 @@
   border: 1px solid rgba(47, 47, 47, 0.15);
   border-radius: 15px;
   padding-left: 16px;
-  width: 303px;
+  /* width: 303px; */
   height: 46px;
   margin-top: 8px;
   font-family: "Poppins", sans-serif;
@@ -135,6 +142,8 @@
   line-height: 1.28571;
   letter-spacing: -0.01em;
   color: var(--color-black);
+  width: 99%;
+  margin: 1px;
 }
 .keyboardField:focus {
   outline: 1px solid rgba(47, 47, 47, 0.40);
@@ -200,6 +209,8 @@
     height: 56px;
     font-size: 16px;
     line-height: 1.5;
+    width: 99%!important;
+    margin: 1px;
   }
 
   .keyboard {
@@ -217,6 +228,8 @@
     height: 56px;
     font-size: 16px;
     line-height: 1.5;
+    width: 99%;
+    margin: 1px;
   }
 
   .btnSubmit {
