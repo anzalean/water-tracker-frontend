@@ -4,7 +4,7 @@ import styles from "./Logo.module.css";
 
 const Logo = () => {
   return (
-    <a href="/" className={styles.logo}>
+    <a href="/" data-tour="step-home" className={styles.logo}>
       AQUATRACK
     </a>
   );

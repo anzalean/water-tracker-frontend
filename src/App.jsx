@@ -6,6 +6,8 @@ import { fetchCurrentUser } from "./redux/user/userOps";
 import { RestrictedRoute } from "./components/RestrictedRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
 import Languages from "./components/Languages/Languages";
+import { TourProvider } from "@reactour/tour";
+import steps from "./helpers/steps";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
@@ -27,6 +29,21 @@ export function App() {
   }, [dispatch]);
 
   return (
+    <TourProvider
+      steps={steps}
+      styles={{
+        popover: (base) => ({
+          ...base,
+          backgroundColor: "#222",
+          color: "#fff",
+          maxWidth: "350px",
+        }),
+        mask: (base) => ({
+          ...base,
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+        }),
+      }}
+    >
     <div>
       <Languages />
       <Routes>
@@ -77,6 +94,7 @@ export function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </div>
+      </div>
+    </TourProvider>
   );
 }

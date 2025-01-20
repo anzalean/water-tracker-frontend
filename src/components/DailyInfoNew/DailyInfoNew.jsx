@@ -7,7 +7,7 @@ import css from "./DailyInfoNew.module.css";
 const DailyInfoNew = () => {
   const currentDay = useSelector(selectCurrentDay);
   return (
-    <div className={css.container}>
+    <div data-tour="step-info" className={css.container}>
       <div className={css.dayContainer}>
         <p className={css.day}>{currentDay}</p>
         <div>

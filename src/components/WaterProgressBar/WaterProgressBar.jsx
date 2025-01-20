@@ -3,7 +3,7 @@ import styles from "./WaterProgressBar.module.css";
 
 const WaterProgressBar = ({ progress }) => {
   return (
-    <div className={styles.progressBarContainer}>
+    <div data-tour="step-progress" className={styles.progressBarContainer}>
       <div className={styles.progressBarTitle}>Today</div>
       <div className={styles.progressBarWrapper}>
         <div className={styles.progressBarTrack}>

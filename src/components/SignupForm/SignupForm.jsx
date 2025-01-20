@@ -46,7 +46,7 @@ export default function SignupForm() {
 
   const onSubmit = async (data) => {
     setServerError("");
-    const { confirmPassword, ...userData } = data;
+    const { ...userData } = data;
     try {
       const response = await dispatch(signUp(userData)).unwrap();
       if (response.status === 201) {

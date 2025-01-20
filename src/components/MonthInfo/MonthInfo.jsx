@@ -36,7 +36,7 @@ const MonthInfo = () => {
     setIsActive(!isActive);
   }
   return (
-    <div className={styles.monthInfoSection}>
+    <div data-tour="step-calendar" className={styles.monthInfoSection}>
       <div className={styles.monthPaginationBox}>
         {isActive ? <h3 className={styles.monthTitle}>Month</h3> : <h3 className={styles.monthTitle}>Statistics</h3>}
         <div className={styles.paginationWrapper}>

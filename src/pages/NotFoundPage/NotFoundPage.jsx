@@ -24,7 +24,7 @@ export default function NotFoundPage() {
           </div>
           <div className={css.textContent}>
             <h1>404</h1>
-            <h2>UH OH! You're lost.</h2>
+            <h2>UH OH! You are lost.</h2>
             <p>
               Sorry, the page you are looking for does not exist. You can click
               the button below to go back to the homepage.

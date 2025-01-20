@@ -31,7 +31,7 @@ const AddWaterButton = () => {
   };
   return (
     <React.Fragment>
-      <button className={styles.buttonContainer} onClick={handleCreate}>
+      <button data-tour="step-add-card" className={styles.buttonContainer} onClick={handleCreate}>
         <svg className={styles.buttonIcon} width="30" height="30">
           <use href={`${iconsPath}#icon-plus`} />
         </svg>
