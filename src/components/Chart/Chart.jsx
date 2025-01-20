@@ -10,20 +10,15 @@ import {
   import { useSelector } from 'react-redux';
   import { selectMonthWater, selectWaterDate } from "../../redux/water/selectors";
   import css from './Chart.module.css';
-
-
+  
   export const Chart = () => {
     const monthData = useSelector(selectMonthWater);
     const dayOfMonth = useSelector(selectWaterDate);
+  
     const selectDay = new Date(dayOfMonth);
     const start = subDays(selectDay, 6);
-    const end = selectDay;
-    const weekDays = [];
-
-    for (let day = start; day <= end; day = addDays(day, 1)) {
-      weekDays.push(day);
-    }
-
+    const weekDays = Array.from({ length: 7 }, (_, i) => addDays(start, i));
+  
     const weeklyData = weekDays.map((day) => {
       const dayData = monthData.find(
         (data) =>
@@ -35,7 +30,11 @@ import {
         totalDayWater: dayData ? dayData.totalDayWater / 1000 : 0,
       };
     });
-
+  
+    // Знаходимо максимальне значення випитої води
+    const maxWater = Math.max(...weeklyData.map((data) => data.totalDayWater));
+    const maxYAxisValue = Math.ceil(maxWater) + 1;
+  
     const renderDot = (props) => {
       const { cx, cy, key } = props;
       return (
@@ -51,13 +50,13 @@ import {
         </g>
       );
     };
-
+  
     let chartHeight;
     let padding;
-    let margin = 0; 
-
+    let margin = 0;
+  
     const width = window.innerWidth;
-
+  
     if (width >= 1440) {
       chartHeight = 251;
       padding = 25;
@@ -69,7 +68,7 @@ import {
       chartHeight = 268;
       padding = 20;
     }
-
+  
     return (
       <div className={css.container}>
         <ResponsiveContainer
@@ -99,7 +98,7 @@ import {
               axisLine={false}
               tickLine={false}
               padding={{ bottom: 20 }}
-              domain={[0, 6]}
+              domain={[0, maxYAxisValue]}
             />
             <Tooltip formatter={(value) => `${value} L`} />
             <Area
@@ -120,4 +119,4 @@ import {
       </div>
     );
   };
-
+  
