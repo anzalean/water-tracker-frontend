@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -29,6 +30,7 @@ const validationSchema = Yup.object().shape({
 
 export default function SigninForm() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [serverError, setServerError] = useState("");
   const {
     register,
@@ -68,19 +70,19 @@ export default function SigninForm() {
         <Logo />
       </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)} noValidate>
-        <h2 className={s.signInTitle}>Sign In</h2>
+        <h2 className={s.signInTitle}>{t("signInPage.signIn")}</h2>
         <InputField
           id="email"
-          label="Email"
+          label={t("signInPage.email")}
           type="email"
-          placeholder="Enter your email"
+          placeholder={t("signInPage.emailPlaceholder")}
           error={errors.email?.message}
           register={register("email")}
         />
         <PasswordField
           id="password"
-          label="Password"
-          placeholder="Enter your password"
+          label={t("signInPage.password")}
+          placeholder={t("signInPage.passwordPlaceholder")}
           error={errors.password?.message}
           register={register("password")}
         />

@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import css from "./WelcomeSection.module.css";
 // import { Container } from "../Container/Container";
 import Logo from "../Logo/Logo";
+import { useTranslation } from "react-i18next";
 
 export const WelcomeSection = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleTryTrackerClick = () => {
     navigate("/signup");
@@ -22,14 +24,14 @@ export const WelcomeSection = () => {
         <Logo />
       </div>
       <div className={css.wrapper}>
-        <p className={css.subtitle}>Record daily water intake and track</p>
-        <h1 className={css.title}>Water consumption tracker</h1>
+        <p className={css.subtitle}>{t("welcomeSection.mainText")}</p>
+        <h1 className={css.title}>{t("welcomeSection.title")}</h1>
         <div className={css.buttonsWrapper}>
           <button className={css.tryTracker} onClick={handleTryTrackerClick}>
-            Try tracker
+            {t("welcomeSection.tryTracker")}
           </button>
           <button className={css.signIn} onClick={handleSignInClick}>
-            Sign In
+            {t("welcomeSection.signIn")}
           </button>
         </div>
       </div>

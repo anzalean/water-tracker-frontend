@@ -8,6 +8,7 @@ export const SharedLayout = () => {
     <div>
       <Suspense fallback={null}>
         {/* <TempLoginBtn /> */}
+
         <Outlet />
       </Suspense>
       <Toaster position="top-right" reverseOrder={false} />

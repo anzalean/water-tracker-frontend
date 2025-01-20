@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserCount } from "../../redux/user/userOps.js";
 import { selectUserCount } from "../../redux/user/selectors";
-//import { Loading } from "../Loading/Loading"; 
+import { useTranslation } from "react-i18next";
+//import { Loading } from "../Loading/Loading";
 
 const Customers = () => {
   const usersCounter = useSelector(selectUserCount);
   //const usersLoading = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (usersCounter === null) {
@@ -20,22 +22,25 @@ const Customers = () => {
   }, [dispatch, usersCounter]);
   return (
     <>
-          <ul className={styles.userCountList}>
-            <li className={styles.userCountItem}>
-              <img src={photo1} alt="user" />
-            </li>
-            <li className={styles.userCountItem}>
-              <img src={photo2} alt="user" />
-            </li>
-            <li className={styles.userCountItem}>
-              <img src={photo3} alt="user" />
-            </li>
-          </ul>
-          <div className={styles.numberCustomers}>+{usersCounter}</div>
+      <ul className={styles.userCountList}>
+        <li className={styles.userCountItem}>
+          <img src={photo1} alt="user" />
+        </li>
+        <li className={styles.userCountItem}>
+          <img src={photo2} alt="user" />
+        </li>
+        <li className={styles.userCountItem}>
+          <img src={photo3} alt="user" />
+        </li>
+      </ul>
+      <div className={styles.numberCustomers}>+{usersCounter}</div>
 
-      
       <p className={styles.userCountText}>
-        Our <span className={styles.userTextColor}> happy</span> customers
+        {t("advantagesSection.our")}
+        <span className={styles.userTextColor}>
+          {t("advantagesSection.happy")}
+        </span>
+        {t("advantagesSection.customers")}
       </p>
     </>
   );
