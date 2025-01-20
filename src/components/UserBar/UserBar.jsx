@@ -57,11 +57,13 @@ export default function UserBar() {
   };
 
   const handleSettingsButton = () => {
+    document.body.style.overflow = "hidden";
     if (isLoggedIn) {
       dispatch(fetchCurrentUser())
         .unwrap()
         .then(() => {
           successNotify("Successfully fetched user information.");
+          setShowPopover(false);
           setShowUserForm(true);
         })
         .catch(() => {
@@ -71,6 +73,7 @@ export default function UserBar() {
   };
 
   const handleUserForm = (data) => {
+    document.body.style.overflow = "auto";
     dispatch(updateUser(data))
       .unwrap()
       .then(() => {
@@ -83,10 +86,13 @@ export default function UserBar() {
   };
 
   const handleLogoutButton = () => {
+    document.body.style.overflow = "hidden";
+    setShowPopover(false);
     setShowLogoutModal(true);
   };
 
   const handleLogoutApprove = () => {
+    document.body.style.overflow = "auto";
     dispatch(signOut())
       .unwrap()
       .then(() => {
@@ -151,14 +157,14 @@ export default function UserBar() {
       )}
 
       {showUserForm && (
-        <Modal onClose={() => setShowUserForm(false)} isUserForm={true}>
+        <Modal onClose={() => { setShowUserForm(false); document.body.style.overflow = "auto"; }}  isUserForm={true}>
           <UserSettingsForm handleUserSave={handleUserForm} />
         </Modal>
       )}
       {showLogoutModal && (
-        <Modal onClose={() => setShowLogoutModal(false)}>
+        <Modal onClose={() => { setShowLogoutModal(false); document.body.style.overflow = "auto"; }}>
           <LogoutApprove
-            onCancel={() => setShowLogoutModal(false)}
+            onCancel={() => { setShowLogoutModal(false); document.body.style.overflow = "auto"; }}
             onApprove={handleLogoutApprove}
           />
         </Modal>
