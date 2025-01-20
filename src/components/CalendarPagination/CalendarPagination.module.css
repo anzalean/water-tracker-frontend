@@ -39,7 +39,7 @@
   color: var(--color-darkblue);
 }
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 350px) {
   .container {
     max-width: 100px;
     text-wrap: auto;
