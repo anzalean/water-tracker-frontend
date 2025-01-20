@@ -1,35 +1,23 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import CalendarItem from "../CalendarItem/CalendarItem";
 import {
   selectMonthWater,
   selectCalendarMonth,
-  selectWaterLoading,
 } from "../../redux/water/selectors";
-import { Loading } from "../Loading/Loading";
 import { calculateDaysInMonth } from "../../helpers/calculateDaysInMonth ";
 import styles from "./Calendar.module.css";
 import { selectDesiredVolume } from "../../redux/user/selectors";
 
 const Calendar = () => {
-  const [activeDay, setActiveDay] = useState(null);
   const monthWater = useSelector(selectMonthWater);
   const currentMonth = useSelector(selectCalendarMonth);
-  const isLoading = useSelector(selectWaterLoading);
-
   const desiredVolume = useSelector(selectDesiredVolume);
 
   const daysInMonth = useMemo(
     () => calculateDaysInMonth(currentMonth),
     [currentMonth]
   );
-
-  if (isLoading)
-    return (
-      <div className={styles.loading}>
-        <Loading customHeight="124" />
-      </div>
-    );
 
   return (
     <ul className={styles.calendarList}>
@@ -49,20 +37,13 @@ const Calendar = () => {
               )
             )
           : 0;
-        const isActive = formattedDate === activeDay;
-
-        const handleSelect = () => {
-          setActiveDay(formattedDate); // Устанавливаем активный день
-        };
 
         return (
           <li className={styles.calendarItem} key={formattedDate}>
             <CalendarItem
               availability={availability}
               day={day}
-              isActive={isActive}
               currentDate={currentDayDate}
-              onSelect={handleSelect}
             />
           </li>
         );

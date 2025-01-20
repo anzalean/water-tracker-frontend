@@ -1,14 +1,14 @@
 import { lazy, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { SharedLayout } from "./components/SharedLayout/SharedLayout";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsRefreshing } from "./redux/user/selectors";
 import { fetchCurrentUser } from "./redux/user/userOps";
 import { RestrictedRoute } from "./components/RestrictedRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Loading } from "./components/Loading/Loading";
 import { TourProvider } from "@reactour/tour";
 import steps from "./helpers/steps";
+
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
@@ -25,11 +25,10 @@ const ResetPasswordPage = lazy(() =>
 export function App() {
   const dispatch = useDispatch();
 
-  const isRefreshing = useSelector(selectIsRefreshing);
-
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
+
 
   return isRefreshing ? (
     <div className="loader">
@@ -51,6 +50,7 @@ export function App() {
         }),
       }}
     >
+  return (
     <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
@@ -81,7 +81,7 @@ export function App() {
                 component={<SignInPage />}
               />
             }
-            />
+          />
           <Route
             path="/tracker"
             element={
