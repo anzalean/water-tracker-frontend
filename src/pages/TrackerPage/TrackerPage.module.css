@@ -8,6 +8,25 @@
   margin: 0 auto;
 }
 
+.helpButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.helpButton:hover {
+  background-color: #0056b3;
+}
+
 @media only screen and (min-width: 375px) {
   .trackerPage {
     max-width: 375px;

@@ -6,7 +6,7 @@ const WaterDailyNorma = () => {
   const desiredVolume = useSelector(selectDesiredVolume);
 
   return (
-    <div className={styles.dailyNormaContainer}>
+    <div data-tour="step-norma" className={styles.dailyNormaContainer} >
       <span className={styles.dailyNormaAmount}>
         {desiredVolume ? `${desiredVolume.toFixed(2)} L` : "—"}
       </span>

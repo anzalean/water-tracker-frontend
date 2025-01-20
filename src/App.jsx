@@ -5,6 +5,8 @@ import { SharedLayout } from "./components/SharedLayout/SharedLayout";
 import { fetchCurrentUser } from "./redux/user/userOps";
 import { RestrictedRoute } from "./components/RestrictedRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { TourProvider } from "@reactour/tour";
+import steps from "./helpers/steps";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
@@ -26,6 +28,21 @@ export function App() {
   }, [dispatch]);
 
   return (
+    <TourProvider
+      steps={steps}
+      styles={{
+        popover: (base) => ({
+          ...base,
+          backgroundColor: "#222",
+          color: "#fff",
+          maxWidth: "350px",
+        }),
+        mask: (base) => ({
+          ...base,
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+        }),
+      }}
+    >
     <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
@@ -75,6 +92,7 @@ export function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </div>
+      </div>
+    </TourProvider>
   );
 }
