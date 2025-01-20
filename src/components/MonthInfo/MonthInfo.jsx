@@ -30,7 +30,7 @@ const MonthInfo = () => {
   }, [dispatch, currentMonth]);
 
   return (
-    <div className={styles.monthInfoSection}>
+    <div data-tour="step-calendar" className={styles.monthInfoSection}>
       <div className={styles.monthPaginationBox}>
         <h3 className={styles.monthTitle}>Month</h3>
         <div className={styles.paginationWrapper}>
