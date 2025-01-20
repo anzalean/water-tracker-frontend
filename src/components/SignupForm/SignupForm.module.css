@@ -47,14 +47,14 @@
 @media (min-width: 768px) {
   .SignUpContainer {
     width: 704px;
-    
+
     padding: 219px 134px;
   }
   .signupTitle {
     font-size: 36px;
   }
   .button {
-    padding: 18px 191px;
+    padding: 18px;
     font-size: 16px;
     line-height: 24px;
   }

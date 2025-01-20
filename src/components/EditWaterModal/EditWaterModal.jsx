@@ -6,10 +6,12 @@ import { updateWater } from "../../redux/water/waterOps.js";
 import { replaceTimeInDate } from "../../helpers/replaceTimeInDate.js";
 import { successNotify, errNotify } from "../../helpers/notification.js";
 import { extractTimeFromDateString } from "../../helpers/extractTimeFromDateString.js";
+import { useTranslation } from "react-i18next";
 
 export default function EditWaterModal({ onClose, waterCard }) {
   const currentDate = useSelector(selectWaterDate);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const onSubmitForm = (values) => {
     const date = replaceTimeInDate(currentDate, values.time);
@@ -34,8 +36,9 @@ export default function EditWaterModal({ onClose, waterCard }) {
     <div>
       <Modal onClose={onClose}>
         <WaterModal
-          title="Edit the entered amount of water"
-          subtitle="Correct entered data:"
+          title={t("modals.addEdit.edit")}
+          subtitle={t("modals.addEdit.correct")}
+          correct
           onSave={onSubmitForm}
           initialData={{
             time: extractTimeFromDateString(waterCard.date),

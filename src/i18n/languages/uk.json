@@ -29,20 +29,17 @@
     "password": "Пароль",
     "passwordPlaceholder": "Введіть свій пароль",
     "passwordSpanError": "Пароль має містити принаймні 6 символів, містити одну велику літеру, одну цифру та один спеціальний символ",
-    "dontAccount": "Немає аккаунту?",
-    "forgotPassword": "Забули свій пароль?",
+    "dontAccount": "Немає аккаунту? ",
+    "forgotPassword": "Забули свій пароль? ",
     "signUp": "Зареєструватися",
     "renew": "Відновити"
   },
   "googleButton": {
     "googleInBtn": "Увійти за допомогою Google",
-    "googleUpBtn": "Зареєструватися"
+    "googleUpBtn": "Зареєструватися за допомогою Google"
   },
   "signUpPage": {
     "signUp": "Зареєструватися",
-    "name": "Ім'я",
-    "namePlaceholder": "Введіть Ваше ім'я",
-    "nameSpanError": "Поле може містити лише латинські символи",
     "email": "Електронна пошта",
     "emailPlaceholder": "Введіть свою електронну адресу",
     "emailSpanError": "Невалідна електронна пошта",
@@ -60,19 +57,19 @@
     "email": "Електронна пошта",
     "emailPlaceholder": "Введіть свою електронну адресу",
     "emailSpanError": "Невалідна електронна пошта",
-    "button": "Відправити",
-    "remember": "Згадали свій пароль?",
-    "signIn": "Увійти"
+    "button": "Відправити скидання"
   },
   "resetPage": {
     "title": "Скинути пароль",
+    "create": "Створити новий пароль",
     "password": "Пароль",
     "passwordPlaceholder": "Введіть свій пароль",
     "passwordSpanError": "Пароль має містити принаймні 6 символів, містити одну велику літеру, одну цифру та один спеціальний символ",
-    "repeatPassword": "Повторити пароль",
+    "repeatPassword": "Підтвердити пароль",
+    "repeatPasswordPlaceholder": "Підтвердіть свій пароль",
     "repeatPasswordpanError": "Обов'язкове",
     "repeatPasswordpanErrorTwo": "Паролі мають збігатися",
-    "button": "Увійти"
+    "button": "Зберегти новий пароль"
   },
   "waterMainInfo": {
     "l": "л",
@@ -96,7 +93,7 @@
     "today": "Сьогодні"
   },
   "dailyInfo": {
-    "text": "Ви ще не пили воду, може пора випити?",
+    "text": "Поки що немає записів",
     "ml": "мл"
   },
   "monthInfo": {
@@ -105,7 +102,6 @@
     "statistics": "Статистика"
   },
   "Userbar": {
-    "user": "Добродію",
     "hello": "Привіт",
     "setting": "Налаштування",
     "logOut": "Вихід"
@@ -133,10 +129,11 @@
       "ml": "мл",
       "amount": "Кількість води:",
       "time": "Час запису:",
-      "value": "Введіть вартість використаної води:",
+      "value": "Введіть кількість випитої води:",
       "successEdit": "Запис про воду успішно оновлено",
       "successAdd": "Запис про воду успішно додано",
-      "error": "На жаль, щось не так..."
+      "error": "На жаль, щось не так...",
+      "saveBtn": "Зберегти"
     },
     "UserSettingsForm": {
       "setting": "Налаштування",
@@ -144,10 +141,8 @@
       "yourGenderLabel": "Ваша гендерна ідентичність",
       "femaleGenderLabel": "Жінка",
       "femaleGenderMale": "Чоловік",
-      "yourNameLabel": "Ваше ім'я",
       "placeYourName": "Ім'я",
       "labelEmail": "Електронна пошта",
-      "placeEmail": "Електронна пошта",
       "dailyNormah": "Моя денна норма",
       "forWomanP": "Для жінки:",
       "forManP": "Для чоловіка:",

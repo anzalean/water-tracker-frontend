@@ -88,7 +88,7 @@ export default function SigninForm() {
         />
         {serverError && <p className={s.error}>{serverError}</p>}
         <button type="submit" className={s.button}>
-          Sign In
+          {t("signInPage.signIn")}
         </button>
         <button
           type="button"
@@ -96,16 +96,16 @@ export default function SigninForm() {
           className={s.googleButton}
         >
           <FcGoogle className={s.googleIcon} />
-          <span className={s.googleText}>Sign in with Google</span>
+          <span className={s.googleText}>{t("googleButton.googleInBtn")}</span>
         </button>
         <FormFooter
-          text="Don’t have an account?"
-          linkText="Sign Up"
+          text={t("signInPage.dontAccount")}
+          linkText={t("signInPage.signUp")}
           linkHref="/signup"
         />
         <FormFooter
-          text="Forgot your password? "
-          linkText="Click here"
+          text={t("signInPage.forgotPassword")}
+          linkText={t("signInPage.renew")}
           linkHref="/verify/:verifyToken"
         />
       </form>

@@ -61,20 +61,19 @@
     "email": "Enter your email",
     "emailPlaceholder": "Enter your email",
     "emailSpanError": "Invalid email format",
-    "button": "Send",
-    "remember": "Remember your password?",
-    "signIn": "Sign In"
+    "button": "Send Reset Email"
   },
   "resetPage": {
     "title": "Reset your password",
+    "create": "Create new password",
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
     "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
-    "repeatPassword": "Repeat Password",
-    "repeatPasswordPlaceholder": "Repeat password",
+    "repeatPassword": "Confirm Password",
+    "repeatPasswordPlaceholder": "Confirm your password",
     "repeatPasswordpanError": "Required",
     "repeatPasswordpanErrorTwo": "Passwords must match",
-    "button": "Send"
+    "button": "Save new password"
   },
   "waterMainInfo": {
     "l": "L",
@@ -99,7 +98,7 @@
     "en": "uk-UA"
   },
   "dailyInfo": {
-    "text": "You havent drunk water yet, maybe its time to drink?",
+    "text": "No entries yet",
     "ml": "ml"
   },
   "monthInfo": {
@@ -108,7 +107,6 @@
     "statistics": "Statistics"
   },
   "Userbar": {
-    "user": "User",
     "hello": "Hello",
     "setting": "Settings",
     "logOut": "Log out"
@@ -140,18 +138,17 @@
       "successEdit": "Water record successfully updated",
       "successAdd": "Water record successfully added",
       "errorEdit": "Oops, something is wrong...",
-      "errorAdd": "Oops, something is wrong..."
+      "errorAdd": "Oops, something is wrong...",
+      "saveBtn": "Save"
     },
     "UserSettingsForm": {
       "setting": "Setting",
-      "uploadPhotoBtn": "Upload a photo",
+      "uploadPhotoBtn": "Upload photo",
       "yourGenderLabel": "Your gender identity",
       "femaleGenderLabel": "Female",
       "femaleGenderMale": "Male",
-      "yourNameLabel": "Your name",
       "placeYourName": "Name",
       "labelEmail": "Email",
-      "placeEmail": "Email",
       "dailyNormah": "My daily norma",
       "forWomanP": "For woman:",
       "forManP": "For man:",
