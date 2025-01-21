@@ -4,12 +4,12 @@ import { refreshTokens } from "./userSlice";
 
 // Create an Axios instance with a base URL for API requests
 export const axiosInstance = axios.create({
-  baseURL: "https://water-tracker-backend-guwj.onrender.com",
-  // baseURL: "http://localhost:3000",
+  //baseURL: "https://water-tracker-backend-guwj.onrender.com",
+  baseURL: "http://localhost:3000",
 });
 
 // Utility to set the Authorization header with the JWT token
-const setAuthHeader = (token) => {
+export const setAuthHeader = (token) => {
   axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -190,7 +190,7 @@ export const resetPassword = createAsyncThunk(
   async (resetData, thunkAPI) => {
     try {
       const response = await axiosInstance.post("/auth/reset-pwd", {
-        token: resetData.resetToken, 
+        token: resetData.resetToken,
         password: resetData.password,
       });
       return response.data;
@@ -208,7 +208,7 @@ export const fetchOAuthUrl = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInstance.get("/auth/get-oauth-url");
-      return response.data.url;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response?.data?.message || error.message
@@ -222,6 +222,7 @@ export const googleLogin = createAsyncThunk(
   "user/googleLogin",
   async (googleData, thunkAPI) => {
     try {
+      console.log("googleData", googleData);
       const response = await axiosInstance.post(
         "/auth/google-login",
         googleData

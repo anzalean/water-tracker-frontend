@@ -10,4 +10,4 @@ export const selectError = (state) => state.auth.error;
 export const selectDesiredVolume = (state) => state.auth.user.desiredVolume;
 export const selectIsResendEmail = (state) => state.auth.isResendVerify;
 export const selectUserCount = (state) => state.auth.userCount;
-
+export const selectOAuthUrl = (state) => state.auth.oAuthUrl;

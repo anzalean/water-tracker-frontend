@@ -6,11 +6,10 @@ import Logo from "../Logo/Logo";
 import InputField from "../InputField/InputField";
 import PasswordField from "../PasswordField/PasswordField";
 import FormFooter from "../FormFooter/FormFooter";
-import { googleLogin, signIn } from "../../redux/user/userOps";
+import { signIn } from "../../redux/user/userOps";
 import { useDispatch } from "react-redux";
-import { FcGoogle } from "react-icons/fc";
-import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
+import GoogleButton from "../GoogleButton/GoogleButton";
 import { useTranslation } from "react-i18next";
 
 const validationSchema = Yup.object().shape({
@@ -55,15 +54,6 @@ export default function SigninForm() {
     }
   };
 
-  const googleLoginClick = useGoogleLogin({
-    onSuccess: (response) => {
-      if (response?.credential) {
-        const token = response.credential;
-        dispatch(googleLogin({ token }));
-      }
-    },
-  });
-
   return (
     <div className={s.SignInContainer}>
       <div className={s.logoContainer}>
@@ -90,14 +80,7 @@ export default function SigninForm() {
         <button type="submit" className={s.button}>
           {t("signInPage.signIn")}
         </button>
-        <button
-          type="button"
-          onClick={googleLoginClick}
-          className={s.googleButton}
-        >
-          <FcGoogle className={s.googleIcon} />
-          <span className={s.googleText}>{t("googleButton.googleInBtn")}</span>
-        </button>
+        <GoogleButton />
         <FormFooter
           text={t("signInPage.dontAccount")}
           linkText={t("signInPage.signUp")}
