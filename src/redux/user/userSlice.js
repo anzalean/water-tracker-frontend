@@ -11,6 +11,7 @@ import {
   fetchOAuthUrl,
   googleLogin,
   getUserCount,
+  setAuthHeader,
 } from "./userOps";
 import toast from "react-hot-toast";
 
@@ -35,6 +36,7 @@ const initialState = {
   isResendVerify: false,
   error: null,
   userCount: null,
+  oAuthUrl: null,
 };
 
 const userSlice = createSlice({
@@ -44,7 +46,9 @@ const userSlice = createSlice({
     refreshTokens: (state, action) => {
       console.log(action.payload);
       state.accessToken = action.payload.accessToken;
-      state.refreshToken = action.payload.refreshToken;
+      state.refreshToken = action.payload.accessToken;
+      console.log(action.payload.accessToken);
+      setAuthHeader(action.payload.accessToken);
     },
   },
   extraReducers: (builder) => {
@@ -119,7 +123,6 @@ const userSlice = createSlice({
         state.error = null;
         state.user = { ...action.payload.user };
         state.isLoggedIn = true;
-       
       })
       .addCase(fetchCurrentUser.rejected, (state, action) => {
         state.loading = false;
@@ -201,39 +204,41 @@ const userSlice = createSlice({
       })
       .addCase(fetchOAuthUrl.pending, (state) => {
         state.loading = true;
+        state.error = false;
       })
       .addCase(fetchOAuthUrl.fulfilled, (state, action) => {
-        state.oAuthUrl = action.payload;
+        state.oAuthUrl = action.payload.data.url;
         state.loading = false;
+        state.error = false;
       })
       .addCase(fetchOAuthUrl.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || "Failed to fetch OAuth URL.", {
-          duration: 5000,
-          position: "top-center",
-        });
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred in get OAuthUrl.";
+        }
       })
       .addCase(googleLogin.pending, (state) => {
         state.loading = true;
+        state.error = false;
       })
       .addCase(googleLogin.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
-        state.isLoggedIn = true;
         state.loading = false;
-        toast.success("Logged in successfully with Google!", {
-          duration: 5000,
-          position: "top-center",
-        });
+        state.error = false;
+        state.user = action.payload.data.user;
+        state.accessToken = action.payload.data.accessToken;
+        state.isLoggedIn = true;
       })
       .addCase(googleLogin.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || "Failed to log in with Google.", {
-          duration: 5000,
-          position: "top-center",
-        });
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred in google login.";
+        }
       })
+
       .addCase(getUserCount.pending, (state) => {
         state.loading = true;
       })

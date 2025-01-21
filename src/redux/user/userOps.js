@@ -10,7 +10,7 @@ export const axiosInstance = axios.create({
 });
 
 // Utility to set the Authorization header with the JWT token
-const setAuthHeader = (token) => {
+export const setAuthHeader = (token) => {
   axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -93,6 +93,7 @@ export const fetchCurrentUser = createAsyncThunk(
     try {
       const reduxState = thunkAPI.getState();
       setAuthHeader(reduxState.auth.accessToken);
+      console.log(reduxState.auth.accessToken);
       const response = await axiosInstance.get("/auth/current");
       return response.data;
     } catch (error) {
@@ -103,6 +104,7 @@ export const fetchCurrentUser = createAsyncThunk(
     condition: (_, { getState }) => {
       const state = getState();
       const savedToken = state.auth.accessToken;
+      console.log(savedToken);
       return savedToken !== null;
     },
   }
@@ -191,7 +193,7 @@ export const resetPassword = createAsyncThunk(
   async (resetData, thunkAPI) => {
     try {
       const response = await axiosInstance.post("/auth/reset-pwd", {
-        token: resetData.resetToken, 
+        token: resetData.resetToken,
         password: resetData.password,
       });
       return response.data;
@@ -209,7 +211,7 @@ export const fetchOAuthUrl = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInstance.get("/auth/get-oauth-url");
-      return response.data.url;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response?.data?.message || error.message
@@ -227,7 +229,8 @@ export const googleLogin = createAsyncThunk(
         "/auth/google-login",
         googleData
       );
-      setAuthHeader(response.data.accessToken);
+      console.log("googleLogin", response.data.data.accessToken);
+      setAuthHeader(response.data.data.accessToken);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
