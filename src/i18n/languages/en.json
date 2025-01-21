@@ -7,6 +7,9 @@
     "signUp": "Sign Up",
     "tracker": "Tracker Page"
   },
+  "logo": {
+    "logo": "AQUATRACK"
+  },
   "welcomeSection": {
     "mainText": "Record daily water intake and track",
     "title": "Water consumption tracker",

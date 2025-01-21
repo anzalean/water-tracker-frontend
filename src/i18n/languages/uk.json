@@ -7,6 +7,9 @@
     "signUp": "Зареєструватися",
     "tracker": "Ваш трекер"
   },
+  "logo": {
+    "logo": "АКВАТРЕКЕР"
+  },
   "welcomeSection": {
     "mainText": "Записуйте щоденне споживання води",
     "title": "Трекер споживання води",
@@ -15,11 +18,11 @@
   },
   "advantagesSection": {
     "our": "Наші ",
-    "happy": "щасливі ",
+    "happy": " ♥ ",
     "customers": "клієнти",
-    "habit": "Керуй звичкою",
-    "statistics": "Дивись статистику",
-    "setting": "Персональні налаштування"
+    "habit": "Керуй",
+    "statistics": "Відслідковуй",
+    "setting": "Налаштовуй"
   },
   "signInPage": {
     "signIn": "Увійти",
@@ -103,7 +106,7 @@
   },
   "Userbar": {
     "hello": "Привіт",
-    "setting": "Налаштування",
+    "setting": "Змінити",
     "logOut": "Вихід"
   },
   "modals": {

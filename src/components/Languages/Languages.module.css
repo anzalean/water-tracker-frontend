@@ -1,52 +1,59 @@
-.languages {
+.container {
+  position: fixed;
+  top: 10px;
+  right: 5px;
   display: flex;
-  gap: 5px;
-  margin-right: 10px;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
 }
 
-.languageBtn {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-
+.globe {
+  cursor: pointer;
   background-color: transparent;
   border: none;
-  transform: scale(1);
-
-  transition: transform var(--animation);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
-.languageBtn:hover,
-.languageBtn:active {
+.globeIcon {
+  width: 40px;
+  height: 40px;
+  color: #555;
+  transition: transform 0.3s ease;
+}
+
+.globe:hover .globeIcon {
   transform: scale(1.2);
 }
 
-@media (min-width: 768px) {
-  .languages {
-    margin-right: 15px;
-  }
-
-  .iconFlag {
-    width: 24px;
-    height: 24px;
-  }
-
-  .line {
-    font-size: 25px;
-  }
+.menu {
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  display: flex;
+  flex-direction: column;
+}
+.globe {
+  width: 34px;
+  height: 34px;
+  fill: var(--color-darkblue);
+}
+.languageBtn {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 18px;
+  padding: 5px 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-@media (min-width: 1440px) {
-  .languages {
-    margin-right: 25px;
-  }
-
-  .iconFlag {
-    width: 30px;
-    height: 30px;
-  }
-
-  .line {
-    font-size: 30px;
-  }
+.languageBtn:hover {
+  background-color: #f0f0f0;
 }
