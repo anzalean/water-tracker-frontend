@@ -12,6 +12,7 @@
   --color-blacksemi: #2f2f2f80;
   --color-error: #ef5050;
   --color-border-today: #d2650c;
+  --reactour-accent: #87d28d!important;
   /* Animation */
   --animation: 150ms ease-in;
 }
@@ -107,4 +108,18 @@ button {
   height: 100%;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.7);
+}
+
+.reactour__popover {
+  background-color: var(--color-white)!important;
+  color: var(--color-black)!important;
+  border-radius: 15px!important;
+}
+
+.reactour__popover span {
+  background: var(--color-lightgreenhover)!important;
+}
+
+.reactour__popover > div {
+  justify-content: flex-start!important;
 }

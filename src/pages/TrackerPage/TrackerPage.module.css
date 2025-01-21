@@ -8,30 +8,44 @@
   margin: 0 auto;
 }
 
-.helpButton {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-lightgreen);
-  /* Зелений колір */
-  color: white;
-  border: none;
-  border-radius: 50%;
-  /* Кругла форма */
-  cursor: pointer;
-  font-size: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.shake {
+  animation: shake 1s ease-in-out;
 }
 
-.helpButton:hover {
-  background-color: var(--color-lightgreenhover);
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
 }
+
+.helpButton {
+  position: fixed;
+  bottom: 10px;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+  background-color: transparent;
+}
+.question{
+  width: 40px;
+  height: 40px;
+  fill: #555;
+}
+/* .helpButton:hover {
+  background-color: var(--color-lightgreenhover);
+} */
 
 /* .icon {
   fill: white;

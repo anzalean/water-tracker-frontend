@@ -1,50 +1,4 @@
-// import React, { useState } from "react";
-// import { Helmet } from "react-helmet-async";
-// import { Page } from "../../components/Page/Page";
-// import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
-// import Modal from "../../components/Modal/Modal";
-// import { WaterModal } from "../../components/WaterModal/WaterModal";
-// import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo";
-// import style from "./TrackerPage.module.css";
-
-// export default function TrackerPage() {
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   const handleAddWater = () => {
-//     console.log("Add Water button clicked");
-//     setIsModalOpen(true);
-//   };
-
-//   const handleCloseModal = () => {
-//     setIsModalOpen(false);
-//   };
-
-//   return (
-//     <React.Fragment>
-//       <Helmet>
-//         <title>Tracker</title>
-//       </Helmet>
-//       <Page>
-//         <div className={style.trackerPage}>
-//           <WaterMainInfo onAddWater={handleAddWater} />
-//           <WaterDetailedInfo />
-
-//           {isModalOpen && (
-//             <Modal onClose={handleCloseModal}>
-//               <WaterModal
-//                 title="Add Water"
-//                 subtitle="Track your daily water intake"
-//                 onSave={handleAddWater}
-//               />
-//             </Modal>
-//           )}
-//         </div>
-//       </Page>
-//     </React.Fragment>
-//   );
-// }
-
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Page } from "../../components/Page/Page";
 import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
@@ -52,30 +6,47 @@ import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedI
 import css from "./TrackerPage.module.css";
 import { useTour } from "@reactour/tour";
 import steps from "../../helpers/steps";
+import iconsPath from "../../assets/icons/sprite.svg";
 
 export default function TrackerPage() {
   const { setIsOpen, isOpen } = useTour();
-  
+
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
   }, [isOpen]);
 
-const startTour = () => {
-  const firstStepSelector = steps[0].selector;
-  const waitForSteps = setInterval(() => {
-    const stepElement = document.querySelector(firstStepSelector);
-    if (stepElement) {
-      clearInterval(waitForSteps);
-      setIsOpen(true);
-    }
-  }, 200);
-};
+  const startTour = () => {
+    const firstStepSelector = steps[0].selector;
+    const waitForSteps = setInterval(() => {
+      const stepElement = document.querySelector(firstStepSelector);
+      if (stepElement) {
+        clearInterval(waitForSteps);
+        setIsOpen(true);
+      }
+    }, 200);
+  };
 
-  
+  useEffect(() => {
+    const questionIcon = document.querySelector(`.${css.question}`);
+
+    const addShakeAnimation = () => {
+      if (questionIcon) {
+        questionIcon.classList.add(css.shake);
+        setTimeout(() => {
+          questionIcon.classList.remove(css.shake);
+        }, 1000); // Довжина анімації (1 секунда)
+      }
+    };
+
+    const intervalId = setInterval(addShakeAnimation, 6000); // Запуск кожну хвилину
+
+    return () => clearInterval(intervalId); // Очищення інтервалу при розмонтуванні
+  }, []);
+
   return (
     <React.Fragment>
       <Helmet>
@@ -90,10 +61,13 @@ const startTour = () => {
             className={css.helpButton}
             onClick={startTour}
           >
-            ?
+            <svg className={css.question} width="20" height="20">
+              <use href={`${iconsPath}#icon-question`} />
+            </svg>
           </button>
         </div>
       </Page>
     </React.Fragment>
   );
 }
+
