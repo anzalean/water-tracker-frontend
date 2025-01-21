@@ -6,6 +6,7 @@ import { refreshTokens } from "./userSlice";
 export const axiosInstance = axios.create({
   baseURL: "https://water-tracker-backend-guwj.onrender.com",
   // baseURL: "http://localhost:3000",
+  // withCredentials: true,
 });
 
 // Utility to set the Authorization header with the JWT token

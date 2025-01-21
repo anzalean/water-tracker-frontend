@@ -81,6 +81,13 @@ const UserSettingsForm = ({ handleUserSave }) => {
     setAvatar(newAvatarUrl);
   };
 
+  const removeLeadingZeros = (value) => {
+    
+      // Видаляємо всі провідні нулі, крім одного нуля для числа 0
+    return value ? Number(value) : 0;
+  };
+
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
@@ -189,9 +196,13 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 render={({ field }) => (
                   <Input
                     {...field}
+                    value={removeLeadingZeros(field.value)}
                     classLabel={css.thinkLabel}
                     label={t("modals.UserSettingsForm.infoUser")}
                     type="text"
+                    onChange={(e) =>
+                      field.onChange(removeLeadingZeros(e.target.value))
+                    }
                   />
                 )}
               />
@@ -201,9 +212,13 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 render={({ field }) => (
                   <Input
                     {...field}
+                    value={removeLeadingZeros(field.value)}
                     classLabel={css.thinkLabel}
                     label={t("modals.UserSettingsForm.TheTimeSportsLabel")}
                     type="text"
+                    onChange={(e) =>
+                      field.onChange(removeLeadingZeros(e.target.value))
+                    }
                   />
                 )}
               />
@@ -227,8 +242,12 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 render={({ field }) => (
                   <Input
                     {...field}
+                    value={removeLeadingZeros(field.value)}
                     label={t("modals.UserSettingsForm.writeDownLabel")}
                     type="text"
+                    onChange={(e) =>
+                      field.onChange(removeLeadingZeros(e.target.value))
+                    }
                   />
                 )}
               />
