@@ -8,6 +8,10 @@ const steps = [
         content: "Click to back home.",
     },
     {
+        selector: '[data-tour="step-language"]',
+        content: "Click to to change language.",
+    },
+    {
         selector: '[data-tour="step-norma"]',
         content: "Your daily water norma.",
     },
@@ -35,18 +39,6 @@ const steps = [
         selector: '[data-tour="step-info"]',
         content: "Your daily info.",
     },
-    //     {
-    //     selector: '[data-tour="step-portion"]',
-    //     content: "How much you have to drink this time?",
-    // },
-    // {
-    //     selector: '[data-tour="step-edit-card"]',
-    //     content: "Edit your water portion.",
-    // },
-    // {
-    //     selector: '[data-tour="step-delete-card"]',
-    //     content: "Delete your water portion.",
-    // },
     {
         selector: '[data-tour="step-calendar"]',
         content: "Your calendar. Choose a day to see a statistic.",
