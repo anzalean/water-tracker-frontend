@@ -25,12 +25,10 @@ const WaterMainInfo = () => {
   }, [progress, previousProgress]);
 
   return (
-    <div className={styles.mainContainer}>
-      <Logo/>
-      <WaterDailyNorma
-        amount="1.5 L"
-        label="My daily norma"
-      />
+
+    <div className={styles.mainContainer + " tour-start"}>
+      <Logo />
+      <WaterDailyNorma amount="1.5 L" label="My daily norma" />
 
       <div className={styles.bottleContainer}>
         <img
@@ -40,8 +38,10 @@ const WaterMainInfo = () => {
         />
       </div>
 
-
-      <WaterProgressBar progress={displayedProgress} className="step-3-progress"/>
+      <WaterProgressBar
+        progress={displayedProgress}
+        className="step-3-progress"
+      />
 
       <div className={styles.buttonContainer}>
         <AddWaterButton />

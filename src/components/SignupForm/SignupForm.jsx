@@ -9,8 +9,9 @@ import FormFooter from "../FormFooter/FormFooter";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/user/userOps";
 import { useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -34,6 +35,7 @@ const validationSchema = Yup.object().shape({
 export default function SignupForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [serverError, setServerError] = useState("");
   const {
     register,
@@ -64,40 +66,40 @@ export default function SignupForm() {
         <Logo />
       </div>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)} noValidate>
-        <h2 className={s.signupTitle}>Sign Up</h2>
+        <h2 className={s.signupTitle}>{t("signUpPage.signUp")}</h2>
         <InputField
           id="email"
-          label="Email"
+          label={t("signUpPage.password")}
           type="email"
-          placeholder="Enter your email"
+          placeholder={t("signUpPage.emailPlaceholder")}
           error={errors.email?.message}
           register={register("email")}
         />
         <PasswordField
           id="password"
-          label="Password"
-          placeholder="Create your password"
+          label={t("signUpPage.password")}
+          placeholder={t("signUpPage.passwordPlaceholder")}
           error={errors.password?.message}
           register={register("password")}
         />
         <PasswordField
           id="confirmPassword"
-          label="Confirm Password"
-          placeholder="Confirm your password"
+          label={t("signUpPage.repeatPassword")}
+          placeholder={t("signUpPage.repeatPassword")}
           error={errors.confirmPassword?.message}
           register={register("confirmPassword")}
         />
         {serverError && <p className={s.error}>{serverError}</p>}
         <button type="submit" className={s.button}>
-          Sign Up
+          {t("signUpPage.signUp")}
         </button>
-        <button className={s.googleButton}>
+        {/* <button className={s.googleButton}>
           Sign up with
           <FcGoogle className={s.googleIcon} />
-        </button>
+        </button> */}
         <FormFooter
-          text="Already have account?"
-          linkText="Sign In"
+          text={t("signUpPage.textAlready")}
+          linkText={t("signUpPage.signIn")}
           linkHref="/signin"
         />
       </form>

@@ -4,6 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import sprite from "../../assets/icons/sprite.svg";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useTranslation } from "react-i18next";
 
 export const WaterForm = ({ onSave, initialData }) => {
   const getCurrentTime = () => {
@@ -57,12 +58,16 @@ export const WaterForm = ({ onSave, initialData }) => {
     }
   }, [initialData, reset]);
 
+  const { t } = useTranslation();
+
   return (
     <div className={css.waterFormDiv}>
       <div className={css.waterForm}>
         <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
           <div>
-            <label className={css.formLabelBtn}>Amount of water:</label>
+            <label className={css.formLabelBtn}>
+              {t("modals.addEdit.amount")}
+            </label>
             <div className={css.formBtn}>
               <button
                 className={css.btn}
@@ -86,7 +91,7 @@ export const WaterForm = ({ onSave, initialData }) => {
                     className={css.btnField}
                     type="text"
                     disabled
-                    value={`${field.value} ml`}
+                    value={`${field.value} ${t("modals.addEdit.ml")}`}
                     style={{ backgroundColor: "#323f47" }}
                   />
                 )}
@@ -114,7 +119,9 @@ export const WaterForm = ({ onSave, initialData }) => {
           </div>
 
           <div className={css.time}>
-            <label className={css.formLabelTime}>Recording time:</label>
+            <label className={css.formLabelTime}>
+              {t("modals.addEdit.time")}
+            </label>
             <Controller
               name="time"
               control={control}
@@ -139,9 +146,7 @@ export const WaterForm = ({ onSave, initialData }) => {
           </div>
 
           <div className={css.keyboard}>
-            <label className={css.formLabel}>
-              Enter the value of the water used:
-            </label>
+            <label className={css.formLabel}>{t("modals.addEdit.value")}</label>
             <Controller
               name="inputField"
               control={control}
@@ -175,7 +180,7 @@ export const WaterForm = ({ onSave, initialData }) => {
           </div>
 
           <button className={css.btnSubmit} type="submit">
-            Save
+            {t("modals.addEdit.saveBtn")}
           </button>
         </form>
       </div>

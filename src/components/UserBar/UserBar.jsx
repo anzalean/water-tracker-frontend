@@ -20,12 +20,14 @@ import UserSettingsForm from "../UserSettingsForm/UserSettingsForm";
 import LogoutApprove from "../LogoutApprove/LogoutApprove";
 import { useTour } from "@reactour/tour"
 import css from "./UserBar.module.css";
+import { useTranslation } from "react-i18next";
 
 export default function UserBar() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const userName = useSelector(selectUserName);
   const userAvatar = useSelector(selectUserAvatar);
+  const { t } = useTranslation();
 
   const { currentStep, steps } = useTour();
 
@@ -158,41 +160,56 @@ export default function UserBar() {
 
       {showPopover && (
         <div ref={popoverRef} className={css.popover}>
-            <button
-              data-tour={isSettingsStep ? "step-settings" : undefined}
-              onClick={handleSettingsButton}
-              className={clsx(css.popoverItem, showUserForm && css.active)}
-            >
-              <svg className={css.icon} width="16" height="16">
-                <use href={`${iconsPath}#icon-settings`} />
-              </svg>
-              <span>Settings</span>
-            </button>
-            <button
-              data-tour={isLogoutStep ? "step-logout" : undefined}
-              onClick={handleLogoutButton}
-              className={clsx(css.popoverItem, showLogoutModal && css.active)}
-            >
-              <svg className={css.icon}>
-                <use href={`${iconsPath}#icon-log-out`} />
-              </svg>
-              <span>
-                <span> Log out</span>
-              </span>
-            </button>
+
+          <button
+            onClick={handleSettingsButton}
+            className={clsx(css.popoverItem, showUserForm && css.active)}
+          >
+            <svg className={css.icon} width="16" height="16">
+              <use href={`${iconsPath}#icon-settings`} />
+            </svg>
+            <span>{t("Userbar.setting")}</span>
+          </button>
+          <button
+            onClick={handleLogoutButton}
+            className={clsx(css.popoverItem, showLogoutModal && css.active)}
+          >
+            <svg className={css.icon}>
+              <use href={`${iconsPath}#icon-log-out`} />
+            </svg>
+            <span>
+              <span> {t("Userbar.logOut")}</span>
+            </span>
+          </button>
         </div>
       )}
 
       {showUserForm && (
-        <Modal onClose={() => { setShowUserForm(false); document.body.style.overflow = "auto"; }}  isUserForm={true} className={css.modal}>
+
+        <Modal
+          onClose={() => {
+            setShowUserForm(false);
+            document.body.style.overflow = "auto";
+          }}
+          isUserForm={true}
+          className={css.modal}
+        >
 
           <UserSettingsForm handleUserSave={handleUserForm} />
         </Modal>
       )}
       {showLogoutModal && (
-        <Modal onClose={() => { setShowLogoutModal(false); document.body.style.overflow = "auto"; }}>
+        <Modal
+          onClose={() => {
+            setShowLogoutModal(false);
+            document.body.style.overflow = "auto";
+          }}
+        >
           <LogoutApprove
-            onCancel={() => { setShowLogoutModal(false); document.body.style.overflow = "auto"; }}
+            onCancel={() => {
+              setShowLogoutModal(false);
+              document.body.style.overflow = "auto";
+            }}
             onApprove={handleLogoutApprove}
           />
         </Modal>

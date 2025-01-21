@@ -1,22 +1,22 @@
 import { useForm } from "react-hook-form";
 import css from "./DeleteWaterApprove.module.css";
+import { useTranslation } from "react-i18next";
 
 export const DeleteWaterApprove = ({ onCancel, onApprove }) => {
   const { handleSubmit } = useForm();
+  const { t } = useTranslation();
 
   return (
     <>
       <form onSubmit={handleSubmit(onApprove)}>
         <div className={css.deleteWaterContent}>
           <div className={css.deleteTitleGroup}>
-            <h2 className={css.deleteWaterTitle}>Delete Entry</h2>
-            <p className={css.deleteWaterCaption}>
-              Are you sure you want to delete this entry?
-            </p>
+            <h2 className={css.deleteWaterTitle}>{t("modals.delete.title")}</h2>
+            <p className={css.deleteWaterCaption}>{t("modals.delete.text")}</p>
           </div>
           <div className={css.deleteBtnCont}>
             <button type="submit" className={css.deleteButton}>
-              Delete
+              {t("modals.delete.delete")}
             </button>
             <button
               type="button"
@@ -26,7 +26,7 @@ export const DeleteWaterApprove = ({ onCancel, onApprove }) => {
                 onCancel();
               }}
             >
-              Cancel
+              {t("modals.delete.cancel")}
             </button>
           </div>
         </div>

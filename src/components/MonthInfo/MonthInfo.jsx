@@ -9,7 +9,8 @@ import { errNotify, successNotify } from "../../helpers/notification";
 import styles from "./MonthInfo.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { setCalendarMonth } from "../../redux/water/waterSlice";
-import { Chart } from '../Chart/Chart';
+import { Chart } from "../Chart/Chart";
+import { useTranslation } from "react-i18next";
 
 const MonthInfo = () => {
   const currentMonth = useSelector(selectCalendarMonth);
@@ -30,15 +31,20 @@ const MonthInfo = () => {
         console.error(error.message);
       });
   }, [dispatch, currentMonth]);
+  const { t } = useTranslation();
 
-  const [isActive, setIsActive] = useState(true); 
+  const [isActive, setIsActive] = useState(true);
   const handleToggle = () => {
     setIsActive(!isActive);
-  }
+  };
   return (
     <div data-tour="step-calendar" className={styles.monthInfoSection}>
       <div className={styles.monthPaginationBox}>
-        {isActive ? <h3 className={styles.monthTitle}>Month</h3> : <h3 className={styles.monthTitle}>Statistics</h3>}
+        {isActive ? (
+          <h3 className={styles.monthTitle}>{t("monthInfo.mouth")}</h3>
+        ) : (
+          <h3 className={styles.monthTitle}>{t("monthInfo.statistics")}</h3>
+        )}
         <div className={styles.paginationWrapper}>
           <CalendarPagination onMonthChange={handleMonthChange} />
           <button

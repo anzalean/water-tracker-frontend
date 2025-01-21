@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./CalendarPagination.module.css";
 import sprite from "../../assets/icons/sprite.svg";
+import { useTranslation } from "react-i18next";
 
 const monthNames = [
   "January",
@@ -19,6 +20,7 @@ const monthNames = [
 
 const CalendarPagination = ({ onMonthChange }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const { t } = useTranslation();
 
   const updateDateAndFetchData = (newDate) => {
     setCurrentMonth(newDate);
@@ -55,7 +57,8 @@ const CalendarPagination = ({ onMonthChange }) => {
         </svg>
       </button>
       <span className={styles.text}>
-        {monthNames[currentMonth.getMonth()]}, {currentMonth.getFullYear()}
+        {t(`ChooseDate.${monthNames[currentMonth.getMonth()].toLowerCase()}`)},
+        {currentMonth.getFullYear()}
       </span>
       <button
         className={styles.buttonNext}

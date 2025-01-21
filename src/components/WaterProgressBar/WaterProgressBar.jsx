@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
 import iconsPath from "../../assets/icons/sprite.svg";
 import styles from "./WaterProgressBar.module.css";
 
 const WaterProgressBar = ({ progress }) => {
+  const { t } = useTranslation();
+
   return (
     <div data-tour="step-progress" className={styles.progressBarContainer}>
-      <div className={styles.progressBarTitle}>Today</div>
+      <div className={styles.progressBarTitle}>{t("waterMainInfo.today")}</div>
       <div className={styles.progressBarWrapper}>
         <div className={styles.progressBarTrack}>
           <div
