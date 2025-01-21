@@ -4,9 +4,35 @@ import { Page } from "../../components/Page/Page";
 import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
 import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo";
 import css from "./TrackerPage.module.css";
-import TourButton from "../../components/TourButton/TourButton";
+// import TourButton from "../../components/TourButton/TourButton";
+import iconsPath from "../../assets/icons/sprite.svg";
+import steps from "../../helpers/steps";
+import { useTour } from '@reactour/tour';
 
 export default function TrackerPage() {
+
+  const { setCurrentStep, setIsOpen, isOpen } = useTour();
+
+  useEffect(() => {
+  if (isOpen) {
+      document.body.style.overflow = "hidden";
+  } else {
+      document.body.style.overflow = "unset";
+  }
+  }, [isOpen]);
+
+    const startTour = () => {
+      setCurrentStep(0);
+      const firstStepSelector = steps[0].selector;
+      const waitForSteps = setInterval(() => {
+      const stepElement = document.querySelector(firstStepSelector);
+      if (stepElement) {
+      clearInterval(waitForSteps);
+      setIsOpen(true);
+      }
+  }, 200);
+  };
+
 
   useEffect(() => {
     const questionIcon = document.querySelector(`.${css.question}`);
@@ -34,7 +60,15 @@ export default function TrackerPage() {
         <div className={css.trackerPage}>
           <WaterMainInfo />
           <WaterDetailedInfo />
-            <TourButton/>
+            <button
+              data-tour="step-start"
+              className={css.tourButton}
+              onClick={startTour}>
+                <svg className={css.question} width="20" height="20">
+                    <use href={`${iconsPath}#icon-question`} />
+                </svg>
+            </button>
+            {/* <TourButton/> */}
         </div>
       </Page>
     </React.Fragment>
