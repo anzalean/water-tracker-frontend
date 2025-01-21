@@ -4,6 +4,7 @@ import { Page } from "../../components/Page/Page";
 import SigninForm from "../../components/SigninForm/SigninForm";
 import css from "./SignInPage.module.css";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection.jsx";
+import Languages from "../../components/Languages/Languages.jsx";
 
 export default function SignInPage() {
   return (
@@ -12,6 +13,7 @@ export default function SignInPage() {
         <title>Sign In</title>
       </Helmet>
       <Page>
+        <Languages />
         {
           <div className={css.SignInPage}>
             <SigninForm />

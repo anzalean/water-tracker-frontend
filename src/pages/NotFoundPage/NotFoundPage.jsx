@@ -4,6 +4,7 @@ import { Page } from "../../components/Page/Page";
 import { useNavigate } from "react-router-dom";
 import css from "./NotFoundPage.module.css";
 import astro from "../../assets/images/astro.jpg";
+import Languages from "../../components/Languages/Languages";
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ export default function NotFoundPage() {
         <title>404 - Not Found</title>
       </Helmet>
       <Page>
+        <Languages />
         <div className={css.contentWrapper}>
           <div className={css.astroImage}>
             <img src={astro} alt="Astronaut" />

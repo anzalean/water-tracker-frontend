@@ -52,6 +52,7 @@ import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedI
 import css from "./TrackerPage.module.css";
 import { useTour } from "@reactour/tour";
 import steps from "../../helpers/steps";
+import Languages from "../../components/Languages/Languages";
 
 export default function TrackerPage() {
   const { setIsOpen } = useTour();
@@ -84,6 +85,7 @@ const startTour = () => {
         <title>Tracker</title>
       </Helmet>
       <Page>
+        <Languages />
         <div className={css.trackerPage}>
           <WaterMainInfo />
           <WaterDetailedInfo />

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import iconsPath from "../../assets/icons/sprite.svg";
 import style from "./Languages.module.css";
 
-const Languages = () => {
+export default function Languages() {
   const { i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const containerRef = useRef(null);
@@ -59,4 +59,4 @@ const Languages = () => {
   );
 };
 
-export default Languages;
+
