@@ -31,7 +31,11 @@ export default function Languages() {
   }, []);
 
   return (
-    <div className={style.container} ref={containerRef}>
+    <div
+      data-tour="step-language"
+      className={style.container}
+      ref={containerRef}
+    >
       <div className={style.globe} onClick={toggleMenu}>
         {/* SVG глобуса */}
         <svg className={style.globe} width="20" height="20">

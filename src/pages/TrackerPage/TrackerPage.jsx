@@ -5,8 +5,6 @@ import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
 import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo";
 import css from "./TrackerPage.module.css";
 import TourButton from "../../components/TourButton/TourButton";
-import { useTour } from "@reactour/tour";
-import steps from "../../helpers/steps";
 import Languages from "../../components/Languages/Languages";
 
 export default function TrackerPage() {

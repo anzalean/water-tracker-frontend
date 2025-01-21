@@ -39,28 +39,35 @@ export default function UserBar() {
   const popoverRef = useRef(null);
 
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popoverRef.current && !popoverRef.current.contains(event.target) && !isTourActive) {
+        setShowPopover(false);
+      }
+    };
     if (showPopover) {
       document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [showPopover]);
-
+  }, [showPopover, isTourActive]);
 
   useEffect(() => {
-    
-      if (steps[currentStep]?.selector === '[data-tour="step-profile"]') {
+    const handleTourChange = () => {
+      const currentStepData = steps[currentStep];
+
+      if (currentStepData?.selector === '[data-tour="step-profile"]') {
         setShowPopover(true);
         setIsTourActive(true);
       } else if (
-        steps[currentStep]?.selector === '[data-tour="step-settings"]' || 
-        steps[currentStep]?.selector === '[data-tour="step-logout"]'
+        currentStepData?.selector === '[data-tour="step-settings"]' ||
+        currentStepData?.selector === '[data-tour="step-logout"]'
       ) {
         if (isTourActive) {
           setShowPopover(true);
-        
         } else {
           // Якщо tour не активний, переключаємо крок на step-profile 
           setCurrentStep(steps.findIndex(step => step.selector === '[data-tour="step-profile"]'));
@@ -69,14 +76,13 @@ export default function UserBar() {
         setShowPopover(false);
         setIsTourActive(false);
       }
-    }, [currentStep, steps, isTourActive, setCurrentStep]);
-  
+    };
 
-  const handleClickOutside = (event) => {
-    if (popoverRef.current && !popoverRef.current.contains(event.target)) {
-      setShowPopover(false);
-    }
-  };
+    handleTourChange();
+    const observer = new MutationObserver(handleTourChange);
+    observer.observe(document, { attributes: true, childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [currentStep, steps, isTourActive, setCurrentStep]);
 
   if (!isLoggedIn) return null;
 
