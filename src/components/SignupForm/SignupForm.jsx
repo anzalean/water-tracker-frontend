@@ -48,7 +48,8 @@ export default function SignupForm() {
 
   const onSubmit = async (data) => {
     setServerError("");
-    const { ...userData } = data;
+    // eslint-disable-next-line no-unused-vars
+    const {confirmPassword, ...userData } = data;
     try {
       const response = await dispatch(signUp(userData)).unwrap();
       if (response.status === 201) {
@@ -58,8 +59,9 @@ export default function SignupForm() {
     } catch (error) {
       setServerError(error.message || "Registration failed. Please try again.");
     }
+   
   };
-
+  
   return (
     <div className={s.SignUpContainer}>
       <div className={s.logoContainer}>
@@ -69,7 +71,7 @@ export default function SignupForm() {
         <h2 className={s.signupTitle}>{t("signUpPage.signUp")}</h2>
         <InputField
           id="email"
-          label={t("signUpPage.password")}
+          label={t("signUpPage.email")}
           type="email"
           placeholder={t("signUpPage.emailPlaceholder")}
           error={errors.email?.message}
