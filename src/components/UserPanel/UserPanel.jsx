@@ -9,7 +9,7 @@ const UserPanel = () => {
   const { t } = useTranslation();
 
   return (
-    <div data-tour="step-profile" className={css.panelContainer}>
+    <div className={css.panelContainer}>
       <h2 className={css.panelTitle}>
         {t("Userbar.hello")}
         <span className={css.titleSpan}>, {name}!</span>

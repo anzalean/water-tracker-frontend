@@ -4,6 +4,7 @@ import { Page } from '../../components/Page/Page';
 import css from './ResetPasswordPage.module.css'; 
 import ResetPasswordForm from '../../components/ResetPasswordForm/ResetPasswordForm';
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
+import Languages from '../../components/Languages/Languages';
 
 export default function ResetPasswordPage() {
   return (
@@ -12,6 +13,7 @@ export default function ResetPasswordPage() {
         <title>Password Reset</title>
       </Helmet>
       <Page>
+        <Languages />
         {<div className={css.ResetPasswordPage}>
           <ResetPasswordForm/>
           <div className={css.advantagesDesktopOnly}>

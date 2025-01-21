@@ -41,6 +41,8 @@ const CalendarItem = ({ availability = 0, day, currentDate }) => {
   return (
     <div className={styles.itemBox}>
       <button
+        // data-tour="step-today"
+        data-tour={isToday(currentDate) ? "step-today" : undefined}
         onClick={handleClick}
         className={styles.buttonDay}
         style={buttonStyle}

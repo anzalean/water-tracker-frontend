@@ -12,6 +12,7 @@
   --color-blacksemi: #2f2f2f80;
   --color-error: #ef5050;
   --color-border-today: #d2650c;
+  --reactour-accent: #87d28d!important;
   /* Animation */
   --animation: 150ms ease-in;
 }
@@ -91,11 +92,34 @@ button {
 }
 
 
-.react-joyride__overlay {
+/* .react-joyride__overlay {
   background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid #007bff;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
   transition: all 0.3s ease-in-out;
+} */
+
+.reactour__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.7);
 }
 
+.reactour__popover {
+  background-color: var(--color-white)!important;
+  color: var(--color-black)!important;
+  border-radius: 15px!important;
+}
+
+.reactour__popover span {
+  background: var(--color-lightgreenhover)!important;
+}
+
+.reactour__popover > div {
+  justify-content: flex-start!important;
+}

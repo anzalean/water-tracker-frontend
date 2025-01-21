@@ -4,6 +4,7 @@ import { Page } from '../../components/Page/Page';
 import css from './EmailVerifyPage.module.css'; 
 import EmailVerifyForm from "../../components/EmailVerifyForm/EmailVerifyForm";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
+import Languages from '../../components/Languages/Languages';
 
 
 export default function EmailVerifyPage() {
@@ -13,6 +14,7 @@ export default function EmailVerifyPage() {
         <title>Email Verification</title>
       </Helmet>
       <Page>
+        <Languages />
         {
           <div className={css.EmailVerifyPage}>
             <EmailVerifyForm />

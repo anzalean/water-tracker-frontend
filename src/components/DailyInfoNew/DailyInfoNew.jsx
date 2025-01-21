@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectCurrentDay } from "../../redux/water/selectors";
-import WaterCardList from "../WarterCardList/WaterCardList.jsx";
-import CreateWaterBtn from "../CreateWaterBtn/CreateWarterBtn.jsx";
+import WaterCardList from "../WarterCardList/WaterCardList";
+import CreateWaterBtn from "../CreateWaterBtn/CreateWarterBtn";
 import css from "./DailyInfoNew.module.css";
 import { useTranslation } from "react-i18next";
 
