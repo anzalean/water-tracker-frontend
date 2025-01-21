@@ -41,7 +41,9 @@ const MonthInfo = () => {
         {isActive ? <h3 className={styles.monthTitle}>Month</h3> : <h3 className={styles.monthTitle}>Statistics</h3>}
         <div className={styles.paginationWrapper}>
           <CalendarPagination onMonthChange={handleMonthChange} />
-          <button className={styles.iconStatistics} onClick={handleToggle}>
+          <button
+            data-tour="step-graphic"
+            className={styles.iconStatistics} onClick={handleToggle}>
             <svg width={20} height={20}>
               <use xlinkHref={`${sprite}#icon-pie-chart-statistics`} />
             </svg>

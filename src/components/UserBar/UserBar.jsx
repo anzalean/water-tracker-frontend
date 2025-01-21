@@ -18,7 +18,7 @@ import UserImageElem from "../UserImageElem/UserImageElem";
 import Modal from "../Modal/Modal";
 import UserSettingsForm from "../UserSettingsForm/UserSettingsForm";
 import LogoutApprove from "../LogoutApprove/LogoutApprove";
-
+import { useTour } from "@reactour/tour"
 import css from "./UserBar.module.css";
 
 export default function UserBar() {
@@ -27,9 +27,13 @@ export default function UserBar() {
   const userName = useSelector(selectUserName);
   const userAvatar = useSelector(selectUserAvatar);
 
+  const { currentStep, steps } = useTour();
+
   const [showPopover, setShowPopover] = useState(false);
   const [showUserForm, setShowUserForm] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [isSettingsStep, setIsSettingsStep] = useState(false);
+  const [isLogoutStep, setIsLogoutStep] = useState(false);
 
   const popoverRef = useRef(null);
 
@@ -42,6 +46,26 @@ export default function UserBar() {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [showPopover]);
+
+  useEffect(() => {
+    
+      if (steps[currentStep]?.selector === '[data-tour="step-profile"]') {
+        setShowPopover(true);
+        setIsSettingsStep(false);
+        setIsLogoutStep(false);
+      } else if (steps[currentStep]?.selector === '[data-tour="step-settings"]') {
+        setIsSettingsStep(true);
+        setIsLogoutStep(false);
+      } else if (steps[currentStep]?.selector === '[data-tour="step-logout"]') {
+        setIsSettingsStep(true);
+        setIsLogoutStep(true);
+      } else {
+        setShowPopover(false);
+        setIsSettingsStep(false);
+        setIsLogoutStep(false);
+      }
+    }, [currentStep, steps]);
+  
 
   const handleClickOutside = (event) => {
     if (popoverRef.current && !popoverRef.current.contains(event.target)) {
@@ -109,6 +133,7 @@ export default function UserBar() {
   return (
     <div className={css.userBarContainer}>
       <button
+        data-tour="step-profile"
         className={clsx(css.userBarBtn, showPopover && css.open)}
         onClick={togglePopover}
       >
@@ -133,31 +158,32 @@ export default function UserBar() {
 
       {showPopover && (
         <div ref={popoverRef} className={css.popover}>
-          <button
-            onClick={handleSettingsButton}
-            className={clsx(css.popoverItem, showUserForm && css.active)}
-          >
-            <svg className={css.icon} width="16" height="16">
-              <use href={`${iconsPath}#icon-settings`} />
-            </svg>
-            <span>Settings</span>
-          </button>
-          <button
-            onClick={handleLogoutButton}
-            className={clsx(css.popoverItem, showLogoutModal && css.active)}
-          >
-            <svg className={css.icon}>
-              <use href={`${iconsPath}#icon-log-out`} />
-            </svg>
-            <span>
-              <span> Log out</span>
-            </span>
-          </button>
+            <button
+              data-tour={isSettingsStep ? "step-settings" : undefined}
+              onClick={handleSettingsButton}
+              className={clsx(css.popoverItem, showUserForm && css.active)}
+            >
+              <svg className={css.icon} width="16" height="16">
+                <use href={`${iconsPath}#icon-settings`} />
+              </svg>
+              <span>Settings</span>
+            </button>
+            <button
+              data-tour={isLogoutStep ? "step-logout" : undefined}
+              onClick={handleLogoutButton}
+              className={clsx(css.popoverItem, showLogoutModal && css.active)}
+            >
+              <svg className={css.icon}>
+                <use href={`${iconsPath}#icon-log-out`} />
+              </svg>
+              <span>
+                <span> Log out</span>
+              </span>
+            </button>
         </div>
       )}
 
       {showUserForm && (
-
         <Modal onClose={() => { setShowUserForm(false); document.body.style.overflow = "auto"; }}  isUserForm={true} className={css.modal}>
 
           <UserSettingsForm handleUserSave={handleUserForm} />

@@ -7,7 +7,7 @@ const UserPanel = () => {
   const { name } = useSelector(selectUser);
 
   return (
-    <div data-tour="step-profile" className={css.panelContainer}>
+    <div className={css.panelContainer}>
       <h2 className={css.panelTitle}>
         Hello<span className={css.titleSpan}>, {name}!</span>
       </h2>

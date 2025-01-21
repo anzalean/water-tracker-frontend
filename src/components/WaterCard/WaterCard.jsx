@@ -33,7 +33,7 @@ export default function WaterCard({ waterCard }) {
   const timeString = date ? extractTimeFromDateString(date) : "--:--";
 
   return (
-    <div className={css.waterCard}>
+    <div data-tour="step-portion" className={css.waterCard}>
       <div className={css.iconGlassContainer}>
         <svg className={css.iconGlass} aria-label="Water glass icon">
           <use href={`${iconsPath}#icon-water-glass-green`} />
@@ -47,6 +47,7 @@ export default function WaterCard({ waterCard }) {
 
       <div className={css.actions}>
         <span
+          data-tour="step-edit-card"
           className={css.iconContainer}
           aria-label="Edit water card"
           onClick={handleEdit}
@@ -56,6 +57,7 @@ export default function WaterCard({ waterCard }) {
           </svg>
         </span>
         <span
+          data-tour="step-delete-card"
           className={css.iconContainer}
           aria-label="Delete water card"
           onClick={handleDelete}

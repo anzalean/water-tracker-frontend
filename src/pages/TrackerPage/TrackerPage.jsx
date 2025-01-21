@@ -54,29 +54,27 @@ import { useTour } from "@reactour/tour";
 import steps from "../../helpers/steps";
 
 export default function TrackerPage() {
-  const { setIsOpen } = useTour();
+  const { setIsOpen, isOpen } = useTour();
+  
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
 
 const startTour = () => {
-  console.log("startTour called"); // Додаємо лог
   const firstStepSelector = steps[0].selector;
   const waitForSteps = setInterval(() => {
-    console.log(`Checking for element: ${firstStepSelector}`);
     const stepElement = document.querySelector(firstStepSelector);
     if (stepElement) {
-      console.log("First step element found:", stepElement);
       clearInterval(waitForSteps);
       setIsOpen(true);
     }
   }, 200);
 };
 
-  useEffect(() => {
-  steps.forEach((step) => {
-    if (!document.querySelector(step.selector)) {
-      console.error(`Element ${step.selector} not found`);
-    }
-  });
-}, []);
   
   return (
     <React.Fragment>
@@ -88,10 +86,11 @@ const startTour = () => {
           <WaterMainInfo />
           <WaterDetailedInfo />
           <button
+            data-tour="step-start"
             className={css.helpButton}
             onClick={startTour}
           >
-            Довідка
+            ?
           </button>
         </div>
       </Page>

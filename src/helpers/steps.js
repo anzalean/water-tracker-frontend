@@ -1,7 +1,7 @@
 const steps = [
     {
-        selector: ".tour-start",
-        content: "Натисніть тут, щоб почати ваш перший тур.",
+        selector: '[data-tour="step-start"]',
+        content: "Hello! Let's explore the main features of our app! ",
     },
     {
         selector: '[data-tour="step-home"]',
@@ -21,22 +21,48 @@ const steps = [
     },
     {
         selector: '[data-tour="step-profile"]',
-        content: "Edit your profile.",
+        content: "Your profile settings.",
+    },
+    {
+        selector: '[data-tour="step-settings"]',
+        content: "Edit your profile",
+    },
+    {
+        selector: '[data-tour="step-logout"]',
+        content: "Logout from the app.",
     },
     {
         selector: '[data-tour="step-info"]',
         content: "Your daily info.",
     },
+        {
+        selector: '[data-tour="step-portion"]',
+        content: "How much you have to drink this time?",
+    },
+    {
+        selector: '[data-tour="step-edit-card"]',
+        content: "Edit your water portion.",
+    },
+    {
+        selector: '[data-tour="step-delete-card"]',
+        content: "Delete your water portion.",
+    },
     {
         selector: '[data-tour="step-calendar"]',
-        content: "Your calendar.",
+        content: "Your calendar. Choose a day to see a statistic.",
+    },
+    {
+        selector: '[data-tour="step-today"]',
+        content: "Here you can see today's persentage.",
+    },
+    {
+        selector: '[data-tour="step-month"]',
+        content: "Here you can choose another month.",
+    },
+    {
+        selector: '[data-tour="step-graphic"]',
+        content: "Here you can see a graphic.",
     },
 ];
-
-// steps.forEach((step) => {
-//   if (!document.querySelector(step.selector)) {
-//     console.error(`Element ${step.selector} not found`);
-//   }
-// });
 
 export default steps;
