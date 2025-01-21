@@ -4,6 +4,7 @@ import { Page } from "../../components/Page/Page.jsx";
 import css from "./HomePage.module.css";
 import { WelcomeSection } from "../../components/WelcomeSection/WelcomeSection.jsx";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection.jsx";
+import Languages from "../../components/Languages/Languages.jsx";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
         <title>Home</title>
       </Helmet>
       <Page>
+        <Languages />
         {
           <div className={css.HomePage}>
             <WelcomeSection />

@@ -4,6 +4,7 @@ import { Page } from "../../components/Page/Page";
 import css from "./SignUpPage.module.css";
 import SignupForm from "../../components/SignupForm/SignupForm";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection.jsx";
+import Languages from "../../components/Languages/Languages.jsx";
 
 export default function SignUpPage() {
   return (
@@ -12,6 +13,7 @@ export default function SignUpPage() {
         <title>Sign Up</title>
       </Helmet>
       <Page>
+        <Languages />
         {
           <div className={css.SignUpPage}>
             <SignupForm />
