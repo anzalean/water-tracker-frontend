@@ -9,7 +9,7 @@ import FormFooter from "../FormFooter/FormFooter";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/user/userOps";
 import { useNavigate } from "react-router-dom";
-// import { FcGoogle } from "react-icons/fc";
+import GoogleButton from "../GoogleButton/GoogleButton";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -49,7 +49,7 @@ export default function SignupForm() {
   const onSubmit = async (data) => {
     setServerError("");
     // eslint-disable-next-line no-unused-vars
-    const {confirmPassword, ...userData } = data;
+    const { confirmPassword, ...userData } = data;
     try {
       const response = await dispatch(signUp(userData)).unwrap();
       if (response.status === 201) {
@@ -59,9 +59,8 @@ export default function SignupForm() {
     } catch (error) {
       setServerError(error.message || "Registration failed. Please try again.");
     }
-   
   };
-  
+
   return (
     <div className={s.SignUpContainer}>
       <div className={s.logoContainer}>
@@ -95,10 +94,7 @@ export default function SignupForm() {
         <button type="submit" className={s.button}>
           {t("signUpPage.signUp")}
         </button>
-        {/* <button className={s.googleButton}>
-          Sign up with
-          <FcGoogle className={s.googleIcon} />
-        </button> */}
+        <GoogleButton text="Sign up with Google" />
         <FormFooter
           text={t("signUpPage.textAlready")}
           linkText={t("signUpPage.signIn")}

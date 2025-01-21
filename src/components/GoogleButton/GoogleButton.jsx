@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { fetchOAuthUrl } from "../../redux/user/userOps";
 import s from "./GoogleButton.module.css";
 
-export default function GoogleButton() {
+export default function GoogleButton({ text = "Sign in with Google" }) {
   const dispatch = useDispatch();
   const googleLoginClick = () => {
     dispatch(fetchOAuthUrl())
@@ -27,7 +27,7 @@ export default function GoogleButton() {
         className={s.googleButton}
       >
         <FcGoogle className={s.googleIcon} />
-        <span className={s.googleText}>Sign in with Google</span>
+        <span className={s.googleText}>{text}</span>
       </button>
     </React.Fragment>
   );
