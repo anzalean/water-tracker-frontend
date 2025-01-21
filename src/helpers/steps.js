@@ -60,9 +60,13 @@ const steps = [
         content: "Here you can choose another month.",
     },
     {
-        selector: '[data-tour="step-graphic"]',
+        selector: '[data-tour="step-graphic-open"]',
         content: "Here you can see a graphic.",
     },
+    {
+        selector: '[data-tour="step-graphic"]',
+        content: "That`s a graphic.",
+    }
 ];
 
 export default steps;

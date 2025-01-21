@@ -29,13 +29,12 @@ export default function UserBar() {
   const userAvatar = useSelector(selectUserAvatar);
   const { t } = useTranslation();
 
-  const { currentStep, steps } = useTour();
+  const { currentStep, steps, setCurrentStep } = useTour();
 
   const [showPopover, setShowPopover] = useState(false);
   const [showUserForm, setShowUserForm] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const [isSettingsStep, setIsSettingsStep] = useState(false);
-  const [isLogoutStep, setIsLogoutStep] = useState(false);
+  const [isTourActive, setIsTourActive] = useState(false);
 
   const popoverRef = useRef(null);
 
@@ -49,24 +48,28 @@ export default function UserBar() {
     };
   }, [showPopover]);
 
+
   useEffect(() => {
     
       if (steps[currentStep]?.selector === '[data-tour="step-profile"]') {
         setShowPopover(true);
-        setIsSettingsStep(false);
-        setIsLogoutStep(false);
-      } else if (steps[currentStep]?.selector === '[data-tour="step-settings"]') {
-        setIsSettingsStep(true);
-        setIsLogoutStep(false);
-      } else if (steps[currentStep]?.selector === '[data-tour="step-logout"]') {
-        setIsSettingsStep(true);
-        setIsLogoutStep(true);
+        setIsTourActive(true);
+      } else if (
+        steps[currentStep]?.selector === '[data-tour="step-settings"]' || 
+        steps[currentStep]?.selector === '[data-tour="step-logout"]'
+      ) {
+        if (isTourActive) {
+          setShowPopover(true);
+        
+        } else {
+          // Якщо tour не активний, переключаємо крок на step-profile 
+          setCurrentStep(steps.findIndex(step => step.selector === '[data-tour="step-profile"]'));
+        }
       } else {
         setShowPopover(false);
-        setIsSettingsStep(false);
-        setIsLogoutStep(false);
+        setIsTourActive(false);
       }
-    }, [currentStep, steps]);
+    }, [currentStep, steps, isTourActive, setCurrentStep]);
   
 
   const handleClickOutside = (event) => {
@@ -162,6 +165,7 @@ export default function UserBar() {
         <div ref={popoverRef} className={css.popover}>
 
           <button
+            data-tour="step-settings"
             onClick={handleSettingsButton}
             className={clsx(css.popoverItem, showUserForm && css.active)}
           >
@@ -171,6 +175,7 @@ export default function UserBar() {
             <span>{t("Userbar.setting")}</span>
           </button>
           <button
+            data-tour="step-logout"
             onClick={handleLogoutButton}
             className={clsx(css.popoverItem, showLogoutModal && css.active)}
           >
