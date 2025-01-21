@@ -1,43 +1,60 @@
-// import { useEffect } from "react";
-// import { useTour } from '@reactour/tour';
-// import css from './TourButton.module.css';
-// import iconsPath from "../../assets/icons/sprite.svg";
-// import steps from "../../helpers/steps";
+import { useEffect } from "react";
+import iconsPath from "../../assets/icons/sprite.svg";
+import css from "./TourButton.module.css";
+import steps from "../../helpers/steps";
+import { useTour } from '@reactour/tour';
 
-// const TourButton = () => {
-//     const { setCurrentStep, setIsOpen, isOpen } = useTour();
+const TourButton = () => {
+    const { setCurrentStep, setIsOpen, isOpen } = useTour();
 
-//     useEffect(() => {
-//     if (isOpen) {
-//         document.body.style.overflow = "hidden";
-//     } else {
-//         document.body.style.overflow = "unset";
-//     }
-//     }, [isOpen]);
+    useEffect(() => {
+        if (isOpen) {
+        document.body.style.overflow = "hidden";
+        } else {
+        document.body.style.overflow = "unset";
+        }
+    }, [isOpen]);
 
-//     const startTour = () => {
-//         setCurrentStep(0);
-//         const firstStepSelector = steps[0].selector;
-//         const waitForSteps = setInterval(() => {
-//         const stepElement = document.querySelector(firstStepSelector);
-//         if (stepElement) {
-//         clearInterval(waitForSteps);
-//         setIsOpen(true);
-//         }
-//     }, 200);
-//     };
-    
+    const startTour = () => {
+        setCurrentStep(0);
+        const firstStepSelector = steps[0].selector;
+        const waitForSteps = setInterval(() => {
+        const stepElement = document.querySelector(firstStepSelector);
+        if (stepElement) {
+            clearInterval(waitForSteps);
+            setIsOpen(true);
+        }
+        }, 200);
+    };
 
-//     return (
-//         <button
-//             data-tour="step-start"
-//             className={css.tourButton}
-//             onClick={startTour}>
-//                 <svg className={css.question} width="20" height="20">
-//                     <use href={`${iconsPath}#icon-question`} />
-//                 </svg>
-//         </button>
-//     );
-// };
+    useEffect(() => {
+        const questionIcon = document.querySelector(`.${css.question}`);
 
-// export default TourButton;
+        const addShakeAnimation = () => {
+        if (questionIcon) {
+            questionIcon.classList.add(css.shake);
+            setTimeout(() => {
+            questionIcon.classList.remove(css.shake);
+            }, 1000); // Довжина анімації (1 секунда)
+        }
+        };
+
+        const intervalId = setInterval(addShakeAnimation, 6000); // Запуск кожні 6 секунд
+
+        return () => clearInterval(intervalId); // Очищення інтервалу при розмонтуванні
+    }, []);
+
+    return (
+        <button
+        data-tour="step-start"
+        className={css.tourButton}
+        onClick={startTour}
+        >
+        <svg className={css.question} width="20" height="20">
+            <use href={`${iconsPath}#icon-question`} />
+        </svg>
+        </button>
+    );
+};
+
+export default TourButton;

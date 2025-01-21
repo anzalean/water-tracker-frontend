@@ -25,8 +25,6 @@ const WaterCardList = () => {
       });
   }, [dispatch, waterDate]);
 
-  //  const [isTourActive, setIsTourActive] = useState(false);
-
   return waterList && waterList.length > 0 ? (
     <div className={css.listContainer}>
       <ul className={css.list}>
@@ -34,7 +32,6 @@ const WaterCardList = () => {
           <li
             className={css.item}
             key={waterItem._id}
-            // data-tour={isTourActive ? 'step-portion' : undefined}
           >
             <WaterCard waterCard={waterItem} />
           </li>

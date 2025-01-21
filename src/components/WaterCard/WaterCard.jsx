@@ -3,19 +3,14 @@ import iconsPath from "../../assets/icons/sprite.svg";
 import { extractTimeFromDateString } from "../../helpers/extractTimeFromDateString";
 import EditCardModal from "../EditWaterModal/EditWaterModal";
 import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal";
-// import { useTour } from "@reactour/tour"
 import css from "./WaterCard.module.css";
 import { useTranslation } from "react-i18next";
 
-export default function WaterCard({
-  waterCard,
-  // isTourActive
-}) {
+export default function WaterCard({waterCard}) {
   const { _id, amount, date } = waterCard || {};
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalForDelete, setModalForDelete] = useState(false);
   const { t } = useTranslation();
-  // const { currentStep, steps, setCurrentStep } = useTour();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -39,11 +34,7 @@ export default function WaterCard({
   const timeString = date ? extractTimeFromDateString(date) : "--:--";
 
   return (
-    <div
-      // data-tour={isTourActive && waterCard ? "step-portion" : undefined}
-      data-tour="step-portion"
-      className={css.waterCard}
-    >
+    <div className={css.waterCard}>
       <div className={css.iconGlassContainer}>
         <svg className={css.iconGlass} aria-label="Water glass icon">
           <use href={`${iconsPath}#icon-water-glass-green`} />
@@ -59,8 +50,6 @@ export default function WaterCard({
 
       <div className={css.actions}>
         <span
-          data-tour="step-edit-card"
-          // data-tour={isTourActive && waterCard ? "step-edit-card" : undefined}
           className={css.iconContainer}
           aria-label="Edit water card"
           onClick={handleEdit}
@@ -70,8 +59,6 @@ export default function WaterCard({
           </svg>
         </span>
         <span
-          data-tour="step-delete-card"
-          // data-tour={isTourActive && waterCard ? "step-delete-card" : undefined}
           className={css.iconContainer}
           aria-label="Delete water card"
           onClick={handleDelete}

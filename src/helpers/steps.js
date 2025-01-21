@@ -35,18 +35,18 @@ const steps = [
         selector: '[data-tour="step-info"]',
         content: "Your daily info.",
     },
-        {
-        selector: '[data-tour="step-portion"]',
-        content: "How much you have to drink this time?",
-    },
-    {
-        selector: '[data-tour="step-edit-card"]',
-        content: "Edit your water portion.",
-    },
-    {
-        selector: '[data-tour="step-delete-card"]',
-        content: "Delete your water portion.",
-    },
+    //     {
+    //     selector: '[data-tour="step-portion"]',
+    //     content: "How much you have to drink this time?",
+    // },
+    // {
+    //     selector: '[data-tour="step-edit-card"]',
+    //     content: "Edit your water portion.",
+    // },
+    // {
+    //     selector: '[data-tour="step-delete-card"]',
+    //     content: "Delete your water portion.",
+    // },
     {
         selector: '[data-tour="step-calendar"]',
         content: "Your calendar. Choose a day to see a statistic.",

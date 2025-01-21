@@ -72,9 +72,7 @@ export const Chart = () => {
   }
 
   return (
-    <div
-      data-tour="step-graphic"
-      className={css.container}>
+    <div className={css.container}>
       <ResponsiveContainer
         width="100%"
         height={chartHeight}
