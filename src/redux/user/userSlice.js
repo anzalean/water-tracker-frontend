@@ -47,6 +47,7 @@ const userSlice = createSlice({
       console.log(action.payload);
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.accessToken;
+      console.log(action.payload.accessToken);
       setAuthHeader(action.payload.accessToken);
     },
   },
@@ -222,9 +223,12 @@ const userSlice = createSlice({
         state.loading = true;
         state.error = false;
       })
-      .addCase(googleLogin.fulfilled, (state) => {
+      .addCase(googleLogin.fulfilled, (state, action) => {
         state.loading = false;
         state.error = false;
+        state.user = action.payload.data.user;
+        state.accessToken = action.payload.data.accessToken;
+        state.isLoggedIn = true;
       })
       .addCase(googleLogin.rejected, (state, action) => {
         state.loading = false;

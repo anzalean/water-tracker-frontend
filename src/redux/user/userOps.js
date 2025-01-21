@@ -92,6 +92,7 @@ export const fetchCurrentUser = createAsyncThunk(
     try {
       const reduxState = thunkAPI.getState();
       setAuthHeader(reduxState.auth.accessToken);
+      console.log(reduxState.auth.accessToken);
       const response = await axiosInstance.get("/auth/current");
       return response.data;
     } catch (error) {
@@ -102,6 +103,7 @@ export const fetchCurrentUser = createAsyncThunk(
     condition: (_, { getState }) => {
       const state = getState();
       const savedToken = state.auth.accessToken;
+      console.log(savedToken);
       return savedToken !== null;
     },
   }
@@ -222,12 +224,12 @@ export const googleLogin = createAsyncThunk(
   "user/googleLogin",
   async (googleData, thunkAPI) => {
     try {
-      console.log("googleData", googleData);
       const response = await axiosInstance.post(
         "/auth/google-login",
         googleData
       );
-      setAuthHeader(response.data.accessToken);
+      console.log("googleLogin", response.data.data.accessToken);
+      setAuthHeader(response.data.data.accessToken);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

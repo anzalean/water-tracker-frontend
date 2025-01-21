@@ -20,6 +20,9 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const ResetPasswordPage = lazy(() =>
   import("./pages/ResetPasswordPage/ResetPasswordPage")
 );
+const ConfirmGoogleAuth = lazy(() =>
+  import("./pages/ConfirmGoogleAuth/ConfirmGoogleAuth")
+);
 
 export function App() {
   const dispatch = useDispatch();
@@ -44,56 +47,70 @@ export function App() {
         }),
       }}
     >
-    <div>
-      
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="/signup"
-            element={
-              <RestrictedRoute
-                redirectTo="/tracker"
-                component={<SignUpPage />}
-              />
-            }
-          />
-          <Route
-            path="/verify/:verifyToken"
-            element={
-              <RestrictedRoute
-                redirectTo="/signin"
-                component={<EmailVerifyPage />}
-              />
-            }
-          />
-          <Route
-            path="/signin"
-            element={
-              <RestrictedRoute
-                redirectTo="/tracker"
-                component={<SignInPage />}
-              />
-            }
-          />
-          <Route
-            path="/tracker"
-            element={
-              <PrivateRoute redirectTo="/signin" component={<TrackerPage />} />
-            }
-          />
-          <Route
-            path="/auth/reset-password"
-            element={
-              <RestrictedRoute
-                redirectTo="/tracker"
-                component={<ResetPasswordPage />}
-              />
-            }
-          />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
+      <div>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route
+              index
+              element={
+                <RestrictedRoute
+                  redirectTo="/tracker"
+                  component={<HomePage />}
+                />
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <RestrictedRoute
+                  redirectTo="/tracker"
+                  component={<SignUpPage />}
+                />
+              }
+            />
+            <Route
+              path="/verify/:verifyToken"
+              element={
+                <RestrictedRoute
+                  redirectTo="/signin"
+                  component={<EmailVerifyPage />}
+                />
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                <RestrictedRoute
+                  redirectTo="/tracker"
+                  component={<SignInPage />}
+                />
+              }
+            />
+            <Route
+              path="/tracker"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<TrackerPage />}
+                />
+              }
+            />
+            <Route
+              path="/auth/reset-password"
+              element={
+                <RestrictedRoute
+                  redirectTo="/tracker"
+                  component={<ResetPasswordPage />}
+                />
+              }
+            />
+            <Route
+              path="/confirm-google-auth"
+              element={<ConfirmGoogleAuth />}
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
       </div>
     </TourProvider>
   );
