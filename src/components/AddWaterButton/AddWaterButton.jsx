@@ -4,10 +4,12 @@ import styles from "./AddWaterButton.module.css";
 import AddWaterModal from "../AddWaterModal/AddWaterModal";
 import { useDispatch } from "react-redux";
 import { addWater } from "../../redux/water/waterOps";
+import { useTranslation } from "react-i18next";
 
 const AddWaterButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -33,7 +35,7 @@ const AddWaterButton = () => {
         <svg className={styles.buttonIcon} width="30" height="30">
           <use href={`${iconsPath}#icon-plus`} />
         </svg>
-        <span className={styles.buttonText}>Add water</span>
+        <span className={styles.buttonText}>{t("waterMainInfo.btn")}</span>
       </button>
 
       {isModalOpen && (

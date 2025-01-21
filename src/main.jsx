@@ -9,6 +9,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import "./index.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Loader from "./components/Loader/Loader.jsx";
+import "./i18n/config.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

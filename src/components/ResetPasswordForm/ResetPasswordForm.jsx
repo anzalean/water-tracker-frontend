@@ -9,6 +9,7 @@ import { resetPassword } from "../../redux/user/userOps";
 import Logo from "../Logo/Logo";
 import PasswordField from "../PasswordField/PasswordField";
 import styles from "./ResetPasswordForm.module.css";
+import { useTranslation } from "react-i18next";
 
 const validationSchema = Yup.object().shape({
   password: Yup.string()
@@ -24,6 +25,7 @@ export default function ResetPasswordForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const [serverError, setServerError] = useState("");
 
   const {
@@ -42,7 +44,10 @@ export default function ResetPasswordForm() {
       const resetTokenFromURL = queryParams.get("token");
 
       await dispatch(
-        resetPassword({ password: data.password, resetToken: resetTokenFromURL })
+        resetPassword({
+          password: data.password,
+          resetToken: resetTokenFromURL,
+        })
       ).unwrap();
 
       reset();
@@ -50,7 +55,9 @@ export default function ResetPasswordForm() {
       toast.success("Password reset successful.");
       navigate("/signin");
     } catch (error) {
-      setServerError(error?.message || "Failed to reset password. Please try again.");
+      setServerError(
+        error?.message || "Failed to reset password. Please try again."
+      );
       toast.error("Failed to reset password. Please try again.");
     }
   };
@@ -74,26 +81,26 @@ export default function ResetPasswordForm() {
         noValidate
       >
         <h2 className={styles.resetPasswordTitle}>
-          Reset your password. <br />
-          <span className={styles.subTitle}>Create new password.</span>
+          {t("resetPage.title")} <br />
+          <span className={styles.subTitle}>{t("resetPage.create")}</span>
         </h2>
         <PasswordField
           id="password"
-          label="Password"
-          placeholder="Enter your password"
+          label={t("resetPage.password")}
+          placeholder={t("resetPage.passwordPlaceholder")}
           error={errors.password?.message}
           register={register("password")}
         />
         <PasswordField
           id="confirmPassword"
-          label="Confirm Password"
-          placeholder="Confirm your password"
+          label={t("resetPage.repeatPassword")}
+          placeholder={t("resetPage.repeatPasswordPlaceholder")}
           error={errors.confirmPassword?.message}
           register={register("confirmPassword")}
         />
         {serverError && <p className={styles.error}>{serverError}</p>}
         <button type="submit" className={styles.button} disabled={!isValid}>
-          Save new password
+          {t("resetPage.button")}
         </button>
       </form>
     </div>

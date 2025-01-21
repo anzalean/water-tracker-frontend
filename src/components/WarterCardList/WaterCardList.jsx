@@ -5,11 +5,13 @@ import { getDayWater } from "../../redux/water/waterOps";
 import WaterCard from "../WaterCard/WaterCard";
 import { successNotify, errNotify } from "../../helpers/notification";
 import css from "./WaterCardList.module.css";
+import { useTranslation } from "react-i18next";
 
 const WaterCardList = () => {
   const waterDate = useSelector(selectWaterDate);
   const waterList = useSelector(selectWaterItems);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getDayWater(waterDate))
@@ -35,7 +37,7 @@ const WaterCardList = () => {
     </div>
   ) : (
     <div className={css.noRecord}>
-      <p className={css.noRecordMessage}>No entries yet</p>
+      <p className={css.noRecordMessage}>{t("dailyInfo.text")}</p>
     </div>
   );
 };

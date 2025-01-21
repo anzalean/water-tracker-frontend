@@ -12,11 +12,7 @@ import { feedbackSchema } from "../../helpers/userSettingsFormSchema";
 import { selectUser } from "../../redux/user/selectors";
 import iconsPath from "../../assets/icons/sprite.svg";
 import css from "./UserSettingsForm.module.css";
-
-const options = [
-  { value: "female", label: "Female" },
-  { value: "male", label: "Male" },
-];
+import { useTranslation } from "react-i18next";
 
 const UserSettingsForm = ({ handleUserSave }) => {
   const {
@@ -28,6 +24,12 @@ const UserSettingsForm = ({ handleUserSave }) => {
     desiredVolume,
     avatarURL,
   } = useSelector(selectUser);
+  const { t } = useTranslation();
+
+  const options = [
+    { value: "female", label: t("modals.UserSettingsForm.femaleGenderLabel") },
+    { value: "male", label: t("modals.UserSettingsForm.femaleGenderMale") },
+  ];
 
   const [avatarFile, setAvatarFile] = useState(null);
   const [avatar, setAvatar] = useState(avatarURL);
@@ -82,7 +84,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-        <p className={css.title}>Settings</p>
+        <p className={css.title}>{t("modals.UserSettingsForm.setting")}</p>
 
         <div className={css.imgWrapper}>
           {avatarURL ? (
@@ -102,13 +104,13 @@ const UserSettingsForm = ({ handleUserSave }) => {
             className={css.uploadBtn}
             onFileSelect={handleEditAvatar}
           >
-            Upload photo
+            {t("modals.UserSettingsForm.uploadPhotoBtn")}
           </UploadFileButton>
         </div>
 
         <RadioButtonsGroup
           name="gender"
-          label="Your gender identity"
+          label={t("modals.UserSettingsForm.yourGenderLabel")}
           defaultValue={gender || "female"}
           options={options}
           className={css.genderContainer}
@@ -120,39 +122,50 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 name="name"
                 control={methods.control}
                 render={({ field }) => (
-                  <Input {...field} label="Name" type="text" />
+                  <Input
+                    {...field}
+                    label={t("modals.UserSettingsForm.placeYourName")}
+                    type="text"
+                  />
                 )}
               />
               <Controller
                 name="email"
                 control={methods.control}
                 render={({ field }) => (
-                  <Input {...field} label="Email" type="text" />
+                  <Input
+                    {...field}
+                    label={t("modals.UserSettingsForm.labelEmail")}
+                    type="text"
+                  />
                 )}
               />
             </div>
             <div className={css.calcContainer}>
-              <p className={clsx(css.boldLabel)}>My daily norma</p>
+              <p className={clsx(css.boldLabel)}>
+                {t("modals.UserSettingsForm.dailyNormah")}
+              </p>
               <div className={css.calcGenderContainer}>
                 <div className={css.calcFormulaContainer}>
-                  <span className={css.calcGenderLabel}>For woman: </span>
+                  <span className={css.calcGenderLabel}>
+                    {t("modals.UserSettingsForm.forWomanP")}
+                  </span>
                   <span className={css.calcGenderFormula}>
                     V=(M*0,03) + (T*0,4)
                   </span>
                 </div>
                 <div className={css.calcFormulaContainer}>
-                  <span className={css.calcGenderLabel}>For man: </span>
+                  <span className={css.calcGenderLabel}>
+                    {t("modals.UserSettingsForm.forManP")}
+                  </span>
                   <span className={css.calcGenderFormula}>
                     V=(M*0,04) + (T*0,6)
                   </span>
                 </div>
               </div>
               <div className={clsx(css.calcNote, css.text)}>
-                <span className={css.calcAsterix}>*</span> V is the volume of
-                the water norm in liters per day, M is your body weight, T is
-                the time of active sports, or another type of activity
-                commensurate in terms of loads (in the absence of these, you
-                must set 0){" "}
+                <span className={css.calcAsterix}>*</span>{" "}
+                {t("modals.UserSettingsForm.starText")}
               </div>
             </div>
             <div className={css.activeTimeContainer}>
@@ -162,7 +175,9 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 </svg>
               </span>
               &nbsp;
-              <span className={css.textActiveTime}>Active time in hours</span>
+              <span className={css.textActiveTime}>
+                {t("modals.UserSettingsForm.activeText")}
+              </span>
             </div>
           </div>
 
@@ -175,7 +190,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
                   <Input
                     {...field}
                     classLabel={css.thinkLabel}
-                    label="Your weight in kilograms:"
+                    label={t("modals.UserSettingsForm.infoUser")}
                     type="text"
                   />
                 )}
@@ -187,7 +202,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
                   <Input
                     {...field}
                     classLabel={css.thinkLabel}
-                    label="The time of active participation in sports:"
+                    label={t("modals.UserSettingsForm.TheTimeSportsLabel")}
                     type="text"
                   />
                 )}
@@ -196,10 +211,13 @@ const UserSettingsForm = ({ handleUserSave }) => {
             <div className={css.requiredContainer}>
               <span>
                 <span className={css.textNorma}>
-                  The required amount of water in liters per day:&nbsp;
+                  {t("modals.UserSettingsForm.requiredWater")}&nbsp;
                 </span>
                 <span className={css.calculatedNorma}>
-                  <span>{calculatedWaterNorm}&nbsp;L</span>
+                  <span>
+                    {calculatedWaterNorm}&nbsp;
+                    {t("modals.UserSettingsForm.l")}
+                  </span>
                 </span>
               </span>
 
@@ -209,7 +227,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
                 render={({ field }) => (
                   <Input
                     {...field}
-                    label="Write down how much water you will drink:"
+                    label={t("modals.UserSettingsForm.writeDownLabel")}
                     type="text"
                   />
                 )}
@@ -218,7 +236,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
           </div>
         </div>
         <button type="submit" className={css.btn}>
-          Save
+          {t("modals.UserSettingsForm.saveBtn")}
         </button>
       </form>
     </FormProvider>

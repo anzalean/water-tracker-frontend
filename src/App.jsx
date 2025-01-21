@@ -5,6 +5,7 @@ import { SharedLayout } from "./components/SharedLayout/SharedLayout";
 import { fetchCurrentUser } from "./redux/user/userOps";
 import { RestrictedRoute } from "./components/RestrictedRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
+
 import { TourProvider } from "@reactour/tour";
 import steps from "./helpers/steps";
 
@@ -44,6 +45,7 @@ export function App() {
       }}
     >
     <div>
+      
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />

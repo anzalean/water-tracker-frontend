@@ -20,12 +20,14 @@ import UserSettingsForm from "../UserSettingsForm/UserSettingsForm";
 import LogoutApprove from "../LogoutApprove/LogoutApprove";
 
 import css from "./UserBar.module.css";
+import { useTranslation } from "react-i18next";
 
 export default function UserBar() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const userName = useSelector(selectUserName);
   const userAvatar = useSelector(selectUserAvatar);
+  const { t } = useTranslation();
 
   const [showPopover, setShowPopover] = useState(false);
   const [showUserForm, setShowUserForm] = useState(false);
@@ -140,7 +142,7 @@ export default function UserBar() {
             <svg className={css.icon} width="16" height="16">
               <use href={`${iconsPath}#icon-settings`} />
             </svg>
-            <span>Settings</span>
+            <span>{t("Userbar.setting")}</span>
           </button>
           <button
             onClick={handleLogoutButton}
@@ -150,23 +152,36 @@ export default function UserBar() {
               <use href={`${iconsPath}#icon-log-out`} />
             </svg>
             <span>
-              <span> Log out</span>
+              <span> {t("Userbar.logOut")}</span>
             </span>
           </button>
         </div>
       )}
 
       {showUserForm && (
-
-        <Modal onClose={() => { setShowUserForm(false); document.body.style.overflow = "auto"; }}  isUserForm={true} className={css.modal}>
-
+        <Modal
+          onClose={() => {
+            setShowUserForm(false);
+            document.body.style.overflow = "auto";
+          }}
+          isUserForm={true}
+          className={css.modal}
+        >
           <UserSettingsForm handleUserSave={handleUserForm} />
         </Modal>
       )}
       {showLogoutModal && (
-        <Modal onClose={() => { setShowLogoutModal(false); document.body.style.overflow = "auto"; }}>
+        <Modal
+          onClose={() => {
+            setShowLogoutModal(false);
+            document.body.style.overflow = "auto";
+          }}
+        >
           <LogoutApprove
-            onCancel={() => { setShowLogoutModal(false); document.body.style.overflow = "auto"; }}
+            onCancel={() => {
+              setShowLogoutModal(false);
+              document.body.style.overflow = "auto";
+            }}
             onApprove={handleLogoutApprove}
           />
         </Modal>
