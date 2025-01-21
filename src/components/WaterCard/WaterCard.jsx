@@ -3,11 +3,10 @@ import iconsPath from "../../assets/icons/sprite.svg";
 import { extractTimeFromDateString } from "../../helpers/extractTimeFromDateString";
 import EditCardModal from "../EditWaterModal/EditWaterModal";
 import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal";
-
 import css from "./WaterCard.module.css";
 import { useTranslation } from "react-i18next";
 
-export default function WaterCard({ waterCard }) {
+export default function WaterCard({waterCard}) {
   const { _id, amount, date } = waterCard || {};
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalForDelete, setModalForDelete] = useState(false);

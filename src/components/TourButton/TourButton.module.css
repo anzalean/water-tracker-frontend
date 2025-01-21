@@ -1,0 +1,50 @@
+.tourButton {
+    position: fixed;
+    bottom: 10px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    background-color: transparent;
+    border-style: none;
+    padding: 0;
+}
+
+.tourButton:focus {
+    outline: none;
+}
+
+.tourButton:focus-visible {
+    outline: none;
+}
+
+.question {
+    width: 40px;
+    height: 40px;
+    fill: #555;
+}
+
+.shake {
+    animation: shake 1s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+}

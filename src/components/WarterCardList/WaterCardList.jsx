@@ -29,7 +29,10 @@ const WaterCardList = () => {
     <div className={css.listContainer}>
       <ul className={css.list}>
         {waterList.map((waterItem) => (
-          <li className={css.item} key={waterItem._id}>
+          <li
+            className={css.item}
+            key={waterItem._id}
+          >
             <WaterCard waterCard={waterItem} />
           </li>
         ))}
