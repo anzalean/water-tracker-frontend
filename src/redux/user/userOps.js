@@ -6,7 +6,6 @@ import { refreshTokens } from "./userSlice";
 export const axiosInstance = axios.create({
   baseURL: "https://water-tracker-backend-guwj.onrender.com",
   // baseURL: "http://localhost:3000",
-  // withCredentials: true,
 });
 
 // Utility to set the Authorization header with the JWT token
@@ -19,23 +18,34 @@ const clearAuthHeader = () => {
   delete axiosInstance.defaults.headers.common.Authorization;
 };
 
+// For Refresh with withCredentials
+export const axiosRefresh = axios.create({
+  baseURL: "https://water-tracker-backend-guwj.onrender.com",
+  // baseURL: "http://localhost:3000",
+  withCredentials: true,
+});
+
+let refreshInProgress = false;
+
 // Set up Axios interceptors to handle token refresh on 401 errors
 export const setupAxiosInterceptors = (store) => {
   axiosInstance.interceptors.response.use(
     (response) => response,
     async (error) => {
-      if (error.response?.status === 401) {
+      if (error.response?.status === 401 && !refreshInProgress) {
         try {
-          const { refreshToken } = store.getState().user;
-          if (refreshToken) {
-            const { data } = await axiosInstance.post("/auth/refresh");
+          refreshInProgress = true;
+          const { accessToken } = store.getState().auth;
+          if (accessToken) {
+            const { data } = await axiosRefresh.post("/auth/refresh");
             store.dispatch(refreshTokens(data));
-            setAuthHeader(data.accessToken);
-            error.config.headers.Authorization = `Bearer ${data.accessToken}`;
+            setAuthHeader(data.data.accessToken);
             return axiosInstance.request(error.config);
           }
         } catch (refreshError) {
-          return Promise.reject(refreshError);
+          console.error("Token refresh failed:", refreshError);
+        } finally {
+          refreshInProgress = false;
         }
       }
       return Promise.reject(error);
@@ -93,7 +103,6 @@ export const fetchCurrentUser = createAsyncThunk(
     try {
       const reduxState = thunkAPI.getState();
       setAuthHeader(reduxState.auth.accessToken);
-      console.log(reduxState.auth.accessToken);
       const response = await axiosInstance.get("/auth/current");
       return response.data;
     } catch (error) {
@@ -104,7 +113,6 @@ export const fetchCurrentUser = createAsyncThunk(
     condition: (_, { getState }) => {
       const state = getState();
       const savedToken = state.auth.accessToken;
-      console.log(savedToken);
       return savedToken !== null;
     },
   }
