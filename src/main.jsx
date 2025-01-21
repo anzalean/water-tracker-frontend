@@ -11,7 +11,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import Loader from "./components/Loader/Loader.jsx";
 import "./i18n/config.js";
 
-const clientId = import.meta.env.VITE_CLIENT_ID;
+const clientId = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
