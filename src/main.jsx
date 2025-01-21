@@ -11,13 +11,15 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import Loader from "./components/Loader/Loader.jsx";
 import "./i18n/config.js";
 
+const clientId = import.meta.env.VITE_CLIENT_ID;
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <HelmetProvider>
-            <GoogleOAuthProvider clientId="416780880266-5n7irv3l8fmjbbi7v56vafihee55k2eo.apps.googleusercontent.com">
+            <GoogleOAuthProvider clientId={clientId}>
               <Loader />
               <App />
             </GoogleOAuthProvider>
