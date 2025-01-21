@@ -17,7 +17,7 @@
   align-items: center;
   z-index: 1000;
   background-color: transparent;
-  /* border-style: none; */
+  border-style: none;
 }
 
 .question {
