@@ -102,7 +102,14 @@ export const Chart = () => {
             padding={{ bottom: 20 }}
             domain={[0, maxYAxisValue]}
           />
-          <Tooltip formatter={(value) => `${value}`} />
+
+          <Tooltip
+            formatter={(value) => [
+              `${value}`,
+              `${t("monthInfo.totalDayWater")}`,
+            ]}
+          />
+
           <Area
             dataKey="totalDayWater"
             stroke="#4CAF50"

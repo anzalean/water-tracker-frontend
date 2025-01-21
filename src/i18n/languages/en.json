@@ -107,7 +107,8 @@
   "monthInfo": {
     "error": "Oops, something is wrong...",
     "mouth": "Month",
-    "statistics": "Statistics"
+    "statistics": "Statistics",
+    "totalDayWater": "Water per day"
   },
   "Userbar": {
     "hello": "Hello",

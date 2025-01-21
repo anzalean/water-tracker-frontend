@@ -12,25 +12,27 @@ import { useState } from "react";
 import GoogleButton from "../GoogleButton/GoogleButton";
 import { useTranslation } from "react-i18next";
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Invalid email address")
-    .matches(
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      "Email must be a valid address"
-    )
-    .min(5, "Email is too short")
-    .max(50, "Email is too long")
-    .required("Email is required"),
-  password: Yup.string()
-    .min(6, "Some error password")
-    .required("Password is required"),
-});
+const createValidationSchema = (t) =>
+  Yup.object().shape({
+    email: Yup.string()
+      .email(t("signInPage.emailSpanError")) // "Invalid email address"
+      .matches(
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        t("validation.emailValid") // "Email must be a valid address"
+      )
+      .min(5, t("validation.emailShort")) // "Email is too short"
+      .max(50, t("validation.emailLong")) // "Email is too long"
+      .required(t("validation.emailRequired")), // "Email is required"
+    password: Yup.string()
+      .min(6, t("signInPage.passwordSpanError")) // "Password is too short"
+      .required(t("validation.passwordRequired")), // "Password is required"
+  });
 
 export default function SigninForm() {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [serverError, setServerError] = useState("");
+  const validationSchema = createValidationSchema(t);
   const {
     register,
     handleSubmit,
