@@ -11,6 +11,11 @@
   letter-spacing: -0.01em;
   color: var(--color-darkblue);
   background-color: var(--color-lightgreen);
+  transition: background-color 0.5s;
+}
+
+.googleButton:hover {
+  background-color: var(--color-lightgreenhover);
 }
 
 .googleIcon {

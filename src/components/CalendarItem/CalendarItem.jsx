@@ -5,6 +5,7 @@ import { selectCalendarMonth } from "../../redux/water/selectors";
 import styles from "./CalendarItem.module.css";
 import { isToday } from "../../helpers/isToday";
 import { isActiveDate } from "../../helpers/isActiveDate";
+import { normalizeDate } from "../../helpers/normalizeDate";
 
 const CalendarItem = ({ availability = 0, day, currentDate }) => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const CalendarItem = ({ availability = 0, day, currentDate }) => {
   const isActive = isActiveDate(currentDate, calrndarDate);
 
   const normalizedAvailability = Math.min(Math.round(availability), 100);
+  const isFutureDate = normalizeDate(currentDate) > normalizeDate(new Date());
 
   const handleClick = () => {
     const date = new Date(currentDate);
@@ -41,11 +43,11 @@ const CalendarItem = ({ availability = 0, day, currentDate }) => {
   return (
     <div className={styles.itemBox}>
       <button
-        // data-tour="step-today"
         data-tour={isToday(currentDate) ? "step-today" : undefined}
         onClick={handleClick}
         className={styles.buttonDay}
         style={buttonStyle}
+        disabled={isFutureDate}
       >
         {day}
       </button>

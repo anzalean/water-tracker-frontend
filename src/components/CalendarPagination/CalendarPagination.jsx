@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./CalendarPagination.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { useTranslation } from "react-i18next";
+import { isCurrentMonth } from "../../helpers/isCurrentMonth";
 
 const monthNames = [
   "January",
@@ -40,9 +41,7 @@ const CalendarPagination = ({ onMonthChange }) => {
   };
 
   return (
-    <div
-      data-tour="step-month"
-      className={styles.container}>
+    <div data-tour="step-month" className={styles.container}>
       <button
         className={styles.buttonPrevious}
         type="button"
@@ -64,6 +63,7 @@ const CalendarPagination = ({ onMonthChange }) => {
         className={styles.buttonNext}
         type="button"
         onClick={navigateToNextMonth}
+        disabled={isCurrentMonth(currentMonth)}
       >
         <svg className={styles.iconNext}>
           <use
