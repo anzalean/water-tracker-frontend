@@ -122,11 +122,11 @@ export default function UserBar() {
     dispatch(updateUser(data))
       .unwrap()
       .then(() => {
-        successNotify("Settings updated successfully.");
+        successNotify("toast.settingsUpdateSuccess");
         setShowUserForm(false);
       })
       .catch(() => {
-        errNotify("Failed to update settings.");
+        errNotify("toast.settingsUpdateError");
       });
   };
 
@@ -141,10 +141,10 @@ export default function UserBar() {
     dispatch(signOut())
       .unwrap()
       .then(() => {
-        successNotify("You have successfully logged out.");
+        successNotify("toast.logoutSuccess");
       })
       .catch(() => {
-        errNotify("An error occurred during logout. Please try again.");
+        errNotify("toast.logoutError");
       })
       .finally(() => {
         setShowLogoutModal(false);

@@ -208,21 +208,57 @@
     "fetchUserSuccess": "Successfully fetched user information.",
     "fetchUserError": "Failed to fetch user information. Please try again later.",
     "fetchUserDataSuccess": "Successfully fetched water data.",
-    "fetchUserDataError": "Failed to fetch water data. Please try again later."
+    "fetchUserDataError": "Failed to fetch water data. Please try again later.",
+    "logoutSuccess": "You have successfully logged out.",
+    "logoutError": "An error occurred during logout. Please try again.",
+    "settingsUpdateSuccess": "Settings updated successfully.",
+    "settingsUpdateError": "Failed to update settings."
   },
   "tour": {
-      "stepStart": "Welcome to AquaTrack! This app helps you stay hydrated by tracking your daily water intake. Let's take a quick tour of the main features!",
-      "stepHome": "This button takes you back to the home screen. Use it anytime to return to the main dashboard and see your progress.",
-      "stepLanguage": "Here you can switch the app's language. Choose the language that you're most comfortable with for a better experience.",
-      "stepNorma": "This is your daily water norm. It shows the amount of water you should drink each day to stay healthy and hydrated.",
-      "stepProgress": "Track your progress for today here. It displays how much of your daily water intake goal you’ve achieved so far.",
-      "stepAddCard": "Click this button to add a new water card. You can log your water intake and see it reflected in your progress.",
-      "stepProfile": "This is your profile section. You can view and manage your account information here.",
-      "stepSettings": "Here you can edit your profile settings, such as updating your daily water goal or changing your account details.",
-      "stepLogout": "This button allows you to log out of the app. Make sure to save your progress before logging out.",
-      "stepInfo": "This is your daily entry. Here, you can see the amount of water added and the time it was logged. You can also edit or delete this entry if needed. Simply click the respective icon next to the card.",
-      "stepCalendar": "This is your monthly calendar. You can see the percentage of your daily water intake for each day. Click on any date to view or manage your entries for that specific day. It's a great way to track your hydration progress over time!",
-      "stepMonth": "Use this section to switch between months and review your hydration progress over time.",
-      "stepGraphic": "Here, you’ll find a graphical representation of your water intake trends. Use it to analyze your progress and stay consistent."
+    "stepStart": "Welcome to AquaTrack! This app helps you stay hydrated by tracking your daily water intake. Let's take a quick tour of the main features!",
+    "stepHome": "This button takes you back to the home screen. Use it anytime to return to the main dashboard and see your progress.",
+    "stepLanguage": "Here you can switch the app's language. Choose the language that you're most comfortable with for a better experience.",
+    "stepNorma": "This is your daily water norm. It shows the amount of water you should drink each day to stay healthy and hydrated.",
+    "stepProgress": "Track your progress for today here. It displays how much of your daily water intake goal you’ve achieved so far.",
+    "stepAddCard": "Click this button to add a new water card. You can log your water intake and see it reflected in your progress.",
+    "stepProfile": "This is your profile section. You can view and manage your account information here.",
+    "stepSettings": "Here you can edit your profile settings, such as updating your daily water goal or changing your account details.",
+    "stepLogout": "This button allows you to log out of the app. Make sure to save your progress before logging out.",
+    "stepInfo": "This is your daily entry. Here, you can see the amount of water added and the time it was logged. You can also edit or delete this entry if needed. Simply click the respective icon next to the card.",
+    "stepCalendar": "This is your monthly calendar. You can see the percentage of your daily water intake for each day. Click on any date to view or manage your entries for that specific day. It's a great way to track your hydration progress over time!",
+    "stepMonth": "Use this section to switch between months and review your hydration progress over time.",
+    "stepGraphic": "Here, you’ll find a graphical representation of your water intake trends. Use it to analyze your progress and stay consistent."
+  },
+  "validationSettings": {
+    "gender": {
+      "oneOf": "Gender must be either 'male' or 'female'",
+      "typeError": "Gender must be a string"
+    },
+    "name": {
+      "min": "Name must be at least 2 characters long.",
+      "max": "Name cannot exceed 50 characters.",
+      "typeError": "Name must be a string"
+    },
+    "email": {
+      "email": "Please enter a valid email address.",
+      "typeError": "Email must be a string",
+      "required": "Email is required."
+    },
+    "activityTime": {
+      "typeError": "Sport time must be a number",
+      "min": "Sport time cannot be negative.",
+      "max": "Sport time cannot exceed 24 hours."
+    },
+    "weight": {
+      "typeError": "Weight must be a number",
+      "min": "Weight cannot be negative.",
+      "max": "Weight cannot exceed 350 kg."
+    },
+    "desiredVolume": {
+      "typeError": "Water intake must be a number",
+      "min": "Water intake must be at least 0.05 L.",
+      "max": "Water intake cannot exceed 5 L.",
+      "required": "Water intake is required."
     }
+  }
 }
