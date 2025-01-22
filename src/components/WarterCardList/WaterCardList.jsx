@@ -17,13 +17,12 @@ const WaterCardList = () => {
     dispatch(getDayWater(waterDate))
       .unwrap()
       .then(() => {
-        successNotify("Success to fetch water data.");
+        successNotify(t("toast.fetchUserDataSuccess"));
       })
       .catch((error) => {
-        errNotify("Failed to fetch water data.");
-        console.error(error.message);
+        errNotify(t("toast.fetchUserDataError"), { message: error.message });  
       });
-  }, [dispatch, waterDate]);
+  }, [dispatch, waterDate, t]);
 
   return waterList && waterList.length > 0 ? (
     <div className={css.listContainer}>

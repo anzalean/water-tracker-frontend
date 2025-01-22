@@ -94,7 +94,7 @@ export default function SignupForm() {
         <button type="submit" className={s.button}>
           {t("signUpPage.signUp")}
         </button>
-        <GoogleButton text="Sign up with Google" />
+        <GoogleButton text="googleButton.googleUpBtn" />
         <FormFooter
           text={t("signUpPage.textAlready")}
           linkText={t("signUpPage.signIn")}

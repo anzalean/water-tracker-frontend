@@ -18,11 +18,11 @@ export default function AddWaterModal({ onClose }) {
     dispatch(addWater({ date, amount: values.inputField }))
       .unwrap()
       .then(() => {
-        successNotify("Added water successfully!");
+        successNotify(t("toast.addWaterSuccess"));
         onClose();
       })
-      .catch((error) => {
-        errNotify(`Error: ${error.message}`);
+      .catch(() => {
+        errNotify(t("toast.addWaterError"));
       });
   };
 

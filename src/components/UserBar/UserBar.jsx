@@ -97,12 +97,12 @@ export default function UserBar() {
       dispatch(fetchCurrentUser())
         .unwrap()
         .then(() => {
-          successNotify("Successfully fetched user information.");
+          successNotify(t("toast.fetchUserSuccess"));
           setShowPopover(false);
           setShowUserForm(true);
         })
         .catch(() => {
-          errNotify("Failed to fetch user information.");
+          errNotify(t("toast.fetchUserError")); 
         });
     }
   };

@@ -3,18 +3,19 @@ import { useDispatch } from "react-redux";
 import { deleteWater } from "../../redux/water/waterOps.js";
 import { errNotify, successNotify } from "../../helpers/notification.js";
 import { DeleteWaterApprove } from "../DeleteWaterApprove/DeleteWaterApprove";
+import { useTranslation } from "react-i18next";
 
 export default function DeleteWaterModal({ onClose, waterId }) {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const onApprove = () => {
     dispatch(deleteWater(waterId))
       .unwrap()
       .then(() => {
-        successNotify("Success to delete water data.");
+        successNotify(t("toast.deleteWaterSuccess"));
       })
-      .catch((error) => {
-        errNotify("Failed to delete water data.");
-        console.error(error.message);
+      .catch(() => {
+        errNotify(t("toast.deleteWaterError"));
       });
     onClose();
   };

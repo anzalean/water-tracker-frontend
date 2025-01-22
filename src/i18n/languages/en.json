@@ -31,7 +31,7 @@
     "emailSpanError": "Invalid email format",
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
-    "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
+    "passwordSpanError": "Password must be at least 8 characters long, include one uppercase letter, one number, and one special character",
     "dontAccount": "Don’t have an account?",
     "forgotPassword": "Forgot your password?",
     "signUp": "Sign Up",
@@ -51,13 +51,20 @@
     "emailSpanError": "Invalid email format",
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
-    "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
+    "passwordSpanError": "Password must be at least 8 characters long, include one uppercase letter, one number, and one special character",
     "repeatPassword": "Repeat Password",
     "repeatPasswordPlaceholder": "Repeat password",
     "repeatPasswordpanError": "Required",
     "repeatPasswordpanErrorTwo": "Passwords must match",
     "textAlready": "Already have account?",
     "signIn": "Sign In"
+  },
+  "validation": {
+    "emailValid": "Email address must be in the format: example@domain.com",
+    "emailShort": "Email is too short, min. 5 characters",
+    "emailLong": "Email is too long, max. 50 characters",
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required"
   },
   "forgotPage": {
     "title": "Reset your password",
@@ -71,7 +78,7 @@
     "create": "Create new password",
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
-    "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
+    "passwordSpanError": "Password must be at least 8 characters long, include one uppercase letter, one number, and one special character",
     "repeatPassword": "Confirm Password",
     "repeatPasswordPlaceholder": "Confirm your password",
     "repeatPasswordpanError": "Required",
@@ -177,6 +184,25 @@
   "toast": {
     "forgot": "Password recovery email has been sent",
     "reset": "Password has been reset successfully! You can sign in with a new password",
-    "logOut": "See you soon ❤️"
+    "logOut": "See you soon ❤️",
+
+    "resetEmailSuccess": "Reset email sent successfully!",
+    "resetEmailError": "Failed to send reset email.",
+    "invalidResetToken": "Invalid reset token.",
+    "passwordResetSuccess": "Password reset successfully! You can log in now.",
+    "passwordResetError": "Failed to reset password.",
+    "userCountError": "Unable to retrieve user count.",
+    "addWaterSuccess": "Water added successfully!",
+    "addWaterError": "Failed to add water. Please try again.",
+    "deleteWaterSuccess": "Success to delete water data.",
+    "deleteWaterError": "Failed to delete water data.",
+    "editWaterSuccess": "Edit successful. Water added successfully!",
+    "editWaterError": "Failed to edit. Error: {message}. Please try again later.",
+    "fetchMonthDataSuccess": "Successfully fetched month data.",
+    "fetchMonthDataError": "Failed to fetch month data. Error: {message}. Please try again later.",
+    "fetchUserSuccess": "Successfully fetched user information.",
+    "fetchUserError": "Failed to fetch user information. Please try again later.",
+    "fetchUserDataSuccess": "Successfully fetched water data.",
+    "fetchUserDataError": "Failed to fetch water data. Please try again later."
   }
 }

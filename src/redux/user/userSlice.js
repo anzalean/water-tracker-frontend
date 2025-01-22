@@ -14,6 +14,7 @@ import {
   setAuthHeader,
 } from "./userOps";
 import toast from "react-hot-toast";
+import { t } from "i18next";
 
 const initialState = {
   user: {
@@ -159,18 +160,17 @@ const userSlice = createSlice({
       .addCase(sendResetEmail.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
-        toast.success("Reset email sent successfully!", {
+        toast.success(t("toast.resetEmailSuccess"), {
           duration: 5000,
           position: "top-center",
         });
       })
       .addCase(sendResetEmail.rejected, (state, action) => {
         state.loading = false;
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "Failed to send reset email.";
-        }
+        toast.error(action.payload || (t("toast.resetEmailError"), {
+          duration: 5000,
+          position: "top-center",
+        }));
       })
       .addCase(validateResetToken.pending, (state) => {
         state.loading = true;
@@ -180,27 +180,27 @@ const userSlice = createSlice({
       })
       .addCase(validateResetToken.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || "Invalid reset token.", {
+        toast.error(action.payload || (t("toast.invalidResetToken"), {
           duration: 5000,
           position: "top-center",
-        });
+        }));
       })
       .addCase(resetPassword.pending, (state) => {
         state.loading = true;
       })
       .addCase(resetPassword.fulfilled, (state) => {
         state.loading = false;
-        toast.success("Password reset successfully! You can log in now.", {
+        toast.success(t("toast.passwordResetSuccess"), {
           duration: 5000,
           position: "top-center",
         });
       })
       .addCase(resetPassword.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || "Failed to reset password.", {
+        toast.error(action.payload || (t("toast.passwordResetError"), {
           duration: 5000,
           position: "top-center",
-        });
+        }));
       })
       .addCase(fetchOAuthUrl.pending, (state) => {
         state.loading = true;
@@ -248,10 +248,10 @@ const userSlice = createSlice({
       })
       .addCase(getUserCount.rejected, (state, action) => {
         state.loading = false;
-        toast.error(action.payload || "Unable to retrieve user count.", {
+        toast.error(action.payload || (t("toast.userCountError"), {
           duration: 5000,
           position: "top-center",
-        });
+        }));
       });
   },
 });
