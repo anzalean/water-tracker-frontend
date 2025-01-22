@@ -24,11 +24,11 @@ export default function EditWaterModal({ onClose, waterCard }) {
     )
       .unwrap()
       .then(() => {
-        successNotify("Added water successfully!");
+        successNotify(t("toast.editWaterSuccess"));
         onClose();
       })
       .catch((error) => {
-        errNotify(`Error: ${error.message}`);
+        errNotify(t("toast.editWaterError", { message: error.message }));
       });
   };
 

@@ -4,9 +4,12 @@ import { useDispatch } from "react-redux";
 import { FcGoogle } from "react-icons/fc";
 import { fetchOAuthUrl } from "../../redux/user/userOps";
 import s from "./GoogleButton.module.css";
+import { useTranslation } from "react-i18next";
 
-export default function GoogleButton({ text = "Sign in with Google" }) {
+export default function GoogleButton({ text = "googleButton.googleInBtn" }) {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
   const googleLoginClick = () => {
     dispatch(fetchOAuthUrl())
       .unwrap()
@@ -27,7 +30,7 @@ export default function GoogleButton({ text = "Sign in with Google" }) {
         className={s.googleButton}
       >
         <FcGoogle className={s.googleIcon} />
-        <span className={s.googleText}>{text}</span>
+        <span className={s.googleText}>{t(text)}</span>
       </button>
     </React.Fragment>
   );

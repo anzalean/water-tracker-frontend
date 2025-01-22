@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 const MonthInfo = () => {
   const currentMonth = useSelector(selectCalendarMonth);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleMonthChange = (newDate) => {
     dispatch(setCalendarMonth(new Date(newDate).toISOString()));
@@ -24,14 +25,13 @@ const MonthInfo = () => {
     dispatch(getMonthWater(currentMonth))
       .unwrap()
       .then(() => {
-        successNotify("Success to fetch month data.");
+        successNotify(t("toast.fetchMonthDataSuccess"));
       })
       .catch((error) => {
-        errNotify("Failed to fetch water month data.");
-        console.error(error.message);
+        errNotify(t("toast.fetchMonthDataError"), { message: error.message });
       });
-  }, [dispatch, currentMonth]);
-  const { t } = useTranslation();
+  }, [dispatch, currentMonth, t]);
+  
 
   const [isActive, setIsActive] = useState(true);
   const handleToggle = () => {

@@ -24,7 +24,8 @@ const createValidationSchema = (t) =>
       .max(50, t("validation.emailLong")) // "Email is too long"
       .required(t("validation.emailRequired")), // "Email is required"
     password: Yup.string()
-      .min(6, t("signInPage.passwordSpanError")) // "Password is too short"
+      .min(8, t("signInPage.passwordSpanError")) // "Password is too short"
+      .max(50, t("validation.passwordLong"))
       .required(t("validation.passwordRequired")), // "Password is required"
   });
 
