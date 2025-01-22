@@ -12,7 +12,7 @@
 .buttonNext {
   border: none;
   background-color: transparent;
-  align-items: center; 
+  align-items: center;
   border-radius: 50%;
   padding: 0;
 }
@@ -39,11 +39,8 @@
   color: var(--color-darkblue);
 }
 
-@media only screen and (max-width: 350px) {
-  .container {
-    /* max-width: 100px; */
-    /* text-wrap: auto; */
-  }
+.buttonNext:disabled {
+  cursor: not-allowed;
 }
 
 @media only screen and (min-width: 768px) {

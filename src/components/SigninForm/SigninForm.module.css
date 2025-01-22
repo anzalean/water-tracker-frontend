@@ -37,6 +37,7 @@
   color: var(--color-darkblue);
   background-color: var(--color-lightgreen);
   margin-top: 16px;
+  transition: background-color 0.5s;
 }
 
 .button:hover {
@@ -65,7 +66,7 @@
 @media (min-width: 768px) {
   .SignInContainer {
     width: 704px;
-    
+
     padding: 281px 134px;
   }
   .signInTitle {

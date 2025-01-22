@@ -318,6 +318,8 @@
   .btn {
     width: 141px;
     height: 56px;
+    font-size: 16px;
+    line-height: 150%;
   }
 }
 

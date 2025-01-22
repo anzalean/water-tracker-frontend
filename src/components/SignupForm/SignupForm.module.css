@@ -38,6 +38,7 @@
   background-color: var(--color-lightgreen);
   white-space: nowrap;
   margin-top: 16px;
+  transition: background-color 0.5s;
 }
 
 .button:hover {
