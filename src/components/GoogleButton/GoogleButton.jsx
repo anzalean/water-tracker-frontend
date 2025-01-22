@@ -14,7 +14,7 @@ export default function GoogleButton({ text = "googleButton.googleInBtn" }) {
     dispatch(fetchOAuthUrl())
       .unwrap()
       .then((response) => {
-        console.log("OAuth URL fetched successfully:", response.data.url);
+        // console.log("OAuth URL fetched successfully:", response.data.url);
         if (response.data.url) window.location.assign(response.data.url);
       })
       .catch((error) => {

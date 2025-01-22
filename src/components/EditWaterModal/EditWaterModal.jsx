@@ -15,7 +15,7 @@ export default function EditWaterModal({ onClose, waterCard }) {
 
   const onSubmitForm = (values) => {
     const date = replaceTimeInDate(currentDate, values.time);
-    console.log("Date", date);
+    // console.log("Date", date);
     dispatch(
       updateWater({
         cardId: waterCard._id,

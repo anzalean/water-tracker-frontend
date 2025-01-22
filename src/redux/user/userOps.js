@@ -92,7 +92,7 @@ export const fetchCurrentUser = createAsyncThunk(
     try {
       const reduxState = thunkAPI.getState();
       setAuthHeader(reduxState.auth.accessToken);
-      console.log(reduxState.auth.accessToken);
+      // console.log(reduxState.auth.accessToken);
       const response = await axiosInstance.get("/auth/current");
       return response.data;
     } catch (error) {
@@ -103,7 +103,7 @@ export const fetchCurrentUser = createAsyncThunk(
     condition: (_, { getState }) => {
       const state = getState();
       const savedToken = state.auth.accessToken;
-      console.log(savedToken);
+      // console.log(savedToken);
       return savedToken !== null;
     },
   }
@@ -228,7 +228,7 @@ export const googleLogin = createAsyncThunk(
         "/auth/google-login",
         googleData
       );
-      console.log("googleLogin", response.data.data.accessToken);
+      // console.log("googleLogin", response.data.data.accessToken);
       setAuthHeader(response.data.data.accessToken);
       return response.data;
     } catch (error) {
@@ -262,7 +262,7 @@ export const refresh = createAsyncThunk("auth/refresh", async (_, thunkApi) => {
   setAuthHeader(savedToken);
   try {
     const { data } = await axiosInstance.post("/auth/refresh");
-    console.log("Response from refresh endpoint:", data);
+    // console.log("Response from refresh endpoint:", data);
     if (!data.data || !data.data.accessToken) {
       throw new Error("No accessToken in server response");
     }

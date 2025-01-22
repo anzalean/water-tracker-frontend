@@ -45,10 +45,10 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     refreshTokens: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.accessToken;
-      console.log(action.payload.accessToken);
+      // console.log(action.payload.accessToken);
       setAuthHeader(action.payload.accessToken);
     },
   },
