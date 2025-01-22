@@ -11,15 +11,16 @@ import PasswordField from "../PasswordField/PasswordField";
 import styles from "./ResetPasswordForm.module.css";
 import { useTranslation } from "react-i18next";
 
-const validationSchema = Yup.object().shape({
-  password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .max(50, "Password must be at most 50 characters")
-    .required("Password is required"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Passwords must match")
-    .required("Confirm password is required"),
-});
+const validationSchema = (t) =>
+  Yup.object().shape({
+    password: Yup.string()
+      .min(8, t("signInPage.passwordSpanError"))
+      .max(50, t("validation.passwordLong"))
+      .required(t("validation.passwordRequired")),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password")], t("validation.passwordMatch"))
+      .required(t("validation.passwordRepeat")),
+  });
 
 export default function ResetPasswordForm() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export default function ResetPasswordForm() {
     formState: { errors, isValid },
     reset,
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(validationSchema(t)),
     mode: "onTouched",
   });
 

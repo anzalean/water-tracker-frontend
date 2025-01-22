@@ -8,17 +8,18 @@ import { sendResetEmail } from "../../redux/user/userOps";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Invalid email address")
-    .matches(
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      "Email must be a valid address"
-    )
-    .min(5, "Email is too short")
-    .max(50, "Email is too long")
-    .required("Email is required"),
-});
+const validationSchema = (t) =>
+  Yup.object().shape({
+    email: Yup.string()
+      .email(t("signInPage.emailSpanError"))
+      .matches(
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        t("validation.emailValid")
+      )
+      .min(5, t("validation.emailShort"))
+      .max(50, t("validation.emailLong"))
+      .required(t("validation.emailRequired")),
+  });
 
 export default function EmailVerifyForm() {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ export default function EmailVerifyForm() {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(validationSchema(t)),
   });
 
   const onSubmit = (data) => {
