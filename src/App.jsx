@@ -1,4 +1,4 @@
-import { lazy, useEffect } from "react";
+import { lazy, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { SharedLayout } from "./components/SharedLayout/SharedLayout";
@@ -27,7 +27,7 @@ const ConfirmGoogleAuth = lazy(() =>
 
 export function App() {
   const dispatch = useDispatch();
-
+  const [isTourOpen, setIsTourOpen] = useState(false);
   // const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
@@ -37,19 +37,34 @@ export function App() {
       .catch(() => {});
   }, [dispatch]);
 
+  useEffect(() => {
+    document.body.style.overflow = "auto"; 
+    return () => {
+      document.body.style.overflow = "auto"; 
+    };
+    }, []);
+  
+    useEffect(() => {
+    if (isTourOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isTourOpen]);
+
   return (
     <TourProvider
       steps={steps}
+      onClose={() => setIsTourOpen(false)}
+      onBeforeOpen={() => setIsTourOpen(true)}
       styles={{
-        popover: (base) => ({
+        maskWrapper: (base) => ({
           ...base,
-          backgroundColor: "#222",
-          color: "#fff",
-          maxWidth: "350px",
+          pointerEvents: "auto", 
         }),
-        mask: (base) => ({
+        highlightedArea: (base) => ({
           ...base,
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          pointerEvents: "auto", 
         }),
       }}
     >

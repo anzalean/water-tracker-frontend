@@ -56,6 +56,7 @@ body {
   color: var(--color-black);
   margin: 0;
   overscroll-behavior: none;
+  overflow: auto;
 }
 
 h1,
@@ -102,20 +103,13 @@ button {
 
 .reactour__overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 9999;
-  /* Високий z-index */
-  pointer-events: none;
-}
-
-.reactour__overlay-active {
-  pointer-events: auto;
-  /* Дозвіл подій миші тільки для активного елемента */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow: -moz-hidden-unscrollable;
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .reactour__popover {
@@ -130,8 +124,4 @@ button {
 
 .reactour__popover > div {
   justify-content: flex-start!important;
-}
-
-body.reactour__prevent-clicks *:not(.reactour__popover):not(.reactour__popover *) {
-  pointer-events: none;
 }
