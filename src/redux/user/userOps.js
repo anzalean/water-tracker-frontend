@@ -1,12 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { refreshTokens } from "./userSlice";
 
 // Create an Axios instance with a base URL for API requests
 export const axiosInstance = axios.create({
   baseURL: "https://water-tracker-backend-guwj.onrender.com",
-  // baseURL: "http://localhost:3000",
-  // withCredentials: true,
+  withCredentials: true,
 });
 
 // Utility to set the Authorization header with the JWT token
@@ -24,16 +22,17 @@ export const setupAxiosInterceptors = (store) => {
   axiosInstance.interceptors.response.use(
     (response) => response,
     async (error) => {
-      if (error.response?.status === 401) {
+      if (
+        error.response?.status === 401 &&
+        !error.config._retry &&
+        !error.config.url.includes("auth/refresh")
+      ) {
+        error.config._retry = true;
         try {
-          const { refreshToken } = store.getState().user;
-          if (refreshToken) {
-            const { data } = await axiosInstance.post("/auth/refresh");
-            store.dispatch(refreshTokens(data));
-            setAuthHeader(data.accessToken);
-            error.config.headers.Authorization = `Bearer ${data.accessToken}`;
-            return axiosInstance.request(error.config);
-          }
+          const data = await store.dispatch(refresh());
+          setAuthHeader(data.payload.accessToken);
+          error.config.headers.Authorization = `Bearer ${data.payload.accessToken}`;
+          return axiosInstance(error.config);
         } catch (refreshError) {
           return Promise.reject(refreshError);
         }
@@ -253,3 +252,23 @@ export const getUserCount = createAsyncThunk(
     }
   }
 );
+
+export const refresh = createAsyncThunk("auth/refresh", async (_, thunkApi) => {
+  const savedToken = thunkApi.getState().auth.accessToken;
+
+  if (!savedToken) {
+    return thunkApi.rejectWithValue("Token does not exist!");
+  }
+  setAuthHeader(savedToken);
+  try {
+    const { data } = await axiosInstance.post("/auth/refresh");
+    console.log("Response from refresh endpoint:", data);
+    if (!data.data || !data.data.accessToken) {
+      throw new Error("No accessToken in server response");
+    }
+    return data.data;
+  } catch (error) {
+    console.error("Error in refresh token:", error);
+    return thunkApi.rejectWithValue(error.message);
+  }
+});
