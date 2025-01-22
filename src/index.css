@@ -108,6 +108,14 @@ button {
   height: 100%;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  /* Високий z-index */
+  pointer-events: none;
+}
+
+.reactour__overlay-active {
+  pointer-events: auto;
+  /* Дозвіл подій миші тільки для активного елемента */
 }
 
 .reactour__popover {
@@ -122,4 +130,8 @@ button {
 
 .reactour__popover > div {
   justify-content: flex-start!important;
+}
+
+body.reactour__prevent-clicks *:not(.reactour__popover):not(.reactour__popover *) {
+  pointer-events: none;
 }
