@@ -1,5 +1,5 @@
 import { lazy, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { SharedLayout } from "./components/SharedLayout/SharedLayout";
 import { fetchCurrentUser } from "./redux/user/userOps";
@@ -8,7 +8,7 @@ import { PrivateRoute } from "./components/PrivateRoute";
 
 import { TourProvider } from "@reactour/tour";
 import steps from "./helpers/steps";
-import { selectIsLoggedIn } from "./redux/user/selectors";
+// import { selectIsLoggedIn } from "./redux/user/selectors";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
@@ -28,12 +28,14 @@ const ConfirmGoogleAuth = lazy(() =>
 export function App() {
   const dispatch = useDispatch();
 
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
-    if (!isLoggedIn) return;
-    dispatch(fetchCurrentUser());
-  }, [dispatch, isLoggedIn]);
+    dispatch(fetchCurrentUser())
+      .unwrap()
+      .then(() => {})
+      .catch(() => {});
+  }, [dispatch]);
 
   return (
     <TourProvider

@@ -237,20 +237,43 @@ const UserSettingsForm = ({ handleUserSave }) => {
               </span>
 
               <Controller
-                name="desiredVolume"
-                control={methods.control}
-                render={({ field }) => (
-                  <Input
-                    {...field}
-                    value={removeLeadingZeros(field.value)}
-                    label={t("modals.UserSettingsForm.writeDownLabel")}
-                    type="text"
-                    onChange={(e) =>
-                      field.onChange(removeLeadingZeros(e.target.value))
-                    }
-                  />
-                )}
-              />
+  name="desiredVolume"
+  control={methods.control}
+  render={({ field }) => (
+    <Input
+      {...field}
+      value={field.value || ''} // Забезпечуємо, що значення не є undefined
+      label={t("modals.UserSettingsForm.writeDownLabel")}
+      type="text"
+      onChange={(e) => {
+        let value = e.target.value;
+
+        // Замінюємо кому на крапку для уніфікованого формату
+        value = value.replace(/,/g, '.');
+
+        // Дозволяємо лише цифри, одну крапку, ігноруючи зайві символи
+        value = value.replace(/[^0-9.]/g, '');
+
+        // Забезпечуємо, що крапка з'являється тільки одна
+        if ((value.match(/\./g) || []).length > 1) {
+          value = value.slice(0, value.lastIndexOf('.'));
+        }
+
+        // Видаляємо провідні нулі тільки перед цілим числом
+        value = value.replace(/^0+(?=\d)/, '');
+
+        // Якщо поле порожнє, встановлюємо значення 0
+        if (value.trim() === '') {
+          value = '0';
+        }
+
+        field.onChange(value);
+      }}
+    />
+  )}
+/>
+
+
             </div>
           </div>
         </div>

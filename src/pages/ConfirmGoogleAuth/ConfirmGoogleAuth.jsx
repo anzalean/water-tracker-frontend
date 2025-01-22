@@ -14,9 +14,10 @@ export default function ConfirmGoogleAuth() {
     if (code) {
       dispatch(googleLogin({ code }))
         .unwrap()
+        // eslint-disable-next-line no-unused-vars
         .then((response) => {
-          console.log(response);
-          console.log("Google login successful");
+          // console.log(response);
+          // console.log("Google login successful");
           navigate("/tracker");
         })
         .catch((error) => {

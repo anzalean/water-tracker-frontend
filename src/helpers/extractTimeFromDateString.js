@@ -13,8 +13,9 @@ export function extractTimeFromDateString(dataString) {
       }
       return `${hours}:${minutes}`;
     }
+    // eslint-disable-next-line no-unused-vars
   } catch (error) {
-    console.log(error.message);
+    // console.log(error.message);
     throw new Error("Error processing the date string");
   }
 
