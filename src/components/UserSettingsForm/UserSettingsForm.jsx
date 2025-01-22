@@ -242,7 +242,7 @@ const UserSettingsForm = ({ handleUserSave }) => {
   render={({ field }) => (
     <Input
       {...field}
-      value={field.value} // Використовуємо значення без змін
+      value={field.value || ''} // Забезпечуємо, що значення не є undefined
       label={t("modals.UserSettingsForm.writeDownLabel")}
       type="text"
       onChange={(e) => {
@@ -262,11 +262,17 @@ const UserSettingsForm = ({ handleUserSave }) => {
         // Видаляємо провідні нулі тільки перед цілим числом
         value = value.replace(/^0+(?=\d)/, '');
 
+        // Якщо поле порожнє, встановлюємо значення 0
+        if (value.trim() === '') {
+          value = '0';
+        }
+
         field.onChange(value);
       }}
     />
   )}
 />
+
 
             </div>
           </div>
