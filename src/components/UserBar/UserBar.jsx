@@ -18,7 +18,7 @@ import UserImageElem from "../UserImageElem/UserImageElem";
 import Modal from "../Modal/Modal";
 import UserSettingsForm from "../UserSettingsForm/UserSettingsForm";
 import LogoutApprove from "../LogoutApprove/LogoutApprove";
-import { useTour } from "@reactour/tour"
+import { useTour } from "@reactour/tour";
 import css from "./UserBar.module.css";
 import { useTranslation } from "react-i18next";
 
@@ -39,10 +39,13 @@ export default function UserBar() {
   const popoverRef = useRef(null);
 
   useEffect(() => {
-    
     const handleClickOutside = (event) => {
-      event.stopPropagation()
-      if (popoverRef.current && !popoverRef.current.contains(event.target) && !isTourActive) {
+      event.stopPropagation();
+      if (
+        popoverRef.current &&
+        !popoverRef.current.contains(event.target) &&
+        !isTourActive
+      ) {
         setShowPopover(false);
       }
     };
@@ -57,36 +60,7 @@ export default function UserBar() {
     };
   }, [showPopover, isTourActive]);
 
-  // useEffect(() => {
-  //   const handleTourChange = () => {
-  //     const currentStepData = steps[currentStep];
-
-  //     if (currentStepData?.selector === '[data-tour="step-profile"]') {
-  //       setShowPopover(true);
-  //       setIsTourActive(true);
-  //     } else if (
-  //       currentStepData?.selector === '[data-tour="step-settings"]' ||
-  //       currentStepData?.selector === '[data-tour="step-logout"]'
-  //     ) {
-  //       if (isTourActive) {
-  //         setShowPopover(true);
-  //       } else {
-  //         // Якщо tour не активний, переключаємо крок на step-profile 
-  //         setCurrentStep(steps.findIndex(step => step.selector === '[data-tour="step-profile"]'));
-  //       }
-  //     } else {
-  //       setShowPopover(false);
-  //       setIsTourActive(false);
-  //     }
-  //   };
-
-  //   handleTourChange();
-  //   const observer = new MutationObserver(handleTourChange);
-  //   observer.observe(document, { attributes: true, childList: true, subtree: true });
-  //   return () => observer.disconnect();
-  // }, [currentStep, steps, isTourActive, setCurrentStep]);
-
-    useEffect(() => {
+  useEffect(() => {
     const handleTourChange = () => {
       const currentStepData = steps[currentStep];
 
@@ -100,7 +74,11 @@ export default function UserBar() {
         if (isTourActive) {
           setShowPopover(true);
         } else {
-          setCurrentStep(steps.findIndex(step => step.selector === '[data-tour="step-profile"]'));
+          setCurrentStep(
+            steps.findIndex(
+              (step) => step.selector === '[data-tour="step-profile"]'
+            )
+          );
         }
       } else {
         setShowPopover(false);
@@ -110,8 +88,12 @@ export default function UserBar() {
 
     handleTourChange();
   }, [currentStep, steps, isTourActive, setCurrentStep]);
-  
+
   if (!isLoggedIn) return null;
+
+  const truncateName = (name) => {
+    return name.length > 10 ? `${name.slice(0, 10)}...` : name;
+  };
 
   const togglePopover = (event) => {
     event.stopPropagation();
@@ -130,7 +112,7 @@ export default function UserBar() {
           setShowUserForm(true);
         })
         .catch(() => {
-          errNotify(t("toast.fetchUserError")); 
+          errNotify(t("toast.fetchUserError"));
         });
     }
   };
@@ -177,7 +159,7 @@ export default function UserBar() {
         onClick={togglePopover}
       >
         <span className={css.contentBtn}>
-          <span className={css.userName}>{userName}</span>
+          <span className={css.userName}>{truncateName(userName)}</span>
           {userAvatar ? (
             <UserImageElem
               imgUrl={userAvatar}
@@ -197,7 +179,6 @@ export default function UserBar() {
 
       {showPopover && (
         <div ref={popoverRef} className={css.popover}>
-
           <button
             data-tour="step-settings"
             onClick={handleSettingsButton}
@@ -216,15 +197,12 @@ export default function UserBar() {
             <svg className={css.icon}>
               <use href={`${iconsPath}#icon-log-out`} />
             </svg>
-            <span>
-              <span> {t("Userbar.logOut")}</span>
-            </span>
+            <span>{t("Userbar.logOut")}</span>
           </button>
         </div>
       )}
 
       {showUserForm && (
-
         <Modal
           onClose={() => {
             setShowUserForm(false);
@@ -233,7 +211,6 @@ export default function UserBar() {
           isUserForm={true}
           className={css.modal}
         >
-
           <UserSettingsForm handleUserSave={handleUserForm} />
         </Modal>
       )}

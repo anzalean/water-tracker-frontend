@@ -8,11 +8,16 @@ const UserPanel = () => {
   const { name } = useSelector(selectUser);
   const { t } = useTranslation();
 
+  // Функція для обмеження довжини імені
+  const truncateName = (name) => {
+    return name.length > 10 ? `${name.slice(0, 10)}...` : name;
+  };
+
   return (
     <div className={css.panelContainer}>
       <h2 className={css.panelTitle}>
         {t("Userbar.hello")}
-        <span className={css.titleSpan}>, {name}!</span>
+        <span className={css.titleSpan}>, {truncateName(name)}!</span>
       </h2>
       <div className={css.panelBar}>
         <UserBar />
