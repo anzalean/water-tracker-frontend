@@ -46,7 +46,7 @@ export default function SignupForm() {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(validationSchema(t)),
   });
 
   const onSubmit = async (data) => {
