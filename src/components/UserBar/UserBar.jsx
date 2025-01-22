@@ -39,12 +39,14 @@ export default function UserBar() {
   const popoverRef = useRef(null);
 
   useEffect(() => {
+    
     const handleClickOutside = (event) => {
+      event.stopPropagation()
       if (popoverRef.current && !popoverRef.current.contains(event.target) && !isTourActive) {
         setShowPopover(false);
       }
     };
-    if (showPopover) {
+    if (showPopover && !isTourActive) {
       document.addEventListener("click", handleClickOutside);
     } else {
       document.removeEventListener("click", handleClickOutside);
@@ -55,7 +57,36 @@ export default function UserBar() {
     };
   }, [showPopover, isTourActive]);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   const handleTourChange = () => {
+  //     const currentStepData = steps[currentStep];
+
+  //     if (currentStepData?.selector === '[data-tour="step-profile"]') {
+  //       setShowPopover(true);
+  //       setIsTourActive(true);
+  //     } else if (
+  //       currentStepData?.selector === '[data-tour="step-settings"]' ||
+  //       currentStepData?.selector === '[data-tour="step-logout"]'
+  //     ) {
+  //       if (isTourActive) {
+  //         setShowPopover(true);
+  //       } else {
+  //         // Якщо tour не активний, переключаємо крок на step-profile 
+  //         setCurrentStep(steps.findIndex(step => step.selector === '[data-tour="step-profile"]'));
+  //       }
+  //     } else {
+  //       setShowPopover(false);
+  //       setIsTourActive(false);
+  //     }
+  //   };
+
+  //   handleTourChange();
+  //   const observer = new MutationObserver(handleTourChange);
+  //   observer.observe(document, { attributes: true, childList: true, subtree: true });
+  //   return () => observer.disconnect();
+  // }, [currentStep, steps, isTourActive, setCurrentStep]);
+
+    useEffect(() => {
     const handleTourChange = () => {
       const currentStepData = steps[currentStep];
 
@@ -69,7 +100,6 @@ export default function UserBar() {
         if (isTourActive) {
           setShowPopover(true);
         } else {
-          // Якщо tour не активний, переключаємо крок на step-profile 
           setCurrentStep(steps.findIndex(step => step.selector === '[data-tour="step-profile"]'));
         }
       } else {
@@ -79,11 +109,8 @@ export default function UserBar() {
     };
 
     handleTourChange();
-    const observer = new MutationObserver(handleTourChange);
-    observer.observe(document, { attributes: true, childList: true, subtree: true });
-    return () => observer.disconnect();
   }, [currentStep, steps, isTourActive, setCurrentStep]);
-
+  
   if (!isLoggedIn) return null;
 
   const togglePopover = (event) => {
@@ -92,6 +119,7 @@ export default function UserBar() {
   };
 
   const handleSettingsButton = () => {
+    event.stopPropagation();
     document.body.style.overflow = "hidden";
     if (isLoggedIn) {
       dispatch(fetchCurrentUser())
