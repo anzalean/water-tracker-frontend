@@ -18,7 +18,7 @@ import { setupAxiosInterceptors } from "./user/userOps";
 const userPersistConfig = {
   key: "user",
   storage,
-  whitelist: ["accessToken", "refreshToken"],
+  whitelist: ["accessToken"],
 };
 
 export const store = configureStore({

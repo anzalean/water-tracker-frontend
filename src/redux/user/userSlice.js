@@ -29,7 +29,6 @@ const initialState = {
     updatedAt: null,
   },
   accessToken: null,
-  refreshToken: null,
   isLoggedIn: false,
   isRefreshing: false,
   loading: false,
@@ -43,11 +42,8 @@ const userSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    refreshTokens: (state, action) => {
-      console.log(action.payload);
+    refreshToken: (state, action) => {
       state.accessToken = action.payload.accessToken;
-      state.refreshToken = action.payload.accessToken;
-      console.log(action.payload.accessToken);
       setAuthHeader(action.payload.accessToken);
     },
   },
@@ -99,7 +95,6 @@ const userSlice = createSlice({
       .addCase(signOut.fulfilled, (state) => {
         state.user = initialState.user;
         state.accessToken = null;
-        state.refreshToken = null;
         state.isLoggedIn = false;
         state.loading = false;
         state.error = null;
@@ -256,5 +251,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { refreshTokens } = userSlice.actions;
+export const { refreshToken } = userSlice.actions;
 export const userReducer = userSlice.reducer;

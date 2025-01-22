@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { refreshTokens } from "./userSlice";
+import { refreshToken } from "./userSlice";
 
 // Create an Axios instance with a base URL for API requests
 export const axiosInstance = axios.create({
@@ -38,7 +38,7 @@ export const setupAxiosInterceptors = (store) => {
           const { accessToken } = store.getState().auth;
           if (accessToken) {
             const { data } = await axiosRefresh.post("/auth/refresh");
-            store.dispatch(refreshTokens(data));
+            store.dispatch(refreshToken(data));
             setAuthHeader(data.data.accessToken);
             return axiosInstance.request(error.config);
           }
