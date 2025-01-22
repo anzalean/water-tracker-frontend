@@ -44,10 +44,6 @@ const steps = [
         content: "This is your monthly calendar. You can see the percentage of your daily water intake for each day. Click on any date to view or manage your entries for that specific day. It's a great way to track your hydration progress over time!"
     },
     {
-        selector: '[data-tour="step-today"]',
-        content: "This section shows the percentage of your daily water intake goal that you’ve completed today. Aim for 100%!"
-    },
-    {
         selector: '[data-tour="step-month"]',
         content: "Use this section to switch between months and review your hydration progress over time."
     },
