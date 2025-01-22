@@ -13,24 +13,27 @@ import GoogleButton from "../GoogleButton/GoogleButton";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Invalid email address")
-    .matches(
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      "Email must be a valid address"
-    )
-    .min(5, "Email is too short")
-    .required("Email  is required"),
-  password: Yup.string()
-    .min(6, "Password is too short")
-    .matches(/[a-zA-Z]/, "Password must contain at least one letter")
-    .matches(/\d/, "Password must contain at least one number")
-    .required("Password  is required"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Please repeat your password"),
-});
+const validationSchema = (t) =>
+  Yup.object().shape({
+    email: Yup.string()
+      .email(t("signUpPage.emailSpanError"))
+      .matches(
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        t("validation.emailValid")
+      )
+      .min(5, t("validation.emailShort"))
+      .max(50, t("validation.emailLong"))
+      .required(t("validation.emailRequired")),
+    password: Yup.string()
+      .min(8, t("signUpPage.passwordSpanError"))
+      .max(50, t("validation.passwordLong"))
+      .matches(/[a-zA-Z]/, t("validation.passwordContainsLetter"))
+      .matches(/\d/, t("validation.passwordContainsNumber"))
+      .required(t("validation.passwordRequired")),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], t("validation.passwordMatch"))
+      .required(t("validation.passwordRepeat")),
+  });
 
 export default function SignupForm() {
   const dispatch = useDispatch();

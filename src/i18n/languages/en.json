@@ -64,7 +64,12 @@
     "emailShort": "Email is too short, min. 5 characters",
     "emailLong": "Email is too long, max. 50 characters",
     "emailRequired": "Email is required",
-    "passwordRequired": "Password is required"
+    "passwordLong": "Password is too long, max. 50 characters",
+    "passwordRequired": "Password is required",
+    "passwordMatch": "Passwords must match",
+    "passwordRepeat": "Please repeat your password",
+    "passwordContainsLetter": "Password must contain at least one letter",
+    "passwordContainsNumber": "Password must contain at least one number"
   },
   "forgotPage": {
     "title": "Reset your password",
